@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!--
+  banco_inicio.html — página inicial do Portal Interno (Integra Folha).
+
+  Para que serve: é o rascunho visual (layout) da primeira tela que o ESPECIALISTA DO BANCO vê depois do
+  login (login.html manda para cá quem entra com e-mail do banco, "@santander.com.br").
+  Objetivo da tela: mostrar, num relance, o que precisa dele HOJE (envios para avaliar, mensagens das
+  empresas, empresas paradas, arquivo de contas abertas) e como está a carteira de empresas dele.
+
+  Diferença para o Portal Empresa: aqui o especialista vê TODAS as empresas da carteira dele; a empresa só
+  vê a si mesma. A faixa escura no topo ("Área interna do banco") deixa isso claro na tela.
+
+  Como abrir: dois cliques neste arquivo, ou entrar pelo login.html com um e-mail "@santander.com.br".
+  Aparência: css/estilos.css (comum aos dois portais) + css/banco.css (só o que é do banco).
+
+  Dados: 100% fictícios. As 6 empresas são as da base sintética do projeto (data/synthetic/empresas.csv).
+  Os números da Aurora Alimentos batem com as telas do Portal Empresa (312 aprovados, 24 em análise, 243
+  contas abertas). O especialista "Rafael Lima" é um personagem inventado.
+
+  Ordem da página (de cima para baixo):
+    1. Faixa "uso interno" + cabeçalho com as abas do banco
+    2. Título e saudação
+    3. Quatro números que levam à tela que resolve cada um
+    4. "O que precisa de você" (fila do dia, com o filtro por empresa e pelo prazo) e a carteira de empresas (que cabe
+       sem rolar para o lado a 1366 e a 1920 px)
+    5. Rodapé
+
+  Servida pela aplicação, os exemplos nunca aparecem: o que está marcado com
+  data-aguarda-dado (um número ou texto) ou data-aguarda-bloco (uma lista) fica atrás de uma barra cinza até os dados
+  de verdade chegarem (js/carregando_dados.js); se o servidor falhar, entra um traço ou um aviso, nunca o exemplo.
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Início | Portal Interno</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Aparência comum aos dois portais. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Aparência que só o Portal Interno tem. -->
+  <link rel="stylesheet" href="css/banco.css">
+  <!-- Aparência só desta tela: o filtro da fila e a carteira que cabe sem rolar para o lado. -->
+  <link rel="stylesheet" href="css/banco_inicio.css">
+  <!-- O "i" em cima da carteira, que explica cada situação (js/legenda_dos_status.js). -->
+  <link rel="stylesheet" href="css/legenda_dos_status.css">
+  <!-- Esperando os dados: servida pela aplicação, os números de exemplo nunca aparecem (js/carregando_dados.js). -->
+  <script src="js/carregando_dados.js"></script>
+</head>
+<body>
+
+  <!--
+    Biblioteca de ícones: cada <symbol> é um desenho guardado com um nome (id).
+    No resto da página, <use href="#nome"> "carimba" o desenho, sem repetir o código.
+  -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Casa: aba Início. -->
+    <symbol id="icone-inicio" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <!-- Prédio: empresas. -->
+    <symbol id="icone-predio" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><path d="M16 9h4v12h-4"/><path d="M8 7h4M8 11h4M8 15h4"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Prancheta com visto: avaliar envios. -->
+    <symbol id="icone-avaliar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Dois balões: mensagens entre pessoas. -->
+    <symbol id="icone-mensagens" viewBox="0 0 24 24"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M19 9h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1v3l-4-3h-3"/></symbol>
+    <!-- Cartão: contas abertas. -->
+    <symbol id="icone-cartao" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></symbol>
+    <!-- Gráfico subindo: planejamento e ganhos. -->
+    <symbol id="icone-grafico" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l5-5 3 3 6-7"/><path d="M15 7h4v4"/></symbol>
+    <!-- Porta com seta: sair do portal. -->
+    <symbol id="icone-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <!-- Sino: avisos. -->
+    <!-- Cadeado: área interna. -->
+    <symbol id="icone-cadeado" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <!-- Triângulo com exclamação: precisa de atenção. -->
+    <symbol id="icone-alerta" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5"/><path d="M12 18h.01"/></symbol>
+    <!-- Nuvem com seta para cima: subir arquivo. -->
+    <symbol id="icone-subir" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1 0 8"/><path d="M12 12v8"/><path d="M9 15l3-3 3 3"/></symbol>
+    <!-- Seta para a direita: links "ver tudo". -->
+    <symbol id="icone-seta" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+    <!-- Engrenagem: o menu Sistema (os Parâmetros do layout, o Acompanhamento dos agentes e o Teto de custo com agentes). -->
+    <symbol id="icone-configuracao" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  </svg>
+
+  <!-- ============ 1. FAIXA "USO INTERNO" + CABEÇALHO COM AS ABAS ============ -->
+  <!-- A faixa e o cabeçalho ficam juntos e grudam no alto da tela quando a página rola. -->
+  <div class="topo-banco">
+    <!-- Faixa escura: lembra que esta é a área interna do banco, que a empresa nunca vê. -->
+    <div class="faixa-interna">
+      <div class="conteudo-centralizado faixa-interna-linha">
+        <span><svg class="icone"><use href="#icone-cadeado"/></svg>Área interna do banco · dados de clientes protegidos por sigilo bancário</span>
+        <span class="faixa-interna-carteira" data-faixa-carteira data-aguarda-dado>Carteira Sul e Sudeste · 6 empresas</span>
+      </div>
+    </div>
+
+    <header class="barra-topo">
+      <div class="conteudo-centralizado">
+        <!-- Linha de cima: marca, o menu Sistema e usuário logado. -->
+        <div class="barra-topo-linha">
+          <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+          <a href="banco_inicio.html" class="logotipo" aria-label="Início do Portal Interno">
+            <span class="logotipo-marca">Integra Folha</span>
+          </a>
+          <!-- O banco parceiro do Integra Folha: aparece em todas as telas depois do login (nunca no login). -->
+          <span class="selo-banco-parceiro">Banco parceiro: <strong>Santander</strong></span>
+          <!-- Ações de quem está logado (o js/cabecalho_real.js troca pelo usuário da sessão). -->
+          <div class="acoes-usuario">
+            <!-- Sistema (o antigo "Configuração"; ADR-148): a engrenagem abre um menu pequeno com as telas do Sistema
+                 (Parâmetros do layout, Acompanhamento dos agentes e Teto de custo com agentes; as Premissas
+                 financeiras ficam ocultas nesta versão). No celular, fica só o ícone. O js/menu_configuracao.js abre e
+                 fecha o menu (clique, Enter/Espaço, setas, Esc e clique fora). Nas telas do Sistema, o botão fica
+                 marcado (botao-configuracao-marcado) e o item da tela atual leva aria-current="page". -->
+            <div class="menu-configuracao" data-menu-configuracao>
+              <button type="button" class="botao-configuracao" aria-label="Sistema" aria-expanded="false" aria-controls="itens-da-configuracao" data-botao-configuracao>
+                <svg class="icone" aria-hidden="true"><use href="#icone-configuracao"/></svg>
+                <span class="botao-configuracao-texto">Sistema</span>
+              </button>
+              <ul class="menu-configuracao-itens" id="itens-da-configuracao" data-itens-configuracao hidden>
+                <li><a href="banco_parametros.html" class="menu-configuracao-item">Parâmetros do layout</a></li>
+                <!-- As Premissas financeiras ficam ocultas nesta versão (ADR-148): o <template> guarda o item sem
+                     mostrá-lo nem deixá-lo ser clicado. Para religar, basta tirar o item da caixa. -->
+                <template data-oculto-nesta-versao="premissas">
+                  <li><a href="banco_premissas.html" class="menu-configuracao-item">Premissas financeiras</a></li>
+                </template>
+                <li><a href="banco_agentes.html" class="menu-configuracao-item">Acompanhamento dos agentes</a></li>
+                <li><a href="banco_teto_da_ia.html" class="menu-configuracao-item">Teto de custo com agentes</a></li>
+              </ul>
+            </div>
+            <!-- Pessoa logada (perfil BANCO). -->
+            <div class="usuario-logado">
+              <span class="iniciais-usuario">RL</span>
+              <div class="usuario-logado-texto">
+                <div class="nome-usuario">Rafael Lima</div>
+                <div class="empresa-usuario">Especialista Folha · Santander</div>
+              </div>
+            </div>
+            <!-- Sair: volta para a tela de login. -->
+            <a href="/api/sair" class="botao-sair" aria-label="Sair do portal">
+              <svg class="icone"><use href="#icone-sair"/></svg>
+              <span class="botao-sair-texto">Sair</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Abas do Portal Interno, nesta ordem: Início, Empresas, Envios, Endomarketing e Indicadores. A aba da página
+             atual recebe a classe "aba-ativa"; o número de Empresas (as conversas abertas) vem do
+             js/sinal_de_conversas.js, e o de Envios, do js/cabecalho_real.js. -->
+        <nav class="abas-portal abas-banco" aria-label="Seções do Portal Interno">
+          <a href="banco_inicio.html" class="aba aba-ativa" aria-current="page">
+            <svg class="icone"><use href="#icone-inicio"/></svg>Início
+          </a>
+          <a href="banco_empresas.html" class="aba">
+            <svg class="icone"><use href="#icone-predio"/></svg>Empresas <span class="contador-aba" data-contador-mensagens data-aguarda-dado title="Mensagens das empresas sem resposta">2</span>
+          </a>
+          <a href="banco_envios.html" class="aba">
+            <svg class="icone"><use href="#icone-avaliar"/></svg>Envios <span class="contador-aba" data-contador-aba-envios data-aguarda-dado title="Envios esperando a avaliação">3</span>
+          </a>
+          <a href="banco_endomarketing.html" class="aba">
+            <svg class="icone"><use href="#icone-endomarketing"/></svg>Endomarketing
+          </a>
+          <a href="banco_indicadores.html" class="aba">
+            <svg class="icone"><use href="#icone-grafico"/></svg>Indicadores
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- ============ 2. TÍTULO E SAUDAÇÃO ============ -->
+    <section class="cabecalho-pagina">
+      <div class="conteudo-centralizado">
+        <h1 class="titulo-pagina">
+          <span data-inicio-saudacao data-aguarda-dado>Bom dia, Rafael.</span>
+          <span class="titulo-pagina-leve" data-inicio-subtitulo data-aguarda-dado>Sexta-feira, 25 de setembro. Hoje a sua carteira tem 7 itens esperando você.</span>
+        </h1>
+      </div>
+    </section>
+
+    <div class="conteudo-centralizado area-banco">
+      <!-- ============ 3. QUATRO NÚMEROS (cada um leva à tela que resolve) ============ -->
+      <section class="grade-numeros" aria-label="Resumo do dia">
+        <!-- Envios que as empresas mandaram e esperam a avaliação do banco. -->
+        <a href="banco_envios.html" class="cartao cartao-numero cartao-numero-atencao">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-avaliar"/></svg></span>
+          <div class="cartao-numero-valor" data-inicio-andamento-valor data-aguarda-dado>3</div>
+          <div class="cartao-numero-legenda" data-inicio-andamento-legenda data-aguarda-dado>envios esperando a sua avaliação (260 funcionários)</div>
+          <span class="selo selo-atencao" data-inicio-andamento-selo data-aguarda-dado>1 passou do prazo de 1 dia útil</span>
+        </a>
+        <!-- Mensagens de ajuda das empresas ainda sem resposta: a lista das empresas mostra quantas cada uma tem, e a
+             conversa fica na ficha da empresa (aba "Conversa"). -->
+        <a href="banco_empresas.html" class="cartao cartao-numero cartao-numero-atencao">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-mensagens"/></svg></span>
+          <div class="cartao-numero-valor" data-numero-mensagens data-aguarda-dado>2</div>
+          <div class="cartao-numero-legenda">mensagens de empresas sem resposta</div>
+          <span class="selo selo-marca" data-inicio-mensagens-selo data-aguarda-dado>A mais antiga: ontem, 17h40</span>
+        </a>
+        <!-- Empresas paradas na jornada (contrato assinado, mas sem avançar): o uso delas fica no Painel de
+             acompanhamento de Indicadores. -->
+        <a href="banco_indicadores.html?aba=painel" class="cartao cartao-numero cartao-numero-atencao">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-alerta"/></svg></span>
+          <div class="cartao-numero-valor" data-inicio-parada-valor data-aguarda-dado>1</div>
+          <div class="cartao-numero-legenda">empresa parada: contrato assinado e nenhuma carga enviada</div>
+          <span class="selo selo-atencao" data-inicio-parada-selo data-aguarda-dado>Vale Verde · 55 dias</span>
+        </a>
+        <!-- Contas abertas na carteira: só funcionários com cadastro aprovado entram na conta. O arquivo de contas é
+             carregado por empresa, na ficha dela (aba "Contas abertas"). -->
+        <a href="banco_empresas.html?aba=contas" class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-cartao"/></svg></span>
+          <div class="cartao-numero-valor" data-inicio-contas-valor data-aguarda-dado>69%</div>
+          <div class="cartao-numero-legenda" data-inicio-contas-legenda data-aguarda-dado>dos 1.840 funcionários aprovados já abriram a conta (1.271)</div>
+          <span class="selo selo-sucesso" data-inicio-contas-selo data-aguarda-dado>+38 desde o último arquivo</span>
+        </a>
+      </section>
+
+      <!-- ============ 4. FILA DO DIA + CARTEIRA ============ -->
+      <div class="grade-inicio-banco">
+        <!-- Esquerda: tudo o que depende do especialista hoje, do mais urgente para o menos urgente. -->
+        <section class="cartao painel-acompanhar" aria-labelledby="titulo-fila">
+          <div class="painel-cabecalho">
+            <div>
+              <span class="sobretitulo">Para hoje</span>
+              <h2 class="painel-titulo" id="titulo-fila">O que precisa de você</h2>
+            </div>
+          </div>
+          <!-- O filtro da fila (js/banco_inicio.js): a empresa e o prazo que o banco
+               promete para avaliar um envio (1 dia útil). "Dentro do prazo" e "Passou do prazo" são os nomes que a fila
+               já mostra; só o envio que espera a sua avaliação tem prazo, e o resto (empresa sem carga, com pendência
+               ou em andamento) aparece em "Todos". O filtro só aparece com os dados reais e com a fila tendo algum item
+               (aberta como arquivo, a lista é o exemplo do layout). -->
+          <div class="filtro-da-fila" data-filtro-da-fila hidden>
+            <label class="filtro-da-fila-empresa">
+              <span class="filtro-da-fila-rotulo">Empresa</span>
+              <select class="campo-entrada campo-filtro" data-filtro-fila-empresa>
+                <option value="">Todas as empresas</option>
+              </select>
+            </label>
+            <!-- Os três prazos, com quantos itens cada um tem (na empresa escolhida). aria-pressed diz qual está ligado. -->
+            <div class="grupo-filtros" role="group" aria-label="Prazo da avaliação do banco">
+              <button class="filtro-rapido filtro-rapido-ativo" type="button" aria-pressed="true" data-filtro-fila-prazo="todos">Todos <span data-contagem-fila-prazo="todos"></span></button>
+              <button class="filtro-rapido" type="button" aria-pressed="false" data-filtro-fila-prazo="dentro">Dentro do prazo <span data-contagem-fila-prazo="dentro"></span></button>
+              <button class="filtro-rapido" type="button" aria-pressed="false" data-filtro-fila-prazo="passou">Passou do prazo <span data-contagem-fila-prazo="passou"></span></button>
+            </div>
+            <!-- "Mostrando 2 de 7 itens", só com um filtro ligado; role="status" faz o leitor de tela anunciar a troca. -->
+            <p class="nota-tabela" data-resumo-da-fila role="status"></p>
+          </div>
+          <ol class="fila-trabalho" data-fila-do-dia data-aguarda-bloco>
+            <!-- Urgente: passou do prazo prometido à empresa ("retorno em até 1 dia útil"). -->
+            <li class="item-fila item-fila-urgente">
+              <span class="item-fila-icone"><svg class="icone"><use href="#icone-avaliar"/></svg></span>
+              <div>
+                <div class="item-fila-titulo">Avaliar a carga inicial da Atlântico Saúde</div>
+                <div class="item-fila-detalhe">205 funcionários · enviada em 23/09 · passou do prazo de 1 dia útil</div>
+              </div>
+              <a href="banco_envios.html?envio=atlantico-carga" class="botao botao-principal botao-pequeno">Avaliar</a>
+            </li>
+            <!-- Envio de inclusão da Aurora (o mesmo que a Aurora vê "em análise pelo banco"). -->
+            <li class="item-fila">
+              <span class="item-fila-icone"><svg class="icone"><use href="#icone-avaliar"/></svg></span>
+              <div>
+                <div class="item-fila-titulo">Avaliar a inclusão da Aurora Alimentos</div>
+                <div class="item-fila-detalhe">24 funcionários · enviada em 24/09 por Marina Costa</div>
+              </div>
+              <a href="banco_envios.html?envio=aurora-inclusao" class="botao botao-contorno botao-pequeno">Avaliar</a>
+            </li>
+            <!-- Mensagem de ajuda da Horizonte. -->
+            <li class="item-fila">
+              <span class="item-fila-icone"><svg class="icone"><use href="#icone-mensagens"/></svg></span>
+              <div>
+                <div class="item-fila-titulo">Responder a Horizonte Logística</div>
+                <div class="item-fila-detalhe">"O Agente Interpretador deixou de fora a coluna Turno. Preciso mandar?" · ontem, 17h40</div>
+              </div>
+              <a href="banco_empresas.html?empresa=horizonte&amp;aba=conversa" class="botao botao-contorno botao-pequeno">Responder</a>
+            </li>
+            <!-- Mensagem de ajuda da Aurora. -->
+            <li class="item-fila">
+              <span class="item-fila-icone"><svg class="icone"><use href="#icone-mensagens"/></svg></span>
+              <div>
+                <div class="item-fila-titulo">Responder a Aurora Alimentos</div>
+                <div class="item-fila-detalhe">"Funcionária afastada entra no arquivo de inclusão?" · hoje, 08h15</div>
+              </div>
+              <a href="banco_empresas.html?empresa=aurora&amp;aba=conversa" class="botao botao-contorno botao-pequeno">Responder</a>
+            </li>
+            <!-- Envio de inclusão da Prisma. -->
+            <li class="item-fila">
+              <span class="item-fila-icone"><svg class="icone"><use href="#icone-avaliar"/></svg></span>
+              <div>
+                <div class="item-fila-titulo">Avaliar a inclusão da Prisma Comércio</div>
+                <div class="item-fila-detalhe">31 funcionários · enviada hoje, 07h52</div>
+              </div>
+              <a href="banco_envios.html?envio=prisma-inclusao" class="botao botao-contorno botao-pequeno">Avaliar</a>
+            </li>
+            <!-- Empresa parada: contrato assinado, nenhuma carga. -->
+            <li class="item-fila">
+              <span class="item-fila-icone"><svg class="icone"><use href="#icone-alerta"/></svg></span>
+              <div>
+                <div class="item-fila-titulo">Falar com a Vale Verde Serviços</div>
+                <div class="item-fila-detalhe">Contrato em 01/08 e nenhuma carga · tentou enviar 2 vezes e descartou a leitura</div>
+              </div>
+              <a href="banco_indicadores.html?aba=painel&amp;empresa=vale-verde" class="botao botao-contorno botao-pequeno">Ver o uso</a>
+            </li>
+            <!-- Arquivo semanal de contas abertas, que dá baixa por funcionário (um arquivo por empresa, na ficha dela). -->
+            <li class="item-fila">
+              <span class="item-fila-icone"><svg class="icone"><use href="#icone-subir"/></svg></span>
+              <div>
+                <div class="item-fila-titulo">Subir o arquivo de contas abertas da semana</div>
+                <div class="item-fila-detalhe">Último arquivo: sexta, 18/09 · as telas das empresas usam este número</div>
+              </div>
+              <a href="banco_empresas.html?aba=contas" class="botao botao-contorno botao-pequeno">Subir arquivo</a>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Direita: a carteira do especialista, uma linha por empresa. -->
+        <section class="cartao painel-acompanhar" aria-labelledby="titulo-carteira">
+          <div class="painel-cabecalho">
+            <div>
+              <span class="sobretitulo">Sua carteira</span>
+              <h2 class="painel-titulo" id="titulo-carteira" data-titulo-carteira data-aguarda-dado>6 empresas conveniadas</h2>
+            </div>
+            <a href="banco_empresas.html" class="link-seta">Ver empresas <svg class="icone"><use href="#icone-seta"/></svg></a>
+          </div>
+          <!-- O "i" no canto direito, em cima da grade: explica a situação de cada empresa (js/legenda_dos_status.js). -->
+          <div class="linha-do-i-dos-status" data-legenda-dos-status="empresas" data-portal="banco"></div>
+          <!-- No computador (1366 ou 1920 px), a tabela cabe no cartão sem rolar para o lado: as células quebram a linha
+               (css/banco_inicio.css). No celular, a caixa ainda rola por dentro, sem alargar a página. -->
+          <div class="tabela-rolavel" data-tabela-carteira data-aguarda-bloco>
+            <table class="tabela-montada tabela-carteira tabela-carteira-do-inicio">
+              <thead>
+                <tr>
+                  <th scope="col">Empresa</th>
+                  <th scope="col">Aprovados</th>
+                  <th scope="col">Contas abertas</th>
+                  <th scope="col">Situação</th>
+                </tr>
+              </thead>
+              <tbody data-corpo-carteira>
+                <!-- Aurora: inclusões em andamento, envio e mensagem esperando o especialista. -->
+                <tr>
+                  <td class="celula-duas-linhas"><a href="banco_empresas.html?empresa=aurora" class="link-empresa">Aurora Alimentos</a><span>Inclusões · Campinas/SP</span></td>
+                  <td>312</td>
+                  <td><span class="barra-celula" style="--porcentagem: 78"><span class="barra-celula-preenchida"></span></span>78%</td>
+                  <td><span class="selo selo-marca selo-pequeno">Com você</span></td>
+                </tr>
+                <!-- Horizonte: mensagem sem resposta. -->
+                <tr>
+                  <td class="celula-duas-linhas"><a href="banco_empresas.html?empresa=horizonte" class="link-empresa">Horizonte Logística</a><span>Inclusões · Contagem/MG</span></td>
+                  <td>540</td>
+                  <td><span class="barra-celula" style="--porcentagem: 74"><span class="barra-celula-preenchida"></span></span>74%</td>
+                  <td><span class="selo selo-marca selo-pequeno">Com você</span></td>
+                </tr>
+                <!-- Brisa: em dia, a maior taxa de contas abertas. -->
+                <tr>
+                  <td class="celula-duas-linhas"><a href="banco_empresas.html?empresa=brisa" class="link-empresa">Brisa Tecnologia</a><span>Inclusões · Florianópolis/SC</span></td>
+                  <td>128</td>
+                  <td><span class="barra-celula" style="--porcentagem: 90"><span class="barra-celula-preenchida"></span></span>90%</td>
+                  <td><span class="selo selo-sucesso selo-pequeno">Em dia</span></td>
+                </tr>
+                <!-- Vale Verde: parada antes da carga inicial. -->
+                <tr>
+                  <td class="celula-duas-linhas"><a href="banco_empresas.html?empresa=vale-verde" class="link-empresa">Vale Verde Serviços</a><span>Sem carga inicial · Curitiba/PR</span></td>
+                  <td class="celula-sem-dado">nenhum</td>
+                  <td class="celula-sem-dado">sem cadastro</td>
+                  <td><span class="selo selo-atencao selo-pequeno">Parada</span></td>
+                </tr>
+                <!-- Prisma: inclusão nova esperando avaliação; a menor taxa de contas abertas. -->
+                <tr>
+                  <td class="celula-duas-linhas"><a href="banco_empresas.html?empresa=prisma" class="link-empresa">Prisma Comércio</a><span>Inclusões · Recife/PE</span></td>
+                  <td>860</td>
+                  <td><span class="barra-celula" style="--porcentagem: 59"><span class="barra-celula-preenchida"></span></span>59%</td>
+                  <td><span class="selo selo-marca selo-pequeno">Com você</span></td>
+                </tr>
+                <!-- Atlântico: carga inicial enviada, esperando o especialista. -->
+                <tr>
+                  <td class="celula-duas-linhas"><a href="banco_empresas.html?empresa=atlantico" class="link-empresa">Atlântico Saúde</a><span>Carga inicial em análise · Salvador/BA</span></td>
+                  <td class="celula-sem-dado">205 em análise</td>
+                  <td class="celula-sem-dado">sem cadastro</td>
+                  <td><span class="selo selo-atencao selo-pequeno">Atrasada</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="nota-tabela" data-nota-carteira data-aguarda-dado>"Com você": a empresa espera uma avaliação ou uma resposta sua. Contas abertas: do último arquivo, de 18/09.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ 5. RODAPÉ ============ -->
+  <footer class="rodape">
+    <div class="conteudo-centralizado rodape-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <nav class="rodape-links" aria-label="Links internos">
+        <!-- Oculto nesta versão (ADR-148): o manual do especialista ainda não existe. -->
+        <template data-oculto-nesta-versao="manual-do-especialista"><a href="#">Manual do especialista</a></template>
+        <a href="privacidade.html">Política de sigilo e LGPD</a>
+        <!-- Oculto nesta versão (ADR-148): o suporte interno ainda não existe. -->
+        <template data-oculto-nesta-versao="suporte-interno"><a href="#">Suporte interno</a></template>
+      </nav>
+    </div>
+    <!-- O aviso de que o site é um projeto. -->
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o Santander é ilustrativa: este não é um sistema oficial do banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- Conversas com as empresas: acerta o número de mensagens sem resposta (aba Empresas e cartão). -->
+  <!-- Cabeçalho com quem entrou, os contadores reais e "Minha senha" (ADR-69). -->
+  <!-- O menu da engrenagem "Sistema" (abre e fecha pelo clique e pelo teclado). -->
+  <script src="js/menu_configuracao.js"></script>
+  <script src="js/cabecalho_real.js"></script>
+  <!-- A bolinha das conversas abertas, ao lado de "Empresas" no menu, e o número do cartão "mensagens de
+       empresas sem resposta" (js/sinal_de_conversas.js). -->
+  <script src="js/sinal_de_conversas.js"></script>
+  <!-- Com a página ligada à aplicação, troca o exemplo pelos dados reais da carteira (ADR-69). -->
+  <script src="js/banco_inicio.js"></script>
+  <!-- A faixa "A IA está pausada" no alto da tela, só com o teto de gasto atingido (ADR-139). -->
+  <script src="js/aviso_do_teto_da_ia.js"></script>
+  <!-- O "i" em cima da carteira: abre o balão com o que quer dizer cada situação (textos do servidor). -->
+  <script src="js/legenda_dos_status.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

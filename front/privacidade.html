@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+  privacidade.html — a página "Privacidade e LGPD" do Integra Folha.
+
+  Para que serve: explicar, em linguagem simples, que dados a plataforma trata, para quê, quem vê o quê, como a
+  inteligência artificial entra e como os dados são protegidos. Os links "Privacidade e LGPD" dos rodapés abrem esta
+  página.
+
+  Abre SEM login (api/principal.py, ENDERECOS_PUBLICOS): a pessoa lê antes de entrar, e a página não mostra dado
+  nenhum. Como a tela de login, não cita o nome do banco parceiro.
+  Aparência: css/estilos.css (cores, fontes e rodapé) e css/documento.css (o texto).
+  Interações: js/voltar.js (o link "Voltar") e js/data_da_versao.js (a data da versão no rodapé).
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Privacidade e LGPD | Integra Folha</title>
+  <!-- Fontes do Google (as mesmas das outras telas). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- A aparência de todas as telas e a das páginas de texto. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/documento.css">
+</head>
+<body class="documento-pagina">
+
+  <!-- ============ 1. FAIXA DE CIMA: O NOME E O "VOLTAR" ============ -->
+  <header class="documento-cabecalho">
+    <div class="documento-largura documento-cabecalho-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <!-- Volta para a tela de onde a pessoa veio; aberto direto, leva ao login (js/voltar.js). -->
+      <a href="login.html" class="link-simples" data-voltar>Voltar</a>
+    </div>
+  </header>
+
+  <!-- ============ 2. O TEXTO ============ -->
+  <main class="documento documento-largura">
+    <h1>Privacidade e LGPD</h1>
+    <p class="documento-resumo">
+      Que dados o Integra Folha trata, para quê e como eles são protegidos, conforme a Lei Geral de Proteção de Dados
+      (LGPD, Lei nº 13.709/2018).
+    </p>
+
+    <!-- O aviso de que o site é um projeto, em destaque. -->
+    <p class="documento-aviso">
+      O Integra Folha é um projeto acadêmico de engenharia de IA. Todos os dados usados aqui são fictícios, e este não
+      é um sistema oficial de nenhum banco.
+    </p>
+
+    <section>
+      <h2>Que dados a plataforma trata</h2>
+      <ul>
+        <li><strong>Dos usuários:</strong> o login, o perfil (empresa ou banco), a empresa de cada usuário e o registro
+          dos acessos.</li>
+        <li><strong>Dos funcionários, no arquivo que a empresa envia:</strong> as quatro informações obrigatórias (CPF,
+          código da profissão, renda bruta mensal e data de admissão) e as opcionais que o arquivo trouxer, como o nome
+          e o endereço.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Para que os dados são usados</h2>
+      <ul>
+        <li>Cadastrar os funcionários no banco parceiro, para a abertura da conta em que a empresa paga o salário.</li>
+        <li>Acompanhar o cadastro e a abertura das contas.</li>
+        <li>O planejamento do banco usa só números somados por empresa e por região: a plataforma não monta listas de
+          pessoas para oferecer produtos.</li>
+        <li>A plataforma não usa os dados para propaganda.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Quem vê o quê</h2>
+      <ul>
+        <li>Cada empresa vê só os próprios funcionários. A empresa de cada usuário vem do cadastro dele, e nunca de uma
+          escolha na tela.</li>
+        <li>O especialista do banco vê os envios das empresas que o banco atende.</li>
+        <li>Quem abre uma lista com dados de funcionários fica registrado.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Como a inteligência artificial entra</h2>
+      <ul>
+        <li>Agentes de IA leem o arquivo enviado e ajudam a resolver o que falta nele.</li>
+        <li>A IA roda pelo AWS Bedrock, num ambiente em que o fornecedor do modelo não tem acesso aos pedidos e em que
+          os pedidos não ficam guardados depois da resposta.</li>
+        <li>A IA sugere; quem decide são as pessoas. A empresa confere antes de enviar, e o banco aprova.</li>
+        <li>O conteúdo do arquivo é tratado só como dado: instruções escondidas nele não são seguidas.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Segurança</h2>
+      <ul>
+        <li>A senha nunca é guardada: fica só um código que permite conferi-la.</li>
+        <li>A sessão vale 8 horas, e o cookie dela some quando o navegador é fechado.</li>
+        <li>Depois de 5 senhas erradas, o login fica bloqueado por 15 minutos.</li>
+        <li>No site publicado, a conexão é protegida (https).</li>
+        <li>Os registros técnicos guardam identificadores e contagens, nunca o conteúdo dos dados.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Cookies</h2>
+      <ul>
+        <li>A plataforma usa só o cookie da sessão, necessário para o login funcionar. Não há cookies de propaganda nem
+          de medição de audiência.</li>
+        <li>As fontes do texto são carregadas do Google Fonts.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Seus direitos</h2>
+      <ul>
+        <li>A LGPD garante ao titular dos dados, entre outros, o direito de confirmar se eles são tratados, de acessá-los,
+          de corrigi-los e de pedir que sejam eliminados (art. 18).</li>
+        <li>Como os dados deste projeto são fictícios, não há titulares reais. Numa operação de verdade, o pedido iria à
+          empresa ou ao banco, que respondem pelos dados que tratam.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Dúvidas</h2>
+      <p>
+        A empresa fala com o especialista do banco pela conversa "Posso ajudar?", no Portal Empresa. As regras de uso
+        estão nos <a href="termos_de_uso.html" class="link-simples">Termos de uso</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- ============ 3. RODAPÉ ============ -->
+  <footer class="rodape">
+    <div class="conteudo-centralizado rodape-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <nav class="rodape-links" aria-label="Links institucionais">
+        <a href="privacidade.html" aria-current="page">Privacidade e LGPD</a>
+        <a href="termos_de_uso.html">Termos de uso</a>
+      </nav>
+    </div>
+    <!-- O aviso de que o site é um projeto (sem o nome do banco parceiro, como na tela de login). -->
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o banco é ilustrativa: este não é um sistema oficial de nenhum banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- O link "Voltar" e a data da versão. -->
+  <script src="js/voltar.js"></script>
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

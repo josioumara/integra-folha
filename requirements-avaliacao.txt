@@ -1,0 +1,18 @@
+# O ambiente separado da avaliação com o RAGAS (.venv-avaliacao), fora do .venv do projeto.
+# Por que separado: o RAGAS traz versões do langchain que brigam com as do projeto (o LangGraph e o langchain-core).
+# Quem usa: scripts/avaliar_endomarketing_ragas.py --etapa julgar e tests/test_ragas_no_ambiente_separado.py.
+# Para montar (na pasta do repositório):
+#   uv venv .venv-avaliacao --python 3.12
+#   uv pip install --python .venv-avaliacao\Scripts\python.exe -r requirements-avaliacao.txt
+# As mesmas versões do .venv do projeto onde os dois se encontram (o modelo de embeddings, o .env e a chamada ao
+# Bedrock usam o código do projeto).
+ragas==0.4.3
+# O RAGAS 0.4.3 importa langchain_community.chat_models.vertexai, que a 0.4 do langchain-community tirou: sem esta
+# linha, o instalador pega a mais nova e o "import ragas" quebra
+langchain-community==0.3.31
+fastembed==0.8.1
+onnxruntime==1.30.0
+python-dotenv==1.2.3
+httpx==0.28.1
+pydantic==2.13.5
+pytest==9.1.1

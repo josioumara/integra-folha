@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="850" viewBox="0 0 1100 850" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="150" y="30" font-size="20" font-weight="bold">Triagem dos modelos de IA: o que testar e o que cortar</text>
+  <text x="150" y="50" font-size="12" fill="#555555">Custo estimado para interpretar as 30 planilhas da comparação (preços de 2026-09-24; modelos que pensam antes de responder podem custar mais)</text>
+  <text x="150" y="78" font-size="16" font-weight="bold">OpenAI</text>
+  <rect x="150" y="90" width="910" height="150.0" fill="#f3f8f4"/>
+  <rect x="150" y="240.0" width="910" height="150.0" fill="#f5f5f5"/>
+  <text x="140" y="130" font-size="13" text-anchor="end">Linha atual</text>
+  <text x="140" y="280.0" font-size="13" text-anchor="end">Geração anterior</text>
+  <line x1="211.6" y1="90" x2="211.6" y2="390" stroke="#dddddd"/>
+  <text x="211.6" y="408" font-size="12" text-anchor="middle">US$ 0.03</text>
+  <line x1="394.4" y1="90" x2="394.4" y2="390" stroke="#dddddd"/>
+  <text x="394.4" y="408" font-size="12" text-anchor="middle">US$ 0.1</text>
+  <line x1="561.3" y1="90" x2="561.3" y2="390" stroke="#dddddd"/>
+  <text x="561.3" y="408" font-size="12" text-anchor="middle">US$ 0.3</text>
+  <line x1="744.2" y1="90" x2="744.2" y2="390" stroke="#dddddd"/>
+  <text x="744.2" y="408" font-size="12" text-anchor="middle">US$ 1</text>
+  <line x1="911.0" y1="90" x2="911.0" y2="390" stroke="#dddddd"/>
+  <text x="911.0" y="408" font-size="12" text-anchor="middle">US$ 3</text>
+  <line x1="807.4" y1="90" x2="807.4" y2="390" stroke="#d64545" stroke-dasharray="6,4"/>
+  <text x="813.4" y="104" font-size="11" fill="#d64545">limite de custo (US$ 4 / 20)</text>
+  <circle cx="247.1" cy="120.0" r="7" fill="#1f9d55"><title>gpt-6-luna: US$ 0.1 / 0.5 por 1M tokens; ~US$ 0.04 nas 30 planilhas; testar (linha atual, pequeno)</title></circle>
+  <text x="258.1" y="124.0" font-size="12">gpt-6-luna</text>
+  <circle cx="702.1" cy="150.0" r="7" fill="#1f9d55"><title>gpt-6-sol: US$ 2 / 10 por 1M tokens; ~US$ 0.76 nas 30 planilhas; testar (linha atual, intermediário)</title></circle>
+  <text x="713.1" y="154.0" font-size="12">gpt-6-sol</text>
+  <circle cx="946.5" cy="180.0" r="7" fill="#d64545"><title>gpt-6-astra: US$ 10 / 50 por 1M tokens; ~US$ 3.79 nas 30 planilhas; cortado (muito caro)</title></circle>
+  <text x="957.5" y="184.0" font-size="12">gpt-6-astra</text>
+  <circle cx="188.8" cy="270.0" r="7" fill="#9aa0a6"><title>gpt-5-nano: US$ 0.05 / 0.4 por 1M tokens; ~US$ 0.03 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="199.8" y="274.0" font-size="12">gpt-5-nano</text>
+  <circle cx="289.1" cy="300.0" r="7" fill="#9aa0a6"><title>gpt-4o-mini: US$ 0.15 / 0.6 por 1M tokens; ~US$ 0.05 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="300.1" y="304.0" font-size="12">gpt-4o-mini</text>
+  <circle cx="373.8" cy="330.0" r="7" fill="#9aa0a6"><title>gpt-5.4-nano: US$ 0.2 / 1.25 por 1M tokens; ~US$ 0.09 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="384.8" y="334.0" font-size="12">gpt-5.4-nano</text>
+  <circle cx="433.3" cy="360.0" r="7" fill="#9aa0a6"><title>gpt-5-mini: US$ 0.25 / 2 por 1M tokens; ~US$ 0.13 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="444.3" y="364.0" font-size="12">gpt-5-mini</text>
+  <circle cx="591.7" cy="270.0" r="7" fill="#9aa0a6"><title>o4-mini: US$ 1.1 / 4.4 por 1M tokens; ~US$ 0.37 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="602.7" y="274.0" font-size="12">o4-mini</text>
+  <circle cx="570.5" cy="300.0" r="7" fill="#9aa0a6"><title>gpt-5.4-mini: US$ 0.75 / 4.5 por 1M tokens; ~US$ 0.32 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="581.5" y="304.0" font-size="12">gpt-5.4-mini</text>
+  <circle cx="682.5" cy="330.0" r="7" fill="#9aa0a6"><title>o3: US$ 2 / 8 por 1M tokens; ~US$ 0.67 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="693.5" y="334.0" font-size="12">o3</text>
+  <circle cx="716.4" cy="360.0" r="7" fill="#9aa0a6"><title>gpt-4o: US$ 2.5 / 10 por 1M tokens; ~US$ 0.83 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="727.4" y="364.0" font-size="12">gpt-4o</text>
+  <circle cx="753.3" cy="270.0" r="7" fill="#9aa0a6"><title>gpt-5.4: US$ 2.5 / 15 por 1M tokens; ~US$ 1.06 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="764.3" y="274.0" font-size="12">gpt-5.4</text>
+  <circle cx="807.4" cy="300.0" r="7" fill="#9aa0a6"><title>gpt-5.6-sol: US$ 4 / 20 por 1M tokens; ~US$ 1.52 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="818.4" y="304.0" font-size="12">gpt-5.6-sol</text>
+  <circle cx="858.6" cy="330.0" r="7" fill="#9aa0a6"><title>gpt-5.5: US$ 5 / 30 por 1M tokens; ~US$ 2.12 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="869.6" y="334.0" font-size="12">gpt-5.5</text>
+  <circle cx="988.5" cy="360.0" r="7" fill="#6b7078"><title>o1: US$ 15 / 60 por 1M tokens; ~US$ 5.00 nas 30 planilhas; cortado (geração anterior e muito caro)</title></circle>
+  <text x="999.5" y="364.0" font-size="12">o1</text>
+  <text x="150" y="448" font-size="16" font-weight="bold">Anthropic</text>
+  <rect x="150" y="460" width="910" height="150.0" fill="#f3f8f4"/>
+  <rect x="150" y="610.0" width="910" height="150.0" fill="#f5f5f5"/>
+  <text x="140" y="500" font-size="13" text-anchor="end">Linha atual</text>
+  <text x="140" y="650.0" font-size="13" text-anchor="end">Geração anterior</text>
+  <line x1="211.6" y1="460" x2="211.6" y2="760" stroke="#dddddd"/>
+  <text x="211.6" y="778" font-size="12" text-anchor="middle">US$ 0.03</text>
+  <line x1="394.4" y1="460" x2="394.4" y2="760" stroke="#dddddd"/>
+  <text x="394.4" y="778" font-size="12" text-anchor="middle">US$ 0.1</text>
+  <line x1="561.3" y1="460" x2="561.3" y2="760" stroke="#dddddd"/>
+  <text x="561.3" y="778" font-size="12" text-anchor="middle">US$ 0.3</text>
+  <line x1="744.2" y1="460" x2="744.2" y2="760" stroke="#dddddd"/>
+  <text x="744.2" y="778" font-size="12" text-anchor="middle">US$ 1</text>
+  <line x1="911.0" y1="460" x2="911.0" y2="760" stroke="#dddddd"/>
+  <text x="911.0" y="778" font-size="12" text-anchor="middle">US$ 3</text>
+  <line x1="807.4" y1="460" x2="807.4" y2="760" stroke="#d64545" stroke-dasharray="6,4"/>
+  <text x="813.4" y="474" font-size="11" fill="#d64545">limite de custo (US$ 4 / 20)</text>
+  <circle cx="596.8" cy="490.0" r="7" fill="#1f9d55"><title>claude-haiku-4-5: US$ 1 / 5 por 1M tokens; ~US$ 0.38 nas 30 planilhas; testar (linha atual, pequeno (aposentadoria a partir de 15/10/2026))</title></circle>
+  <text x="607.8" y="494.0" font-size="12">claude-haiku-4-5</text>
+  <circle cx="702.1" cy="520.0" r="7" fill="#1f9d55"><title>claude-sonnet-5: US$ 2 / 10 por 1M tokens; ~US$ 0.76 nas 30 planilhas; testar (linha atual, intermediário)</title></circle>
+  <text x="713.1" y="524.0" font-size="12">claude-sonnet-5</text>
+  <circle cx="807.4" cy="550.0" r="7" fill="#1f9d55"><title>claude-opus-5-5: US$ 4 / 20 por 1M tokens; ~US$ 1.52 nas 30 planilhas; testar (linha atual, o recomendado pelo provedor)</title></circle>
+  <text x="818.4" y="554.0" font-size="12">claude-opus-5-5</text>
+  <circle cx="946.5" cy="580.0" r="7" fill="#d64545"><title>claude-fable-5-1: US$ 10 / 50 por 1M tokens; ~US$ 3.79 nas 30 planilhas; cortado (muito caro)</title></circle>
+  <text x="957.5" y="584.0" font-size="12">claude-fable-5-1</text>
+  <circle cx="763.7" cy="640.0" r="7" fill="#9aa0a6"><title>claude-sonnet-4-6, 4-5: US$ 3 / 15 por 1M tokens; ~US$ 1.14 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="774.7" y="644.0" font-size="12">claude-sonnet-4-6, 4-5</text>
+  <circle cx="841.3" cy="670.0" r="7" fill="#9aa0a6"><title>claude-opus-5, 4-8, 4-7, 4-6, 4-5: US$ 5 / 25 por 1M tokens; ~US$ 1.90 nas 30 planilhas; cortado (geração anterior)</title></circle>
+  <text x="852.3" y="674.0" font-size="12">claude-opus-5, 4-8, 4-7, 4-6, 4-5</text>
+  <circle cx="946.5" cy="700.0" r="7" fill="#6b7078"><title>claude-fable-5: US$ 10 / 50 por 1M tokens; ~US$ 3.79 nas 30 planilhas; cortado (geração anterior e muito caro)</title></circle>
+  <text x="957.5" y="704.0" font-size="12">claude-fable-5</text>
+  <circle cx="150" cy="810" r="7" fill="#1f9d55"/>
+  <text x="162" y="814" font-size="12">Testar</text>
+  <circle cx="350" cy="810" r="7" fill="#d64545"/>
+  <text x="362" y="814" font-size="12">Cortado: muito caro</text>
+  <circle cx="550" cy="810" r="7" fill="#9aa0a6"/>
+  <text x="562" y="814" font-size="12">Cortado: geração anterior</text>
+  <circle cx="750" cy="810" r="7" fill="#6b7078"/>
+  <text x="762" y="814" font-size="12">Cortado: geração anterior e muito caro</text>
+</svg>

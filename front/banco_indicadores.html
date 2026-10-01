@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<!--
+  banco_indicadores.html — aba "Indicadores" do Portal Interno (Integra Folha).
+
+  Para que serve: é o lugar para avaliar os números da carteira. Nesta versão, mostra só o "Painel de
+  acompanhamento", sem guias (ADR-148): o Simulador de Rentabilidade fica oculto. O desenho completo tem duas guias,
+  cada uma ocupando a tela inteira:
+    1. "Painel de acompanhamento" (a que abre primeiro): UM relatório só, que junta o planejamento e o uso das
+       empresas, com um FILTRO NO ALTO que vale para o relatório inteiro: a empresa (nome ou CNPJ, com
+       js/filtro_dos_indicadores.js e js/escolha_de_empresa.js) e o estado (a UF da sede no uso do portal; a da
+       unidade de trabalho no planejamento). A ordem conta uma história:
+         a) "A carteira em números": o uso do portal pelas empresas (quem entrou, envios, descartes, tempo até a
+            avaliação) e os números do planejamento (Cadastrados, aguardando o retorno do banco, contas abertas e
+            correntistas com a folha marcada, ativos × inativos). O cartão do falso não folha recuperado fica oculto
+            nesta versão (ADR-148): continua na página, com "hidden", porque o js/banco_planejamento.js o preenche;
+         b) "Onde as empresas travam": o funil do envio (o da empresa escolhida, ou a soma das empresas do filtro) e a
+            linha do tempo da empresa escolhida;
+         c) "O potencial da carteira": o potencial por empresa e por região (o link para o simulador fica oculto);
+         d) "Uso do portal por empresa": a tabela de acessos e envios (clicar no nome escolhe a empresa no filtro).
+    2. OCULTO nesta versão (ADR-148): o código continua neste arquivo, dentro de caixas <template> (o navegador guarda
+       o que está dentro sem desenhar nem rodar): as guias, o simulador inteiro, o link do painel e o script. Todas
+       levam a marca data-oculto-nesta-versao="simulador"; para religar, tire as caixas e volte o "simulador" à lista
+       de guias do js/banco_indicadores.js.
+       "Simulador de Rentabilidade": seções em ordem — a empresa (nome ou CNPJ, ou todas);
+       as premissas globais oficiais, travadas; o ajuste delas só nesta simulação; os clientes que a empresa enviou
+       (cadastrados + em análise), travados; a estimativa de clientes da especialista (substitui os enviados); as quatro
+       taxas estimadas (% novas contas, % correntista não folha, % correntista folha e % ativos); o resultado, a cada
+       ajuste; e o que o banco já confirmou, como referência (com as taxas observadas). Os campos que dependem da
+       especialista têm a cor de destaque. A conta é a da aplicação (services/planejamento.py,
+       simular_rentabilidade): nova conta × MOB novo + não folha ativo × (MOB folha − MOB não folha); o folha, o
+       inativo e o resto não rendem nada novo. Sem uma taxa, a simulação espera (nada é suposto, ADR-26). "Salvar esta simulação" pede um
+       nome e guarda a empresa, os valores e a base. As premissas oficiais só mudam em Configuração › Premissas
+       financeiras. Script: js/simulador_de_rentabilidade.js.
+  A conversa com o Consultor saiu do sistema (ADR-144): o painel e o simulador ficam sem IA, só com números agregados.
+  O acompanhamento da IA (qualidade, custo, experimentos, execuções) fica no menu Sistema (a engrenagem), em
+  "Acompanhamento dos agentes" (banco_agentes.html).
+
+  Quem vê: o especialista do banco (perfil BANCO). Nenhum dado de funcionário aparece aqui.
+
+  Como abrir: dois cliques neste arquivo, ou pela aba "Indicadores" do Portal Interno.
+  Endereços: banco_indicadores.html e ?aba=painel abrem o painel; ?aba=simulador (a guia oculta, ADR-148) também cai
+             no painel. banco_indicadores.html?aba=painel&empresa=EMP001&uf=SP abre o painel já filtrado (o "Ver o
+             uso" do Início manda a empresa). Os endereços antigos continuam funcionando: ?aba=planejamento, ?aba=uso e
+             ?aba=consultor abrem o painel, e "#consultor" (a conversa que saiu) também.
+  Aparência: css/estilos.css + css/banco.css + css/banco_indicadores.css (o filtro, as partes do painel e o simulador).
+  Cliques das guias: js/banco_indicadores.js. Filtro do alto: js/filtro_dos_indicadores.js e js/escolha_de_empresa.js.
+  Planejamento: js/banco_planejamento.js. Uso das empresas: js/banco_uso.js (exemplo) e
+  js/banco_uso_real.js (dados reais).
+  Servida pela aplicação, os exemplos nunca aparecem: o que está marcado com data-aguarda-dado (um número ou texto)
+  ou data-aguarda-bloco (uma lista) espera com a barra cinza até o dado chegar, ou vira "—" / aviso se o servidor
+  falhar (js/carregando_dados.js). Cada bloco diz de quem é o dado (data-bloco-de="planejamento", "uso" ou
+  "simulador"), e cada script libera só os blocos dele.
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Indicadores | Portal Interno</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Aparência comum aos dois portais. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Aparência que só o Portal Interno tem. -->
+  <link rel="stylesheet" href="css/banco.css">
+  <!-- Aparência só desta tela: as partes do painel de acompanhamento e o simulador. -->
+  <link rel="stylesheet" href="css/banco_indicadores.css">
+  <!-- Esperando os dados: servida pela aplicação, os números de exemplo nunca aparecem (js/carregando_dados.js). -->
+  <script src="js/carregando_dados.js"></script>
+</head>
+<body>
+
+  <!-- Biblioteca de ícones. -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Casa: aba Início. -->
+    <symbol id="icone-inicio" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <!-- Prédio: empresas. -->
+    <symbol id="icone-predio" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><path d="M16 9h4v12h-4"/><path d="M8 7h4M8 11h4M8 15h4"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Prancheta com visto: avaliar envios. -->
+    <symbol id="icone-avaliar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Gráfico subindo: planejamento. -->
+    <symbol id="icone-grafico" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l5-5 3 3 6-7"/><path d="M15 7h4v4"/></symbol>
+    <!-- X: fechar a janela da simulação salva. -->
+    <symbol id="icone-fechar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <!-- Porta com seta: sair. -->
+    <symbol id="icone-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <!-- Sino: avisos. -->
+    <!-- Cadeado: área interna. -->
+    <symbol id="icone-cadeado" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <!-- Pessoas: acessos. -->
+    <symbol id="icone-equipe" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M15 14.5c3 0 6 1.8 6 5.5"/></symbol>
+    <!-- Documento: envios. -->
+    <symbol id="icone-documento" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
+    <!-- Lixeira: leituras descartadas. -->
+    <symbol id="icone-lixeira" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></symbol>
+    <!-- Relógio: tempo. -->
+    <symbol id="icone-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <!-- Lâmpada: pista do motivo. -->
+    <symbol id="icone-lampada" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <!-- Engrenagem: o menu Sistema (os Parâmetros do layout, o Acompanhamento dos agentes e o Teto de custo com agentes). -->
+    <symbol id="icone-configuracao" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  </svg>
+
+  <!-- ============ 1. FAIXA "USO INTERNO" + CABEÇALHO COM AS ABAS ============ -->
+  <div class="topo-banco">
+    <!-- Faixa escura: lembra que esta é a área interna do banco. -->
+    <div class="faixa-interna">
+      <div class="conteudo-centralizado faixa-interna-linha">
+        <span><svg class="icone"><use href="#icone-cadeado"/></svg>Área interna do banco · dados de clientes protegidos por sigilo bancário</span>
+        <span class="faixa-interna-carteira" data-faixa-carteira data-aguarda-dado>Carteira Sul e Sudeste · 6 empresas</span>
+      </div>
+    </div>
+
+    <header class="barra-topo">
+      <div class="conteudo-centralizado">
+        <!-- Linha de cima: marca, o menu Sistema e usuário logado. -->
+        <div class="barra-topo-linha">
+          <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+          <a href="banco_inicio.html" class="logotipo" aria-label="Início do Portal Interno">
+            <span class="logotipo-marca">Integra Folha</span>
+          </a>
+          <!-- O banco parceiro do Integra Folha: aparece em todas as telas depois do login (nunca no login). -->
+          <span class="selo-banco-parceiro">Banco parceiro: <strong>Santander</strong></span>
+          <!-- Ações de quem está logado (o js/cabecalho_real.js troca pelo usuário da sessão). -->
+          <div class="acoes-usuario">
+            <!-- Sistema (o antigo "Configuração"; ADR-148): a engrenagem abre um menu pequeno com as telas do Sistema
+                 (Parâmetros do layout, Acompanhamento dos agentes e Teto de custo com agentes; as Premissas
+                 financeiras ficam ocultas nesta versão). No celular, fica só o ícone. O js/menu_configuracao.js abre e
+                 fecha o menu (clique, Enter/Espaço, setas, Esc e clique fora). Nas telas do Sistema, o botão fica
+                 marcado (botao-configuracao-marcado) e o item da tela atual leva aria-current="page". -->
+            <div class="menu-configuracao" data-menu-configuracao>
+              <button type="button" class="botao-configuracao" aria-label="Sistema" aria-expanded="false" aria-controls="itens-da-configuracao" data-botao-configuracao>
+                <svg class="icone" aria-hidden="true"><use href="#icone-configuracao"/></svg>
+                <span class="botao-configuracao-texto">Sistema</span>
+              </button>
+              <ul class="menu-configuracao-itens" id="itens-da-configuracao" data-itens-configuracao hidden>
+                <li><a href="banco_parametros.html" class="menu-configuracao-item">Parâmetros do layout</a></li>
+                <!-- As Premissas financeiras ficam ocultas nesta versão (ADR-148): o <template> guarda o item sem
+                     mostrá-lo nem deixá-lo ser clicado. Para religar, basta tirar o item da caixa. -->
+                <template data-oculto-nesta-versao="premissas">
+                  <li><a href="banco_premissas.html" class="menu-configuracao-item">Premissas financeiras</a></li>
+                </template>
+                <li><a href="banco_agentes.html" class="menu-configuracao-item">Acompanhamento dos agentes</a></li>
+                <li><a href="banco_teto_da_ia.html" class="menu-configuracao-item">Teto de custo com agentes</a></li>
+              </ul>
+            </div>
+            <!-- Pessoa logada (perfil BANCO). -->
+            <div class="usuario-logado">
+              <span class="iniciais-usuario">RL</span>
+              <div class="usuario-logado-texto">
+                <div class="nome-usuario">Rafael Lima</div>
+                <div class="empresa-usuario">Especialista Folha · Santander</div>
+              </div>
+            </div>
+            <!-- Sair: volta para a tela de login. -->
+            <a href="/api/sair" class="botao-sair" aria-label="Sair do portal">
+              <svg class="icone"><use href="#icone-sair"/></svg>
+              <span class="botao-sair-texto">Sair</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Abas do Portal Interno, nesta ordem: Início, Empresas, Envios, Endomarketing e Indicadores. A aba da página
+             atual recebe a classe "aba-ativa"; o número de Empresas (as conversas abertas) vem do
+             js/sinal_de_conversas.js, e o de Envios, do js/cabecalho_real.js. -->
+        <nav class="abas-portal abas-banco" aria-label="Seções do Portal Interno">
+          <a href="banco_inicio.html" class="aba">
+            <svg class="icone"><use href="#icone-inicio"/></svg>Início
+          </a>
+          <a href="banco_empresas.html" class="aba">
+            <svg class="icone"><use href="#icone-predio"/></svg>Empresas <span class="contador-aba" data-contador-mensagens data-aguarda-dado title="Mensagens das empresas sem resposta">2</span>
+          </a>
+          <a href="banco_envios.html" class="aba">
+            <svg class="icone"><use href="#icone-avaliar"/></svg>Envios <span class="contador-aba" data-contador-aba-envios data-aguarda-dado title="Envios esperando a avaliação">3</span>
+          </a>
+          <a href="banco_endomarketing.html" class="aba">
+            <svg class="icone"><use href="#icone-endomarketing"/></svg>Endomarketing
+          </a>
+          <a href="banco_indicadores.html" class="aba aba-ativa" aria-current="page">
+            <svg class="icone"><use href="#icone-grafico"/></svg>Indicadores
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- ============ 2. TÍTULO ============ -->
+    <section class="cabecalho-pagina">
+      <div class="conteudo-centralizado">
+        <h1 class="titulo-pagina">
+          Indicadores
+          <span class="titulo-pagina-leve">O lugar para avaliar os números da carteira: como as empresas usam o portal, onde travam e onde está o potencial.</span>
+        </h1>
+      </div>
+    </section>
+
+    <div class="conteudo-centralizado area-banco">
+      <!-- As guias ficam ocultas nesta versão (ADR-148): com o Simulador de Rentabilidade oculto, a tela mostra só o
+           Painel de acompanhamento, sem guias. O <template> é uma caixa que o navegador guarda sem desenhar: o que está
+           dentro não aparece e não pode ser clicado. Para religar, tire a caixa (e as outras com a mesma marca). -->
+      <template data-oculto-nesta-versao="simulador">
+      <!-- Duas guias; cada uma ocupa a tela inteira. role="tablist": leitores de tela anunciam como abas. -->
+      <div class="abas-ficha guias-indicadores" role="tablist" aria-label="Guias dos indicadores">
+        <button class="aba-ficha aba-ficha-ativa" type="button" role="tab" id="botao-guia-painel" aria-controls="guia-painel" aria-selected="true" data-aba-indicadores="painel">
+          <svg class="icone"><use href="#icone-grafico"/></svg>Painel de acompanhamento
+        </button>
+        <button class="aba-ficha" type="button" role="tab" id="botao-guia-simulador" aria-controls="guia-simulador" aria-selected="false" data-aba-indicadores="simulador">
+          <svg class="icone"><use href="#icone-grafico"/></svg>Simulador de Rentabilidade
+        </button>
+      </div>
+      </template>
+
+      <!-- ================================================================================================
+           O "PAINEL DE ACOMPANHAMENTO": um relatório só (o antigo Planejamento + o antigo Uso das empresas).
+           Sem as guias (ADR-148), ele deixa de ser o painel de uma guia (role="tabpanel") e é a própria tela.
+           ================================================================================================ -->
+      <div class="painel-indicadores" id="guia-painel" data-conteudo-indicadores="painel">
+        <p class="descricao-aba">Um relatório só, de cima para baixo: como as empresas estão usando o portal, onde elas travam e onde está o potencial. Só números agregados, nunca pessoas.</p>
+
+        <!-- O filtro do relatório inteiro (js/filtro_dos_indicadores.js): a empresa (nome ou CNPJ) e o estado. -->
+        <form class="cartao filtro-dos-indicadores" data-formulario-filtro-indicadores role="search" aria-label="Filtro do painel" novalidate>
+          <label class="campo filtro-empresa-indicadores">
+            <span class="campo-rotulo">Empresa (nome ou CNPJ)</span>
+            <input class="campo-entrada" type="text" autocomplete="off" maxlength="120" placeholder="Todas as empresas: digite o nome ou o CNPJ" list="empresas-do-filtro" data-filtro-empresa-indicadores>
+            <datalist id="empresas-do-filtro" data-lista-de-empresas></datalist>
+          </label>
+          <label class="campo">
+            <span class="campo-rotulo">Estado</span>
+            <select class="campo-entrada campo-filtro" data-filtro-uf-indicadores>
+              <option value="">Todos os estados</option>
+            </select>
+          </label>
+          <button class="botao botao-contorno botao-pequeno" type="button" data-limpar-filtro-indicadores>Limpar o filtro</button>
+          <p class="aviso-campo filtro-indicadores-aviso" data-aviso-filtro-indicadores role="status" hidden></p>
+          <p class="nota-tabela filtro-indicadores-nota">Vale para o painel inteiro. O estado é o da sede da empresa no uso do portal e o da unidade de trabalho de cada funcionário no planejamento das contas.</p>
+        </form>
+
+        <!-- ============ PARTE 1. A CARTEIRA EM NÚMEROS ============ -->
+        <section class="parte-do-painel" data-parte-painel="numeros" aria-labelledby="titulo-parte-numeros">
+          <div class="cabecalho-parte-painel">
+            <span class="sobretitulo">1 · A carteira em números</span>
+            <h2 class="titulo-parte-painel" id="titulo-parte-numeros">Como a carteira está hoje</h2>
+          </div>
+
+          <!-- 1a. Uso do portal pelas empresas (dados de js/banco_uso.js e js/banco_uso_real.js). -->
+          <div class="grupo-do-painel" data-bloco-de="uso">
+            <div class="cabecalho-grupo-painel">
+              <h3 class="titulo-grupo-painel">Uso do portal pelas empresas</h3>
+              <p class="descricao-grupo-painel" data-uso-subtitulo data-aguarda-dado>Quem entra, quando, quantos envios faz e onde trava. Setembro de 2026.</p>
+            </div>
+            <div class="grade-numeros" aria-label="Uso do portal pelas empresas">
+              <div class="cartao cartao-numero">
+                <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-equipe"/></svg></span>
+                <div class="cartao-numero-valor" data-uso-entraram-valor data-aguarda-dado>5 <span class="cartao-numero-total">de 6</span></div>
+                <div class="cartao-numero-legenda" data-uso-entraram-legenda data-aguarda-dado>empresas entraram nos últimos 7 dias</div>
+              </div>
+              <div class="cartao cartao-numero">
+                <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-documento"/></svg></span>
+                <div class="cartao-numero-valor" data-uso-envios-valor data-aguarda-dado>16</div>
+                <div class="cartao-numero-legenda" data-uso-envios-legenda data-aguarda-dado>envios feitos ao banco no mês</div>
+              </div>
+              <div class="cartao cartao-numero cartao-numero-atencao">
+                <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-lixeira"/></svg></span>
+                <div class="cartao-numero-valor" data-uso-descartes-valor data-aguarda-dado>6</div>
+                <div class="cartao-numero-legenda">leituras descartadas pelo RH antes de enviar</div>
+              </div>
+              <div class="cartao cartao-numero">
+                <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-relogio"/></svg></span>
+                <div class="cartao-numero-valor" data-uso-tempo-valor data-aguarda-dado>1,3</div>
+                <div class="cartao-numero-legenda" data-uso-tempo-legenda data-aguarda-dado>dia útil, em média, do envio à avaliação do banco (só segunda a sexta; feriados ainda contam)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1b. Planejamento das contas, com o filtro do alto (dados de js/banco_planejamento.js). -->
+          <div class="grupo-do-painel" data-bloco-de="planejamento">
+            <div class="cabecalho-grupo-painel">
+              <h3 class="titulo-grupo-painel">Planejamento das contas</h3>
+              <p class="descricao-grupo-painel">Cada funcionário Cadastrado aguarda o retorno do banco até o arquivo de contas dizer o status: conta nova (1) ou já era correntista (2). O correntista é um grupo só: o arquivo não diz se a folha já era identificada.</p>
+            </div>
+            <!-- Os números do planejamento, pelo retorno do banco (o arquivo de contas, que sempre traz o tipo). -->
+            <div class="grade-numeros" aria-label="Números do planejamento">
+              <div class="cartao cartao-numero">
+                <div class="cartao-numero-valor" data-numero="cadastrados" data-aguarda-dado>1.840</div>
+                <div class="cartao-numero-legenda">funcionários Cadastrados passaram pelo motor (<span data-numero="empresas" data-aguarda-dado>4</span> empresas)</div>
+              </div>
+              <div class="cartao cartao-numero cartao-numero-atencao">
+                <div class="cartao-numero-valor" data-numero="aguardando_retorno" data-aguarda-dado>1.031</div>
+                <div class="cartao-numero-legenda">aguardando o retorno do banco: o arquivo de contas ainda não disse o tipo</div>
+              </div>
+              <!-- O falso não folha recuperado: o correntista cuja folha não era identificada (a premissa do business case).
+                   Oculto nesta versão (ADR-148): "hidden" esconde o cartão, que continua na página porque o
+                   js/banco_planejamento.js escreve os números nele. Para religar, tire o "hidden". -->
+              <div class="cartao cartao-numero cartao-numero-em-dia" hidden data-oculto-nesta-versao="falso-nao-folha">
+                <div class="cartao-numero-valor" data-numero="falso_nao_folha" data-aguarda-dado>198</div>
+                <div class="cartao-numero-legenda">falso não folha recuperados: correntistas cuja folha não era identificada (<span data-numero="falso_nao_folha_ativos" data-aguarda-dado>172</span> ativos · <span data-numero="falso_nao_folha_inativos" data-aguarda-dado>26</span> inativos)</div>
+              </div>
+              <div class="cartao cartao-numero">
+                <div class="cartao-numero-valor" data-numero="contas_abertas" data-aguarda-dado>478</div>
+                <div class="cartao-numero-legenda">contas novas abertas pelo banco (status 1; informativo)</div>
+              </div>
+              <!-- Os correntistas: um grupo só (ADR-149: o arquivo de contas não diz mais a folha nem a situação). -->
+              <div class="cartao cartao-numero">
+                <div class="cartao-numero-valor" data-numero="correntistas_marcados" data-aguarda-dado>331</div>
+                <div class="cartao-numero-legenda">correntistas: já tinham conta no banco (status 2)</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ PARTE 2. ONDE AS EMPRESAS TRAVAM (uso) ============ -->
+        <section class="parte-do-painel" data-parte-painel="travas" data-bloco-de="uso" aria-labelledby="titulo-parte-travas">
+          <div class="cabecalho-parte-painel">
+            <span class="sobretitulo">2 · Onde as empresas travam</span>
+            <h2 class="titulo-parte-painel" id="titulo-parte-travas">Do primeiro arquivo ao cadastro aprovado</h2>
+          </div>
+          <div class="grade-inicio-banco">
+            <!-- Funil do envio. -->
+            <section class="cartao painel-acompanhar" aria-labelledby="titulo-funil">
+              <div class="painel-cabecalho">
+                <h3 class="painel-titulo" id="titulo-funil">Funil do envio</h3>
+              </div>
+              <!-- O funil segue o filtro do alto: a carteira (ou o estado) somada, ou a empresa escolhida. -->
+              <p class="nota-tabela" data-sobre-o-funil>Carteira toda: cada envio conta uma vez em cada etapa.</p>
+              <!-- Barras do funil (montadas pelo js/banco_uso.js). -->
+              <ol class="funil" data-funil data-aguarda-bloco></ol>
+              <!-- Maior perda do funil, com o motivo mais comum. -->
+              <p class="aviso-incompleto" data-maior-perda data-aguarda-dado></p>
+            </section>
+
+            <!-- Linha do tempo da empresa escolhida. -->
+            <section class="cartao painel-acompanhar" aria-labelledby="titulo-linha-do-tempo">
+              <div>
+                <span class="sobretitulo">Linha do tempo</span>
+                <h3 class="painel-titulo" id="titulo-linha-do-tempo" data-titulo-linha-do-tempo data-aguarda-dado></h3>
+              </div>
+              <ol class="trilha-envio-lista linha-do-tempo-uso" data-linha-do-tempo data-aguarda-bloco></ol>
+              <!-- Pista do motivo, quando houver. -->
+              <p class="pista-motivo" data-pista-motivo data-aguarda-dado hidden>
+                <svg class="icone"><use href="#icone-lampada"/></svg>
+                <span data-pista-motivo-texto></span>
+              </p>
+              <a class="botao botao-contorno botao-pequeno" href="banco_empresas.html" data-link-ficha hidden>Abrir a ficha da empresa</a>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ PARTE 3. O POTENCIAL DA CARTEIRA (planejamento) ============ -->
+        <section class="parte-do-painel" data-parte-painel="potencial" data-bloco-de="planejamento" aria-labelledby="titulo-parte-potencial">
+          <div class="cabecalho-parte-painel">
+            <span class="sobretitulo">3 · O potencial da carteira</span>
+            <h2 class="titulo-parte-painel" id="titulo-parte-potencial">Onde está o potencial</h2>
+            <!-- O convite para o Simulador de Rentabilidade fica oculto nesta versão (ADR-148), dentro do <template>. -->
+            <p class="descricao-grupo-painel">Com o filtro do alto.<template data-oculto-nesta-versao="simulador"> Para ver quanto isso rende, use o <a href="banco_indicadores.html?aba=simulador" data-ir-para-simulador>Simulador de Rentabilidade</a>.</template></p>
+          </div>
+
+          <!-- Potencial por empresa e por região. -->
+          <div class="grade-inicio-banco">
+            <section class="cartao painel-acompanhar" aria-labelledby="titulo-por-empresa">
+              <h3 class="painel-titulo" id="titulo-por-empresa">Potencial por empresa</h3>
+              <div class="tabela-rolavel" data-tabela-por-empresa data-aguarda-bloco>
+                <table class="tabela-montada">
+                  <thead>
+                    <tr><th scope="col">Empresa</th><th scope="col">Cadastrados</th><th scope="col">Aguardando retorno</th><th scope="col">Contas novas</th><th scope="col">Correntistas</th></tr>
+                  </thead>
+                  <tbody data-corpo-por-empresa></tbody>
+                </table>
+              </div>
+              <p class="nota-tabela">Só as empresas com cadastro aprovado, com o filtro do alto.</p>
+            </section>
+            <section class="cartao painel-acompanhar" aria-labelledby="titulo-por-regiao">
+              <h3 class="painel-titulo" id="titulo-por-regiao">Potencial por região (UF da unidade)</h3>
+              <div class="tabela-rolavel" data-tabela-por-regiao data-aguarda-bloco>
+                <table class="tabela-montada">
+                  <thead>
+                    <tr><th scope="col">UF · município</th><th scope="col">Cadastrados</th><th scope="col">Aguardando retorno</th><th scope="col">Contas novas</th><th scope="col">Correntistas</th></tr>
+                  </thead>
+                  <tbody data-corpo-por-regiao></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ PARTE 4. USO DO PORTAL POR EMPRESA (uso) ============ -->
+        <section class="parte-do-painel" data-parte-painel="uso-por-empresa" data-bloco-de="uso" aria-labelledby="titulo-parte-uso-por-empresa">
+          <div class="cabecalho-parte-painel">
+            <span class="sobretitulo">4 · Empresa por empresa</span>
+            <h2 class="titulo-parte-painel" id="titulo-parte-uso-por-empresa">Uso do portal por empresa</h2>
+          </div>
+          <section class="cartao painel-acompanhar" aria-labelledby="titulo-tabela-uso">
+            <h3 class="painel-titulo" id="titulo-tabela-uso" data-aguarda-dado>Acessos e envios em setembro</h3>
+            <div class="tabela-rolavel" data-tabela-uso data-aguarda-bloco>
+              <table class="tabela-montada tabela-carteira">
+                <thead>
+                  <tr>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Último acesso</th>
+                    <th scope="col">Acessos</th>
+                    <th scope="col">Envios</th>
+                    <th scope="col">Descartes</th>
+                    <th scope="col">Onde parou</th>
+                  </tr>
+                </thead>
+                <tbody data-corpo-uso></tbody>
+              </table>
+            </div>
+            <p class="nota-tabela">Com o filtro do alto (o estado é o da sede). Clique no nome de uma empresa para filtrar o painel por ela. Acessos: entradas no Portal Empresa de qualquer pessoa do RH.</p>
+          </section>
+        </section>
+      </div>
+
+      <!-- ================================================================================================
+           GUIA "SIMULADOR DE RENTABILIDADE": quanto a carteira (ou uma empresa) pode render, com premissas editáveis.
+           OCULTA nesta versão (ADR-148): o código fica aqui, inteiro e sem mudança, dentro do <template> (o navegador
+           não desenha nem roda o que está na caixa, e as telas não esperam os números dele). Para religar, tire a
+           caixa e as outras com a mesma marca (data-oculto-nesta-versao="simulador").
+           ================================================================================================ -->
+      <template data-oculto-nesta-versao="simulador">
+      <div class="painel-indicadores" role="tabpanel" id="guia-simulador" aria-labelledby="botao-guia-simulador" data-conteudo-indicadores="simulador" hidden>
+        <p class="descricao-aba">Escolha a empresa (ou todas), informe a base de clientes e as três taxas estimadas, e veja quanto ela pode render. A nova conta traz a rentabilidade de um cliente novo; o correntista não folha com a folha corrigida traz a diferença do que ele não trazia; o resto não traz rentabilidade nova. Nada aqui muda as premissas oficiais.</p>
+          <!-- O Simulador de Rentabilidade (js/simulador_de_rentabilidade.js).
+               A conta é a da aplicação (services/planejamento.py, simular_rentabilidade), refeita a cada ajuste. -->
+          <section class="cartao painel-acompanhar simulador-ganho" aria-labelledby="titulo-ganho" data-simulador data-bloco-de="simulador">
+            <div class="simulador-cabecalho">
+              <div>
+                <span class="sobretitulo">Estimativa, não receita realizada</span>
+                <h2 class="painel-titulo" id="titulo-ganho">Simulador de Rentabilidade</h2>
+                <!-- A simulação salva que está aberta, para ficar claro qual simulação está na tela: aparece ao Reabrir ou
+                     ao salvar; "com ajustes não salvos" quando a pessoa muda algo depois; o × deixa de olhar para ela
+                     (os campos ficam como estão). -->
+                <p class="simulacao-aberta" data-simulacao-aberta role="status" hidden>
+                  <span>Simulação salva:</span>
+                  <strong data-nome-simulacao-aberta></strong>
+                  <span class="ajustes-da-simulacao-aberta" data-ajustes-simulacao-aberta hidden>· com ajustes não salvos</span>
+                  <button class="botao-fechar-etiqueta" type="button" aria-label="Deixar de olhar para esta simulação" data-fechar-simulacao-aberta>
+                    <svg class="icone"><use href="#icone-fechar"/></svg>
+                  </button>
+                </p>
+              </div>
+              <!-- De onde vêm as premissas globais: as oficiais (e a versão) ou a simulação, com quantas foram mudadas. -->
+              <span class="selo selo-neutro" data-origem-premissas data-aguarda-dado>Premissas oficiais v1</span>
+            </div>
+            <!-- A legenda da cor: os campos em destaque são os que dependem da especialista. -->
+            <p class="legenda-do-especialista"><span class="amostra-do-especialista" aria-hidden="true"></span>Os campos em destaque são os que você informa. Os que faltam para a simulação sair ficam marcados com "Falta informar".</p>
+
+            <!-- 1. A empresa da simulação (nome ou CNPJ; vazio = todas as empresas), com js/escolha_de_empresa.js. -->
+            <div class="secao-simulador">
+              <h3 class="titulo-secao-simulador">1. Empresa</h3>
+              <form class="escolha-empresa-simulador" data-formulario-empresa-simulador role="search" aria-label="Empresa da simulação" novalidate>
+                <label class="campo">
+                  <span class="campo-rotulo">Empresa da simulação (nome ou CNPJ)</span>
+                  <input class="campo-entrada" type="text" autocomplete="off" maxlength="120" placeholder="Todas as empresas: digite o nome ou o CNPJ" list="empresas-do-simulador" data-empresa-simulador>
+                  <datalist id="empresas-do-simulador" data-lista-de-empresas></datalist>
+                </label>
+                <button class="botao botao-contorno botao-pequeno" type="button" data-todas-no-simulador>Todas as empresas</button>
+              </form>
+              <p class="aviso-campo" data-aviso-empresa-simulador role="status" hidden></p>
+              <p class="nota-tabela" data-sobre-a-simulacao>Simulando a carteira toda.</p>
+            </div>
+
+            <!-- 2. As premissas globais oficiais, travadas (só mudam em Configuração › Premissas financeiras). -->
+            <div class="secao-simulador secao-travada">
+              <h3 class="titulo-secao-simulador">2. Premissas globais <span class="selo selo-neutro" data-versao-oficial data-aguarda-dado>oficiais v1</span></h3>
+              <div class="rotulos-travados">
+                <div class="rotulo-travado"><span>Horizonte</span><strong data-oficial-de="horizonte_meses" data-aguarda-dado>12 meses</strong></div>
+                <div class="rotulo-travado"><span>MOB cliente folha</span><strong data-oficial-de="mob_cliente_folha" data-aguarda-dado>R$ 2.090,62</strong></div>
+                <div class="rotulo-travado"><span>MOB cliente não folha</span><strong data-oficial-de="mob_cliente_nao_folha" data-aguarda-dado>R$ 1.724,00</strong></div>
+                <div class="rotulo-travado"><span>MOB cliente novo conquistado</span><strong data-oficial-de="mob_cliente_novo_conquistado" data-aguarda-dado>R$ 2.090,62</strong></div>
+              </div>
+              <p class="nota-tabela">Travadas: são as oficiais do banco. Para mudar de verdade, use Configuração › Premissas financeiras.</p>
+            </div>
+
+            <form class="simulador-formulario" data-formulario-simulador novalidate>
+              <!-- 3. A especialista pode trocar as premissas globais só nesta simulação (vazio = vale a oficial). -->
+              <fieldset class="secao-simulador">
+                <legend class="titulo-secao-simulador">3. Ajustar as premissas globais nesta simulação</legend>
+                <div class="grade-formulario-campo simulador-premissas">
+                  <label class="campo">
+                    <span class="campo-rotulo">Horizonte (meses)</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="1" max="60" step="1" inputmode="numeric" placeholder="Vale a oficial" data-premissa-simulador="horizonte_meses">
+                  </label>
+                  <label class="campo">
+                    <span class="campo-rotulo">MOB cliente folha (R$)</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Vale a oficial" data-premissa-simulador="mob_cliente_folha">
+                  </label>
+                  <label class="campo">
+                    <span class="campo-rotulo">MOB cliente não folha (R$)</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Vale a oficial" data-premissa-simulador="mob_cliente_nao_folha">
+                  </label>
+                  <label class="campo">
+                    <span class="campo-rotulo">MOB cliente novo conquistado (R$)</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="Vale a oficial" data-premissa-simulador="mob_cliente_novo_conquistado">
+                  </label>
+                </div>
+                <p class="nota-tabela">Deixe vazio para usar a oficial. Os MOB valem para o horizonte: mudar o horizonte não recalcula os MOB.</p>
+                <!-- O botão menor, à direita. -->
+                <div class="botoes-a-direita">
+                  <button class="botao botao-contorno botao-mini" type="button" data-voltar-oficiais>Voltar às premissas oficiais</button>
+                </div>
+              </fieldset>
+
+              <!-- 4. O que a empresa enviou: os clientes cadastrados e os em análise pelo banco (travado). -->
+              <div class="secao-simulador secao-travada">
+                <h3 class="titulo-secao-simulador">4. Clientes que a empresa enviou</h3>
+                <div class="rotulos-travados">
+                  <div class="rotulo-travado"><span>Cadastrados</span><strong data-base-empresa="cadastrados" data-aguarda-dado>300</strong></div>
+                  <div class="rotulo-travado"><span>Em análise pelo banco</span><strong data-base-empresa="em_analise" data-aguarda-dado>12</strong></div>
+                  <div class="rotulo-travado"><span>Enviados (a base)</span><strong data-base-empresa="enviados" data-aguarda-dado>312</strong></div>
+                </div>
+              </div>
+
+              <!-- 5. A estimativa da especialista: quando informada, substitui os enviados como base da simulação. -->
+              <fieldset class="secao-simulador">
+                <legend class="titulo-secao-simulador">5. Sua estimativa de clientes</legend>
+                <label class="campo campo-estimativa">
+                  <span class="campo-rotulo">Clientes (sua estimativa)</span>
+                  <input class="campo-entrada campo-do-especialista" type="number" min="0" max="10000000" step="1" inputmode="numeric" placeholder="Vazio: usa os enviados" data-premissa-simulador="clientes_estimados">
+                </label>
+                <p class="nota-tabela">Informe quantos clientes você espera da empresa (ex.: o quadro inteiro de funcionários). Preenchida, a estimativa substitui os enviados.</p>
+              </fieldset>
+
+              <!-- 6. As quatro taxas estimadas: sem valor oficial nem padrão (nada é suposto). As três primeiras dividem a
+                   base; a % ativos separa os correntistas em ativos e inativos (o inativo não traz rentabilidade). -->
+              <fieldset class="secao-simulador">
+                <legend class="titulo-secao-simulador">6. Taxas estimadas</legend>
+                <div class="grade-formulario-campo simulador-premissas">
+                  <label class="campo">
+                    <span class="campo-rotulo">% novas contas</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="0" max="100" step="0.01" inputmode="decimal" placeholder="Informe a sua taxa" data-premissa-simulador="percentual_novas_contas">
+                    <span class="simulador-oficial">da base, quantos abrem uma conta nova</span>
+                  </label>
+                  <label class="campo">
+                    <span class="campo-rotulo">% correntista (não folha)</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="0" max="100" step="0.01" inputmode="decimal" placeholder="Informe a sua taxa" data-premissa-simulador="percentual_nao_folha">
+                    <span class="simulador-oficial">da base, quantos já são correntistas sem a folha identificada</span>
+                  </label>
+                  <label class="campo">
+                    <span class="campo-rotulo">% correntista (folha)</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="0" max="100" step="0.01" inputmode="decimal" placeholder="Informe a sua taxa" data-premissa-simulador="percentual_folha">
+                    <span class="simulador-oficial">da base, quantos já são correntistas com a folha identificada</span>
+                  </label>
+                  <label class="campo">
+                    <span class="campo-rotulo">% ativos entre os correntistas</span>
+                    <input class="campo-entrada campo-do-especialista" type="number" min="0" max="100" step="0.01" inputmode="decimal" placeholder="Informe a sua taxa" data-premissa-simulador="percentual_ativos">
+                    <span class="simulador-oficial">o inativo não traz rentabilidade</span>
+                  </label>
+                </div>
+                <p class="nota-tabela">% novas contas, % correntista (não folha) e % correntista (folha) são partes da mesma base: juntas, até 100%. O correntista não folha ativo traz a diferença de MOB quando a folha é identificada; o folha ativo já traz o MOB maior; o inativo não traz rentabilidade.</p>
+              </fieldset>
+            </form>
+            <p class="erro-pendencia" data-erro-simulador hidden role="alert"></p>
+
+            <!-- 7. O resultado, refeito a cada ajuste: a base usada, o ganho por grupo e o total. -->
+            <div class="secao-simulador secao-resultado">
+              <h3 class="titulo-secao-simulador">7. Resultado da simulação</h3>
+              <div class="mini-numeros mini-numeros-tres" data-resultado-ganho>
+                <div class="mini-numero"><strong data-ganho="clientes" data-aguarda-dado>312</strong><span data-ganho-legenda-base>clientes na base (os que a empresa enviou)</span></div>
+                <div class="mini-numero"><strong data-ganho="rendem" data-aguarda-dado>—</strong><span>clientes que trazem rentabilidade nova</span></div>
+                <div class="mini-numero mini-numero-sucesso"><strong data-ganho="total" data-aguarda-dado>—</strong><span data-ganho-legenda-total>rentabilidade em 12 meses</span></div>
+              </div>
+              <!-- Sem uma das taxas: a simulação espera (o sistema não supõe nenhum desses valores). -->
+              <p class="painel-vazio painel-vazio-neutro" data-falta-simulacao>Para simular, informe as quatro taxas: % novas contas, % correntista (não folha), % correntista (folha) e % ativos entre os correntistas. O sistema não supõe esses valores.</p>
+              <div class="tabela-rolavel" data-tabela-aberturas data-aguarda-bloco>
+                <table class="tabela-montada tabela-aberturas">
+                  <thead>
+                    <tr><th scope="col">Grupo</th><th scope="col">Clientes</th><th scope="col">Conta</th><th scope="col">Rentabilidade</th></tr>
+                  </thead>
+                  <tbody data-corpo-aberturas>
+                    <tr><td>Novas contas</td><td>93,6</td><td>× MOB cliente novo (R$ 2.090,62)</td><td>R$ 195.682,03</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="nota-tabela">Os clientes de cada grupo são uma estimativa: a base × as taxas (por isso podem ter casa decimal).</p>
+            </div>
+
+            <!-- 8. A referência: o que o retorno do banco já confirmou, com as taxas observadas (travado). -->
+            <div class="secao-simulador secao-travada" data-confirmado>
+              <h3 class="titulo-secao-simulador">8. O que o banco já confirmou (referência)</h3>
+              <div class="rotulos-travados">
+                <div class="rotulo-travado"><span>Com retorno do banco</span><strong data-confirmado-de="com_retorno" data-aguarda-dado>250</strong></div>
+                <div class="rotulo-travado"><span>Contas novas</span><strong data-confirmado-de="contas_abertas" data-aguarda-dado>82</strong></div>
+                <div class="rotulo-travado"><span>Falso não folha recuperado</span><strong data-confirmado-de="falso_nao_folha" data-aguarda-dado>34</strong></div>
+                <div class="rotulo-travado"><span>Já eram folha</span><strong data-confirmado-de="ja_eram_folha" data-aguarda-dado>23</strong></div>
+                <div class="rotulo-travado"><span>% novas contas observada</span><strong data-confirmado-de="taxa_novas_contas" data-aguarda-dado>32,8%</strong></div>
+                <div class="rotulo-travado"><span>% não folha observada</span><strong data-confirmado-de="taxa_nao_folha" data-aguarda-dado>13,6%</strong></div>
+                <div class="rotulo-travado"><span>% folha observada</span><strong data-confirmado-de="taxa_folha" data-aguarda-dado>9,2%</strong></div>
+                <div class="rotulo-travado"><span>% ativos observada</span><strong data-confirmado-de="taxa_ativos" data-aguarda-dado>85,2%</strong></div>
+                <div class="rotulo-travado"><span>Realizado (só ativos)</span><strong data-confirmado-de="realizado" data-aguarda-dado>R$ 183.899,92</strong></div>
+              </div>
+              <p class="nota-tabela" data-nota-confirmado>As taxas observadas são de quem já teve o retorno do banco: servem de referência para as suas.</p>
+            </div>
+
+            <!-- Salvar: o nome é obrigatório; a simulação guarda a empresa, os valores, a base e o resultado. -->
+            <form class="simulador-salvar" data-formulario-salvar-simulacao novalidate>
+              <label class="campo simulador-salvar-nome">
+                <span class="campo-rotulo">Nome da simulação</span>
+                <input class="campo-entrada" type="text" maxlength="80" autocomplete="off" placeholder="Ex.: Cenário otimista" data-nome-simulacao>
+              </label>
+              <button class="botao botao-principal botao-pequeno" type="submit" data-salvar-simulacao>Salvar esta simulação</button>
+            </form>
+            <p class="erro-pendencia" data-erro-salvar-simulacao hidden role="alert"></p>
+            <p class="aviso-recebido" data-aviso-simulacao hidden role="status"></p>
+            <!-- As simulações salvas: nome, quem, quando, a base e o ganho; "Visualizar" abre a janela com o detalhe e
+                 "Reabrir" põe os valores dela no simulador. -->
+            <h3 class="titulo-grupo-painel">Simulações salvas</h3>
+            <ul class="lista-simulacoes" data-simulacoes-salvas data-aguarda-bloco>
+              <li class="simulacao-salva"><span><strong>Cenário otimista</strong> · rafael.lima · 25/09/2026 18:40 · 312 clientes · R$ 223.139,19</span> <span class="botoes-da-simulacao"><button class="botao botao-contorno botao-mini" type="button">Visualizar</button> <button class="botao botao-contorno botao-mini" type="button">Reabrir</button></span></li>
+            </ul>
+          </section>
+
+          <!-- A janela "Visualizar": a simulação salva inteira e detalhada, num quadro à parte, sem mexer no simulador.
+               <dialog> é a janela pronta do navegador: escurece o fundo e fecha com a tecla Esc. Preenchida por
+               js/simulador_de_rentabilidade.js. -->
+          <dialog class="janela-beneficio janela-simulacao" id="janela-simulacao" aria-labelledby="janela-simulacao-titulo" data-janela-simulacao>
+            <div class="janela-conteudo">
+              <div class="janela-cabecalho">
+                <span class="beneficio-icone"><svg class="icone"><use href="#icone-grafico"/></svg></span>
+                <div class="janela-cabecalho-textos">
+                  <span class="sobretitulo">Simulação salva · estimativa, não receita</span>
+                  <h2 class="janela-titulo" id="janela-simulacao-titulo" data-janela-simulacao-titulo></h2>
+                </div>
+                <button class="botao-fechar-janela" type="button" aria-label="Fechar" data-fechar-janela-simulacao>
+                  <svg class="icone"><use href="#icone-fechar"/></svg>
+                </button>
+              </div>
+              <!-- Quem salvou, quando e a empresa. -->
+              <p class="janela-resumo" data-janela-simulacao-resumo></p>
+              <!-- O total em destaque. -->
+              <div class="total-da-simulacao">
+                <span data-janela-simulacao-legenda-total>Rentabilidade em 12 meses</span>
+                <strong data-janela-simulacao-total></strong>
+              </div>
+              <!-- Os valores usados, em três blocos: a base, as premissas e as taxas. -->
+              <h3 class="titulo-secao-simulador">Base de clientes</h3>
+              <div class="rotulos-travados" data-janela-simulacao-base></div>
+              <h3 class="titulo-secao-simulador">Premissas usadas <span class="selo selo-neutro" data-janela-simulacao-versao></span></h3>
+              <div class="rotulos-travados" data-janela-simulacao-premissas></div>
+              <h3 class="titulo-secao-simulador">Taxas estimadas</h3>
+              <div class="rotulos-travados" data-janela-simulacao-taxas></div>
+              <!-- O resultado por grupo, como estava quando foi salva. -->
+              <h3 class="titulo-secao-simulador">Rentabilidade por grupo</h3>
+              <div class="tabela-rolavel">
+                <table class="tabela-montada tabela-aberturas">
+                  <thead>
+                    <tr><th scope="col">Grupo</th><th scope="col">Clientes</th><th scope="col">Conta</th><th scope="col">Rentabilidade</th></tr>
+                  </thead>
+                  <tbody data-janela-simulacao-linhas></tbody>
+                </table>
+              </div>
+              <div class="janela-botoes">
+                <button class="botao botao-contorno" type="button" data-fechar-janela-simulacao>Fechar</button>
+                <button class="botao botao-principal" type="button" data-reabrir-da-janela>Reabrir no simulador</button>
+              </div>
+            </div>
+          </dialog>
+      </div>
+      </template>
+    </div>
+  </main>
+
+  <!-- Rodapé só com o aviso de que o site é um projeto. -->
+  <footer class="rodape rodape-so-nota">
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o Santander é ilustrativa: este não é um sistema oficial do banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- Cabeçalho com quem entrou, os contadores reais e "Minha senha" (ADR-69). -->
+  <script src="js/menu_configuracao.js"></script>
+  <script src="js/cabecalho_real.js"></script>
+  <!-- A bolinha das conversas abertas, ao lado de "Empresas" no menu (js/sinal_de_conversas.js). -->
+  <script src="js/sinal_de_conversas.js"></script>
+  <!-- A escolha da empresa pelo nome ou CNPJ e o filtro do alto do painel (antes de quem desenha o painel). -->
+  <script src="js/escolha_de_empresa.js"></script>
+  <script src="js/filtro_dos_indicadores.js"></script>
+  <!-- Painel, parte do planejamento (números e potencial). -->
+  <script src="js/banco_planejamento.js"></script>
+  <!-- O Simulador de Rentabilidade (usa as formatações e o pedido ao servidor de js/banco_planejamento.js). Oculto nesta
+       versão (ADR-148): dentro do <template>, o script não roda nem pede nada ao servidor. -->
+  <template data-oculto-nesta-versao="simulador">
+  <script src="js/simulador_de_rentabilidade.js"></script>
+  </template>
+  <!-- Painel, parte do uso das empresas: o exemplo e, com servidor, o uso real (ADR-69). -->
+  <script src="js/banco_uso.js"></script>
+  <script src="js/banco_uso_real.js"></script>
+  <!-- Troca de guia (e a guia pedida no endereço). -->
+  <script src="js/banco_indicadores.js"></script>
+  <!-- A faixa "A IA está pausada" no alto da tela, só com o teto de gasto atingido (ADR-139). -->
+  <script src="js/aviso_do_teto_da_ia.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

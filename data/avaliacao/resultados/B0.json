@@ -1,0 +1,288 @@
+{
+  "configuracao": "B0",
+  "descricao": "Dicionário de sinônimos do treino + RapidFuzz (WRatio, limite 75, calibrados na validação), sem LLM",
+  "data": "2026-09-24",
+  "n_exemplos": 300,
+  "acuracia_por_campo": 0.5088248954946586,
+  "abstencao_recall": 0.5938337801608579,
+  "abstencao_precisao": 0.47737068965517243,
+  "acerto_geral": 0.5213776722090261,
+  "n_colunas_com_campo": 4306,
+  "n_colunas_para_abster": 746,
+  "ic95_acerto_geral": [
+    0.5093761959433601,
+    0.5332129239414007
+  ],
+  "ic95_acuracia_por_campo": [
+    0.4951635191156149,
+    0.5223391812865497
+  ],
+  "acuracia_de_cada_campo": [
+    {
+      "campo": "complemento_residencial",
+      "colunas": 103,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "logradouro_residencial",
+      "colunas": 100,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "matricula",
+      "colunas": 99,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "municipio_comercial",
+      "colunas": 93,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "municipio_residencial",
+      "colunas": 99,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "nome_unidade",
+      "colunas": 94,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "numero_comercial",
+      "colunas": 106,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "valor_renda",
+      "colunas": 101,
+      "acertos": 0,
+      "acuracia": 0.0
+    },
+    {
+      "campo": "uf_naturalidade",
+      "colunas": 114,
+      "acertos": 1,
+      "acuracia": 0.008771929824561403
+    },
+    {
+      "campo": "data_referencia_renda",
+      "colunas": 93,
+      "acertos": 1,
+      "acuracia": 0.010752688172043012
+    },
+    {
+      "campo": "telefone_residencial",
+      "colunas": 108,
+      "acertos": 4,
+      "acuracia": 0.037037037037037035
+    },
+    {
+      "campo": "data_emissao_documento",
+      "colunas": 103,
+      "acertos": 5,
+      "acuracia": 0.04854368932038835
+    },
+    {
+      "campo": "logradouro_comercial",
+      "colunas": 98,
+      "acertos": 40,
+      "acuracia": 0.40816326530612246
+    },
+    {
+      "campo": "cep_comercial",
+      "colunas": 110,
+      "acertos": 47,
+      "acuracia": 0.42727272727272725
+    },
+    {
+      "campo": "nacionalidade",
+      "colunas": 95,
+      "acertos": 41,
+      "acuracia": 0.43157894736842106
+    },
+    {
+      "campo": "numero_documento",
+      "colunas": 97,
+      "acertos": 42,
+      "acuracia": 0.4329896907216495
+    },
+    {
+      "campo": "tipo_documento",
+      "colunas": 95,
+      "acertos": 42,
+      "acuracia": 0.4421052631578947
+    },
+    {
+      "campo": "cpf",
+      "colunas": 81,
+      "acertos": 37,
+      "acuracia": 0.4567901234567901
+    },
+    {
+      "campo": "codigo_unidade",
+      "colunas": 99,
+      "acertos": 47,
+      "acuracia": 0.47474747474747475
+    },
+    {
+      "campo": "data_efetivacao",
+      "colunas": 96,
+      "acertos": 48,
+      "acuracia": 0.5
+    },
+    {
+      "campo": "email_corporativo",
+      "colunas": 98,
+      "acertos": 49,
+      "acuracia": 0.5
+    },
+    {
+      "campo": "uf_comercial",
+      "colunas": 96,
+      "acertos": 48,
+      "acuracia": 0.5
+    },
+    {
+      "campo": "cargo",
+      "colunas": 91,
+      "acertos": 46,
+      "acuracia": 0.5054945054945055
+    },
+    {
+      "campo": "uf_emissor",
+      "colunas": 104,
+      "acertos": 53,
+      "acuracia": 0.5096153846153846
+    },
+    {
+      "campo": "bairro_residencial",
+      "colunas": 105,
+      "acertos": 54,
+      "acuracia": 0.5142857142857142
+    },
+    {
+      "campo": "nis_pis",
+      "colunas": 97,
+      "acertos": 52,
+      "acuracia": 0.5360824742268041
+    },
+    {
+      "campo": "complemento_comercial",
+      "colunas": 93,
+      "acertos": 50,
+      "acuracia": 0.5376344086021505
+    },
+    {
+      "campo": "uf_residencial",
+      "colunas": 92,
+      "acertos": 51,
+      "acuracia": 0.5543478260869565
+    },
+    {
+      "campo": "tipo_renda",
+      "colunas": 81,
+      "acertos": 45,
+      "acuracia": 0.5555555555555556
+    },
+    {
+      "campo": "data_admissao",
+      "colunas": 100,
+      "acertos": 57,
+      "acuracia": 0.57
+    },
+    {
+      "campo": "municipio_naturalidade",
+      "colunas": 102,
+      "acertos": 95,
+      "acuracia": 0.9313725490196079
+    },
+    {
+      "campo": "nome_mae",
+      "colunas": 109,
+      "acertos": 102,
+      "acuracia": 0.9357798165137615
+    },
+    {
+      "campo": "numero_residencial",
+      "colunas": 94,
+      "acertos": 88,
+      "acuracia": 0.9361702127659575
+    },
+    {
+      "campo": "nome_completo",
+      "colunas": 101,
+      "acertos": 98,
+      "acuracia": 0.9702970297029703
+    },
+    {
+      "campo": "email_pessoal",
+      "colunas": 96,
+      "acertos": 94,
+      "acuracia": 0.9791666666666666
+    },
+    {
+      "campo": "bairro_comercial",
+      "colunas": 97,
+      "acertos": 95,
+      "acuracia": 0.979381443298969
+    },
+    {
+      "campo": "cep_residencial",
+      "colunas": 102,
+      "acertos": 100,
+      "acuracia": 0.9803921568627451
+    },
+    {
+      "campo": "sexo",
+      "colunas": 111,
+      "acertos": 109,
+      "acuracia": 0.9819819819819819
+    },
+    {
+      "campo": "orgao_emissor",
+      "colunas": 90,
+      "acertos": 89,
+      "acuracia": 0.9888888888888889
+    },
+    {
+      "campo": "telefone_celular",
+      "colunas": 92,
+      "acertos": 91,
+      "acuracia": 0.9891304347826086
+    },
+    {
+      "campo": "escolaridade",
+      "colunas": 102,
+      "acertos": 101,
+      "acuracia": 0.9901960784313726
+    },
+    {
+      "campo": "cnpj_empregador",
+      "colunas": 98,
+      "acertos": 98,
+      "acuracia": 1.0
+    },
+    {
+      "campo": "data_nascimento",
+      "colunas": 86,
+      "acertos": 86,
+      "acuracia": 1.0
+    },
+    {
+      "campo": "estado_civil",
+      "colunas": 85,
+      "acertos": 85,
+      "acuracia": 1.0
+    }
+  ],
+  "latencia_media_por_arquivo_ms": 6.15,
+  "custo_por_arquivo": 0.0
+}

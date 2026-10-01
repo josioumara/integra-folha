@@ -1,0 +1,370 @@
+/*
+  opiniao_dos_agentes.css — o joinha nas respostas dos agentes (js/opiniao_dos_agentes.js) e a seção "O que as pessoas
+  acham das respostas dos agentes", da tela Acompanhamento dos agentes (js/banco_opiniao_dos_agentes.js). ADR-151.
+
+  Carregado depois do css/estilos.css (e, no Portal Interno, depois do css/banco.css), nas telas Cadastrar, Acompanhar,
+  Endomarketing (banco) e Acompanhamento dos agentes.
+  As cores dos números: um tom só, o azul da escala de dados, com o fundo da barra no mesmo azul bem claro; a linha das
+  semanas em cinza, e só a semana mais recente com voto em azul. O azul passou na conferência de cores de gráficos
+  (contraste de 3:1 ou mais sobre o branco dos cartões). O verde e a cor da marca ficam para o joinha escolhido e para
+  a comparação ("Subiu" / "Caiu"), sempre com a seta ou o desenho junto: a cor nunca diz nada sozinha.
+*/
+
+/* As cores desta parte: o azul dos dados, o mesmo azul bem claro (o fundo da barra) e o cinza da linha das semanas. */
+:root {
+  --opiniao-destaque: #2a78d6;
+  --opiniao-destaque-claro: #cde2fb;
+  --opiniao-linha: #898781;
+}
+
+/* ===== 1. O joinha ===== */
+
+/* O joinha: embaixo do balão (ou do texto do material), pequeno, separado do conteúdo por uma linha fina. */
+.joinha {
+  display: grid;
+  gap: 6px;
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid var(--linha-divisoria);
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* A pergunta curta, os dois botões e o aviso numa linha só (no celular, quebra em duas). */
+.joinha-linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+
+/* A pergunta curta ("Esta resposta ajudou?"). */
+.joinha-pergunta {
+  margin-right: 2px;
+}
+
+/* Cada botão: redondo, sem fundo, com a mão cinza. A área do clique (32 px) é maior que o desenho. */
+.joinha-botao {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: none;
+  color: var(--texto-secundario);
+  cursor: pointer;
+}
+
+/* A mão: menor que os ícones do menu. */
+.joinha-icone {
+  width: 16px;
+  height: 16px;
+}
+
+/* Ao passar o mouse (ou com o foco do teclado), a mão escurece e o botão ganha a borda. */
+.joinha-botao:hover,
+.joinha-botao:focus-visible {
+  color: var(--texto-principal);
+  border-color: var(--linha-divisoria);
+}
+
+/* O joinha para cima escolhido: verde, com o fundo verde claro e a mão preenchida. */
+.joinha-para_cima[aria-pressed="true"] {
+  color: var(--verde-sucesso);
+  background: var(--verde-sucesso-claro);
+  border-color: var(--verde-sucesso);
+}
+
+/* O joinha para baixo escolhido: na cor da marca, com o fundo claro dela e a mão preenchida. */
+.joinha-para_baixo[aria-pressed="true"] {
+  color: var(--cor-marca-escura);
+  background: var(--cor-marca-clara);
+  border-color: var(--cor-marca);
+}
+
+/* A mão do joinha escolhido fica preenchida: o desenho cheio também diz "escolhido", além da cor. */
+.joinha-botao[aria-pressed="true"] .joinha-icone {
+  fill: currentColor;
+  fill-opacity: 0.25;
+}
+
+/* Enquanto o voto vai ao servidor, os botões ficam apagados. */
+.joinha-botao:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+/* O resultado do último clique ("Obrigado pela opinião."), ao lado dos botões. */
+.joinha-aviso {
+  margin-left: 4px;
+}
+
+/* Sem aviso, o espaço dele some. */
+.joinha-aviso:empty {
+  display: none;
+}
+
+/* O erro (ex.: sem conexão): âmbar e forte, como o balão recusado da conversa. */
+.joinha-aviso-erro {
+  color: var(--amarelo-atencao);
+  font-weight: 600;
+}
+
+/* "Contar o que faltou" e "Agora não": links pequenos. */
+.joinha-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+  text-decoration: underline;
+}
+
+/* A caixa "O que faltou? (opcional)": o rótulo e a caixa, "Enviar" e "Agora não", numa linha que quebra. */
+.joinha-comentario {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px 10px;
+}
+
+/* O rótulo em cima da caixa, ocupando o espaço que sobra. */
+.joinha-comentario-rotulo {
+  display: grid;
+  gap: 4px;
+  flex: 1 1 220px;
+  font-weight: 600;
+  color: var(--texto-principal);
+}
+
+/* A caixa do comentário: a largura inteira do rótulo (a caixa pequena de sempre tem um limite de largura). */
+.joinha-comentario-caixa {
+  width: 100%;
+  max-width: none;
+}
+
+/* O comentário que a pessoa deixou, à vista embaixo do joinha dela, com o "Editar" ao lado. */
+.joinha-comentario-dado {
+  margin: 0;
+  color: var(--texto-principal);
+  overflow-wrap: anywhere;
+}
+
+/* "Seu comentário:", em cinza, antes do texto. */
+.joinha-comentario-dado-rotulo {
+  color: var(--texto-secundario);
+}
+
+/* No material do Endomarketing, o joinha fica embaixo do texto, um pouco maior. */
+.opiniao-do-material .joinha {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+/* Antes de um material abrir, o lugar do joinha não ocupa espaço. */
+.opiniao-do-material:empty {
+  display: none;
+}
+
+/* ===== 2. A seção do Acompanhamento dos agentes ===== */
+
+/* O resumo do período: uma frase, um pouco mais forte que o texto. */
+.resumo-das-opinioes {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Os cartões dos agentes, como os cartões do trabalho de cada agente logo acima: quantos couberem por linha, com no
+   mínimo 240 px cada (quatro no computador, um no celular). */
+.grade-opinioes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* Enquanto os números novos chegam (outro filtro ou período), os de antes ficam apagados, sem sumir da tela. */
+.opinioes-recarregando .grade-opinioes,
+.opinioes-recarregando .resumo-das-opinioes {
+  opacity: 0.45;
+}
+
+/* Um cartão: o nome, o que o agente faz, o número, a barra, os votos, a linha das semanas e a comparação. */
+.cartao-opiniao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+
+/* O nome do agente. */
+.cartao-opiniao-nome {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* O que o agente faz, em cinza (a altura de duas linhas alinha os números dos quatro cartões). */
+.cartao-opiniao-o-que-faz {
+  margin: 0;
+  min-height: 2.9em;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* A satisfação, grande (a mesma letra dos outros números do painel). */
+.cartao-opiniao-valor {
+  margin-top: 4px;
+  font-family: var(--fonte-titulos);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* "de joinha para cima", embaixo do número. */
+.cartao-opiniao-legenda {
+  margin-top: -4px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* A barra: o fundo no azul bem claro; a parte cheia (a satisfação) no azul, com as pontas arredondadas. */
+.barra-da-satisfacao {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--opiniao-destaque-claro);
+  overflow: hidden;
+}
+
+/* A parte cheia da barra (a largura vem do script: a própria satisfação). */
+.barra-da-satisfacao-parte {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--opiniao-destaque);
+}
+
+/* Os votos do período, em texto. */
+.cartao-opiniao-votos {
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-principal);
+}
+
+/* A linha das semanas: a largura do cartão; a dica aparece por cima dela, perto da semana. */
+.linha-das-semanas {
+  position: relative;
+  margin-top: 6px;
+  border-radius: 8px;
+}
+
+/* Com o foco do teclado, a linha ganha o contorno (as setas percorrem as semanas). */
+.linha-das-semanas:focus-visible {
+  outline: 2px solid var(--opiniao-destaque);
+  outline-offset: 2px;
+}
+
+/* O desenho: a largura inteira, a altura na proporção (o ponto de destaque pode encostar na borda sem ser cortado). */
+.linha-das-semanas-desenho {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* A linha de base (0%): fina e apagada. */
+.linha-das-semanas-base {
+  stroke: var(--linha-divisoria);
+  stroke-width: 1;
+}
+
+/* O traço das semanas: cinza, 2 px, com as pontas e as curvas arredondadas. */
+.linha-das-semanas-traco {
+  fill: none;
+  stroke: var(--opiniao-linha);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A semana solta (com voto, entre duas sem voto): um ponto pequeno cinza. */
+.linha-das-semanas-ponto {
+  fill: var(--opiniao-linha);
+}
+
+/* A semana mais recente com voto: o ponto azul, com o anel branco que o separa da linha. */
+.linha-das-semanas-destaque {
+  fill: var(--opiniao-destaque);
+  stroke: var(--branco);
+  stroke-width: 2;
+}
+
+/* A mira: a linha vertical fina que acompanha o mouse. */
+.linha-das-semanas-mira {
+  stroke: var(--texto-secundario);
+  stroke-width: 1;
+}
+
+/* A dica da semana: escura, pequena, por cima da linha, começando na borda esquerda dela. Ela nunca sai do cartão (a
+   mira, a linha vertical, mostra qual é a semana). */
+.linha-das-semanas-dica {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  z-index: 2;
+  width: max-content;
+  max-width: 100%;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--texto-principal);
+  color: var(--branco);
+  font-size: 12px;
+  line-height: 1.35;
+  pointer-events: none;
+}
+
+/* A comparação das pontas da tendência, pequena. */
+.comparacao-opiniao {
+  margin: 0;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* "▲ Subiu": verde e forte (a seta e a palavra dizem o mesmo que a cor). */
+.comparacao-subiu {
+  color: var(--verde-sucesso);
+  font-weight: 700;
+}
+
+/* "▼ Caiu": na cor da marca, escura e forte. */
+.comparacao-caiu {
+  color: var(--cor-marca-escura);
+  font-weight: 700;
+}
+
+/* "Ver a tendência em tabela": o título clicável da tabela, que abre e fecha. */
+.tendencia-em-tabela summary {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+/* Com a tabela aberta, um respiro entre o título e ela. */
+.tendencia-em-tabela[open] summary {
+  margin-bottom: 10px;
+}
+
+/* Os números da tabela alinhados coluna a coluna (cada algarismo com a mesma largura). */
+.tendencia-em-tabela td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 3. Telas menores ===== */
+
+/* Celular (um cartão por linha): o texto do agente sem a altura mínima, que só alinha os cartões lado a lado. */
+@media (max-width: 640px) {
+  .cartao-opiniao-o-que-faz {
+    min-height: 0;
+  }
+}

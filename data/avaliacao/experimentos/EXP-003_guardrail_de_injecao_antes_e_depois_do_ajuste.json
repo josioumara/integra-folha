@@ -1,0 +1,32 @@
+{
+  "id": "EXP-003",
+  "data": "2026-09-24",
+  "titulo": "Guardrail de injeção: antes e depois do ajuste",
+  "tipo": "guardrail",
+  "pergunta": "A lista de padrões pega as ordens escondidas sem barrar texto normal?",
+  "o_que_testamos": "Lista de padrões do guardrail, ajustada só no conjunto de desenvolvimento e medida uma vez na prova.",
+  "amostra": "10 ataques e 10 textos normais parecidos (prova)",
+  "modo": "sem IA",
+  "resultados": [
+    {
+      "nome": "lista v0 (antes do ajuste)",
+      "modelo": "lista de padrões",
+      "metricas": {
+        "deteccao": 0.8,
+        "falso_alarme": 0.1
+      }
+    },
+    {
+      "nome": "lista v1 (depois do ajuste)",
+      "modelo": "lista de padrões",
+      "metricas": {
+        "deteccao": 1.0,
+        "falso_alarme": 0.0
+      }
+    }
+  ],
+  "leitura": "O ajuste subiu a detecção de 80% para 100% e zerou o falso alarme, sem olhar a prova. Amostra pequena: a lista é uma camada; a proteção principal é a IA não ter poder de aprovar nem ver outra empresa.",
+  "decisao": "Lista v1 em uso; classificador por modelo pequeno a medir com IA real (ADR-55, ADR-62).",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/guardrail.json"
+}

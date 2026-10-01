@@ -1,0 +1,57 @@
+{
+  "id": "EXP-010",
+  "data": "2026-09-25",
+  "titulo": "Leitor de Documentos: o preço da privacidade (etiquetas x IA vendo os dados)",
+  "tipo": "leitor_de_documentos",
+  "pergunta": "Quanto a leitura de Word em texto corrido perde quando a IA não vê os dados das pessoas (etiquetas, ADR-31), por nível de complexidade do documento?",
+  "o_que_testamos": "Leitor de Documentos v2 (blocos por pessoa com o modelo pequeno + campos do layout por bloco com o grande, esforço low e formato garantido) em dois modos: etiquetas (padrão) e IA vendo os dados. Documentos fictícios em 5 níveis (N1 tabela, N2 fichas, N3 texto simples, N4 texto variado, N5 texto misturado com armadilhas e dados de terceiros), num conjunto de desenvolvimento (4 rodadas de ajuste nas etiquetas) e num conjunto de prova com outra semente, nunca usado para ajustar; mais o documento do dono do projeto como teste às cegas (12 pessoas, gabarito escrito à mão).",
+  "amostra": "Prova: 7 documentos, 56 pessoas (40 em texto corrido). Teste às cegas: 1 documento, 12 pessoas, 182 campos. Desenvolvimento: outros 7 documentos, 56 pessoas.",
+  "modo": "IA real (claude-sonnet-5 + gpt-6-luna)",
+  "resultados": [
+    {
+      "nome": "Regra (N1 tabela, N2 fichas)",
+      "modelo": "sem IA",
+      "metricas": {
+        "acerto_por_campo_prova": "100% (208 de 208)",
+        "custo_por_funcionario_usd": 0.0
+      }
+    },
+    {
+      "nome": "Etiquetas (padrão)",
+      "modelo": "claude-sonnet-5 + gpt-6-luna",
+      "metricas": {
+        "acerto_n3_prova": "100%",
+        "acerto_n4_prova": "100%",
+        "acerto_n5_prova": "91,3% (IC95% 88,5–94,2%)",
+        "acerto_n3_a_n5_prova": "95,6% (IC95% 93,5–97,7%)",
+        "acerto_teste_cego": "92,3% (IC95% 82,9–98,4%)",
+        "armadilhas_respeitadas": "8 de 8 (prova) e 2 de 2 (cego)",
+        "perguntas_feitas": "12 de 12 (prova) e 5 de 5 (cego)",
+        "dados_de_terceiros_vazados": 0,
+        "custo_por_funcionario_usd": 0.0177,
+        "segundos_por_documento_n5": 31.8
+      }
+    },
+    {
+      "nome": "IA vendo os dados",
+      "modelo": "claude-sonnet-5 + gpt-6-luna",
+      "metricas": {
+        "acerto_n3_prova": "100%",
+        "acerto_n4_prova": "100%",
+        "acerto_n5_prova": "98,9% (IC95% 97,8–100%)",
+        "acerto_n3_a_n5_prova": "99,5% (IC95% 98,9–100%)",
+        "acerto_teste_cego": "99,5% (IC95% 98,3–100%)",
+        "armadilhas_respeitadas": "8 de 8 (prova) e 2 de 2 (cego)",
+        "perguntas_feitas": "12 de 12 (prova) e 5 de 5 (cego)",
+        "dados_de_terceiros_vazados": 0,
+        "custo_por_funcionario_usd": 0.0171,
+        "segundos_por_documento_n5": 23.5
+      }
+    }
+  ],
+  "leitura": "O preço da privacidade depende do nível: zero em tabela, fichas e texto simples ou variado (N1 a N4 empatam em 100% na prova) e cerca de 7 pontos no texto misturado (N5: 91,3% com etiquetas x 98,9% vendo os dados; no documento real do teste às cegas, 92,3% x 99,5%). Os dois modos respeitaram todas as armadilhas, fizeram todas as perguntas esperadas e não vazaram nenhum dado de terceiro. Com etiquetas, a leitura custa quase o mesmo (US$ 0,018 x 0,017 por funcionário) e é mais lenta no N5 (32 s x 24 s por documento). No desenvolvimento, a diferença caiu de 12 pontos (N4, rodada 1) para zero com ajustes gerais nas etiquetas: blocos emendados, etiquetas com tipo (NOME, LUGAR, CELULAR), nome composto numa etiqueta, CPF com espaços, e-mail com domínio à mostra, CEP depois da UF. Na prova, 22 dos 24 erros das etiquetas no N5 vieram de uma causa só (a sigla do estado grudada no nome da cidade), corrigida depois da prova e antes do teste às cegas. Limites: os níveis são fictícios e feitos com os mesmos modelos de frase nos dois conjuntos; o teste às cegas não é totalmente cego (o documento foi lido no diagnóstico, antes das etiquetas v2); todos os CPFs do documento do teste às cegas têm dígito verificador inválido (a comparação usa só os dígitos). Na prova, o crédito da conta do provedor acabou no meio do N5: essa rodada foi descartada e repetida, e o defeito que ela revelou (queda silenciosa para a resposta simulada) foi corrigido.",
+  "decisao": "Pendente (dono do projeto): manter as etiquetas (privacidade total, cerca de 7 pontos a menos só em texto misturado, com perguntas cobrindo o que falta) ou deixar a IA ver os dados sob contrato de não retenção do provedor. Até a decisão, vale o padrão: etiquetas (LEITOR_VE_OS_DADOS=nao).",
+  "custo_usd": 6.0,
+  "fonte": "data/avaliacao/resultados/leitor_de_documentos_*.json (prova, prova_n5, teste_cego e as 4 rodadas de desenvolvimento)",
+  "commit": "a67a347"
+}

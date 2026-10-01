@@ -1,0 +1,167 @@
+{
+  "id": "EXP-014",
+  "data": "2026-09-27",
+  "titulo": "Formato garantido no Bedrock: 7 modelos nas 30 planilhas do Interpretador (B3)",
+  "tipo": "interpretador",
+  "pergunta": "Com o formato garantido, qual par de modelos liberados na conta substitui o Sonnet 5 e o GPT-6 Luna com o mesmo acerto, medido na régua inteira?",
+  "o_que_testamos": "INTERPRETADOR_FORMATO_GARANTIDO=sim (esquema pelo Converse no Claude e nos abertos; ferramenta forçada no Nova), as mesmas 30 planilhas do EXP-008, 7 modelos ao mesmo tempo em dois processos (Sonnet 4.6 com teto próprio). Kimi K3 fora (US$ 0,21 por planilha).",
+  "amostra": "30 planilhas sorteadas da prova congelada (semente fixa)",
+  "modo": "IA real",
+  "resultados": [
+    {
+      "nome": "B0",
+      "modelo": "dicionário (sem IA)",
+      "metricas": {
+        "acuracia_por_campo": 0.5341880341880342,
+        "ic95_acuracia_por_campo": [
+          0.5011709601873536,
+          0.564870259481038
+        ],
+        "abstencao_recall": 0.5952380952380952,
+        "abstencao_precisao": 0.5555555555555556,
+        "acerto_geral": 0.5434782608695652,
+        "custo_usd": 0.0,
+        "segundos_por_planilha": 0.0061,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "claude-sonnet-4-6",
+      "metricas": {
+        "acuracia_por_campo": 0.8290598290598291,
+        "ic95_acuracia_por_campo": [
+          0.7972972972972973,
+          0.859504132231405
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.5153374233128835,
+        "acerto_geral": 0.855072463768116,
+        "custo_usd": 1.5078,
+        "custo_por_planilha_usd": 0.05026,
+        "segundos_por_planilha": 15.8,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "acuracia_por_campo": 0.8162393162393162,
+        "ic95_acuracia_por_campo": [
+          0.7865707434052758,
+          0.8466386554621849
+        ],
+        "abstencao_recall": 0.9880952380952381,
+        "abstencao_precisao": 0.51875,
+        "acerto_geral": 0.842391304347826,
+        "custo_usd": 0.2326,
+        "custo_por_planilha_usd": 0.00775,
+        "segundos_por_planilha": 9.18,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "mistral-large-3",
+      "metricas": {
+        "acuracia_por_campo": 0.8183760683760684,
+        "ic95_acuracia_por_campo": [
+          0.7822410147991543,
+          0.8547717842323651
+        ],
+        "abstencao_recall": 0.9642857142857143,
+        "abstencao_precisao": 0.5328947368421053,
+        "acerto_geral": 0.8405797101449275,
+        "custo_usd": 0.1711,
+        "custo_por_planilha_usd": 0.0057,
+        "segundos_por_planilha": 9.84,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "claude-haiku-4-5",
+      "metricas": {
+        "acuracia_por_campo": 0.844017094017094,
+        "ic95_acuracia_por_campo": [
+          0.8076923076923077,
+          0.8794178794178794
+        ],
+        "abstencao_recall": 0.9285714285714286,
+        "abstencao_precisao": 0.5652173913043478,
+        "acerto_geral": 0.8568840579710145,
+        "custo_usd": 0.5041,
+        "custo_por_planilha_usd": 0.0168,
+        "segundos_por_planilha": 9.86,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "nova-pro",
+      "metricas": {
+        "acuracia_por_campo": 0.7824074074074074,
+        "ic95_acuracia_por_campo": [
+          0.6666666666666666,
+          0.8702928870292888
+        ],
+        "abstencao_recall": 0.9620253164556962,
+        "abstencao_precisao": 0.4840764331210191,
+        "acerto_geral": 0.8101761252446184,
+        "custo_usd": 0.4203,
+        "custo_por_planilha_usd": 0.01501,
+        "segundos_por_planilha": 24.81,
+        "respostas_fora_do_contrato": 13,
+        "planilhas_pontuadas": 28
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "qwen3-vl-235b",
+      "metricas": {
+        "acuracia_por_campo": 0.8395348837209302,
+        "ic95_acuracia_por_campo": [
+          0.8048780487804879,
+          0.8713968957871396
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.5970149253731343,
+        "acerto_geral": 0.8647058823529412,
+        "custo_usd": 0.2347,
+        "custo_por_planilha_usd": 0.00838,
+        "segundos_por_planilha": 37.76,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 28
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "deepseek-v3.2",
+      "metricas": {
+        "acuracia_por_campo": 0.7628205128205128,
+        "ic95_acuracia_por_campo": [
+          0.7191780821917808,
+          0.803960396039604
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.46408839779005523,
+        "acerto_geral": 0.7989130434782609,
+        "custo_usd": 0.2238,
+        "custo_por_planilha_usd": 0.00746,
+        "segundos_por_planilha": 37.78,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    }
+  ],
+  "leitura": "Haiku 4.5 (84,4%), Qwen3 235B (84,0%) e Sonnet 4.6 (82,9%) empatam com o Sonnet 5 do EXP-008 (84,4%); Mistral Large 3 (81,8%) e Nova 2 Lite (81,6%) ficam logo atrás, todos acima do GPT-6 Luna (76,3%), o pequeno escolhido. Nova 2 Lite e Mistral custam menos de 1 centavo de dólar por planilha e levam cerca de 9 s. Qwen3 e DeepSeek levam 38 s. O Nova Pro ainda errou o formato 13 vezes com a ferramenta forçada e teve 2 erros 424 do Bedrock; o Qwen3 teve 2 erros 500 (28 de 30 planilhas pontuadas). Sonnet 4.6, Qwen3 e DeepSeek pedem ajuda em 100% das colunas em que deviam; Haiku em 92,9%.",
+  "decisao": "Sugestão (ADR-107, decisão pendente): plano B com Sonnet 4.6 no grande (acerto do Sonnet 5 e 100% de pedido de ajuda) e Nova 2 Lite no pequeno (5 pontos acima do Luna, da própria AWS, sem Marketplace, US$ 0,008 por planilha), com o formato garantido ligado.",
+  "custo_usd": 3.2944,
+  "fonte": "data/avaliacao/resultados/formato_garantido_30_bedrock.json",
+  "commit": "e672257"
+}

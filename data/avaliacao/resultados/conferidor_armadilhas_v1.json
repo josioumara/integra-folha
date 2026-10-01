@@ -1,0 +1,1873 @@
+{
+  "experimento": "conferidor",
+  "quando": "2026-09-29T02:24:14",
+  "conjunto": "armadilhas",
+  "modo_da_ia": "llm",
+  "modelo": "nova-2-lite",
+  "versao_prompt": "conferidor_da_leitura_v1",
+  "semente": 12,
+  "repeticoes": 3,
+  "resumo": {
+    "plantados": 5,
+    "achados": 5,
+    "alarmes_falsos": 10,
+    "suspeitas": 15,
+    "perguntas_simples": 0,
+    "documentos_certos": 9,
+    "custo_usd": 0.011045364000000002,
+    "documentos": 18,
+    "acerto": 1.0
+  },
+  "resumo_por_repeticao": [
+    {
+      "plantados": 5,
+      "achados": 5,
+      "alarmes_falsos": 10,
+      "suspeitas": 15,
+      "perguntas_simples": 0,
+      "documentos_certos": 9,
+      "custo_usd": 0.011045364000000002,
+      "documentos": 18,
+      "acerto": 1.0
+    },
+    {
+      "plantados": 5,
+      "achados": 5,
+      "alarmes_falsos": 7,
+      "suspeitas": 12,
+      "perguntas_simples": 0,
+      "documentos_certos": 11,
+      "custo_usd": 0.010703539000000001,
+      "documentos": 18,
+      "acerto": 1.0
+    },
+    {
+      "plantados": 5,
+      "achados": 5,
+      "alarmes_falsos": 10,
+      "suspeitas": 15,
+      "perguntas_simples": 0,
+      "documentos_certos": 9,
+      "custo_usd": 0.011045364,
+      "documentos": 18,
+      "acerto": 1.0
+    }
+  ],
+  "certos_em_todas_as_repeticoes": 9,
+  "documentos": [
+    {
+      "documento": "A01_beneficio_va_ao_lado",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 1,
+        "suspeitas": 1,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.00061105,
+        "segundos": 2.8,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona também vale-alimentação e vale-transporte que não foram incluídos como rendas Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A02_beneficios_em_lista",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.00055055,
+        "segundos": 2.0,
+        "perguntas": [],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A03_beneficio_antes_do_salario",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 1,
+        "suspeitas": 1,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.0006200040000000002,
+        "segundos": 1.7,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "data_admissao",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 21/08/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A04_ajuda_de_custo_e_gratificacao_fixa",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 1,
+        "suspeitas": 1,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.0006536420000000001,
+        "segundos": 2.0,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona salário bruto de R$ 7.800,00, mas também ajuda de custo e comissão variável, que não foram incluídas como renda Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": false,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A05_cpf_do_dependente",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.000490292,
+        "segundos": 1.6,
+        "perguntas": [],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "A06_cpf_do_conjuge_primeiro",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.00048448400000000003,
+        "segundos": 1.7,
+        "perguntas": [],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "A07_cpf_de_cliente_citado",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 1,
+        "suspeitas": 1,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.0006158900000000001,
+        "segundos": 1.7,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "cpf",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF do cliente Ronaldo Vieira é 080.080.227-60, não do funcionário Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "A08_liquido_e_bruto",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.000485573,
+        "segundos": 1.5,
+        "perguntas": [],
+        "distracao": "liquido_e_bruto"
+      }
+    },
+    {
+      "documento": "A09_adiantamento_e_salario_anterior",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 1,
+        "suspeitas": 1,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.00063283,
+        "segundos": 1.7,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona um adiantamento quinzenal de R$ 2.040,00 que não é o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "outro_valor"
+      }
+    },
+    {
+      "documento": "A10_outras_datas",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0004910180000000001,
+        "segundos": 1.5,
+        "perguntas": [],
+        "distracao": "outras_datas"
+      }
+    },
+    {
+      "documento": "A11_datas_em_texto_e_experiencia",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.000490292,
+        "segundos": 1.4,
+        "perguntas": [],
+        "distracao": "outras_datas"
+      }
+    },
+    {
+      "documento": "A12_gestor_citado",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.00048811400000000005,
+        "segundos": 1.6,
+        "perguntas": [],
+        "distracao": "outra_pessoa_citada"
+      }
+    },
+    {
+      "documento": "A13_tabela_com_beneficio_e_pensao",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 2,
+        "suspeitas": 2,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.0007944860000000001,
+        "segundos": 2.1,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "data_admissao",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 01/09/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 2,
+            "campo": "data_admissao",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 01/09/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "E01_salario_lido_era_o_beneficio",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 0,
+        "suspeitas": 1,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0006381540000000003,
+        "segundos": 1.7,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 2.600,00, não o valor de vale-alimentação R$ 650,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "E02_cpf_lido_era_do_dependente",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 1,
+        "suspeitas": 2,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.000750442,
+        "segundos": 1.7,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "cpf",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF do Diego Rocha Tavares é 025.336.344-68 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é do Diego, não da esposa Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "E03_nascimento_lido_era_a_emissao_do_rg",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 1,
+        "suspeitas": 2,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.0007863790000000002,
+        "segundos": 2.0,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "data_nascimento",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a funcionária nasceu em 10/10/1994, não em 20/07/2012 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de R$ 6.800,00, mas a leitura usou 6800.00 sem o separador de milhar Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "outras_datas"
+      }
+    },
+    {
+      "documento": "E04_salario_lido_era_o_do_cargo_anterior",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 0,
+        "suspeitas": 1,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.000626296,
+        "segundos": 1.5,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário atual é de R$ 4.650,00, não R$ 3.100,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "outro_valor"
+      }
+    },
+    {
+      "documento": "E05_salario_de_outra_pessoa_com_beneficio",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 1,
+        "suspeitas": 2,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.000835868,
+        "segundos": 1.7,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário da Sabrina é R$ 1.950,00, não R$ 5.600,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 2,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário do Mateus é R$ 5.600,00, mas a IA colocou o mesmo valor que o da Sabrina, que é diferente Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": false,
+              "simples": false
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    }
+  ],
+  "documentos_por_repeticao": [
+    [
+      {
+        "documento": "A01_beneficio_va_ao_lado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.00061105,
+          "segundos": 2.8,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona também vale-alimentação e vale-transporte que não foram incluídos como rendas Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A02_beneficios_em_lista",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00055055,
+          "segundos": 2.0,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A03_beneficio_antes_do_salario",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006200040000000002,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 21/08/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A04_ajuda_de_custo_e_gratificacao_fixa",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006536420000000001,
+          "segundos": 2.0,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona salário bruto de R$ 7.800,00, mas também ajuda de custo e comissão variável, que não foram incluídas como renda Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A05_cpf_do_dependente",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000490292,
+          "segundos": 1.6,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A06_cpf_do_conjuge_primeiro",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00048448400000000003,
+          "segundos": 1.7,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A07_cpf_de_cliente_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006158900000000001,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF do cliente Ronaldo Vieira é 080.080.227-60, não do funcionário Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A08_liquido_e_bruto",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000485573,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "liquido_e_bruto"
+        }
+      },
+      {
+        "documento": "A09_adiantamento_e_salario_anterior",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.00063283,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona um adiantamento quinzenal de R$ 2.040,00 que não é o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "A10_outras_datas",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0004910180000000001,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A11_datas_em_texto_e_experiencia",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000490292,
+          "segundos": 1.4,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A12_gestor_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00048811400000000005,
+          "segundos": 1.6,
+          "perguntas": [],
+          "distracao": "outra_pessoa_citada"
+        }
+      },
+      {
+        "documento": "A13_tabela_com_beneficio_e_pensao",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 2,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0007944860000000001,
+          "segundos": 2.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 01/09/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 01/09/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E01_salario_lido_era_o_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0006381540000000003,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 2.600,00, não o valor de vale-alimentação R$ 650,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E02_cpf_lido_era_do_dependente",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.000750442,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF do Diego Rocha Tavares é 025.336.344-68 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é do Diego, não da esposa Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "E03_nascimento_lido_era_a_emissao_do_rg",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0007863790000000002,
+          "segundos": 2.0,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a funcionária nasceu em 10/10/1994, não em 20/07/2012 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de R$ 6.800,00, mas a leitura usou 6800.00 sem o separador de milhar Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "E04_salario_lido_era_o_do_cargo_anterior",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000626296,
+          "segundos": 1.5,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário atual é de R$ 4.650,00, não R$ 3.100,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "E05_salario_de_outra_pessoa_com_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.000835868,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário da Sabrina é R$ 1.950,00, não R$ 5.600,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário do Mateus é R$ 5.600,00, mas a IA colocou o mesmo valor que o da Sabrina, que é diferente Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      }
+    ],
+    [
+      {
+        "documento": "A01_beneficio_va_ao_lado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006655,
+          "segundos": 1.8,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona salário mensal bruto de R$ 5.300,00 e também vale-alimentação e vale-transporte, mas o campo valor_renda só tem o salário Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A02_beneficios_em_lista",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00055055,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A03_beneficio_antes_do_salario",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006230290000000001,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 21/08/2026, que parece futura e improvável Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A04_ajuda_de_custo_e_gratificacao_fixa",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006536420000000001,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona salário bruto de R$ 7.800,00, mas também ajuda de custo e comissão variável, que não foram incluídas como renda Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A05_cpf_do_dependente",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000490292,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A06_cpf_do_conjuge_primeiro",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00048448400000000003,
+          "segundos": 1.2,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A07_cpf_de_cliente_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00048884,
+          "segundos": 1.4,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A08_liquido_e_bruto",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000485573,
+          "segundos": 1.6,
+          "perguntas": [],
+          "distracao": "liquido_e_bruto"
+        }
+      },
+      {
+        "documento": "A09_adiantamento_e_salario_anterior",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.00063283,
+          "segundos": 1.9,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona um adiantamento quinzenal de R$ 2.040,00 que não é o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "A10_outras_datas",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0004910180000000001,
+          "segundos": 1.6,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A11_datas_em_texto_e_experiencia",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000490292,
+          "segundos": 1.8,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A12_gestor_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00048811400000000005,
+          "segundos": 2.1,
+          "perguntas": [],
+          "distracao": "outra_pessoa_citada"
+        }
+      },
+      {
+        "documento": "A13_tabela_com_beneficio_e_pensao",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000531311,
+          "segundos": 1.4,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E01_salario_lido_era_o_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0006381540000000003,
+          "segundos": 1.8,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 2.600,00, não o valor de vale-alimentação R$ 650,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E02_cpf_lido_era_do_dependente",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.000750442,
+          "segundos": 2.3,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF do Diego Rocha Tavares é 025.336.344-68 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é do Diego, não da esposa Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "E03_nascimento_lido_era_a_emissao_do_rg",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0007863790000000002,
+          "segundos": 2.0,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a funcionária nasceu em 10/10/1994, não em 20/07/2012 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de R$ 6.800,00, mas a leitura usou 6800.00 sem o separador de milhar Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "E04_salario_lido_era_o_do_cargo_anterior",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000626296,
+          "segundos": 5.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário atual é de R$ 4.650,00, não R$ 3.100,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "E05_salario_de_outra_pessoa_com_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.000826793,
+          "segundos": 3.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário da Sabrina é R$ 1.950,00, não R$ 5.600,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário do Mateus é R$ 5.600,00, mas a IA colocou o mesmo valor que a Sabrina deveria ter Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      }
+    ],
+    [
+      {
+        "documento": "A01_beneficio_va_ao_lado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006655,
+          "segundos": 7.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona salário mensal bruto de R$ 5.300,00 e também vale-alimentação e vale-transporte, mas o campo valor_renda só tem o salário Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A02_beneficios_em_lista",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00055055,
+          "segundos": 14.0,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A03_beneficio_antes_do_salario",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006200040000000002,
+          "segundos": 2.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 21/08/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A04_ajuda_de_custo_e_gratificacao_fixa",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006536420000000001,
+          "segundos": 1.9,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona salário bruto de R$ 7.800,00, mas também ajuda de custo e comissão variável, que não foram incluídas como renda Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A05_cpf_do_dependente",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000490292,
+          "segundos": 1.9,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A06_cpf_do_conjuge_primeiro",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00048448400000000003,
+          "segundos": 1.8,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A07_cpf_de_cliente_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006158900000000001,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF do cliente Ronaldo Vieira é 080.080.227-60, não do funcionário Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A08_liquido_e_bruto",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000485573,
+          "segundos": 1.9,
+          "perguntas": [],
+          "distracao": "liquido_e_bruto"
+        }
+      },
+      {
+        "documento": "A09_adiantamento_e_salario_anterior",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 1,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.00063283,
+          "segundos": 1.9,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento menciona um adiantamento quinzenal de R$ 2.040,00 que não é o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "A10_outras_datas",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0004910180000000001,
+          "segundos": 1.6,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A11_datas_em_texto_e_experiencia",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000490292,
+          "segundos": 1.9,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A12_gestor_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00048811400000000005,
+          "segundos": 1.7,
+          "perguntas": [],
+          "distracao": "outra_pessoa_citada"
+        }
+      },
+      {
+        "documento": "A13_tabela_com_beneficio_e_pensao",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 2,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0007944860000000001,
+          "segundos": 2.2,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 01/09/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é em 01/09/2026, futuro ao dia de hoje Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E01_salario_lido_era_o_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0006381540000000003,
+          "segundos": 2.4,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 2.600,00, não o valor de vale-alimentação R$ 650,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E02_cpf_lido_era_do_dependente",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0006959920000000001,
+          "segundos": 8.5,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF do funcionário é 025.336.344-68 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de outra pessoa (da esposa) Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "E03_nascimento_lido_era_a_emissao_do_rg",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0007863790000000002,
+          "segundos": 2.3,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a funcionária nasceu em 10/10/1994, não em 20/07/2012 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de R$ 6.800,00, mas a leitura usou 6800.00 sem o separador de milhar Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "E04_salario_lido_era_o_do_cargo_anterior",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000626296,
+          "segundos": 2.0,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário atual é de R$ 4.650,00, não R$ 3.100,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "E05_salario_de_outra_pessoa_com_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 1,
+          "suspeitas": 2,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.000835868,
+          "segundos": 2.3,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário da Sabrina é R$ 1.950,00, não R$ 5.600,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário do Mateus é R$ 5.600,00, mas a IA colocou o mesmo valor que o da Sabrina, que é diferente Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      }
+    ]
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "cbo": {
+    "cbo2002_ocupacoes.csv": {
+      "endereco": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-ocupacao.csv",
+      "baixado_em": "2026-09-29T05:31:27+00:00",
+      "sha256_do_original": "ad6d51d5d139125b15ea746464b2a39fa832ae295cdb6aa63dc7eddf2d2bed00",
+      "linhas": 2694
+    },
+    "cbo2002_sinonimos.csv": {
+      "endereco": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-sinonimo.csv",
+      "baixado_em": "2026-09-29T05:31:27+00:00",
+      "sha256_do_original": "d49e700161106e0da7e69083db97d0a94ec6d7feed3ab874da5a0cd175a1ace1",
+      "linhas": 7778
+    },
+    "cbo2002_familias.csv": {
+      "endereco": "https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/cbo/servicos/downloads/cbo2002-familia.csv",
+      "baixado_em": "2026-09-29T05:31:27+00:00",
+      "sha256_do_original": "76a56fa0d2d5844c0f470cca74a560c48400455dff4ec306fb2a2672f8c0f928",
+      "linhas": 626
+    }
+  },
+  "rais": {
+    "RAIS_VINC_PUB_CENTRO_OESTE.7z": {
+      "endereco": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/RAIS_VINC_PUB_CENTRO_OESTE.7z",
+      "sha256": "0e4459ee90c0219d9b40b9d6129e494034b8d6cd4dbe86eeb1f49e54f964d724",
+      "vinculos_na_conta": 3561706
+    },
+    "RAIS_VINC_PUB_MG_ES_RJ.7z": {
+      "endereco": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/RAIS_VINC_PUB_MG_ES_RJ.7z",
+      "sha256": "d9c4e359fa16c6a1f929f49c8aec0201a9fbfb801964dc2e27032914924f1f15",
+      "vinculos_na_conta": 8121321
+    },
+    "RAIS_VINC_PUB_NI.7z": {
+      "endereco": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/RAIS_VINC_PUB_NI.7z",
+      "sha256": "dfd32817429cb732963b538d987c1537b12e119e81f667c3f7ffeb279ec0c201",
+      "vinculos_na_conta": 2786
+    },
+    "RAIS_VINC_PUB_NORDESTE.7z": {
+      "endereco": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/RAIS_VINC_PUB_NORDESTE.7z",
+      "sha256": "4366dda32c86e5fdb16f62b09028c7c693852f9b44118cd5536d79613eced089",
+      "vinculos_na_conta": 6796907
+    },
+    "RAIS_VINC_PUB_NORTE.7z": {
+      "endereco": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/RAIS_VINC_PUB_NORTE.7z",
+      "sha256": "c7deb880bf43db4e0250c1cba20a84a61dcedc6d1888a0687a18b01483ce2e29",
+      "vinculos_na_conta": 2035334
+    },
+    "RAIS_VINC_PUB_SP.7z": {
+      "endereco": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/RAIS_VINC_PUB_SP.7z",
+      "sha256": "d19f924d71578c782408678888ee59d89b05688e3b31babc1f174d06270d29df",
+      "vinculos_na_conta": 12497556
+    },
+    "RAIS_VINC_PUB_SUL.7z": {
+      "endereco": "ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2025/RAIS_VINC_PUB_SUL.7z",
+      "sha256": "c537caaaa8318b04e6f4cbbc7e59b130988668b7ea58ce67a0ab2caebf2f5bd0",
+      "vinculos_na_conta": 7351088
+    },
+    "total_de_vinculos_na_conta": 40366698
+  },
+  "medida": {
+    "base": "RAIS 2025, microdados de vínculos (MTE/PDET)",
+    "quem_entra": "vínculos CLT ativos em 31/12, jornada de 30 horas semanais ou mais, não intermitentes, remuneração de dezembro maior que zero",
+    "valor": "remuneração nominal de dezembro",
+    "minimo": "percentil 5",
+    "maximo": "percentil 95",
+    "corte": "menos de 30 vínculos: faixa da família (4 dígitos); família também abaixo: sem dados"
+  }
+}

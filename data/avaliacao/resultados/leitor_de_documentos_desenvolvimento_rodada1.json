@@ -1,0 +1,3351 @@
+{
+ "data": "2026-09-25T17:38:37",
+ "commit": "cf204f5",
+ "modo_da_ia": "llm",
+ "esforco": "low",
+ "modelo_grande": "claude-sonnet-5",
+ "modelo_pequeno": "gpt-6-luna",
+ "resumo_por_modo_e_nivel": {
+  "regra|N1": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 88,
+   "campos_certos": 88,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0,
+   "segundos": 0.0,
+   "chamadas": 0,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.0
+  },
+  "regra|N2": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 120,
+   "campos_certos": 120,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0,
+   "segundos": 0.0,
+   "chamadas": 0,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.0
+  },
+  "etiquetas|N3": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 48,
+   "campos_certos": 48,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.0943185,
+   "segundos": 16.5,
+   "chamadas": 9,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01179
+  },
+  "dados|N3": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 48,
+   "campos_certos": 48,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.09101920000000001,
+   "segundos": 10.3,
+   "chamadas": 9,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01138
+  },
+  "etiquetas|N4": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 16,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 224,
+   "campos_certos": 195,
+   "campos_errados": 3,
+   "campos_faltando": 26,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.3305703,
+   "segundos": 58.8,
+   "chamadas": 18,
+   "acerto_por_campo": 0.8705,
+   "intervalo_95": [
+    0.8304,
+    0.9107
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.02066
+  },
+  "dados|N4": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 16,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 224,
+   "campos_certos": 223,
+   "campos_errados": 0,
+   "campos_faltando": 1,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.244286,
+   "segundos": 26.4,
+   "chamadas": 18,
+   "acerto_por_campo": 0.9955,
+   "intervalo_95": [
+    0.9866,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01527
+  },
+  "etiquetas|N5": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 16,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 276,
+   "campos_certos": 264,
+   "campos_errados": 3,
+   "campos_faltando": 9,
+   "armadilhas": 8,
+   "armadilhas_respeitadas": 8,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 9,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.38563109999999995,
+   "segundos": 64.7,
+   "chamadas": 18,
+   "acerto_por_campo": 0.9565,
+   "intervalo_95": [
+    0.9312,
+    0.9783
+   ],
+   "armadilhas_respeitadas_pct": 1.0,
+   "perguntas_feitas_pct": 0.75,
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.0241
+  },
+  "dados|N5": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 16,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 276,
+   "campos_certos": 276,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 8,
+   "armadilhas_respeitadas": 8,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 12,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.31256170000000005,
+   "segundos": 47.5,
+   "chamadas": 18,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "armadilhas_respeitadas_pct": 1.0,
+   "perguntas_feitas_pct": 1.0,
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01954
+  }
+ },
+ "resumo_do_texto_corrido": {
+  "etiquetas": {
+   "pessoas_esperadas": 40,
+   "pessoas_encontradas": 40,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 548,
+   "campos_certos": 507,
+   "campos_errados": 6,
+   "campos_faltando": 35,
+   "armadilhas": 8,
+   "armadilhas_respeitadas": 8,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 9,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.8105199000000001,
+   "segundos": 140.0,
+   "chamadas": 45,
+   "acerto_por_campo": 0.9252,
+   "intervalo_95": [
+    0.8993,
+    0.9494
+   ],
+   "armadilhas_respeitadas_pct": 1.0,
+   "perguntas_feitas_pct": 0.75,
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.02026
+  },
+  "dados": {
+   "pessoas_esperadas": 40,
+   "pessoas_encontradas": 40,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 548,
+   "campos_certos": 547,
+   "campos_errados": 0,
+   "campos_faltando": 1,
+   "armadilhas": 8,
+   "armadilhas_respeitadas": 8,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 12,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.6478669,
+   "segundos": 84.2,
+   "chamadas": 45,
+   "acerto_por_campo": 0.9982,
+   "intervalo_95": [
+    0.9943,
+    1.0
+   ],
+   "armadilhas_respeitadas_pct": 1.0,
+   "perguntas_feitas_pct": 1.0,
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.0162
+  }
+ },
+ "documentos": [
+  {
+   "documento": "N1_tabela",
+   "nivel": "N1",
+   "modo": "regra",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 88,
+    "campos_certos": 88,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0,
+    "segundos": 0.0,
+    "chamadas": 0
+   },
+   "saida": {
+    "linhas": [
+     [
+      "Nome",
+      "CPF",
+      "Nascimento",
+      "Cargo",
+      "Admissão",
+      "Salário",
+      "Celular",
+      "E-mail",
+      "CEP",
+      "Cidade",
+      "UF"
+     ],
+     [
+      "Sílvia Leal Brandão",
+      "18404053928",
+      "22/09/1996",
+      "designer gráfico",
+      "24/11/2025",
+      "R$ 3.631,00",
+      "(31) 98996-7432",
+      "silvia.leal@exemplo.com",
+      "30124-893",
+      "Belo Horizonte",
+      "MG"
+     ],
+     [
+      "Leandro Coutinho Guimarães",
+      "47242765250",
+      "21/06/1989",
+      "enfermeira do trabalho",
+      "15/02/2025",
+      "R$ 4.776,00",
+      "(85) 99869-2449",
+      "leandro.coutinho@exemplo.com",
+      "60116-837",
+      "Fortaleza",
+      "CE"
+     ],
+     [
+      "Sérgio Valadares Quintela",
+      "17373765718",
+      "12/02/1995",
+      "supervisor de loja",
+      "27/06/2024",
+      "R$ 6.086,00",
+      "(85) 98170-5765",
+      "sergio.valadares@exemplo.com",
+      "60155-050",
+      "Fortaleza",
+      "CE"
+     ],
+     [
+      "Leandro Quintela Leal",
+      "16315501605",
+      "01/05/1976",
+      "operador de empilhadeira",
+      "01/11/2025",
+      "R$ 4.503,00",
+      "(81) 99033-9662",
+      "leandro.quintela@exemplo.com",
+      "52035-964",
+      "Recife",
+      "PE"
+     ],
+     [
+      "Marta Brandão Xavier",
+      "27721156157",
+      "22/06/1996",
+      "coordenador de projetos",
+      "19/04/2024",
+      "R$ 4.926,00",
+      "(19) 98748-5535",
+      "marta.brandao@exemplo.com",
+      "13084-436",
+      "Campinas",
+      "SP"
+     ],
+     [
+      "Sérgio Bittencourt Coutinho",
+      "32179613660",
+      "04/06/1999",
+      "designer gráfico",
+      "14/05/2025",
+      "R$ 6.520,00",
+      "(51) 99110-9845",
+      "sergio.bittencourt@exemplo.com",
+      "90420-731",
+      "Porto Alegre",
+      "RS"
+     ],
+     [
+      "Fernanda Valadares Rezende",
+      "58227578128",
+      "04/08/1984",
+      "operador de empilhadeira",
+      "18/03/2024",
+      "R$ 5.191,00",
+      "(19) 99692-1625",
+      "fernanda.valadares@exemplo.com",
+      "13074-885",
+      "Campinas",
+      "SP"
+     ],
+     [
+      "Geraldo Valadares Assunção",
+      "64093142050",
+      "18/01/1970",
+      "coordenador de projetos",
+      "12/04/2024",
+      "R$ 9.169,00",
+      "(51) 98332-6944",
+      "geraldo.valadares@exemplo.com",
+      "90419-195",
+      "Porto Alegre",
+      "RS"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "Li a tabela do documento Word."
+    ],
+    "como_foi_lido": "tabela",
+    "uso": {},
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N2_fichas",
+   "nivel": "N2",
+   "modo": "regra",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 120,
+    "campos_certos": 120,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0,
+    "segundos": 0.0,
+    "chamadas": 0
+   },
+   "saida": {
+    "linhas": [
+     [
+      "Nome",
+      "CPF",
+      "Data de nascimento",
+      "Nome da mãe",
+      "Cargo",
+      "Data de admissão",
+      "Salário",
+      "Endereço",
+      "Número",
+      "Bairro",
+      "Cidade",
+      "UF",
+      "CEP",
+      "Celular",
+      "E-mail"
+     ],
+     [
+      "Olívia Quintela Guimarães",
+      "02150601800",
+      "30/08/1999",
+      "Luíza Quintela Xavier",
+      "operador de empilhadeira",
+      "06/07/2024",
+      "R$ 8.975,00",
+      "Rua Marechal Deodoro",
+      "187",
+      "Graças",
+      "Curitiba",
+      "PR",
+      "80769-110",
+      "(41) 99828-6599",
+      "olivia.quintela@exemplo.com"
+     ],
+     [
+      "Luíza Siqueira Coutinho",
+      "55434131223",
+      "14/12/1995",
+      "Sílvia Siqueira Coutinho",
+      "designer gráfico",
+      "22/04/2025",
+      "R$ 2.790,00",
+      "Rua do Sol",
+      "1933",
+      "Bigorrilho",
+      "Manaus",
+      "AM",
+      "69035-429",
+      "(92) 98920-9806",
+      "luiza.siqueira@exemplo.com"
+     ],
+     [
+      "Vanessa Nogueira Tavares",
+      "06622504946",
+      "18/09/1973",
+      "Helena Nogueira Assunção",
+      "auxiliar de cozinha",
+      "05/07/2024",
+      "R$ 7.678,00",
+      "Travessa São Bento",
+      "2340",
+      "Savassi",
+      "Florianópolis",
+      "SC",
+      "88049-243",
+      "(48) 99640-1653",
+      "vanessa.nogueira@exemplo.com"
+     ],
+     [
+      "Helena Duarte Leal",
+      "72537748506",
+      "09/07/1992",
+      "Vanessa Duarte Brandão",
+      "recepcionista",
+      "01/07/2024",
+      "R$ 7.051,00",
+      "Rua Dona Laura",
+      "1834",
+      "Graças",
+      "Porto Alegre",
+      "RS",
+      "90445-518",
+      "(51) 98049-6091",
+      "helena.duarte@exemplo.com"
+     ],
+     [
+      "Jéssica Duarte Monteiro",
+      "61228405050",
+      "28/05/1970",
+      "Irene Duarte Coutinho",
+      "recepcionista",
+      "07/05/2025",
+      "R$ 8.984,00",
+      "Rua Marechal Deodoro",
+      "1010",
+      "Bigorrilho",
+      "Recife",
+      "PE",
+      "52056-687",
+      "(81) 98626-3311",
+      "jessica.duarte@exemplo.com"
+     ],
+     [
+      "Vanessa Guimarães Rezende",
+      "30879704098",
+      "15/07/1980",
+      "Sílvia Guimarães Assunção",
+      "enfermeira do trabalho",
+      "07/03/2024",
+      "R$ 4.260,00",
+      "Rua Dona Laura",
+      "1510",
+      "Moinhos de Vento",
+      "Goiânia",
+      "GO",
+      "74149-416",
+      "(62) 98488-4928",
+      "vanessa.guimaraes@exemplo.com"
+     ],
+     [
+      "Vanessa Tavares Sampaio",
+      "63245216483",
+      "31/10/1986",
+      "Renata Tavares Nogueira",
+      "desenvolvedor back-end",
+      "25/01/2025",
+      "R$ 2.008,00",
+      "Avenida Beira Mar",
+      "2209",
+      "Rio Vermelho",
+      "Campinas",
+      "SP",
+      "13065-843",
+      "(19) 98091-4362",
+      "vanessa.tavares@exemplo.com"
+     ],
+     [
+      "Júlio Quintela Monteiro",
+      "40005687950",
+      "31/03/1991",
+      "Sílvia Quintela Sampaio",
+      "operador de empilhadeira",
+      "14/11/2024",
+      "R$ 9.303,00",
+      "Rua das Acácias",
+      "1374",
+      "Trindade",
+      "Porto Alegre",
+      "RS",
+      "90465-939",
+      "(51) 98665-7914",
+      "julio.quintela@exemplo.com"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "Li o documento Word como fichas (\"Rótulo: valor\"), uma por funcionário."
+    ],
+    "como_foi_lido": "fichas",
+    "uso": {},
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N3_texto_simples",
+   "nivel": "N3",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 48,
+    "campos_certos": 48,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.0943185,
+    "segundos": 16.5,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Gláucia Bittencourt Leal",
+      "27937663219",
+      "22/09/1977",
+      "operador de empilhadeira",
+      "21/03/2024",
+      "R$ 2.554,00"
+     ],
+     [
+      "Priscila Rezende Siqueira",
+      "18025840727",
+      "23/08/1985",
+      "assistente de logística",
+      "18/06/2024",
+      "R$ 4.190,00"
+     ],
+     [
+      "Leandro Leal Siqueira",
+      "49303341287",
+      "28/05/1985",
+      "supervisor de loja",
+      "07/08/2025",
+      "R$ 4.722,00"
+     ],
+     [
+      "Sílvia Assunção Quintela",
+      "33433696241",
+      "30/03/1977",
+      "recepcionista",
+      "09/12/2025",
+      "R$ 5.598,00"
+     ],
+     [
+      "Valter Rezende Fontes",
+      "96412072292",
+      "02/02/1994",
+      "auxiliar de cozinha",
+      "13/05/2025",
+      "R$ 5.067,00"
+     ],
+     [
+      "Irene Brandão Monteiro",
+      "85854328968",
+      "21/02/1984",
+      "enfermeira do trabalho",
+      "04/01/2025",
+      "R$ 4.972,00"
+     ],
+     [
+      "Sílvia Nogueira Pimentel",
+      "39229678333",
+      "05/05/1971",
+      "assistente de logística",
+      "11/11/2025",
+      "R$ 2.427,00"
+     ],
+     [
+      "Sérgio Nogueira Valadares",
+      "05126897330",
+      "18/11/1983",
+      "auxiliar de cozinha",
+      "24/01/2025",
+      "R$ 4.583,00"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 34577,
+     "tokens_saida": 2962,
+     "custo_usd": 0.0943185,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N3_texto_simples",
+   "nivel": "N3",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 48,
+    "campos_certos": 48,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.09101920000000001,
+    "segundos": 10.3,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Gláucia Bittencourt Leal",
+      "27937663219",
+      "22/09/1977",
+      "operador de empilhadeira",
+      "21/03/2024",
+      "R$ 2.554,00"
+     ],
+     [
+      "Priscila Rezende Siqueira",
+      "18025840727",
+      "23/08/1985",
+      "assistente de logística",
+      "18/06/2024",
+      "R$ 4.190,00"
+     ],
+     [
+      "Leandro Leal Siqueira",
+      "49303341287",
+      "28/05/1985",
+      "supervisor de loja",
+      "07/08/2025",
+      "R$ 4.722,00"
+     ],
+     [
+      "Sílvia Assunção Quintela",
+      "33433696241",
+      "30/03/1977",
+      "recepcionista",
+      "09/12/2025",
+      "R$ 5.598,00"
+     ],
+     [
+      "Valter Rezende Fontes",
+      "96412072292",
+      "02/02/1994",
+      "auxiliar de cozinha",
+      "13/05/2025",
+      "R$ 5.067,00"
+     ],
+     [
+      "Irene Brandão Monteiro",
+      "85854328968",
+      "21/02/1984",
+      "enfermeira do trabalho",
+      "04/01/2025",
+      "R$ 4.972,00"
+     ],
+     [
+      "Sílvia Nogueira Pimentel",
+      "39229678333",
+      "05/05/1971",
+      "assistente de logística",
+      "11/11/2025",
+      "R$ 2.427,00"
+     ],
+     [
+      "Sérgio Nogueira Valadares",
+      "05126897330",
+      "18/11/1983",
+      "auxiliar de cozinha",
+      "24/01/2025",
+      "R$ 4.583,00"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 34464,
+     "tokens_saida": 2447,
+     "custo_usd": 0.09101920000000001,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_a",
+   "nivel": "N4",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 100,
+    "campos_errados": 0,
+    "campos_faltando": 12,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 10,
+      "esperados": 14
+     },
+     {
+      "certos": 12,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 13,
+      "esperados": 14
+     },
+     {
+      "certos": 13,
+      "esperados": 14
+     },
+     {
+      "certos": 12,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 12,
+      "esperados": 14
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 1,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0.1687207,
+    "segundos": 31.1,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Tatiane Pacheco Duarte",
+      "589 425 663 16",
+      "26.02.1976",
+      "",
+      "Avenida Beira Mar",
+      "871",
+      "",
+      "",
+      "SC",
+      "",
+      "",
+      "tatiane.pacheco@exemplo.com",
+      "técnico de manutenção",
+      "18.09.2024",
+      "2.755,00"
+     ],
+     [
+      "Nelson Brandão Duarte",
+      "36183882500",
+      "18-10-1992",
+      "90498-967",
+      "Rua das Acácias",
+      "662",
+      "Vila Mariana",
+      "Porto Alegre",
+      "RS",
+      "",
+      "",
+      "",
+      "auxiliar de cozinha",
+      "15/03/2024",
+      "7.310,00"
+     ],
+     [
+      "Fernanda Tavares Fontes",
+      "90431952787",
+      "1994-01-18",
+      "80797540",
+      "Rua Marechal Deodoro",
+      "43",
+      "Moinhos de Vento",
+      "Curitiba",
+      "PR",
+      "",
+      "(41) 99714-4877",
+      "fernanda.tavares@exemplo.com",
+      "operador de empilhadeira",
+      "4 de fevereiro de 2025",
+      "2.645,00"
+     ],
+     [
+      "Irene Brandão Pacheco",
+      "174 344 672 15",
+      "9 de junho de 1999",
+      "90499-306",
+      "Rua Sete de Setembro",
+      "2110",
+      "Graças",
+      "Porto Alegre",
+      "RS",
+      "",
+      "",
+      "irene.brandao@exemplo.com",
+      "técnico de manutenção",
+      "16 de maio de 2025",
+      "5.842,00"
+     ],
+     [
+      "Irene Fontes Bittencourt",
+      "96520753106",
+      "05.01.1978",
+      "69063-221",
+      "Rua Sete de Setembro",
+      "844",
+      "Moinhos de Vento",
+      "Manaus",
+      "AM",
+      "",
+      "",
+      "irene.fontes@exemplo.com",
+      "coordenador de projetos",
+      "17/02/2024",
+      "2.702,00"
+     ],
+     [
+      "Wesley Sampaio Pacheco",
+      "613 651 355 27",
+      "22/05/89",
+      "52094223",
+      "Travessa São Bento",
+      "2444",
+      "Setor Oeste",
+      "Recife",
+      "PE",
+      "",
+      "",
+      "",
+      "analista financeiro",
+      "17-07-2024",
+      "R$ 5.147,00"
+     ],
+     [
+      "Lorena Fontes Tavares",
+      "27799412780",
+      "12/07/00",
+      "60130-093",
+      "Rua Sete de Setembro",
+      "1440",
+      "Savassi",
+      "Fortaleza",
+      "CE",
+      "",
+      "(85) 99826-6654",
+      "lorena.fontes@exemplo.com",
+      "técnico de manutenção",
+      "19 de julho de 2025",
+      "R$ 5.395,00"
+     ],
+     [
+      "Noemi Pacheco Assunção",
+      "93369182734",
+      "1980-08-19",
+      "",
+      "Avenida Beira Mar",
+      "1964",
+      "Setor Oeste",
+      "Porto Alegre",
+      "RS",
+      "+55 51 99172-9239",
+      "",
+      "noemi.pacheco@exemplo.com",
+      "designer gráfico",
+      "15-02-2024",
+      "R$ 9.329"
+     ]
+    ],
+    "duvidas": [
+     "Tatiane Pacheco Duarte · bairro_residencial: O texto 'bairro Moinhos de Vento' é ambíguo: Moinhos é o nome do bairro e Vento é o município, ou o bairro se chama 'Moinhos de Vento'? Poderiam confirmar?",
+     "Tatiane Pacheco Duarte · municipio_residencial: Qual é o município do endereço residencial: Vento ou Florianópolis?",
+     "Tatiane Pacheco Duarte · cep_residencial: O número 88049739 no final do endereço é o CEP residencial? Poderiam confirmar?",
+     "Tatiane Pacheco Duarte · telefone_celular: O telefone +55 48 98398-5015 informado é celular ou fixo?",
+     "Nelson Brandão Duarte · telefone_residencial: O contato 51988866704 é telefone fixo ou celular do funcionário?",
+     "Nelson Brandão Duarte · email_pessoal: O e-mail nelson.brandao@exemplo.com é pessoal ou corporativo do funcionário?",
+     "Irene Brandão Pacheco · telefone_residencial: O telefone 51 99031-5568 informado como 'Contato' é fixo residencial ou celular?",
+     "Irene Fontes Bittencourt · telefone_residencial: O número 92989269234 indicado como contato é telefone residencial ou celular?",
+     "Irene Fontes Bittencourt: O que significa Mora antes de 'na Rua Sete de Setembro'? É complemento, tipo de imóvel ou outro dado do endereço?",
+     "Wesley Sampaio Pacheco · telefone_celular: O contato 81 99724-2000 é telefone residencial ou celular do funcionário?",
+     "Wesley Sampaio Pacheco · email_pessoal: O e-mail wesley.sampaio@exemplo.com é pessoal ou corporativo?",
+     "Lorena Fontes Tavares: O que significa Mora antes do endereço? É preciso confirmar se refere-se ao próprio funcionário.",
+     "Noemi Pacheco Assunção · cep_residencial: O número 90420752 ao final do endereço é o CEP residencial? Poderiam confirmar?"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 36196,
+     "tokens_saida": 10512,
+     "custo_usd": 0.1687207,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 13
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_a",
+   "nivel": "N4",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 111,
+    "campos_errados": 0,
+    "campos_faltando": 1,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 13,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 3,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0.1226415,
+    "segundos": 13.8,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Tatiane Pacheco Duarte",
+      "589 425 663 16",
+      "26.02.1976",
+      "88049739",
+      "Avenida Beira Mar",
+      "871",
+      "Moinhos de Vento",
+      "Florianópolis",
+      "SC",
+      "+55 48 98398-5015",
+      "tatiane.pacheco@exemplo.com",
+      "técnico de manutenção",
+      "18.09.2024",
+      "2.755,00"
+     ],
+     [
+      "Nelson Brandão Duarte",
+      "36183882500",
+      "18-10-1992",
+      "90498-967",
+      "Rua das Acácias",
+      "662",
+      "Vila Mariana",
+      "Porto Alegre",
+      "RS",
+      "51988866704",
+      "nelson.brandao@exemplo.com",
+      "auxiliar de cozinha",
+      "15/03/2024",
+      "7.310,00"
+     ],
+     [
+      "Fernanda Tavares Fontes",
+      "90431952787",
+      "1994-01-18",
+      "80797540",
+      "Rua Marechal Deodoro",
+      "43",
+      "Moinhos de Vento",
+      "Curitiba",
+      "PR",
+      "(41) 99714-4877",
+      "fernanda.tavares@exemplo.com",
+      "operador de empilhadeira",
+      "",
+      "2.645,00"
+     ],
+     [
+      "Irene Brandão Pacheco",
+      "174 344 672 15",
+      "9 de junho de 1999",
+      "90499-306",
+      "Rua Sete de Setembro",
+      "2110",
+      "Graças",
+      "Porto Alegre",
+      "RS",
+      "51 99031-5568",
+      "irene.brandao@exemplo.com",
+      "técnico de manutenção",
+      "16 de maio de 2025",
+      "5.842,00"
+     ],
+     [
+      "Irene Fontes Bittencourt",
+      "96520753106",
+      "05.01.1978",
+      "69063-221",
+      "Rua Sete de Setembro",
+      "844",
+      "Moinhos de Vento",
+      "Manaus",
+      "AM",
+      "92989269234",
+      "irene.fontes@exemplo.com",
+      "coordenador de projetos",
+      "17/02/2024",
+      "2.702,00"
+     ],
+     [
+      "Wesley Sampaio Pacheco",
+      "613 651 355 27",
+      "22/05/89",
+      "52094223",
+      "Travessa São Bento",
+      "2444",
+      "Setor Oeste",
+      "Recife",
+      "PE",
+      "81 99724-2000",
+      "wesley.sampaio@exemplo.com",
+      "analista financeiro",
+      "17-07-2024",
+      "R$ 5.147,00"
+     ],
+     [
+      "Lorena Fontes Tavares",
+      "27799412780",
+      "12/07/00",
+      "60130-093",
+      "Rua Sete de Setembro",
+      "1440",
+      "Savassi",
+      "Fortaleza",
+      "CE",
+      "(85) 99826-6654",
+      "lorena.fontes@exemplo.com",
+      "técnico de manutenção",
+      "19 de julho de 2025",
+      "R$ 5.395,00"
+     ],
+     [
+      "Noemi Pacheco Assunção",
+      "93369182734",
+      "1980-08-19",
+      "90420752",
+      "Avenida Beira Mar",
+      "1964",
+      "Setor Oeste",
+      "Porto Alegre",
+      "RS",
+      "+55 51 99172-9239",
+      "noemi.pacheco@exemplo.com",
+      "designer gráfico",
+      "15-02-2024",
+      "R$ 9.329"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco.",
+     "Pessoa 3, campo data_admissao: a IA escreveu algo que não está no documento; o campo ficou em branco para você completar."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 35549,
+     "tokens_saida": 5484,
+     "custo_usd": 0.1226415,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_b",
+   "nivel": "N4",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 95,
+    "campos_errados": 3,
+    "campos_faltando": 14,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 12,
+      "esperados": 14
+     },
+     {
+      "certos": 12,
+      "esperados": 14
+     },
+     {
+      "certos": 13,
+      "esperados": 14
+     },
+     {
+      "certos": 11,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 11,
+      "esperados": 14
+     },
+     {
+      "certos": 11,
+      "esperados": 14
+     },
+     {
+      "certos": 11,
+      "esperados": 14
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 1,
+      "campo": "nome_completo",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 1,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "valor_renda",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 4,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nome_completo",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 7,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0.1618496,
+    "segundos": 27.7,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Contratamos Tiago Rezende Moura",
+      "804 798 212 59",
+      "2000-10-25",
+      "60129-229",
+      "Rua Padre Anchieta",
+      "2741",
+      "Savassi",
+      "Fortaleza",
+      "CE",
+      "",
+      "tiago.rezende@exemplo.com",
+      "analista financeiro",
+      "2024-06-12",
+      "6.208,00"
+     ],
+     [
+      "Jéssica Valadares Fontes",
+      "77013754226",
+      "08.11.1994",
+      "",
+      "Rua Padre Anchieta",
+      "1402",
+      "Centro",
+      "Manaus",
+      "AM",
+      "",
+      "jessica.valadares@exemplo.com",
+      "assistente de logística",
+      "14-12-2025",
+      "R$ 4.481,00"
+     ],
+     [
+      "Olívia Sampaio Rezende",
+      "37399828962",
+      "23.05.1983",
+      "",
+      "Travessa São Bento",
+      "2693",
+      "Centro",
+      "Porto Alegre",
+      "RS",
+      "+55 51 99495-1591",
+      "olivia.sampaio@exemplo.com",
+      "auxiliar de cozinha",
+      "15/03/2025",
+      "R$ 7.026,00"
+     ],
+     [
+      "Yasmin Guimarães Rezende",
+      "29330025668",
+      "09/11/1991",
+      "90466-291",
+      "Avenida Getúlio Vargas",
+      "2395",
+      "Chapada",
+      "Porto Alegre",
+      "RS",
+      "",
+      "",
+      "enfermeira do trabalho",
+      "24 de novembro de 2024",
+      "R$ 5.192."
+     ],
+     [
+      "Tiago Fontes Tavares",
+      "26608032420",
+      "23.09.1977",
+      "69086-837",
+      "Rua Dona Laura",
+      "2927",
+      "Bigorrilho",
+      "Manaus",
+      "AM",
+      "+55 92 98816-5769",
+      "tiago.fontes@exemplo.com",
+      "vendedor externo",
+      "16/03/24",
+      "9.288,00"
+     ],
+     [
+      "Wesley Monteiro Quintela",
+      "",
+      "08/04/97",
+      "69082-156",
+      "Rua Dona Laura",
+      "646",
+      "Jardim Europa",
+      "Manaus",
+      "AM",
+      "",
+      "",
+      "auxiliar de cozinha",
+      "17.05.2024",
+      "8.990,00"
+     ],
+     [
+      "Contratamos Igor Monteiro Pimentel",
+      "134 004 442 00",
+      "30-03-1989",
+      "30147-076",
+      "Rua das Acácias",
+      "166",
+      "Jardim Europa",
+      "Belo Horizonte",
+      "MG",
+      "",
+      "",
+      "recepcionista",
+      "16/09/2024",
+      "R$ 5.697,00"
+     ],
+     [
+      "Luíza Sampaio Moura",
+      "32955098671",
+      "1991-07-12",
+      "",
+      "Rua das Acácias",
+      "2852",
+      "Centro",
+      "Manaus",
+      "AM",
+      "",
+      "",
+      "auxiliar de cozinha",
+      "22/05/2025",
+      "R$ 4.495,00"
+     ]
+    ],
+    "duvidas": [
+     "Contratamos Tiago Rezende Moura · telefone_residencial: O contato 85999568186 informado é telefone fixo ou celular?",
+     "Contratamos Tiago Rezende Moura · nome_mae: O trecho 'Mora' antes de 'na Rua' se refere a algum dado do funcionário (como nome ou naturalidade)? Poderiam esclarecer o que é Mora?",
+     "Jéssica Valadares Fontes · cep_residencial: O número 69052855 após a cidade/UF é o CEP residencial? Poderiam confirmar?",
+     "Jéssica Valadares Fontes · telefone_celular: O contato 92995435603 é telefone fixo ou celular do funcionário?",
+     "Olívia Sampaio Rezende · cep_residencial: O número 90461793 ao final do endereço é o CEP residencial? Poderiam confirmar?",
+     "Yasmin Guimarães Rezende · telefone_residencial: O telefone 51 99618-9308 informado é residencial ou celular?",
+     "Yasmin Guimarães Rezende · email_pessoal: O e-mail yasmin.guimaraes@exemplo.com informado é pessoal ou corporativo?",
+     "Wesley Monteiro Quintela · numero_documento: Qual é o tipo do 'documento fiscal' 688 816 786 08 (CPF, RG, PIS)?",
+     "Wesley Monteiro Quintela · telefone_celular: O contato 92995156916 é telefone residencial ou celular?",
+     "Wesley Monteiro Quintela · email_pessoal: O e-mail wesley.monteiro@exemplo.com é pessoal ou corporativo?",
+     "Contratamos Igor Monteiro Pimentel · telefone_residencial: O contato 31 98461-8572 informado é telefone fixo (residencial) ou celular?",
+     "Contratamos Igor Monteiro Pimentel · email_pessoal: O e-mail igor.monteiro@exemplo.com informado é pessoal ou corporativo?",
+     "Luíza Sampaio Moura · cep_residencial: O número 69075872 após o estado é o CEP residencial? Poderia confirmar?",
+     "Luíza Sampaio Moura · telefone_residencial: O telefone +55 92 98281-3373 é fixo ou celular?",
+     "Luíza Sampaio Moura · email_pessoal: O e-mail luiza.sampaio@exemplo.com é pessoal ou corporativo?"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 36185,
+     "tokens_saida": 9388,
+     "custo_usd": 0.1618496,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 15
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_b",
+   "nivel": "N4",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 112,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.1216445,
+    "segundos": 12.6,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Tiago Rezende Moura",
+      "804 798 212 59",
+      "2000-10-25",
+      "60129-229",
+      "Rua Padre Anchieta",
+      "2741",
+      "Savassi",
+      "Fortaleza",
+      "CE",
+      "85999568186",
+      "tiago.rezende@exemplo.com",
+      "analista financeiro",
+      "2024-06-12",
+      "6.208,00"
+     ],
+     [
+      "Jéssica Valadares Fontes",
+      "77013754226",
+      "08.11.1994",
+      "69052855",
+      "Rua Padre Anchieta",
+      "1402",
+      "Centro",
+      "Manaus",
+      "AM",
+      "92995435603",
+      "jessica.valadares@exemplo.com",
+      "assistente de logística",
+      "14-12-2025",
+      "R$ 4.481,00"
+     ],
+     [
+      "Olívia Sampaio Rezende",
+      "37399828962",
+      "23.05.1983",
+      "90461793",
+      "Travessa São Bento",
+      "2693",
+      "Centro",
+      "Porto Alegre",
+      "RS",
+      "+55 51 99495-1591",
+      "olivia.sampaio@exemplo.com",
+      "auxiliar de cozinha",
+      "15/03/2025",
+      "R$ 7.026,00"
+     ],
+     [
+      "Yasmin Guimarães Rezende",
+      "29330025668",
+      "09/11/1991",
+      "90466-291",
+      "Avenida Getúlio Vargas",
+      "2395",
+      "Chapada",
+      "Porto Alegre",
+      "RS",
+      "51 99618-9308",
+      "yasmin.guimaraes@exemplo.com",
+      "enfermeira do trabalho",
+      "24/11/2024",
+      "R$ 5.192"
+     ],
+     [
+      "Tiago Fontes Tavares",
+      "26608032420",
+      "23.09.1977",
+      "69086-837",
+      "Rua Dona Laura",
+      "2927",
+      "Bigorrilho",
+      "Manaus",
+      "AM",
+      "+55 92 98816-5769",
+      "tiago.fontes@exemplo.com",
+      "vendedor externo",
+      "16/03/24",
+      "9.288,00"
+     ],
+     [
+      "Wesley Monteiro Quintela",
+      "688 816 786 08",
+      "08/04/97",
+      "69082-156",
+      "Rua Dona Laura",
+      "646",
+      "Jardim Europa",
+      "Manaus",
+      "AM",
+      "92995156916",
+      "wesley.monteiro@exemplo.com",
+      "auxiliar de cozinha",
+      "17.05.2024",
+      "8.990,00"
+     ],
+     [
+      "Igor Monteiro Pimentel",
+      "134 004 442 00",
+      "30-03-1989",
+      "30147-076",
+      "Rua das Acácias",
+      "166",
+      "Jardim Europa",
+      "Belo Horizonte",
+      "MG",
+      "31 98461-8572",
+      "igor.monteiro@exemplo.com",
+      "recepcionista",
+      "16/09/2024",
+      "R$ 5.697,00"
+     ],
+     [
+      "Luíza Sampaio Moura",
+      "32955098671",
+      "1991-07-12",
+      "69075872",
+      "Rua das Acácias",
+      "2852",
+      "Centro",
+      "Manaus",
+      "AM",
+      "+55 92 98281-3373",
+      "luiza.sampaio@exemplo.com",
+      "auxiliar de cozinha",
+      "22/05/2025",
+      "R$ 4.495,00"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 35497,
+     "tokens_saida": 5408,
+     "custo_usd": 0.1216445,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_a",
+   "nivel": "N5",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 134,
+    "campos_errados": 0,
+    "campos_faltando": 4,
+    "armadilhas": 4,
+    "armadilhas_respeitadas": 4,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 5,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 18
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 16,
+      "esperados": 17
+     },
+     {
+      "certos": 16,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 18
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 2,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0.19524629999999998,
+    "segundos": 33.2,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "estado_civil",
+      "nome_mae",
+      "nis_pis",
+      "tipo_documento",
+      "numero_documento",
+      "orgao_emissor",
+      "uf_emissor",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "CAIO PACHECO BITTENCOURT",
+      "09005054514",
+      "12/01/88",
+      "casado",
+      "Irene Pacheco Sampaio",
+      "181.68230.68-0",
+      "",
+      "10.499.755-3",
+      "",
+      "SC",
+      "88049-849",
+      "Travessa São Bento",
+      "275",
+      "Jardim Europa",
+      "Florianópolis",
+      "SC",
+      "+55 48 99852-9502",
+      "caio.pacheco@exemplo.com",
+      "Supervisor de loja",
+      "",
+      "2.613,00"
+     ],
+     [
+      "Wesley Pacheco Assunção",
+      "88817962600",
+      "12.07.2003",
+      "união estável",
+      "Irene Pacheco Monteiro",
+      "299.62247.39-5",
+      "",
+      "49.801.672-0",
+      "SSP",
+      "MG",
+      "30194-899",
+      "Rua Marechal Deodoro",
+      "30",
+      "Vila Mariana",
+      "Belo Horizonte",
+      "MG",
+      "(31) 98990-4336",
+      "wesley.pacheco@exemplo.com",
+      "",
+      "2024-05-17",
+      "R$ 8.441,00"
+     ],
+     [
+      "Helena Siqueira Rezende",
+      "",
+      "06/04/00",
+      "solteiro",
+      "Gláucia Siqueira Moura",
+      "202.10433.49-0",
+      "identidade",
+      "46.519.287-7",
+      "SSP",
+      "RS",
+      "90469-160",
+      "Rua Sete de Setembro",
+      "726",
+      "Bigorrilho",
+      "Porto Alegre",
+      "RS",
+      "51993053584",
+      "helena.siqueira@exemplo.com",
+      "Assistente de logística",
+      "2025-08-20",
+      "2.354,00"
+     ],
+     [
+      "Tatiane Pacheco Leal",
+      "12894070616",
+      "03.12.1999",
+      "união estável",
+      "Sílvia Pacheco Tavares",
+      "",
+      "identidade",
+      "41.650.290-5",
+      "",
+      "MG",
+      "30112-935",
+      "Travessa São Bento",
+      "281",
+      "Aldeota",
+      "Belo Horizonte",
+      "MG",
+      "31998004972",
+      "tatiane.pacheco@exemplo.com",
+      "",
+      "18 de abril de 2025",
+      "6.914,00"
+     ],
+     [
+      "",
+      "86213237372",
+      "7 de junho de 2003",
+      "viúvo",
+      "Jéssica Xavier Siqueira",
+      "286.42140.17-7",
+      "identidade",
+      "48.609.177-0",
+      "",
+      "SP",
+      "13052-227",
+      "Avenida Beira Mar",
+      "741",
+      "Bigorrilho",
+      "Campinas",
+      "SP",
+      "19999522731",
+      "wesley.xavier@exemplo.com",
+      "Assistente de logística",
+      "",
+      "R$ 5.524,00"
+     ],
+     [
+      "",
+      "19384646300",
+      "05/03/02",
+      "solteiro",
+      "Priscila Monteiro Fontes",
+      "193.42852.27-8",
+      "identidade",
+      "48.458.194-1",
+      "",
+      "MG",
+      "30144-369",
+      "Avenida Getúlio Vargas",
+      "931",
+      "Chapada",
+      "Belo Horizonte",
+      "MG",
+      "+55 31 99682-9252",
+      "hugo.monteiro@exemplo.com",
+      "Vendedor externo",
+      "23.11.2024",
+      "R$ 3.520"
+     ],
+     [
+      "OTÁVIO MONTEIRO VALADARES",
+      "",
+      "22.01.2003",
+      "casado",
+      "Helena Monteiro Siqueira",
+      "155.97780.33-9",
+      "",
+      "45.428.776-4",
+      "",
+      "CE",
+      "60139-689",
+      "Avenida Beira Mar",
+      "582",
+      "Chapada",
+      "Fortaleza",
+      "CE",
+      "+55 85 98587-4707",
+      "otavio.monteiro@exemplo.com",
+      "Vendedor externo",
+      "2024-08-17",
+      "4.518,00"
+     ],
+     [
+      "Marta Moura Pacheco",
+      "117 617 215 85",
+      "01.01.1978",
+      "solteiro",
+      "Sílvia Moura Coutinho",
+      "",
+      "",
+      "12.403.362-1",
+      "SSP",
+      "MG",
+      "30138-115",
+      "Rua Padre Anchieta",
+      "1524",
+      "Jardim Europa",
+      "Belo Horizonte",
+      "MG",
+      "(31) 98987-1710",
+      "marta.moura@exemplo.com",
+      "Coordenador de projetos",
+      "14.06.2025",
+      "4.441,00"
+     ]
+    ],
+    "duvidas": [
+     "CAIO PACHECO BITTENCOURT · data_admissao: A ficha indica admissão em 13/05/2025, mas o gestor informou 03/06/2025; qual data está correta?",
+     "Helena Siqueira Rezende · cpf: O CPF da funcionária não foi informado; poderiam enviar quando disponível?",
+     "Tatiane Pacheco Leal · nis_pis: O número do PIS está ilegível na ficha e há apenas uma suposição; poderiam confirmar o valor correto?",
+     "Pessoa 5 · data_admissao: A ficha e o gestor informam datas de admissão diferentes (18/01/2024 vs 25/01/2024); qual é a correta?",
+     "Pessoa 6 · nome_completo: Qual é o nome completo do funcionário? O documento não deixa claro qual trecho corresponde ao nome.",
+     "OTÁVIO MONTEIRO VALADARES · cpf: O CPF do funcionário não foi informado ainda; poderiam enviar o número?",
+     "Marta Moura Pacheco · nis_pis: O PIS informado está ilegível/incerto ('parece 154.36237.98-7'). Poderiam confirmar o número correto?"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 38889,
+     "tokens_saida": 12439,
+     "custo_usd": 0.19524629999999998,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 7
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_a",
+   "nivel": "N5",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 138,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 4,
+    "armadilhas_respeitadas": 4,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 6,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 18,
+      "esperados": 18
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 18,
+      "esperados": 18
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.15428190000000003,
+    "segundos": 22.0,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "estado_civil",
+      "nome_mae",
+      "nis_pis",
+      "tipo_documento",
+      "numero_documento",
+      "orgao_emissor",
+      "uf_emissor",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "tipo_renda",
+      "valor_renda"
+     ],
+     [
+      "CAIO PACHECO BITTENCOURT",
+      "09005054514",
+      "12/01/88",
+      "casado",
+      "Irene Pacheco Sampaio",
+      "181.68230.68-0",
+      "identidade",
+      "10.499.755-3",
+      "SSP",
+      "SC",
+      "88049-849",
+      "Travessa São Bento",
+      "275",
+      "Jardim Europa",
+      "Florianópolis",
+      "SC",
+      "+55 48 99852-9502",
+      "caio.pacheco@exemplo.com",
+      "Supervisor de loja",
+      "",
+      "",
+      "2.613,00"
+     ],
+     [
+      "Wesley Pacheco Assunção",
+      "88817962600",
+      "12.07.2003",
+      "união estável",
+      "Irene Pacheco Monteiro",
+      "299.62247.39-5",
+      "identidade",
+      "49.801.672-0",
+      "SSP",
+      "MG",
+      "30194-899",
+      "Rua Marechal Deodoro",
+      "30",
+      "Vila Mariana",
+      "Belo Horizonte",
+      "MG",
+      "(31) 98990-4336",
+      "wesley.pacheco@exemplo.com",
+      "Enfermeira do trabalho",
+      "2024-05-17",
+      "",
+      "R$ 8.441,00"
+     ],
+     [
+      "Helena Siqueira Rezende",
+      "",
+      "06/04/00",
+      "solteiro",
+      "Gláucia Siqueira Moura",
+      "202.10433.49-0",
+      "",
+      "46.519.287-7",
+      "SSP",
+      "RS",
+      "90469-160",
+      "Rua Sete de Setembro",
+      "726",
+      "Bigorrilho",
+      "Porto Alegre",
+      "RS",
+      "51993053584",
+      "helena.siqueira@exemplo.com",
+      "Assistente de logística",
+      "2025-08-20",
+      "",
+      "2.354,00"
+     ],
+     [
+      "Tatiane Pacheco Leal",
+      "12894070616",
+      "03.12.1999",
+      "união estável",
+      "Sílvia Pacheco Tavares",
+      "",
+      "identidade",
+      "41.650.290-5",
+      "SSP",
+      "MG",
+      "30112-935",
+      "Travessa São Bento",
+      "281",
+      "Aldeota",
+      "Belo Horizonte",
+      "MG",
+      "31998004972",
+      "tatiane.pacheco@exemplo.com",
+      "Recepcionista",
+      "18 de abril de 2025",
+      "Salário mensal",
+      "6.914,00"
+     ],
+     [
+      "WESLEY XAVIER MOURA",
+      "86213237372",
+      "7 de junho de 2003",
+      "viúvo",
+      "Jéssica Xavier Siqueira",
+      "286.42140.17-7",
+      "",
+      "48.609.177-0",
+      "SSP",
+      "SP",
+      "13052-227",
+      "Avenida Beira Mar",
+      "741",
+      "Bigorrilho",
+      "Campinas",
+      "SP",
+      "19999522731",
+      "wesley.xavier@exemplo.com",
+      "Assistente de logística",
+      "",
+      "",
+      "R$ 5.524,00"
+     ],
+     [
+      "HUGO MONTEIRO BRANDÃO",
+      "19384646300",
+      "05/03/02",
+      "solteiro",
+      "Priscila Monteiro Fontes",
+      "193.42852.27-8",
+      "identidade",
+      "48.458.194-1",
+      "SSP",
+      "MG",
+      "30144-369",
+      "Avenida Getúlio Vargas",
+      "931",
+      "Chapada",
+      "Belo Horizonte",
+      "MG",
+      "+55 31 99682-9252",
+      "hugo.monteiro@exemplo.com",
+      "Vendedor externo",
+      "23.11.2024",
+      "fixo",
+      "R$ 3.520"
+     ],
+     [
+      "OTÁVIO MONTEIRO VALADARES",
+      "",
+      "22.01.2003",
+      "casado",
+      "Helena Monteiro Siqueira",
+      "155.97780.33-9",
+      "identidade",
+      "45.428.776-4",
+      "SSP",
+      "CE",
+      "60139-689",
+      "Avenida Beira Mar",
+      "582",
+      "Chapada",
+      "Fortaleza",
+      "CE",
+      "+55 85 98587-4707",
+      "otavio.monteiro@exemplo.com",
+      "Vendedor externo",
+      "2024-08-17",
+      "",
+      "4.518,00"
+     ],
+     [
+      "Marta Moura Pacheco",
+      "117 617 215 85",
+      "01.01.1978",
+      "solteiro",
+      "Sílvia Moura Coutinho",
+      "",
+      "",
+      "12.403.362-1",
+      "SSP",
+      "MG",
+      "30138-115",
+      "Rua Padre Anchieta",
+      "1524",
+      "Jardim Europa",
+      "Belo Horizonte",
+      "MG",
+      "(31) 98987-1710",
+      "marta.moura@exemplo.com",
+      "Coordenador de projetos",
+      "14.06.2025",
+      "",
+      "4.441,00"
+     ]
+    ],
+    "duvidas": [
+     "CAIO PACHECO BITTENCOURT · data_admissao: A ficha indica admissão em 13/05/2025 e o gestor indicou 03/06/2025; qual é a data correta de admissão?",
+     "Helena Siqueira Rezende · cpf: O CPF da Helena não foi informado; poderiam enviar assim que possível?",
+     "Tatiane Pacheco Leal · nis_pis: O PIS informado está ilegível/incerto (204.69437.68-8, 'parece'); poderiam confirmar o número correto?",
+     "WESLEY XAVIER MOURA · data_admissao: A ficha indica admissão em 18/01/2024 e o gestor escreveu 25/01/2024; qual é a data correta?",
+     "OTÁVIO MONTEIRO VALADARES · cpf: O CPF do funcionário não foi informado; poderiam enviar esse dado?",
+     "Marta Moura Pacheco · nis_pis: O PIS informado está ilegível e marcado como 'parece 154.36237.98-7'; poderiam confirmar o número correto?"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco.",
+     "Pessoa 3, campo tipo_documento: a IA escreveu algo que não está no documento; o campo ficou em branco para você completar.",
+     "Pessoa 8, campo tipo_documento: a IA escreveu algo que não está no documento; o campo ficou em branco para você completar."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 37862,
+     "tokens_saida": 8589,
+     "custo_usd": 0.15428190000000003,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 6
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_b",
+   "nivel": "N5",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 130,
+    "campos_errados": 3,
+    "campos_faltando": 5,
+    "armadilhas": 4,
+    "armadilhas_respeitadas": 4,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 4,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 15,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 18
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 16,
+      "esperados": 17
+     },
+     {
+      "certos": 14,
+      "esperados": 17
+     },
+     {
+      "certos": 18,
+      "esperados": 18
+     },
+     {
+      "certos": 16,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 1,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "valor_renda",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 2,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "valor_renda",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 7,
+      "campo": "valor_renda",
+      "tipo": "errado"
+     }
+    ],
+    "custo_usd": 0.19038479999999997,
+    "segundos": 31.5,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "estado_civil",
+      "nome_mae",
+      "nis_pis",
+      "tipo_documento",
+      "numero_documento",
+      "orgao_emissor",
+      "uf_emissor",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Helena Assunção Moura",
+      "03799493859",
+      "16-11-1976",
+      "solteiro",
+      "Jéssica Assunção Bittencourt",
+      "117.38290.49-2",
+      "identidade",
+      "55.331.205-2",
+      "SSP",
+      "SP",
+      "13019-915",
+      "Rua Marechal Deodoro",
+      "277",
+      "Vila Mariana",
+      "Campinas",
+      "SP",
+      "19982302928",
+      "helena.assuncao@exemplo.com",
+      "",
+      "",
+      "R$ 9.367."
+     ],
+     [
+      "Caio Bittencourt Leal",
+      "97063664310",
+      "23/11/85",
+      "união estável",
+      "Sílvia Bittencourt Tavares",
+      "282.15607.90-0",
+      "identidade",
+      "25.715.728-2",
+      "SSP",
+      "SP",
+      "13045-536",
+      "Rua das Acácias",
+      "2382",
+      "Savassi",
+      "Campinas",
+      "SP",
+      "19 99092-9334",
+      "caio.bittencourt@exemplo.com",
+      "Técnico de manutenção",
+      "31-08-2025",
+      ""
+     ],
+     [
+      "NELSON REZENDE QUINTELA",
+      "",
+      "12-01-1975",
+      "divorciado",
+      "Vanessa Rezende Siqueira",
+      "231.20472.41-3",
+      "identidade",
+      "23.266.926-6",
+      "",
+      "GO",
+      "74138-815",
+      "Avenida Getúlio Vargas",
+      "2884",
+      "Rio Vermelho",
+      "Goiânia",
+      "GO",
+      "+55 62 99962-4107",
+      "nelson.rezende@exemplo.com",
+      "Operador de empilhadeira",
+      "26.03.2025",
+      "R$ 8.743,00"
+     ],
+     [
+      "",
+      "457 153 721 27",
+      "11/04/86",
+      "casado",
+      "Jéssica Fontes Pacheco",
+      "",
+      "",
+      "25.770.798-1",
+      "SSP",
+      "CE",
+      "60112-044",
+      "Travessa São Bento",
+      "104",
+      "Jardim Europa",
+      "Fortaleza",
+      "CE",
+      "85 99024-2755",
+      "geraldo.fontes@exemplo.com",
+      "Vendedor externo",
+      "03/10/2025",
+      "R$ 2.982,00"
+     ],
+     [
+      "",
+      "",
+      "02-11-1977",
+      "solteiro",
+      "Noemi Sampaio Quintela",
+      "145.49515.73-5",
+      "identidade",
+      "33.712.128-5",
+      "SSP",
+      "SP",
+      "13081-891",
+      "Travessa São Bento",
+      "1204",
+      "Centro",
+      "Campinas",
+      "SP",
+      "+55 19 98879-3579",
+      "silvia.sampaio@exemplo.com",
+      "Técnico de manutenção",
+      "",
+      "R$ 3.903."
+     ],
+     [
+      "Renata Assunção Xavier",
+      "468 842 859 66",
+      "14-06-1986",
+      "divorciado",
+      "Tatiane Assunção Guimarães",
+      "204.46580.74-1",
+      "identidade",
+      "17.288.189-3",
+      "",
+      "MG",
+      "30146-543",
+      "Travessa São Bento",
+      "2519",
+      "Setor Oeste",
+      "Belo Horizonte",
+      "MG",
+      "31992486005",
+      "renata.assuncao@exemplo.com",
+      "Supervisor de loja",
+      "11.04.2024",
+      "R$ 9.478"
+     ],
+     [
+      "LORENA PACHECO BITTENCOURT",
+      "",
+      "03.03.2003",
+      "casado",
+      "Noemi Pacheco Sampaio",
+      "221.27440.30-7",
+      "identidade",
+      "15.400.791-5",
+      "",
+      "SP",
+      "13088-133",
+      "Rua das Acácias",
+      "1157",
+      "Vila Mariana",
+      "Campinas",
+      "SP",
+      "19989753125",
+      "lorena.pacheco@exemplo.com",
+      "Assistente de logística",
+      "17.03.2025",
+      "R$ 1.924."
+     ],
+     [
+      "MAURO MONTEIRO LEAL",
+      "60558428231",
+      "13-07-1985",
+      "casado",
+      "Gláucia Monteiro Guimarães",
+      "",
+      "",
+      "49.138.818-4",
+      "SSP",
+      "MG",
+      "30154-699",
+      "Rua Marechal Deodoro",
+      "705",
+      "Savassi",
+      "Belo Horizonte",
+      "MG",
+      "31989213975",
+      "mauro.monteiro@exemplo.com",
+      "Operador de empilhadeira",
+      "11 de março de 2024",
+      "R$ 9.346,00"
+     ]
+    ],
+    "duvidas": [
+     "Helena Assunção Moura · data_admissao: A ficha indica admissão em 14/07/2025, mas o gestor escreveu 28/07/2025. Qual data está correta?",
+     "Caio Bittencourt Leal · valor_renda: O valor de 2.945,00 é o salário fixo mensal bruto, sem contar comissão e garantia mínima temporária?",
+     "NELSON REZENDE QUINTELA · cpf: O CPF do funcionário ainda não foi informado; poderiam enviar o número assim que possível?",
+     "Pessoa 4 · nis_pis: O PIS/NIS está ilegível e parece ser 228.87317.85-4; poderiam confirmar o número correto?",
+     "Pessoa 5 · data_admissao: A ficha e o gestor informam datas de admissão diferentes (04/07/2024 e 18/07/2024); qual é a correta?",
+     "LORENA PACHECO BITTENCOURT · cpf: O CPF do funcionário não foi informado; poderia enviá-lo?",
+     "MAURO MONTEIRO LEAL · nis_pis: O PIS está ilegível e o documento sugere '169.15530.38-1' apenas como possibilidade; pode confirmar o número correto do PIS?"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 38818,
+     "tokens_saida": 12177,
+     "custo_usd": 0.19038479999999997,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 7
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_b",
+   "nivel": "N5",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 138,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 4,
+    "armadilhas_respeitadas": 4,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 6,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 18,
+      "esperados": 18
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 18,
+      "esperados": 18
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     },
+     {
+      "certos": 17,
+      "esperados": 17
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.1582798,
+    "segundos": 25.5,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "estado_civil",
+      "nome_mae",
+      "nis_pis",
+      "tipo_documento",
+      "numero_documento",
+      "orgao_emissor",
+      "uf_emissor",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "tipo_renda",
+      "valor_renda"
+     ],
+     [
+      "Helena Assunção Moura",
+      "03799493859",
+      "16-11-1976",
+      "solteiro",
+      "Jéssica Assunção Bittencourt",
+      "117.38290.49-2",
+      "identidade",
+      "55.331.205-2",
+      "SSP",
+      "SP",
+      "13019-915",
+      "Rua Marechal Deodoro",
+      "277",
+      "Vila Mariana",
+      "Campinas",
+      "SP",
+      "19982302928",
+      "helena.assuncao@exemplo.com",
+      "Recepcionista",
+      "",
+      "",
+      "R$ 9.367"
+     ],
+     [
+      "Caio Bittencourt Leal",
+      "97063664310",
+      "23/11/85",
+      "união estável",
+      "Sílvia Bittencourt Tavares",
+      "282.15607.90-0",
+      "identidade",
+      "25.715.728-2",
+      "SSP",
+      "SP",
+      "13045-536",
+      "Rua das Acácias",
+      "2382",
+      "Savassi",
+      "Campinas",
+      "SP",
+      "19 99092-9334",
+      "caio.bittencourt@exemplo.com",
+      "Técnico de manutenção",
+      "31-08-2025",
+      "",
+      "2.945,00"
+     ],
+     [
+      "NELSON REZENDE QUINTELA",
+      "",
+      "12-01-1975",
+      "divorciado",
+      "Vanessa Rezende Siqueira",
+      "231.20472.41-3",
+      "identidade",
+      "23.266.926-6",
+      "SSP",
+      "GO",
+      "74138-815",
+      "Avenida Getúlio Vargas",
+      "2884",
+      "Rio Vermelho",
+      "Goiânia",
+      "GO",
+      "+55 62 99962-4107",
+      "nelson.rezende@exemplo.com",
+      "Operador de empilhadeira",
+      "26.03.2025",
+      "Salário mensal",
+      "R$ 8.743,00"
+     ],
+     [
+      "GERALDO FONTES NOGUEIRA",
+      "457 153 721 27",
+      "11/04/86",
+      "casado",
+      "Jéssica Fontes Pacheco",
+      "",
+      "identidade",
+      "25.770.798-1",
+      "SSP",
+      "CE",
+      "60112-044",
+      "Travessa São Bento",
+      "104",
+      "Jardim Europa",
+      "Fortaleza",
+      "CE",
+      "85 99024-2755",
+      "geraldo.fontes@exemplo.com",
+      "Vendedor externo",
+      "03/10/2025",
+      "",
+      "R$ 2.982,00"
+     ],
+     [
+      "Sílvia Sampaio Fontes",
+      "505 816 685 29",
+      "02-11-1977",
+      "solteiro",
+      "Noemi Sampaio Quintela",
+      "145.49515.73-5",
+      "identidade",
+      "33.712.128-5",
+      "SSP",
+      "SP",
+      "13081-891",
+      "Travessa São Bento",
+      "1204",
+      "Centro",
+      "Campinas",
+      "SP",
+      "+55 19 98879-3579",
+      "silvia.sampaio@exemplo.com",
+      "Técnico de manutenção",
+      "",
+      "",
+      "R$ 3.903"
+     ],
+     [
+      "Renata Assunção Xavier",
+      "468 842 859 66",
+      "14-06-1986",
+      "divorciado",
+      "Tatiane Assunção Guimarães",
+      "204.46580.74-1",
+      "identidade",
+      "17.288.189-3",
+      "SSP",
+      "MG",
+      "30146-543",
+      "Travessa São Bento",
+      "2519",
+      "Setor Oeste",
+      "Belo Horizonte",
+      "MG",
+      "31992486005",
+      "renata.assuncao@exemplo.com",
+      "Supervisor de loja",
+      "11.04.2024",
+      "fixo",
+      "R$ 9.478"
+     ],
+     [
+      "LORENA PACHECO BITTENCOURT",
+      "",
+      "03.03.2003",
+      "casado",
+      "Noemi Pacheco Sampaio",
+      "221.27440.30-7",
+      "identidade",
+      "15.400.791-5",
+      "SSP",
+      "SP",
+      "13088-133",
+      "Rua das Acácias",
+      "1157",
+      "Vila Mariana",
+      "Campinas",
+      "SP",
+      "19989753125",
+      "lorena.pacheco@exemplo.com",
+      "Assistente de logística",
+      "17.03.2025",
+      "",
+      "R$ 1.924"
+     ],
+     [
+      "MAURO MONTEIRO LEAL",
+      "60558428231",
+      "13-07-1985",
+      "casado",
+      "Gláucia Monteiro Guimarães",
+      "",
+      "identidade",
+      "49.138.818-4",
+      "SSP",
+      "MG",
+      "30154-699",
+      "Rua Marechal Deodoro",
+      "705",
+      "Savassi",
+      "Belo Horizonte",
+      "MG",
+      "31989213975",
+      "mauro.monteiro@exemplo.com",
+      "Operador de empilhadeira",
+      "11 de março de 2024",
+      "",
+      "R$ 9.346,00"
+     ]
+    ],
+    "duvidas": [
+     "Helena Assunção Moura · data_admissao: A ficha diz admissão em 14/07/2025 e o gestor diz 28/07/2025; qual é a data correta?",
+     "NELSON REZENDE QUINTELA · cpf: O CPF do funcionário não foi informado; poderiam enviar esse dado?",
+     "GERALDO FONTES NOGUEIRA · nis_pis: O PIS está ilegível na ficha (parece 228.87317.85-4); poderiam confirmar o número correto?",
+     "Sílvia Sampaio Fontes · data_admissao: A ficha e o gestor divergem sobre a data de admissão (04/07/2024 vs 18/07/2024): qual está correta?",
+     "LORENA PACHECO BITTENCOURT · cpf: O CPF da funcionária não foi informado; poderiam enviar o número?",
+     "MAURO MONTEIRO LEAL · nis_pis: O PIS informado está ilegível/duvidoso na ficha (parece 169.15530.38-1); poderiam confirmar o número correto?"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 37668,
+     "tokens_saida": 9263,
+     "custo_usd": 0.1582798,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 6
+    },
+    "recusado": null
+   }
+  }
+ ]
+}

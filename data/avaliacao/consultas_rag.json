@@ -1,0 +1,27 @@
+{
+  "dia": "2026-09-24",
+  "layout": [
+    {"pergunta": "Salário Mensal Bruto", "tipo": "conhecida", "campo": "valor_renda"},
+    {"pergunta": "CPF do colaborador", "tipo": "conhecida", "campo": "cpf"},
+    {"pergunta": "CEP do local de trabalho", "tipo": "conhecida", "campo": "cep_comercial"},
+    {"pergunta": "Data de entrada na empresa", "tipo": "conhecida", "campo": "data_admissao"},
+    {"pergunta": "Nome da genitora", "tipo": "conhecida", "campo": "nome_mae"},
+    {"pergunta": "Como tratar valor em reais escrito com vírgula?", "tipo": "conhecida", "fonte_contem": "DECIMAL_MONETARIO"},
+    {"pergunta": "O salário está muito acima do normal para o cargo", "tipo": "conhecida", "fonte_contem": "Enquadramento de renda"},
+    {"pergunta": "A mesma matrícula aparece duas vezes no arquivo", "tipo": "conhecida", "fonte_contem": "MATRICULA"},
+    {"pergunta": "Qual o time de futebol preferido do funcionário?", "tipo": "sem_resposta"},
+    {"pergunta": "Receita de bolo de chocolate com cobertura", "tipo": "sem_resposta"}
+  ],
+  "catalogo": [
+    {"empresa_id": "EMP001", "pergunta": "A conta salário cobra tarifa?", "tipo": "conhecida", "fonte_contem": "Conta salário"},
+    {"empresa_id": "EMP001", "pergunta": "Por quanto tempo fico sem pagar o pacote da conta?", "tipo": "conhecida", "fonte_contem": "Folha Essencial"},
+    {"empresa_id": "EMP002", "pergunta": "Posso pegar um adiantamento do salário?", "tipo": "conhecida", "fonte_contem": "Adiantamento salarial"},
+    {"empresa_id": "EMP002", "pergunta": "Tem seguro de vida?", "tipo": "conhecida", "fonte_contem": "Seguro de vida"},
+    {"empresa_id": "EMP003", "pergunta": "Onde posso investir o dinheiro parado?", "tipo": "conhecida", "fonte_contem": "Investimentos"},
+    {"empresa_id": "EMP006", "pergunta": "Existe plano de aposentadoria?", "tipo": "conhecida", "fonte_contem": "Previdência privada"},
+    {"empresa_id": "EMP005", "pergunta": "Qual o telefone para tirar dúvidas?", "tipo": "conhecida", "fonte_contem": "Canais de dúvidas"},
+    {"empresa_id": "EMP001", "pergunta": "Vocês têm plano de saúde para o meu cachorro?", "tipo": "sem_resposta"},
+    {"empresa_id": "EMP003", "pergunta": "Qual a previsão do tempo para amanhã?", "tipo": "sem_resposta"},
+    {"empresa_id": "EMP001", "pergunta": "Quero ver o adiantamento salarial da Horizonte Logística", "tipo": "outra_empresa", "empresa_alheia": "EMP002"}
+  ]
+}

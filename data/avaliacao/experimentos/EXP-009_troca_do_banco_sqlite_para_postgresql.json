@@ -1,0 +1,35 @@
+{
+  "id": "EXP-009",
+  "data": "2026-09-25",
+  "titulo": "Troca do banco: SQLite para PostgreSQL",
+  "tipo": "banco_de_dados",
+  "pergunta": "A aplicação roda igual no PostgreSQL, o banco que a produção precisa, sem perder o que já foi cadastrado?",
+  "o_que_testamos": "A mesma bateria de testes nos dois bancos, pela mesma porta (services/banco.py), e a cópia dos dados locais do SQLite para o PostgreSQL. A escolha do banco foi uma avaliação conceitual de capacidades (docs/banco_de_dados.md, seção 7), não um teste de carga.",
+  "amostra": "A bateria completa de testes automáticos e os dados locais da máquina (18 tabelas e o fluxo em andamento)",
+  "modo": "sem IA",
+  "resultados": [
+    {
+      "nome": "SQLite",
+      "modelo": "SQLite 3.49 (arquivo)",
+      "metricas": {
+        "testes_passando": "532 de 532",
+        "segundos_da_bateria": 176.6
+      }
+    },
+    {
+      "nome": "PostgreSQL",
+      "modelo": "PostgreSQL 18.6 (servidor)",
+      "metricas": {
+        "testes_passando": "531 de 531 (1 pulado: testa o arquivo do SQLite)",
+        "segundos_da_bateria": 229.2,
+        "tabelas_migradas_com_contagem_igual": "18 de 18",
+        "fluxo_em_andamento_no_mesmo_ponto": "sim (mesmo estado e mesmas gravações pendentes)",
+        "defeitos_achados_pela_bateria": 3
+      }
+    }
+  ],
+  "leitura": "Os dois bancos passam na mesma bateria. A bateria achou 3 diferenças que só apareciam no PostgreSQL: leitura que deixava a transação aberta e travava outra conexão (a mais séria), soma que chegava como Decimal e soma de condição (SUM de verdadeiro/falso) que o PostgreSQL não aceita. As três foram corrigidas na porta ou no SQL. O PostgreSQL é cerca de 30% mais lento na bateria, porque cada teste cria e apaga um esquema no servidor; não é medida de desempenho da aplicação.",
+  "decisao": "PostgreSQL como banco de uso e de produção, com o SQLite mantido pela mesma porta para os testes e a reprodução (ADR-67, substitui o ADR-34).",
+  "custo_usd": 0.0,
+  "fonte": "docs/banco_de_dados.md; tests/test_banco.py"
+}

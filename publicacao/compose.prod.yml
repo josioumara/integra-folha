@@ -1,0 +1,83 @@
+# =====================================================================================================================
+# compose.prod.yml: o que muda no servidor, por cima do docker-compose.yml da raiz (publicação na AWS)
+#
+# Para que serve:
+#   O docker-compose.yml da raiz sobe a aplicação e o banco na máquina local. No servidor, três coisas mudam:
+#   1. entra o Caddy, o "porteiro" da internet: é o único com portas abertas (80 e 443) e cuida do https sozinho
+#      (pede e renova o certificado do Let's Encrypt);
+#   2. a aplicação e o banco ficam sem nenhuma porta para fora: o Caddy fala com a aplicação pela rede interna do
+#      Docker, e ninguém de fora chega no 8000 nem no 5432;
+#   3. a aplicação usa a imagem pronta, construída pelo publicar.sh a partir de um commit (a etiqueta é o código do
+#      commit): o compose não constrói nada.
+#
+# Como usar (no servidor, na pasta /srv/integra-folha, pelo publicar.sh):
+#   docker compose --env-file publicacao/.env -f docker-compose.yml -f publicacao/compose.prod.yml up -d
+#   Os caminhos ("./publicacao/...") partem da raiz do repositório, que é a pasta do primeiro arquivo.
+#   Para conferir sem mostrar os segredos: o mesmo comando com "config --quiet" no lugar de "up -d".
+# =====================================================================================================================
+
+services:
+  banco:
+    # Nenhuma porta para fora: só a aplicação fala com o banco, pela rede interna.
+    ports: !reset []
+    # Guarda só os últimos 30 MB de log, para o disco não encher.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  aplicacao:
+    # A imagem construída pelo publicar.sh; a etiqueta (IMAGEM_TAG) é o código do commit publicado.
+    image: integra-folha/web:${IMAGEM_TAG:?defina IMAGEM_TAG no publicacao/.env}
+    # O compose não constrói a imagem (o publicar.sh já construiu): tira o "build" do arquivo da raiz.
+    build: !reset null
+    # Nenhuma porta para fora: o Caddy chega pela rede interna ("aplicacao:8000").
+    ports: !reset []
+    environment:
+      # O limite de chamadas à IA por sessão (o arquivo da raiz não passa este).
+      LIMITE_CHAMADAS_LLM_POR_SESSAO: ${LIMITE_CHAMADAS_LLM_POR_SESSAO:-50}
+    # Guarda só os últimos 30 MB de log.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  caddy:
+    # A imagem oficial do Caddy, versão 2, na variante enxuta.
+    image: caddy:2-alpine
+    # Só sobe depois da aplicação.
+    depends_on:
+      - aplicacao
+    ports:
+      # O http: só para pegar o certificado e mandar o visitante para o https.
+      - "80:80"
+      # O https.
+      - "443:443"
+      # O https pelo protocolo novo (HTTP/3, que usa UDP).
+      - "443:443/udp"
+    environment:
+      # O e-mail que o Let's Encrypt usa para avisar de problema no certificado (vem do publicacao/.env).
+      EMAIL_DO_CERTIFICADO: ${EMAIL_DO_CERTIFICADO:-}
+    volumes:
+      # A configuração do Caddy (só leitura).
+      - ./publicacao/Caddyfile:/etc/caddy/Caddyfile:ro
+      # Onde o Caddy guarda o certificado. NÃO apague este volume: pedir de novo tem limite por semana.
+      - dados_do_caddy:/data
+      # A configuração em uso do Caddy.
+      - configuracao_do_caddy:/config
+    # Volta sozinho se cair ou se a máquina reiniciar.
+    restart: unless-stopped
+    # Guarda só os últimos 30 MB de log.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  # O certificado do https.
+  dados_do_caddy:
+  # A configuração em uso do Caddy.
+  configuracao_do_caddy:

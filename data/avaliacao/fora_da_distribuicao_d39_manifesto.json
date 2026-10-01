@@ -1,0 +1,18 @@
+{
+ "conjunto": "texto_fora_da_distribuicao",
+ "arquivos": {
+  "gabarito.json": "7b9640c7b6f898330df115fa53451c45577b545a8bdce8a34956df460ccd950b",
+  "N6F_ordem_por_pessoa_1.docx": "3685f292a4313bcfc107aa630bb9319cb6704a637e49551ef26fc9888a352dc4",
+  "N6F_ordem_por_pessoa_2.docx": "a8d41dfff2b9c79a520fc47222ab819978a93f2bd524e50a94adaa4d0eda8372",
+  "N6F_ordem_por_pessoa_3.docx": "ce82e2634a2fdc449f8ee849e8eb4adf246387eae472df8bf5871a04a5267d2d",
+  "N6F_pela_matricula_1.docx": "f56959bbbc09c51fefe16d4442695bab8fff344694cadf34d541aacf95d17359",
+  "N6F_pela_matricula_2.docx": "85872baa9dd00bc1b428ff335d1a882c8989a10ccb3dc9ce0a4018174959c567",
+  "N6F_pela_matricula_3.docx": "4b1230cbbf627c72af289ef03b21aa3344f8dccd9ea4be4cb41f78a8a07d6d6d",
+  "N6F_pelo_cargo_1.docx": "5a948c48fc7b65665c54f606ff59decd1a2d5d2ea592729e740b45c269488a87",
+  "N6F_pelo_cargo_2.docx": "c1e9c7fa77476640cc9ba618cad2bfd9e34da3612962ec0b2b315a5c974cfdc2",
+  "N6F_pelo_cargo_3.docx": "ba0ed5909a964d6c5582bd00bf15650db78515a7e400c7d66c1c75730ab53c8e",
+  "N6F_tabela_no_meio_1.docx": "0071187bc2085f4d38dd236e305b45ebfdc2d46fcf9e4bab66272780cb85da61",
+  "N6F_tabela_no_meio_2.docx": "4e623485f8aa4c2849de84054c28819745859c56e5d970ff325f1e45aea4c9b9",
+  "N6F_tabela_no_meio_3.docx": "1ed80300b013a330f053c13c3e0074d0cf228a5f057b721e57bdf3b5d2613312"
+ }
+}

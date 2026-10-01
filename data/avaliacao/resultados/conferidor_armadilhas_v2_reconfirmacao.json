@@ -1,0 +1,711 @@
+{
+  "experimento": "conferidor",
+  "quando": "2026-09-29T16:51:13",
+  "conjunto": "armadilhas",
+  "modo_da_ia": "llm",
+  "modelo": "nova-2-lite",
+  "versao_prompt": "conferidor_da_leitura_v2",
+  "semente": 12,
+  "repeticoes": 1,
+  "resumo": {
+    "plantados": 5,
+    "achados": 5,
+    "alarmes_falsos": 0,
+    "suspeitas": 5,
+    "perguntas_simples": 5,
+    "documentos_certos": 18,
+    "custo_usd": 0.012316348000000001,
+    "documentos": 18,
+    "acerto": 1.0
+  },
+  "resumo_por_repeticao": [
+    {
+      "plantados": 5,
+      "achados": 5,
+      "alarmes_falsos": 0,
+      "suspeitas": 5,
+      "perguntas_simples": 5,
+      "documentos_certos": 18,
+      "custo_usd": 0.012316348000000001,
+      "documentos": 18,
+      "acerto": 1.0
+    }
+  ],
+  "certos_em_todas_as_repeticoes": 18,
+  "documentos": [
+    {
+      "documento": "A01_beneficio_va_ao_lado",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0005690630000000002,
+        "segundos": 1.7,
+        "perguntas": [],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A02_beneficios_em_lista",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.001080288,
+        "segundos": 2.0,
+        "perguntas": [],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A03_beneficio_antes_do_salario",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.000571967,
+        "segundos": 1.3,
+        "perguntas": [],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A04_ajuda_de_custo_e_gratificacao_fixa",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.000920205,
+        "segundos": 2.2,
+        "perguntas": [],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "A05_cpf_do_dependente",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0005723299999999999,
+        "segundos": 1.5,
+        "perguntas": [],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "A06_cpf_do_conjuge_primeiro",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.000566522,
+        "segundos": 1.3,
+        "perguntas": [],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "A07_cpf_de_cliente_citado",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0005708780000000001,
+        "segundos": 1.5,
+        "perguntas": [],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "A08_liquido_e_bruto",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0005676110000000001,
+        "segundos": 1.8,
+        "perguntas": [],
+        "distracao": "liquido_e_bruto"
+      }
+    },
+    {
+      "documento": "A09_adiantamento_e_salario_anterior",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0005726930000000001,
+        "segundos": 1.7,
+        "perguntas": [],
+        "distracao": "outro_valor"
+      }
+    },
+    {
+      "documento": "A10_outras_datas",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0005730560000000001,
+        "segundos": 1.5,
+        "perguntas": [],
+        "distracao": "outras_datas"
+      }
+    },
+    {
+      "documento": "A11_datas_em_texto_e_experiencia",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.00085063,
+        "segundos": 1.8,
+        "perguntas": [],
+        "distracao": "outras_datas"
+      }
+    },
+    {
+      "documento": "A12_gestor_citado",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0005701520000000001,
+        "segundos": 1.5,
+        "perguntas": [],
+        "distracao": "outra_pessoa_citada"
+      }
+    },
+    {
+      "documento": "A13_tabela_com_beneficio_e_pensao",
+      "medida": {
+        "plantados": 0,
+        "achados": 0,
+        "alarmes_falsos": 0,
+        "suspeitas": 0,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0006133490000000001,
+        "segundos": 1.5,
+        "perguntas": [],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "E01_salario_lido_era_o_beneficio",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 0,
+        "suspeitas": 1,
+        "perguntas_simples": 1,
+        "certo": true,
+        "custo_usd": 0.0007353170000000001,
+        "segundos": 1.8,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 2.600,00, mas ficou R$ 650,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    },
+    {
+      "documento": "E02_cpf_lido_era_do_dependente",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 0,
+        "suspeitas": 1,
+        "perguntas_simples": 1,
+        "certo": true,
+        "custo_usd": 0.00069938,
+        "segundos": 1.9,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "cpf",
+            "pergunta": "Confira este valor: no documento está 025.336.344-68, mas ficou 855.674.312-95. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ],
+        "distracao": "cpf_de_outra_pessoa"
+      }
+    },
+    {
+      "documento": "E03_nascimento_lido_era_a_emissao_do_rg",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 0,
+        "suspeitas": 1,
+        "perguntas_simples": 1,
+        "certo": true,
+        "custo_usd": 0.0007080920000000001,
+        "segundos": 1.6,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "data_nascimento",
+            "pergunta": "Confira este valor: no documento está 10/10/1994, mas ficou 20/07/2012. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ],
+        "distracao": "outras_datas"
+      }
+    },
+    {
+      "documento": "E04_salario_lido_era_o_do_cargo_anterior",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 0,
+        "suspeitas": 1,
+        "perguntas_simples": 1,
+        "certo": true,
+        "custo_usd": 0.0006871590000000001,
+        "segundos": 1.7,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 4.650,00, mas ficou R$ 3.100,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ],
+        "distracao": "outro_valor"
+      }
+    },
+    {
+      "documento": "E05_salario_de_outra_pessoa_com_beneficio",
+      "medida": {
+        "plantados": 1,
+        "achados": 1,
+        "alarmes_falsos": 0,
+        "suspeitas": 1,
+        "perguntas_simples": 1,
+        "certo": true,
+        "custo_usd": 0.0008876560000000001,
+        "segundos": 1.8,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 1.950,00, mas ficou R$ 5.600,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ],
+        "distracao": "beneficio"
+      }
+    }
+  ],
+  "documentos_por_repeticao": [
+    [
+      {
+        "documento": "A01_beneficio_va_ao_lado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0005690630000000002,
+          "segundos": 1.7,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A02_beneficios_em_lista",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.001080288,
+          "segundos": 2.0,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A03_beneficio_antes_do_salario",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000571967,
+          "segundos": 1.3,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A04_ajuda_de_custo_e_gratificacao_fixa",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000920205,
+          "segundos": 2.2,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "A05_cpf_do_dependente",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0005723299999999999,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A06_cpf_do_conjuge_primeiro",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.000566522,
+          "segundos": 1.3,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A07_cpf_de_cliente_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0005708780000000001,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "A08_liquido_e_bruto",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0005676110000000001,
+          "segundos": 1.8,
+          "perguntas": [],
+          "distracao": "liquido_e_bruto"
+        }
+      },
+      {
+        "documento": "A09_adiantamento_e_salario_anterior",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0005726930000000001,
+          "segundos": 1.7,
+          "perguntas": [],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "A10_outras_datas",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0005730560000000001,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A11_datas_em_texto_e_experiencia",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.00085063,
+          "segundos": 1.8,
+          "perguntas": [],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "A12_gestor_citado",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0005701520000000001,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "outra_pessoa_citada"
+        }
+      },
+      {
+        "documento": "A13_tabela_com_beneficio_e_pensao",
+        "medida": {
+          "plantados": 0,
+          "achados": 0,
+          "alarmes_falsos": 0,
+          "suspeitas": 0,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0006133490000000001,
+          "segundos": 1.5,
+          "perguntas": [],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E01_salario_lido_era_o_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 1,
+          "certo": true,
+          "custo_usd": 0.0007353170000000001,
+          "segundos": 1.8,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 2.600,00, mas ficou R$ 650,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      },
+      {
+        "documento": "E02_cpf_lido_era_do_dependente",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 1,
+          "certo": true,
+          "custo_usd": 0.00069938,
+          "segundos": 1.9,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 025.336.344-68, mas ficou 855.674.312-95. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ],
+          "distracao": "cpf_de_outra_pessoa"
+        }
+      },
+      {
+        "documento": "E03_nascimento_lido_era_a_emissao_do_rg",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 1,
+          "certo": true,
+          "custo_usd": 0.0007080920000000001,
+          "segundos": 1.6,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 10/10/1994, mas ficou 20/07/2012. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ],
+          "distracao": "outras_datas"
+        }
+      },
+      {
+        "documento": "E04_salario_lido_era_o_do_cargo_anterior",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 1,
+          "certo": true,
+          "custo_usd": 0.0006871590000000001,
+          "segundos": 1.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 4.650,00, mas ficou R$ 3.100,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ],
+          "distracao": "outro_valor"
+        }
+      },
+      {
+        "documento": "E05_salario_de_outra_pessoa_com_beneficio",
+        "medida": {
+          "plantados": 1,
+          "achados": 1,
+          "alarmes_falsos": 0,
+          "suspeitas": 1,
+          "perguntas_simples": 1,
+          "certo": true,
+          "custo_usd": 0.0008876560000000001,
+          "segundos": 1.8,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 1.950,00, mas ficou R$ 5.600,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ],
+          "distracao": "beneficio"
+        }
+      }
+    ]
+  ]
+}

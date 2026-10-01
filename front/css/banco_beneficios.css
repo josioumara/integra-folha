@@ -1,0 +1,377 @@
+/*
+  banco_beneficios.css — a aparência das KBs de endomarketing (ADR-125) nas guias "Base de Conhecimento" e "Regras
+  gerais" da aba Endomarketing, e da seção "Guardrails das KBs" do Acompanhamento dos agentes.
+
+  Usa as cores e medidas de css/estilos.css (as variáveis --cor-marca, --linha-divisoria...). Só o que é novo fica
+  aqui: o cartão das KBs, a janela de uma KB (seções, versões, achados da trava, o histórico congelado e, no kit da
+  marca, as cores e o logo da versão), o editor e "Aguardando publicação". A antiga tela "Benefícios e KBs" foi
+  aposentada (ADR-125).
+*/
+
+/* ---------------- As KBs do dono ---------------- */
+
+/* O topo: a frase de apoio do dono e o botão "Nova KB". */
+.painel-kbs-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* O botão "Nova KB", alinhado à direita. */
+.painel-kbs-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Os filtros ficam entre o topo e as abas. */
+.filtros-kbs {
+  margin: 12px 0;
+}
+
+/* Na guia Regras gerais: a escolha entre as diretrizes gerais e o Santander, acima da frase de apoio. */
+.escolha-das-regras {
+  margin-bottom: 12px;
+}
+
+/* A lista das KBs, sem marcadores. */
+.lista-kbs {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Os selos de uma KB (situação e vigência), lado a lado. */
+.selos-da-kb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* ---------------- A janela de uma KB e o editor ---------------- */
+
+/* A janela da KB é mais larga que a de um benefício: tem seções, tabelas e o editor. */
+.janela-kb {
+  width: min(900px, calc(100vw - 32px));
+  max-width: 900px;
+}
+
+/* Só no kit da marca: as cores e o logo da versão aberta, numa linha que quebra no celular. As amostras e a prévia do
+   logo usam as peças do kit do css/banco.css (.amostras-cores e .previa-do-logo). */
+.kit-da-versao {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* O texto ao lado do logo ("Sem logo nesta versão"). */
+.kit-da-versao-texto {
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* As seções da KB, uma embaixo da outra. */
+.secoes-da-kb {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+/* Cada seção: uma linha fina à esquerda, como uma ficha. */
+.secao-da-kb {
+  padding-left: 12px;
+  border-left: 3px solid var(--linha-divisoria);
+}
+
+/* O título da seção ("## Como funciona"). */
+.titulo-da-secao-da-kb {
+  margin: 0 0 4px;
+  font-family: var(--fonte-titulos);
+  font-size: 15px;
+}
+
+/* O subtítulo dentro de uma seção ("### ..."). */
+.subtitulo-interno-da-kb {
+  margin: 8px 0 2px;
+  font-size: 13px;
+}
+
+/* O texto da seção: parágrafos curtos. */
+.texto-da-kb p {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* As listas da seção. */
+.lista-da-kb {
+  margin: 4px 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* As tabelas da seção (termos proibidos, cores...): rolam de lado no celular. */
+.tabela-da-kb {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+/* Cada célula com borda fina. */
+.tabela-da-kb th,
+.tabela-da-kb td {
+  border: 1px solid var(--linha-divisoria);
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* O cabeçalho da tabela, com fundo claro. */
+.tabela-da-kb th {
+  background: var(--fundo-pagina);
+}
+
+/* O título "Versões". */
+.subtitulo-da-kb {
+  margin: 16px 0 6px;
+  font-family: var(--fonte-titulos);
+  font-size: 15px;
+}
+
+/* A lista das versões. */
+.versoes-da-kb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Cada versão: o selo, o texto e os botões numa linha (quebra no celular). */
+.versao-da-kb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* "criada por ... em ...", menor e cinza. */
+.versao-da-kb-texto {
+  flex: 1 1 200px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* O bloco de revisar a vigência. */
+.revisar-kb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* ---------------- Os achados da trava ---------------- */
+
+/* A lista dos achados. */
+.achados-da-trava {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+/* Achado que bloqueia: faixa na cor da marca (vermelho). */
+.achado-bloqueia {
+  padding: 8px 10px;
+  border-left: 4px solid var(--cor-marca);
+  background: var(--cor-marca-clara);
+  border-radius: 8px;
+}
+
+/* Achado que só avisa: faixa laranja. */
+.achado-aviso {
+  padding: 8px 10px;
+  border-left: 4px solid var(--amarelo-atencao);
+  background: var(--amarelo-atencao-claro);
+  border-radius: 8px;
+}
+
+/* O trecho da KB em que a trava achou o problema, numa linha própria. */
+.achado-trecho {
+  display: block;
+  margin-top: 2px;
+  color: var(--texto-secundario);
+  font-style: italic;
+  overflow-wrap: anywhere;
+}
+
+/* ---------------- O editor ---------------- */
+
+/* Os campos da ficha em duas colunas (uma no celular). */
+.grade-editor-kb {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  margin: 12px 0;
+}
+
+/* Título e origem ocupam a linha toda. */
+.grade-editor-kb .campo-largo {
+  grid-column: 1 / -1;
+}
+
+/* No celular, uma coluna só. */
+@media (max-width: 640px) {
+  .grade-editor-kb {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* O corpo da KB: letra de largura fixa, para as tabelas do Markdown ficarem alinhadas. */
+.editor-corpo-kb {
+  width: 100%;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* ---------------- Acompanhamento dos agentes: a seção "Guardrails das KBs" ---------------- */
+
+/* O filtro por dono, acima da tabela. */
+.filtro-guardrails-kbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+/* A gravidade na tabela: bloqueio em vermelho, aviso em laranja. */
+.celula-bloqueia {
+  color: var(--cor-marca);
+  font-weight: 700;
+}
+
+/* Aviso em laranja. */
+.celula-aviso {
+  color: var(--amarelo-atencao);
+  font-weight: 700;
+}
+
+/* ---------------- Aguardando publicação (guia Base de Conhecimento do Endomarketing) ---------------- */
+
+/* O cartão das versões novas: título com o contador, a frase e a lista. */
+.painel-aguardando {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* O contador ao lado do título. */
+.painel-aguardando .contador-aba {
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* O registro "Salva por ... em ... às ..." um pouco mais escuro que o detalhe. */
+.registro-aguardando {
+  color: var(--texto-principal);
+}
+
+/* "Visualizar" e "Publicar" lado a lado; no celular, quebram a linha. */
+.acoes-aguardando {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ---------------- Histórico anterior: a versão congelada ---------------- */
+/* A cor de gelo: um azul-acinzentado frio, com listras finas, para dizer "parado, não vale mais". As cores ficam em
+   variáveis aqui, para mudar num lugar só. */
+.janela-kb {
+  --gelo-fundo: #eef4f8;
+  --gelo-listra: #e2ecf3;
+  --gelo-borda: #9db8cc;
+  --gelo-texto: #3f5f78;
+}
+
+/* O selo "Congelada", na cor do gelo. */
+.selo-congelada {
+  background: var(--gelo-fundo, #eef4f8);
+  color: var(--gelo-texto, #3f5f78);
+  border: 1px dashed var(--gelo-borda, #9db8cc);
+}
+
+/* A faixa no alto da janela: o texto de que a versão está congelada e a navegação entre as antigas. */
+.faixa-congelada {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0;
+  padding: 12px 16px;
+  border: 1px dashed var(--gelo-borda);
+  border-radius: 12px;
+  background: var(--gelo-fundo);
+  color: var(--gelo-texto);
+  font-size: 14px;
+}
+
+/* O floco e o texto na mesma linha. */
+.faixa-congelada-texto {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+}
+
+/* O floco não encolhe. */
+.faixa-congelada-texto .icone {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Os botões da navegação, lado a lado. */
+.faixa-congelada-navegacao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* A janela inteira congelada: fundo de gelo com listras finas e o texto das seções mais apagado. */
+.janela-kb-congelada .janela-conteudo {
+  background: repeating-linear-gradient(135deg, var(--gelo-fundo) 0 14px, var(--gelo-listra) 14px 28px);
+}
+
+/* As seções da versão congelada ficam num tom frio e apagado: dá para ler, mas se vê que não vale mais. */
+.janela-kb-congelada .secoes-da-kb {
+  color: var(--gelo-texto);
+  opacity: 0.85;
+}
+
+/* Na lista das versões, cada versão antiga também aparece congelada. */
+.versao-da-kb-congelada {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: var(--gelo-fundo);
+  border: 1px dashed var(--gelo-borda);
+}

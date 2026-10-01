@@ -1,0 +1,154 @@
+/*
+  conversa.css — aparência da conversa de ajuda entre a empresa e o especialista (os dois portais usam).
+
+  Para que serve: o painel "Fale com o seu especialista" do Portal Empresa e a aba "Conversa" da ficha da empresa no
+  Portal Interno mostram as mesmas bolhas de conversa. Este arquivo vem DEPOIS do css/estilos.css e usa as
+  mesmas cores e medidas (as variáveis de lá).
+
+  Como está organizado:
+    1. Bolhas de mensagem (comuns aos dois portais)
+    2. Painel lateral da empresa ("Posso ajudar?")
+*/
+
+/* ===== 1. Bolhas de mensagem ===== */
+/* Lista de mensagens, uma embaixo da outra, com rolagem por dentro. */
+.conversa-mensagens {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+/* Bolha da outra pessoa: à esquerda, cinza clara. */
+.bolha {
+  align-self: flex-start;
+  max-width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--fundo-pagina);
+}
+
+/* Minha bolha: à direita, clara (cor da marca), com o "bico" do outro lado. */
+.bolha-minha {
+  align-self: flex-end;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--cor-marca-clara);
+}
+
+/* Quem escreveu e quando, pequeno e cinza. */
+.bolha-quem {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--texto-secundario);
+}
+
+/* O texto da mensagem. Quebras de linha digitadas são respeitadas. */
+.bolha-texto {
+  font-size: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* "Sobre: Acompanhar cadastros": a tela de onde a mensagem saiu. */
+.bolha-sobre {
+  font-size: 12px;
+  color: var(--texto-secundario);
+  font-style: italic;
+}
+
+/* ===== 2. Painel lateral da empresa ===== */
+/* Painel preso ao canto de baixo à direita, acima do botão "Posso ajudar?". */
+.painel-conversa {
+  position: fixed;
+  right: 24px;
+  /* Abre embaixo do cabeçalho, perto do ícone de conversa */
+  top: 88px;
+  z-index: 30;
+  width: min(380px, calc(100% - 32px));
+  height: min(560px, calc(100vh - 140px));
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: var(--branco);
+  box-shadow: var(--sombra-elevada);
+  overflow: hidden;
+}
+
+/* Cabeçalho do painel: iniciais do especialista, nome, cargo e o X. */
+.conversa-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px 12px 20px;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+/* Os textos ocupam o meio, empurrando o X para a direita. */
+.conversa-cabecalho-textos {
+  flex-grow: 1;
+}
+
+/* Nome do especialista. */
+.conversa-nome {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+}
+
+/* Cargo e prazo de resposta, menores. */
+.conversa-cargo {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Aviso de segurança, numa faixa azul-céu. */
+.conversa-aviso {
+  padding: 8px 20px;
+  font-size: 12px;
+  background: var(--azul-ceu-claro);
+  color: var(--texto-secundario);
+}
+
+/* No painel, as mensagens ocupam o espaço que sobra, com rolagem. */
+.painel-conversa .conversa-mensagens {
+  flex-grow: 1;
+  padding: 16px 20px;
+}
+
+/* Área de escrever: "Sobre", caixa de texto e botão. */
+.conversa-escrever {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--linha-divisoria);
+}
+
+/* "Sobre: ..." acima da caixa, pequeno. */
+.conversa-sobre {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Caixa de texto da conversa: mais baixa e sem redimensionar para os lados. */
+.conversa-escrever .campo-entrada {
+  padding: 10px 12px;
+  font-size: 14px;
+  resize: none;
+}
+
+/* O botão "Enviar" à direita. */
+.conversa-escrever .botao {
+  align-self: flex-end;
+}
+
+/* No celular, o painel ocupa quase a tela toda. */
+@media (max-width: 640px) {
+  .painel-conversa {
+    right: 16px;
+    bottom: 88px;
+    height: calc(100vh - 120px);
+  }
+}

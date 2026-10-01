@@ -1,0 +1,26 @@
+{
+  "id": "EXP-006",
+  "data": "2026-09-24",
+  "titulo": "Endomarketing: fidelidade, isolamento e adulteração",
+  "tipo": "endomarketing",
+  "pergunta": "O material é fiel ao catálogo, não vaza de outra empresa e a conferência barra texto adulterado?",
+  "o_que_testamos": "18 materiais com a busca real; 202 blocos adulterados de propósito; 8 destaques.",
+  "amostra": "6 empresas x 3 tipos de material",
+  "modo": "MOCK (busca real)",
+  "resultados": [
+    {
+      "nome": "conferência de saída",
+      "modelo": "simulador (MOCK) + busca real",
+      "metricas": {
+        "blocos_fieis": "83 de 83",
+        "fontes_de_outra_empresa": 0,
+        "adulterados_barrados": "202 de 202",
+        "destaques_ausentes_avisados": "0 de 4"
+      }
+    }
+  ],
+  "leitura": "Fiel e isolado; toda adulteração barrada. Negativo registrado: destaque ausente não é avisado (0 de 4), porque a distância da busca não separa 'tem' de 'não tem'.",
+  "decisao": "Aviso de destaque ausente fica para a IA real (campo nao_encontrado), ADR-61.",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/endomarketing.json"
+}

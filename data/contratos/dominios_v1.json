@@ -1,0 +1,21 @@
+{
+  "_sobre": "Valores aceitos nos campos de tipo DOMINIO e sinônimos que o Normalizador converte (comparação sem acento e sem maiúsculas). Campo DOMINIO sem lista aqui aceita texto livre (ex.: nacionalidade).",
+  "sexo": {"valores": ["F", "M"],
+           "sinonimos": {"feminino": "F", "fem": "F", "mulher": "F", "masculino": "M", "masc": "M", "homem": "M"}},
+  "_tipo_renda": "ADR-128: OUTROS é a saída para a renda que não é CLT nem pró-labore. Mensal, Horária e Comissionada NÃO são sinônimos de CLT: só a empresa diz o tipo.",
+  "tipo_renda": {"valores": ["CLT", "PRO_LABORE", "OUTROS"],
+                 "sinonimos": {"pro labore": "PRO_LABORE", "prolabore": "PRO_LABORE", "socio": "PRO_LABORE",
+                               "empregado": "CLT", "celetista": "CLT", "outros": "OUTROS", "outro": "OUTROS",
+                               "outra": "OUTROS"}},
+  "tipo_documento": {"valores": ["RG", "CNH"],
+                     "sinonimos": {"identidade": "RG", "carteira de identidade": "RG",
+                                   "carteira de motorista": "CNH", "habilitacao": "CNH"}},
+  "estado_civil": {"valores": ["Solteiro", "Casado", "Divorciado", "Viúvo", "União estável"],
+                   "sinonimos": {"solteira": "Solteiro", "casada": "Casado", "divorciada": "Divorciado",
+                                 "separado": "Divorciado", "separada": "Divorciado", "viuva": "Viúvo",
+                                 "uniao estavel": "União estável"}},
+  "escolaridade": {"valores": ["Fundamental incompleto", "Fundamental completo", "Médio incompleto", "Médio completo",
+                               "Superior incompleto", "Superior completo", "Pós-graduação"],
+                   "sinonimos": {"ensino medio completo": "Médio completo", "ensino superior completo": "Superior completo",
+                                 "pos graduacao": "Pós-graduação", "especializacao": "Pós-graduação"}}
+}

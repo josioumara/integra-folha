@@ -1,0 +1,71 @@
+{
+  "id": "EXP-017",
+  "data": "2026-09-29",
+  "titulo": "Prova de generalização: a leitura nos arquivos antigos × no lote guardado (D39)",
+  "tipo": "generalizacao",
+  "pergunta": "As correções de 29/09 (ADR-126 a 131), feitas olhando os 10 arquivos das rodadas 01 e 02, valem para arquivos que ninguém viu, ou alguma delas decorou os casos?",
+  "o_que_testamos": "A leitura com IA real (Sonnet 4.6 e Nova 2 Lite, plano B), medida pelo qa-jornada na rodada de generalização: os 10 arquivos antigos e 26 dos 60 do lote guardado (um a cada dois), com o mesmo roteiro. 'Exato' = uma linha por pessoa, todas certas. Comparação por estrato (tabela; texto corrido baixo/médio; texto corrido alto/altíssimo), com o intervalo de Wilson e o teste exato de Fisher. Busca de rastro: nomes, CPFs e nomes de arquivo dos antigos nos prompts, no código e nas bases do RAG.",
+  "amostra": "36 arquivos (10 antigos + 26 do lote)",
+  "modo": "IA real (dados já coletados pelo QA; esta análise não chamou a IA)",
+  "resultados": [
+    {
+      "nome": "Total",
+      "modelo": "claude-sonnet-4-6 (Leitor) + nova-2-lite",
+      "metricas": {
+        "antigos": "10/10 (100%; IC95 72%–100%)",
+        "lote": "18/26 (69%; IC95 50%–84%)",
+        "fisher_p_exatos": 0.0756,
+        "pessoas_lote": "96/99",
+        "linhas_a_mais_lote": 28
+      }
+    },
+    {
+      "nome": "Estratos que os antigos cobriam (tabela e texto baixo/médio)",
+      "modelo": "claude-sonnet-4-6 (Leitor) + nova-2-lite",
+      "metricas": {
+        "antigos": "10/10 (100%; IC95 72%–100%)",
+        "lote": "18/19 (95%; IC95 75%–99%)",
+        "fisher_p_exatos": 1.0,
+        "pessoas_lote": "74/76",
+        "linhas_a_mais_lote": 2
+      }
+    },
+    {
+      "nome": "Estrato tabela",
+      "modelo": "claude-sonnet-4-6 (Leitor) + nova-2-lite",
+      "metricas": {
+        "antigos": "9/9 (100%; IC95 70%–100%)",
+        "lote": "15/16 (94%; IC95 72%–99%)",
+        "fisher_p_exatos": 1.0,
+        "pessoas_lote": "65/67",
+        "linhas_a_mais_lote": 2
+      }
+    },
+    {
+      "nome": "Estrato texto_baixo_medio",
+      "modelo": "claude-sonnet-4-6 (Leitor) + nova-2-lite",
+      "metricas": {
+        "antigos": "1/1 (100%; IC95 21%–100%)",
+        "lote": "3/3 (100%; IC95 44%–100%)",
+        "fisher_p_exatos": 1.0,
+        "pessoas_lote": "9/9",
+        "linhas_a_mais_lote": 0
+      }
+    },
+    {
+      "nome": "Estrato texto_alto",
+      "modelo": "claude-sonnet-4-6 (Leitor) + nova-2-lite",
+      "metricas": {
+        "antigos": "nenhum arquivo",
+        "lote": "0/7 (0%; IC95 0%–35%)",
+        "fisher_p_exatos": 1.0,
+        "pessoas_lote": "22/23",
+        "linhas_a_mais_lote": 26
+      }
+    }
+  ],
+  "leitura": "No total, antigos 10/10 (100%; IC95 72%–100%) × lote 18/26 (69%; IC95 50%–84%) (Fisher p = 0.076). Nos tipos que os antigos cobriam, não há queda: 10/10 (100%; IC95 72%–100%) × 18/19 (95%; IC95 75%–99%) (p = 1.00). A queda está toda no texto corrido alto e altíssimo, que os antigos não tinham: 0/7 (0%; IC95 0%–35%), com as pessoas achadas (22/23) mas 26 linhas a mais. Não é decoreba: o Leitor de texto corrido parte de 'um bloco = uma pessoa' e não junta pedaços; em texto difícil, cada pessoa vem em seções (identidade, contrato, endereço), e cada seção vira uma linha (o mesmo CPF duas vezes, o nome curto ao lado do inteiro, contrato ou endereço sem nome nem CPF). Rastro: só 1 CPF do QA, num comentário de services/conferencia_do_valor.py (sem efeito no comportamento; a trocar).",
+  "decisao": "D39 para o engenheiro-ia: um passo de junção depois da leitura dos blocos (mesmo CPF; nome curto no completo sem conflito; trecho sem nome nem CPF nunca vira pessoa), medido num conjunto sintético NOVO do estrato, congelado antes da correção (o lote já foi visto e deixa de servir de prova).",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/generalizacao_d39.json"
+}

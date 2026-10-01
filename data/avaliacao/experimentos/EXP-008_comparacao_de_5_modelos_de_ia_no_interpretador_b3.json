@@ -1,0 +1,129 @@
+{
+  "id": "EXP-008",
+  "data": "2026-09-25",
+  "titulo": "Comparação de 5 modelos de IA no Interpretador (B3)",
+  "tipo": "interpretador",
+  "pergunta": "Qual modelo usar no MVP? A IA ganha do dicionário, e por quanto?",
+  "o_que_testamos": "Os 5 modelos selecionados na triagem (27 → 5) interpretando as mesmas planilhas, com RAG (B3).",
+  "amostra": "30 planilhas sorteadas da prova congelada (semente fixa)",
+  "modo": "IA real",
+  "resultados": [
+    {
+      "nome": "B0",
+      "modelo": "dicionário (sem IA)",
+      "metricas": {
+        "acuracia_por_campo": 0.5341880341880342,
+        "ic95_acuracia_por_campo": [
+          0.5011709601873536,
+          0.564870259481038
+        ],
+        "abstencao_recall": 0.5952380952380952,
+        "abstencao_precisao": 0.5555555555555556,
+        "acerto_geral": 0.5434782608695652,
+        "custo_usd": 0.0,
+        "segundos_por_planilha": 0.0073,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "claude-sonnet-5",
+      "metricas": {
+        "acuracia_por_campo": 0.844017094017094,
+        "ic95_acuracia_por_campo": [
+          0.8110403397027601,
+          0.8747300215982722
+        ],
+        "abstencao_recall": 0.9880952380952381,
+        "abstencao_precisao": 0.532051282051282,
+        "acerto_geral": 0.8659420289855072,
+        "custo_usd": 1.6741,
+        "custo_por_planilha_usd": 0.0558,
+        "segundos_por_planilha": 33.54,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "claude-opus-5-5",
+      "metricas": {
+        "acuracia_por_campo": 0.8226495726495726,
+        "ic95_acuracia_por_campo": [
+          0.783157894736842,
+          0.8597285067873304
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.5029940119760479,
+        "acerto_geral": 0.8496376811594203,
+        "custo_usd": 3.1951,
+        "custo_por_planilha_usd": 0.1065,
+        "segundos_por_planilha": 30.47,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "claude-haiku-4-5",
+      "metricas": {
+        "acuracia_por_campo": 0.8162393162393162,
+        "ic95_acuracia_por_campo": [
+          0.7802690582959642,
+          0.8496868475991649
+        ],
+        "abstencao_recall": 0.9285714285714286,
+        "abstencao_precisao": 0.4875,
+        "acerto_geral": 0.8333333333333334,
+        "custo_usd": 0.466,
+        "custo_por_planilha_usd": 0.01553,
+        "segundos_por_planilha": 14.03,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "gpt-6-sol",
+      "metricas": {
+        "acuracia_por_campo": 0.7756410256410257,
+        "ic95_acuracia_por_campo": [
+          0.7367303609341825,
+          0.8101851851851852
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.4444444444444444,
+        "acerto_geral": 0.8097826086956522,
+        "custo_usd": 0.8147,
+        "custo_por_planilha_usd": 0.02716,
+        "segundos_por_planilha": 26.77,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "gpt-6-luna",
+      "metricas": {
+        "acuracia_por_campo": 0.7628205128205128,
+        "ic95_acuracia_por_campo": [
+          0.7266666666666667,
+          0.8039647577092511
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.4307692307692308,
+        "acerto_geral": 0.7989130434782609,
+        "custo_usd": 0.0552,
+        "custo_por_planilha_usd": 0.00184,
+        "segundos_por_planilha": 29.65,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 30
+      }
+    }
+  ],
+  "leitura": "Todos ganham do dicionário (53% → 76–84%). O melhor foi o claude-sonnet-5 (84,4%), acima dos dois modelos da OpenAI; o Opus custou o dobro sem acertar mais; o raciocínio dobrou o custo estimado; todos pedem ajuda demais (precisão da abstenção 43–53%).",
+  "decisao": "Sugestão: MODELO_GRANDE = claude-sonnet-5; MODELO_PEQUENO = gpt-6-luna (escolha pendente do dono do projeto).",
+  "custo_usd": 6.2051,
+  "fonte": "data/avaliacao/resultados/comparacao_modelos.json",
+  "commit": "7a3c64e"
+}

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<!--
+  banco_empresas.html — tela "Empresas" do Portal Interno (Integra Folha).
+
+  Para que serve: é o rascunho visual (layout) do CADASTRO DAS EMPRESAS pelo especialista do banco. Tudo o que
+  a empresa vê no Portal Empresa, e que ela NÃO escolhe, nasce aqui:
+    - Visão geral: os números e a lista de funcionários da empresa (ADR-112);
+    - Conversa: as dúvidas que a empresa manda pelo "Posso ajudar?"; quem responde é o especialista, nenhuma IA
+      responde pelo banco (antes, a tela "Mensagens"; ADR-122). A aba fica no canto direito, com a bolinha das
+      conversas abertas, que também aparece na linha da empresa na Carteira;
+    - Contas abertas: o arquivo de contas abertas DESTA empresa (antes, a tela "Contas abertas"; ADR-122). Toda linha
+      do arquivo traz o CNPJ da empresa; arquivo de outra empresa é recusado inteiro;
+    - Dados: CNPJ, setor, endereço comercial (a "região" das análises) e o contrato;
+    - Usuários: quem da empresa entra no portal (o especialista convida e desativa);
+    - Catálogo de benefícios: o documento versionado que alimenta a vitrine "Benefícios do seu time" e o
+      Agente de Endomarketing (ADR-19). A tela avisa quando um benefício não tem as 3 partes que a vitrine
+      mostra (Como funciona, Quem pode usar, Como contratar).
+  O kit de marca (as cores, o logo e a escolha entre o padrão e o próprio) não fica aqui: ele é a KB "Kit da marca"
+  de cada empresa, no Endomarketing (guia Base de Conhecimento).
+
+  Como abrir: dois cliques neste arquivo, ou pela aba "Empresas" do Portal Interno.
+  Endereço com empresa escolhida: banco_empresas.html?empresa=aurora (vem da carteira do Início).
+  Endereço com a aba escolhida: banco_empresas.html?empresa=EMP001&aba=conversa. As abas são visao, conversa,
+  contas, dados, usuarios e catalogo.
+  Aparência: css/estilos.css + css/banco.css + css/conversa.css + css/banco_ficha.css.
+  Dados e cliques: js/banco_empresas.js (a ficha), js/banco_empresas_conversa.js (a aba Conversa),
+  js/banco_empresas_contas.js (a aba Contas abertas) e, com servidor, js/banco_empresas_real.js.
+
+  Dados: 100% fictícios. As 6 empresas são as da base sintética (data/synthetic/empresas.csv).
+
+  Ordem da página:
+    1. Faixa "uso interno" + cabeçalho com as abas
+    2. Título e o botão "Cadastrar empresa"
+    3. Lista das empresas (esquerda) e a ficha da empresa com 6 abas (direita)
+    4. Janelas "Convidar usuário", da empresa e do catálogo (a janela "Carregar Contas Abertas" é criada pelo
+       js/janela_contas_abertas.js)
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Empresas | Portal Interno</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Aparência comum aos dois portais. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Aparência que só o Portal Interno tem. -->
+  <link rel="stylesheet" href="css/banco.css">
+  <!-- Bolhas da conversa (as mesmas do "Posso ajudar?" da empresa). -->
+  <link rel="stylesheet" href="css/conversa.css">
+  <!-- As abas Conversa e Contas abertas da ficha (vem depois do conversa.css, para ajustar a área de responder). -->
+  <link rel="stylesheet" href="css/banco_ficha.css">
+  <!-- O "i" em cima das grades, que explica cada situação (js/legenda_dos_status.js). -->
+  <link rel="stylesheet" href="css/legenda_dos_status.css">
+  <!-- Esperando os dados: servida pela aplicação, os números de exemplo nunca aparecem (js/carregando_dados.js). -->
+  <script src="js/carregando_dados.js"></script>
+</head>
+<body>
+
+  <!-- Biblioteca de ícones. -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Casa: aba Início. -->
+    <symbol id="icone-inicio" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <!-- Prédio: empresas. -->
+    <symbol id="icone-predio" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="18" rx="1"/><path d="M16 9h4v12h-4"/><path d="M8 7h4M8 11h4M8 15h4"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Prancheta com visto: avaliar envios. -->
+    <symbol id="icone-avaliar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Gráfico subindo: planejamento. -->
+    <symbol id="icone-grafico" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l5-5 3 3 6-7"/><path d="M15 7h4v4"/></symbol>
+    <!-- Porta com seta: sair. -->
+    <symbol id="icone-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <!-- Sino: avisos. -->
+    <!-- Cadeado: área interna. -->
+    <symbol id="icone-cadeado" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <!-- Lupa: busca. -->
+    <symbol id="icone-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <!-- Mais: cadastrar e convidar. -->
+    <symbol id="icone-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <!-- X: fechar janela. -->
+    <symbol id="icone-fechar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <!-- Pessoa com "+": convidar usuário. -->
+    <symbol id="icone-convidar" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/></symbol>
+    <!-- Nuvem com seta para cima: subir documento. -->
+    <symbol id="icone-subir" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1 0 8"/><path d="M12 12v8"/><path d="M9 15l3-3 3 3"/></symbol>
+    <!-- Seta para baixo numa bandeja: baixar a lista (o "Baixar CSV" da Visão geral). -->
+    <symbol id="icone-baixar" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></symbol>
+    <!-- Duas folhas sobrepostas: copiar (a senha provisória, na linha da pessoa). -->
+    <symbol id="icone-copiar" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+    <!-- Visto: conversa resolvida. -->
+    <symbol id="icone-visto" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <!-- Dois balões de conversa: a aba Conversa da ficha. -->
+    <symbol id="icone-conversa" viewBox="0 0 24 24"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M17 9h3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1v2l-3-2h-4"/></symbol>
+    <!-- Engrenagem: Configuração (os Parâmetros do layout do arquivo). -->
+    <symbol id="icone-configuracao" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  </svg>
+
+  <!-- ============ 1. FAIXA "USO INTERNO" + CABEÇALHO COM AS ABAS ============ -->
+  <div class="topo-banco">
+    <!-- Faixa escura: lembra que esta é a área interna do banco. -->
+    <div class="faixa-interna">
+      <div class="conteudo-centralizado faixa-interna-linha">
+        <span><svg class="icone"><use href="#icone-cadeado"/></svg>Área interna do banco · dados de clientes protegidos por sigilo bancário</span>
+        <span class="faixa-interna-carteira" data-faixa-carteira data-aguarda-dado>Carteira Sul e Sudeste · 6 empresas</span>
+      </div>
+    </div>
+
+    <header class="barra-topo">
+      <div class="conteudo-centralizado">
+        <!-- Linha de cima: marca, o menu Sistema e usuário logado. -->
+        <div class="barra-topo-linha">
+          <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+          <a href="banco_inicio.html" class="logotipo" aria-label="Início do Portal Interno">
+            <span class="logotipo-marca">Integra Folha</span>
+          </a>
+          <!-- O banco parceiro do Integra Folha: aparece em todas as telas depois do login (nunca no login). -->
+          <span class="selo-banco-parceiro">Banco parceiro: <strong>Santander</strong></span>
+          <!-- Ações de quem está logado (o js/cabecalho_real.js troca pelo usuário da sessão). -->
+          <div class="acoes-usuario">
+            <!-- Sistema (o antigo "Configuração"; ADR-148): a engrenagem abre um menu pequeno com as telas do Sistema
+                 (Parâmetros do layout, Acompanhamento dos agentes e Teto de custo com agentes; as Premissas
+                 financeiras ficam ocultas nesta versão). No celular, fica só o ícone. O js/menu_configuracao.js abre e
+                 fecha o menu (clique, Enter/Espaço, setas, Esc e clique fora). Nas telas do Sistema, o botão fica
+                 marcado (botao-configuracao-marcado) e o item da tela atual leva aria-current="page". -->
+            <div class="menu-configuracao" data-menu-configuracao>
+              <button type="button" class="botao-configuracao" aria-label="Sistema" aria-expanded="false" aria-controls="itens-da-configuracao" data-botao-configuracao>
+                <svg class="icone" aria-hidden="true"><use href="#icone-configuracao"/></svg>
+                <span class="botao-configuracao-texto">Sistema</span>
+              </button>
+              <ul class="menu-configuracao-itens" id="itens-da-configuracao" data-itens-configuracao hidden>
+                <li><a href="banco_parametros.html" class="menu-configuracao-item">Parâmetros do layout</a></li>
+                <!-- As Premissas financeiras ficam ocultas nesta versão (ADR-148): o <template> guarda o item sem
+                     mostrá-lo nem deixá-lo ser clicado. Para religar, basta tirar o item da caixa. -->
+                <template data-oculto-nesta-versao="premissas">
+                  <li><a href="banco_premissas.html" class="menu-configuracao-item">Premissas financeiras</a></li>
+                </template>
+                <li><a href="banco_agentes.html" class="menu-configuracao-item">Acompanhamento dos agentes</a></li>
+                <li><a href="banco_teto_da_ia.html" class="menu-configuracao-item">Teto de custo com agentes</a></li>
+              </ul>
+            </div>
+            <!-- Pessoa logada (perfil BANCO). -->
+            <div class="usuario-logado">
+              <span class="iniciais-usuario">RL</span>
+              <div class="usuario-logado-texto">
+                <div class="nome-usuario">Rafael Lima</div>
+                <div class="empresa-usuario">Especialista Folha · Santander</div>
+              </div>
+            </div>
+            <!-- Sair: volta para a tela de login. -->
+            <a href="/api/sair" class="botao-sair" aria-label="Sair do portal">
+              <svg class="icone"><use href="#icone-sair"/></svg>
+              <span class="botao-sair-texto">Sair</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Abas do Portal Interno, nesta ordem: Início, Empresas, Envios, Endomarketing e Indicadores. A aba da página
+             atual recebe a classe "aba-ativa"; o número de Empresas (as conversas abertas) vem do
+             js/sinal_de_conversas.js, e o de Envios, do js/cabecalho_real.js. -->
+        <nav class="abas-portal abas-banco" aria-label="Seções do Portal Interno">
+          <a href="banco_inicio.html" class="aba">
+            <svg class="icone"><use href="#icone-inicio"/></svg>Início
+          </a>
+          <a href="banco_empresas.html" class="aba aba-ativa" aria-current="page">
+            <svg class="icone"><use href="#icone-predio"/></svg>Empresas <span class="contador-aba" data-contador-mensagens data-aguarda-dado title="Mensagens das empresas sem resposta">2</span>
+          </a>
+          <a href="banco_envios.html" class="aba">
+            <svg class="icone"><use href="#icone-avaliar"/></svg>Envios <span class="contador-aba" data-contador-aba-envios data-aguarda-dado title="Envios esperando a avaliação">3</span>
+          </a>
+          <a href="banco_endomarketing.html" class="aba">
+            <svg class="icone"><use href="#icone-endomarketing"/></svg>Endomarketing
+          </a>
+          <a href="banco_indicadores.html" class="aba">
+            <svg class="icone"><use href="#icone-grafico"/></svg>Indicadores
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- ============ 2. TÍTULO ============ -->
+    <section class="cabecalho-pagina">
+      <div class="conteudo-centralizado cabecalho-com-botao">
+        <h1 class="titulo-pagina">
+          Empresas da carteira
+          <span class="titulo-pagina-leve">Cada empresa com a visão geral, a conversa, as contas abertas, os dados, os usuários e o catálogo de benefícios.</span>
+        </h1>
+        <!-- Cadastro de empresa nova (neste rascunho, só mostra o aviso de que é o próximo passo). -->
+        <button class="botao botao-principal" type="button" data-cadastrar-empresa>
+          <svg class="icone"><use href="#icone-mais"/></svg>
+          Cadastrar empresa
+        </button>
+      </div>
+    </section>
+
+    <div class="conteudo-centralizado area-banco">
+      <!-- Aviso de ações (convite enviado, versão nova do catálogo...). -->
+      <p class="aviso-recebido" data-aviso-empresas hidden role="status"><span data-aviso-empresas-texto></span></p>
+
+      <!-- ============ 3. LISTA (esquerda) + FICHA (direita) ============ -->
+      <div class="grade-envios">
+        <!-- Lista das empresas, com busca. -->
+        <aside class="cartao painel-fila-envios" aria-labelledby="titulo-lista-empresas">
+          <!-- O título e, com a Carteira "congelada" na empresa escolhida, o "Trocar empresa" à direita (como a escolha
+               do Endomarketing): o botão traz a busca e a lista de volta. -->
+          <div class="cabecalho-da-carteira">
+            <h2 class="painel-titulo" id="titulo-lista-empresas">Carteira</h2>
+            <button class="botao botao-contorno botao-pequeno" type="button" data-trocar-empresa hidden>Trocar empresa</button>
+          </div>
+          <!-- O prazo de resposta de 1 dia útil das conversas da carteira (ADR-94): só com servidor
+               (js/banco_empresas_conversa.js). -->
+          <p class="nota-tabela" data-prazo-respostas hidden></p>
+          <!-- Busca por nome, cidade ou CNPJ (some com a Carteira congelada numa empresa). -->
+          <label class="campo-busca" data-campo-busca-da-carteira>
+            <svg class="icone"><use href="#icone-lupa"/></svg>
+            <input class="campo-entrada" type="search" placeholder="Nome, cidade ou CNPJ" data-busca-empresas aria-label="Buscar empresa">
+          </label>
+          <!-- O "i" no canto direito, em cima da lista: explica a situação de cada empresa (js/legenda_dos_status.js). -->
+          <div class="linha-do-i-dos-status" data-legenda-dos-status="empresas" data-portal="banco"></div>
+          <!-- Lista montada pelo js: as empresas com conversa aberta primeiro, todas; depois, sem busca, só as últimas
+               cadastradas; com busca, as que combinam (a mesma função do Endomarketing, js/escolha_de_empresa.js), sem
+               rolagem por dentro. Escolhida uma empresa, só ela fica na lista, até o "Trocar empresa". Cada empresa tem
+               o sinal das mensagens que esperam resposta (js/banco_empresas_conversa.js; some quando não há). -->
+          <ul class="lista-fila-envios lista-de-empresas-recentes" data-lista-empresas data-aguarda-bloco></ul>
+          <p class="painel-vazio painel-vazio-neutro" data-sem-empresas hidden>Nenhuma empresa com essa busca.</p>
+          <!-- "Últimas empresas cadastradas. Pesquise para encontrar outras.": só quando ficaram empresas de fora. -->
+          <p class="nota-tabela" data-aviso-ultimas-empresas hidden></p>
+        </aside>
+
+        <!-- A ficha da empresa escolhida. -->
+        <section class="cartao painel-envio-aberto" aria-labelledby="titulo-ficha-empresa" data-ficha-empresa data-aguarda-bloco>
+          <!-- Cabeçalho: nome, CNPJ e situação. -->
+          <div class="envio-aberto-cabecalho">
+            <div>
+              <span class="sobretitulo" data-ficha-setor></span>
+              <h2 class="painel-titulo" id="titulo-ficha-empresa" data-ficha-nome></h2>
+              <p class="item-fila-detalhe" data-ficha-resumo></p>
+            </div>
+            <span class="selo" data-ficha-situacao></span>
+          </div>
+
+          <!-- Abas da ficha. role="tablist": leitores de tela anunciam como abas. -->
+          <div class="abas-ficha" role="tablist" aria-label="Partes do cadastro da empresa">
+            <button class="aba-ficha aba-ficha-ativa" type="button" role="tab" aria-selected="true" data-aba-ficha="visao">Visão geral</button>
+            <button class="aba-ficha" type="button" role="tab" aria-selected="false" data-aba-ficha="contas">Contas abertas</button>
+            <button class="aba-ficha" type="button" role="tab" aria-selected="false" data-aba-ficha="dados">Dados</button>
+            <button class="aba-ficha" type="button" role="tab" aria-selected="false" data-aba-ficha="usuarios">Usuários</button>
+            <button class="aba-ficha" type="button" role="tab" aria-selected="false" data-aba-ficha="catalogo">Catálogo de benefícios</button>
+            <!-- A conversa com a empresa, à parte das outras abas, no canto direito, com o ícone de conversa. A bolinha
+                 aparece enquanto a conversa está aberta: sem resposta ou ainda não marcada como respondida
+                 (js/banco_empresas_conversa.js). -->
+            <button class="aba-ficha aba-ficha-conversa" type="button" role="tab" aria-selected="false" data-aba-ficha="conversa"><svg class="icone" aria-hidden="true"><use href="#icone-conversa"/></svg>Conversa <span class="contador-aba contador-aba-ficha" data-contador-conversa hidden></span></button>
+          </div>
+
+          <!-- Aba "Visão geral" (ADR-112): os números da empresa e a lista de funcionários, na mesma grade da consulta
+               da empresa (js/grade_do_parametro.js), só com os campos obrigatórios; o clique numa pessoa abre o
+               detalhe com todos (ADR-143). Montada pelo js/banco_empresas_real.js com o servidor ligado. -->
+          <div class="conteudo-aba-ficha" role="tabpanel" data-conteudo-aba="visao">
+            <p class="painel-vazio painel-vazio-neutro" data-visao-sem-servidor>A visão geral da empresa aparece com o
+              servidor ligado.</p>
+            <div data-visao-geral hidden>
+              <!-- Os números da empresa: os mesmos que ela vê em Acompanhar cadastros. -->
+              <div class="numeros-da-visao" data-numeros-da-visao></div>
+              <!-- A legenda da grade: a marca de obrigatório e a frase do vazio (o que é cada status fica no "i"). -->
+              <div class="legenda-da-grade">
+                <p>A grade mostra as informações obrigatórias. Clique numa pessoa para ver tudo o que os agentes
+                  encontraram.</p>
+                <p><span class="marca-obrigatorio" aria-hidden="true">*</span> Campo obrigatório no parâmetro do banco.</p>
+                <p><span class="valor-nao-encontrado">Informação não encontrada</span>: o valor não veio no arquivo ou não foi
+                  identificado.</p>
+                <p><strong>Informações bancárias</strong> (agência, conta salário e data de abertura): enviadas pelo
+                  banco no arquivo de contas abertas, ao final da integração. O código do banco só aparece nas contas
+                  gravadas antes de 30/09/2026.</p>
+              </div>
+              <!-- A linha acima da grade: quantas pessoas, à esquerda, e o "Baixar CSV", à direita: o arquivo desta
+                   empresa, com todas as colunas do cadastro (os obrigatórios, os opcionais que vieram e a situação). O
+                   botão some quando a empresa ainda não tem funcionários. -->
+              <div class="barra-da-grade-da-visao">
+                <p class="contador-resultados" data-contador-visao></p>
+                <button class="botao botao-contorno botao-pequeno" type="button" data-baixar-csv-visao>
+                  <svg class="icone" aria-hidden="true"><use href="#icone-baixar"/></svg>
+                  Baixar CSV
+                </button>
+                <!-- O "i" no canto direito, depois do "Baixar CSV": explica cada situação (js/legenda_dos_status.js). -->
+                <div class="linha-do-i-dos-status" data-legenda-dos-status="funcionarios" data-portal="banco"></div>
+              </div>
+              <!-- O erro do "Baixar CSV", logo abaixo do botão (e não no aviso do alto, que fica fora da vista). -->
+              <p class="erro-pendencia erro-do-csv-da-visao" data-erro-csv-visao hidden role="alert"></p>
+              <!-- A grade cabe na largura da ficha, sem rolar para o lado, a 1366 e a 1920 px: os títulos, a frase
+                   "Informação não encontrada" e quem incluiu quebram a linha quando falta espaço; os valores ficam
+                   inteiros (css/banco_ficha.css). -->
+              <div class="tabela-rolavel tabela-com-titulo-fixo">
+                <table class="tabela-montada tabela-funcionarios-da-empresa">
+                  <thead data-cabeca-visao></thead>
+                  <tbody data-corpo-visao></tbody>
+                </table>
+              </div>
+              <p class="painel-vazio painel-vazio-neutro" data-visao-sem-funcionarios hidden>Esta empresa ainda não
+                tem funcionários enviados.</p>
+            </div>
+          </div>
+
+          <!-- Aba "Conversa" (antes, a tela "Mensagens"): as dúvidas que a empresa manda pelo "Posso ajudar?" do Portal
+               Empresa. É conversa ENTRE PESSOAS: quem responde é o especialista, nenhuma IA responde pelo banco.
+               Montada pelo js/banco_empresas_conversa.js. Servida pela aplicação, as conversas de exemplo nunca
+               aparecem: a situação e as mensagens esperam as do servidor (js/carregando_dados.js). -->
+          <div class="conteudo-aba-ficha conversa-da-ficha" role="tabpanel" data-conteudo-aba="conversa" hidden>
+            <div class="cabecalho-conversa-da-ficha">
+              <p class="descricao-aba">Dúvidas que a empresa manda pelo "Posso ajudar?" do Portal Empresa, cada uma com a
+                tela de onde ela escreveu. Quem responde é você; a resposta aparece para a empresa no mesmo lugar.</p>
+              <!-- À direita, em cima do chat: a situação e o "Marcar como respondida", que só aparece com a conversa
+                   aberta e some depois de marcada. -->
+              <div class="situacao-da-conversa-da-ficha">
+                <!-- Situação da conversa: sem resposta, atrasada, respondida ou resolvida. -->
+                <span class="selo" data-conversa-situacao data-aguarda-dado>Sem resposta</span>
+                <button class="botao botao-contorno botao-pequeno" type="button" data-marcar-respondida hidden>
+                  <svg class="icone"><use href="#icone-visto"/></svg>
+                  Marcar como respondida
+                </button>
+              </div>
+            </div>
+
+            <!-- As mensagens (bolhas). aria-live: o leitor de tela anuncia mensagem nova. -->
+            <div class="conversa-mensagens conversa-mensagens-ficha" data-mensagens-banco data-aguarda-bloco aria-live="polite"></div>
+
+            <!-- Escrever para a empresa. O botão diz "Responder" quando a última mensagem é da empresa e "Enviar" quando é
+                 do especialista ou quando a conversa ainda está vazia: aí é ele quem começa. Só some quando as
+                 conversas não puderam ser carregadas. -->
+            <form class="conversa-escrever conversa-escrever-ficha" data-formulario-banco novalidate>
+              <!-- Respostas prontas: só preenchem a caixa; o especialista revisa antes de enviar. Somem com a conversa
+                   vazia (não há o que responder). -->
+              <div class="grupo-filtros" aria-label="Respostas prontas" data-respostas-prontas>
+                <button class="filtro-rapido" type="button" data-resposta-pronta="Bom dia! Obrigado pela mensagem. Vou verificar e respondo ainda hoje.">Vou verificar</button>
+                <button class="filtro-rapido" type="button" data-resposta-pronta="Pode, sim. Envie normalmente no próximo arquivo de inclusão; o afastamento não impede o cadastro.">Pode enviar</button>
+                <button class="filtro-rapido" type="button" data-resposta-pronta="Não precisa. Essa informação não faz parte do layout de cadastro do banco, então os agentes a deixam de fora de propósito.">Não precisa mandar</button>
+              </div>
+              <textarea class="campo-entrada" rows="3" maxlength="600" placeholder="Escreva a sua resposta" aria-label="Sua mensagem" data-texto-banco></textarea>
+              <p class="aviso-campo" data-erro-banco hidden>Escreva a mensagem antes de enviar.</p>
+              <div class="barra-decisao-botoes botoes-conversa-da-ficha">
+                <button class="botao botao-principal botao-pequeno" type="submit" data-botao-de-mandar>Responder</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Aba "Contas abertas" (antes, a tela "Contas abertas"): o arquivo de contas abertas DESTA empresa. Montada
+               pelo js/banco_empresas_contas.js; a janela de carregar é a do js/janela_contas_abertas.js. -->
+          <div class="conteudo-aba-ficha" role="tabpanel" data-conteudo-aba="contas" hidden>
+            <!-- Aviso verde que aparece depois de confirmar a baixa. -->
+            <p class="aviso-recebido" data-aviso-contas hidden role="status">
+              <svg class="icone"><use href="#icone-visto"/></svg>
+              <span data-aviso-contas-texto></span>
+            </p>
+
+            <!-- A orientação, em destaque: o arquivo precisa ser desta empresa (a da ficha; o arquivo não traz mais o
+                 CNPJ, ADR-149). Com servidor, o texto vem dele (a tela diz exatamente o que o código confere). -->
+            <section class="orientacao-contas" aria-labelledby="titulo-orientacao-contas">
+              <h3 class="ficha-grupo-titulo" id="titulo-orientacao-contas">O arquivo precisa ser desta empresa</h3>
+              <p class="orientacao-contas-texto" data-orientacao-contas data-aguarda-dado>O arquivo é desta empresa: cada
+                linha traz o CPF de um funcionário Cadastrado nela, o status e a agência, a conta salário e a data de
+                abertura dessa conta. Um CPF que não está Cadastrado nesta empresa recusa o arquivo inteiro.</p>
+              <!-- A legenda do status de cada linha, bem à vista. Com servidor, vem dele (legenda_do_status do
+                   layout). -->
+              <p class="orientacao-contas-tipos">Status em cada linha:
+                <strong data-legenda-status data-aguarda-dado>1 = Conta nova · 2 = Já era correntista</strong></p>
+            </section>
+
+            <!-- Carregar o arquivo desta empresa (a janela recebe a empresa pelo data-empresa-id do botão). -->
+            <div class="carregar-contas-da-empresa">
+              <div>
+                <h3 class="ficha-grupo-titulo">Arquivo de contas abertas</h3>
+                <p class="texto-contas-da-empresa">O arquivo que os sistemas do banco geram, com uma linha por funcionário
+                  desta empresa que tem conta: a conta nova (status 1) ou a conta que ele já tinha, se já era
+                  correntista (status 2), com a agência, a conta salário e a data de abertura. Layout fixo (.csv).
+                  Qualquer divergência recusa o arquivo inteiro até ser corrigida.</p>
+                <p class="zona-envio-formatos" data-ultimo-arquivo-contas data-aguarda-dado>Último arquivo: 18/09/2026, por Rafael Lima</p>
+              </div>
+              <button class="botao botao-principal" type="button" data-abrir-carregar-contas>Carregar Contas Abertas</button>
+            </div>
+
+            <!-- O histórico dos arquivos confirmados desta empresa. -->
+            <h3 class="ficha-grupo-titulo">Histórico desta empresa</h3>
+            <div class="tabela-rolavel" data-bloco-historico-contas data-aguarda-bloco>
+              <table class="tabela-montada">
+                <thead>
+                  <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Arquivo</th>
+                    <th scope="col">Linhas</th>
+                    <th scope="col">Baixas</th>
+                    <th scope="col">Novas contas · Correntistas</th>
+                    <th scope="col">Contas da empresa depois</th>
+                    <th scope="col">Quem carregou</th>
+                  </tr>
+                </thead>
+                <tbody data-historico-contas></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Aba "Dados". -->
+          <div class="conteudo-aba-ficha" role="tabpanel" data-conteudo-aba="dados" hidden>
+            <div class="ficha-grupos">
+              <div class="ficha-grupo">
+                <h3 class="ficha-grupo-titulo">Empresa</h3>
+                <dl class="ficha-campos" data-campos-empresa></dl>
+              </div>
+              <div class="ficha-grupo">
+                <h3 class="ficha-grupo-titulo">Contrato de folha</h3>
+                <dl class="ficha-campos" data-campos-contrato></dl>
+              </div>
+            </div>
+            <!-- CNPJs de filiais e do grupo (ADR-77, opcional): só com servidor; a empresa também faz um CNPJ entrar
+                 aqui quando confirma, num envio, que ele é do grupo. -->
+            <div class="ficha-grupo bloco-cnpjs" data-bloco-cnpjs hidden>
+              <h3 class="ficha-grupo-titulo">CNPJs de filiais e do grupo <span class="texto-leve">(opcional)</span></h3>
+              <p class="nota-tabela">Cadastre quando o banco souber. Um CNPJ repetido no arquivo que não esteja aqui vira a pergunta "É do seu grupo?" para a empresa; a resposta dela faz o CNPJ entrar nesta lista.</p>
+              <div class="tabela-rolavel">
+                <table class="tabela-montada">
+                  <thead>
+                    <tr>
+                      <th scope="col">CNPJ</th>
+                      <th scope="col">Tipo</th>
+                      <th scope="col">Quem registrou</th>
+                      <th scope="col" aria-label="Ações"></th>
+                    </tr>
+                  </thead>
+                  <tbody data-corpo-cnpjs></tbody>
+                </table>
+              </div>
+              <form class="formulario-cnpj" data-formulario-cnpj novalidate>
+                <input class="campo-entrada campo-pequeno" maxlength="20" placeholder="00.000.000/0000-00" aria-label="CNPJ" data-cnpj-novo>
+                <select class="campo-entrada campo-pequeno" aria-label="Tipo do CNPJ" data-cnpj-tipo>
+                  <option value="FILIAL">Filial (mesma raiz da sede)</option>
+                  <option value="GRUPO">Empresa do grupo</option>
+                </select>
+                <button class="botao botao-contorno botao-pequeno" type="submit">Adicionar CNPJ</button>
+              </form>
+              <p class="erro-pendencia" data-erro-cnpj hidden></p>
+            </div>
+            <p class="nota-tabela">Aqui fica a sede. O endereço comercial de cada funcionário (a filial onde ele trabalha) vem no arquivo, e é ele que define a região nas análises do Planejamento.</p>
+          </div>
+
+          <!-- Aba "Usuários". -->
+          <div class="conteudo-aba-ficha" role="tabpanel" data-conteudo-aba="usuarios" hidden>
+            <div class="painel-cabecalho">
+              <p class="descricao-aba">Quem da empresa entra no Portal Empresa. Só o banco convida ou desativa.</p>
+              <button class="botao botao-contorno botao-pequeno" type="button" data-abrir-convite>
+                <svg class="icone"><use href="#icone-convidar"/></svg>
+                Convidar usuário
+              </button>
+            </div>
+            <!-- A senha provisória que o banco acabou de gerar (no convite ou em "Nova senha provisória") aparece NA
+                 LINHA da pessoa, logo abaixo dela, com o botão de copiar e a orientação do primeiro acesso, e só desta
+                 vez (ADR-109). O primeiro clique em "Nova senha provisória" pergunta, na
+                 mesma linha, com "Confirmar" e "Cancelar". Tudo montado pelo js/banco_empresas_real.js. -->
+            <!-- O erro de uma ação da aba (ex.: a senha que não pôde ser gerada), perto de onde se clicou. -->
+            <p class="erro-pendencia" data-erro-usuarios hidden role="alert"></p>
+            <!-- O "i" no canto direito, em cima da tabela: explica a situação de cada pessoa (js/legenda_dos_status.js). -->
+            <div class="linha-do-i-dos-status" data-legenda-dos-status="usuarios" data-portal="banco"></div>
+            <div class="tabela-rolavel">
+              <table class="tabela-montada">
+                <thead>
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Último acesso</th>
+                    <th scope="col">Situação</th>
+                    <th scope="col"><span class="texto-leitor-de-tela">Ação</span></th>
+                  </tr>
+                </thead>
+                <tbody data-corpo-usuarios></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Aba "Catálogo de benefícios". -->
+          <div class="conteudo-aba-ficha" role="tabpanel" data-conteudo-aba="catalogo" hidden>
+            <div class="painel-cabecalho">
+              <p class="descricao-aba" data-catalogo-versao></p>
+              <!-- O catálogo vem das KBs de benefício publicadas (ADR-125): a edição fica no Endomarketing, guia Base de
+                   Conhecimento. -->
+              <a class="botao botao-contorno botao-pequeno" href="banco_endomarketing.html?aba=base" data-link-kbs-da-empresa>Editar na Base de Conhecimento</a>
+            </div>
+            <!-- Aviso quando algum benefício não tem as 3 partes que a vitrine mostra. -->
+            <p class="aviso-incompleto" data-catalogo-aviso hidden></p>
+            <div class="tabela-rolavel">
+              <table class="tabela-montada">
+                <thead>
+                  <tr>
+                    <th scope="col">Benefício</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Como funciona</th>
+                    <th scope="col">Quem pode usar</th>
+                    <th scope="col">Como contratar</th>
+                  </tr>
+                </thead>
+                <tbody data-corpo-catalogo></tbody>
+              </table>
+            </div>
+            <p class="nota-tabela">O catálogo é montado das KBs de benefício publicadas (aba Benefícios) e alimenta o Agente de Endomarketing, que só escreve o que está aqui, sempre com a fonte. A vitrine "Benefícios do seu time" lê direto as KBs publicadas.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé só com o aviso de que o site é um projeto. -->
+  <footer class="rodape rodape-so-nota">
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o Santander é ilustrativa: este não é um sistema oficial do banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- ============ 4. JANELA "CONVIDAR USUÁRIO" ============ -->
+  <dialog class="janela-beneficio" id="janela-convite" aria-labelledby="janela-convite-titulo">
+    <!-- "novalidate": quem confere o formulário é o js, com o aviso em português da tela. -->
+    <form class="janela-conteudo" method="dialog" novalidate data-formulario-convite>
+      <div class="janela-cabecalho">
+        <span class="beneficio-icone"><svg class="icone"><use href="#icone-convidar"/></svg></span>
+        <div class="janela-cabecalho-textos">
+          <span class="sobretitulo">Convidar usuário</span>
+          <h2 class="janela-titulo" id="janela-convite-titulo" data-convite-empresa></h2>
+        </div>
+        <button class="botao-fechar-janela" type="button" aria-label="Fechar" data-fechar-janela>
+          <svg class="icone"><use href="#icone-fechar"/></svg>
+        </button>
+      </div>
+      <p class="janela-resumo">A pessoa recebe um e-mail para criar a senha. O convite vale por 7 dias.</p>
+      <label class="campo">
+        <span class="campo-rotulo">Nome completo</span>
+        <input class="campo-entrada" type="text" maxlength="80" data-convite-nome>
+      </label>
+      <label class="campo campo-com-espaco">
+        <span class="campo-rotulo">E-mail corporativo</span>
+        <input class="campo-entrada" type="email" maxlength="120" data-convite-email>
+      </label>
+      <p class="aviso-campo" data-convite-erro hidden></p>
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-fechar-janela>Cancelar</button>
+        <button class="botao botao-principal" type="submit">Enviar convite</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Com servidor (js/banco_empresas_real.js): a janela da empresa (nova ou editar dados). -->
+  <dialog class="janela-beneficio" id="janela-empresa" aria-labelledby="janela-empresa-titulo">
+    <form class="janela-conteudo" method="dialog" novalidate data-formulario-empresa>
+      <div class="janela-cabecalho">
+        <span class="beneficio-icone"><svg class="icone"><use href="#icone-predio"/></svg></span>
+        <div class="janela-cabecalho-textos">
+          <span class="sobretitulo">Cadastro da empresa</span>
+          <h2 class="janela-titulo" id="janela-empresa-titulo" data-empresa-titulo-janela>Empresa nova</h2>
+        </div>
+        <button class="botao-fechar-janela" type="button" aria-label="Fechar" data-fechar-janela>
+          <svg class="icone"><use href="#icone-fechar"/></svg>
+        </button>
+      </div>
+      <label class="campo"><span class="campo-rotulo">Razão social</span><input class="campo-entrada" maxlength="200" data-empresa-campo="nome"></label>
+      <label class="campo campo-com-espaco"><span class="campo-rotulo">CNPJ</span><input class="campo-entrada" maxlength="20" data-empresa-campo="cnpj"></label>
+      <label class="campo campo-com-espaco"><span class="campo-rotulo">Setor</span><input class="campo-entrada" maxlength="100" data-empresa-campo="setor"></label>
+      <label class="campo campo-com-espaco"><span class="campo-rotulo">Endereço da sede</span><input class="campo-entrada" maxlength="200" data-empresa-campo="endereco_comercial"></label>
+      <label class="campo campo-com-espaco"><span class="campo-rotulo">Município</span><input class="campo-entrada" maxlength="100" data-empresa-campo="municipio"></label>
+      <label class="campo campo-com-espaco"><span class="campo-rotulo">UF</span><input class="campo-entrada" maxlength="2" data-empresa-campo="uf"></label>
+      <label class="campo campo-com-espaco"><span class="campo-rotulo">Domínio de e-mail (depois do @)</span><input class="campo-entrada" maxlength="100" data-empresa-campo="dominio_email"></label>
+      <label class="campo campo-com-espaco"><span class="campo-rotulo">Contrato desde</span><input class="campo-entrada" type="date" data-empresa-campo="contrato_desde"></label>
+      <p class="aviso-campo" data-empresa-erro hidden></p>
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-fechar-janela>Cancelar</button>
+        <button class="botao botao-principal" type="submit">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!--
+    Com servidor (js/banco_empresas_real.js): o detalhe de um funcionário da Visão geral (ADR-143). Abre ao clicar na
+    pessoa na grade, que mostra só os campos obrigatórios; aqui aparecem todos os campos do parâmetro, agrupados, com
+    "Informação não encontrada" no que veio em branco, e a conta no banco.
+  -->
+  <dialog class="janela-beneficio janela-ficha" id="janela-detalhe-funcionario"
+          aria-labelledby="janela-detalhe-funcionario-nome">
+    <div class="janela-conteudo">
+      <div class="janela-cabecalho">
+        <span class="iniciais-usuario iniciais-grandes" data-detalhe-iniciais></span>
+        <div class="janela-cabecalho-textos">
+          <span class="sobretitulo" data-detalhe-situacao></span>
+          <h2 class="janela-titulo" id="janela-detalhe-funcionario-nome" data-detalhe-nome></h2>
+          <p class="janela-resumo" data-detalhe-resumo></p>
+        </div>
+        <button class="botao-fechar-janela" type="button" aria-label="Fechar" data-fechar-janela>
+          <svg class="icone"><use href="#icone-fechar"/></svg>
+        </button>
+      </div>
+      <!-- Os grupos de campos (Titular, Renda...) e a conta no banco, montados pelo js/banco_empresas_real.js. -->
+      <div class="ficha-grupos" data-detalhe-grupos></div>
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-fechar-janela>Voltar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Conversas (acerta o número de mensagens da aba) e os dados e cliques desta tela. -->
+  <!-- Cabeçalho com quem entrou, os contadores reais e "Minha senha" (ADR-69). -->
+  <!-- O menu da engrenagem "Configuração" (abre e fecha pelo clique e pelo teclado). -->
+  <script src="js/menu_configuracao.js"></script>
+  <script src="js/cabecalho_real.js"></script>
+  <!-- Conversas guardadas (comum aos dois portais): a aba Conversa da ficha lê e grava por ele. -->
+  <script src="js/conversas.js"></script>
+  <!-- A bolinha das conversas abertas, ao lado de "Empresas" no menu (js/sinal_de_conversas.js). -->
+  <script src="js/sinal_de_conversas.js"></script>
+  <script src="js/grade_do_parametro.js"></script>
+  <!-- A janela "Carregar Contas Abertas" (aberta pelo botão da aba Contas abertas). -->
+  <script src="js/janela_contas_abertas.js"></script>
+  <!-- A escolha da empresa pelo nome ou pelo CNPJ: a lista das últimas cadastradas (a mesma do Endomarketing). -->
+  <script src="js/escolha_de_empresa.js"></script>
+  <!-- A ficha e as suas abas: os dados de exemplo e os cliques. -->
+  <script src="js/banco_empresas.js"></script>
+  <script src="js/banco_empresas_conversa.js"></script>
+  <script src="js/banco_empresas_contas.js"></script>
+  <!-- Com servidor, troca o exemplo pelas fichas reais (ADR-69). -->
+  <script src="js/banco_empresas_real.js"></script>
+  <!-- A faixa "A IA está pausada" no alto da tela, só com o teto de gasto atingido (ADR-139). -->
+  <script src="js/aviso_do_teto_da_ia.js"></script>
+  <!-- O "i" em cima das grades: abre o balão com o que quer dizer cada situação (textos do servidor). -->
+  <script src="js/legenda_dos_status.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

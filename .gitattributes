@@ -1,0 +1,5 @@
+# Finais de linha no formato Linux em todo o repositório (o container roda Linux)
+* text=auto eol=lf
+
+# O versao_da_aplicacao.txt recebe a data do commit no "git archive" (o site publicado; ADR-133)
+versao_da_aplicacao.txt export-subst

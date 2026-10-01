@@ -1,0 +1,220 @@
+{
+  "rota": "bedrock",
+  "perfil_geografico": "us",
+  "regiao": "us-east-1",
+  "configuracao": "B3",
+  "planilhas": 30,
+  "formato_garantido": true,
+  "teto_por_modelo_usd": {
+    "claude-sonnet-4-6": 1.7,
+    "demais": 0.55
+  },
+  "gasto_usd": 3.2944,
+  "modelos": {
+    "claude-sonnet-4-6": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "claude-sonnet-4-6",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 1.5078,
+      "tokens_entrada": 198392,
+      "tokens_saida": 51706,
+      "acuracia_por_campo": 0.8290598290598291,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.5153374233128835,
+      "acerto_geral": 0.855072463768116,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7972972972972973,
+        0.859504132231405
+      ],
+      "segundos_por_planilha": 15.8,
+      "custo_por_planilha_usd": 0.05026
+    },
+    "nova-2-lite": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "nova-2-lite",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.2326,
+      "tokens_entrada": 173725,
+      "tokens_saida": 56061,
+      "acuracia_por_campo": 0.8162393162393162,
+      "abstencao_recall": 0.9880952380952381,
+      "abstencao_precisao": 0.51875,
+      "acerto_geral": 0.842391304347826,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7865707434052758,
+        0.8466386554621849
+      ],
+      "segundos_por_planilha": 9.18,
+      "custo_por_planilha_usd": 0.00775
+    },
+    "mistral-large-3": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "mistral-large-3",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.1711,
+      "tokens_entrada": 153550,
+      "tokens_saida": 52507,
+      "acuracia_por_campo": 0.8183760683760684,
+      "abstencao_recall": 0.9642857142857143,
+      "abstencao_precisao": 0.5328947368421053,
+      "acerto_geral": 0.8405797101449275,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7822410147991543,
+        0.8547717842323651
+      ],
+      "segundos_por_planilha": 9.84,
+      "custo_por_planilha_usd": 0.0057
+    },
+    "claude-haiku-4-5": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "claude-haiku-4-5",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.5041,
+      "tokens_entrada": 198362,
+      "tokens_saida": 51982,
+      "acuracia_por_campo": 0.844017094017094,
+      "abstencao_recall": 0.9285714285714286,
+      "abstencao_precisao": 0.5652173913043478,
+      "acerto_geral": 0.8568840579710145,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.8076923076923077,
+        0.8794178794178794
+      ],
+      "segundos_por_planilha": 9.86,
+      "custo_por_planilha_usd": 0.0168
+    },
+    "nova-pro": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "nova-pro",
+      "situacao": "completo",
+      "planilhas_pontuadas": 28,
+      "falhas_do_provedor": [
+        {
+          "planilha": 45,
+          "motivo": "falha no provedor: Client error '424 Failed Dependency' for url 'https://bedrock-runtime.us-east-1.amazonaws.com/model/us.amazon.nova-pro-v1:0/converse'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/424"
+        },
+        {
+          "planilha": 163,
+          "motivo": "falha no provedor: Client error '424 Failed Dependency' for url 'https://bedrock-runtime.us-east-1.amazonaws.com/model/us.amazon.nova-pro-v1:0/converse'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/424"
+        }
+      ],
+      "respostas_fora_do_contrato": 13,
+      "vezes_que_o_dicionario_assumiu": 3,
+      "custo_usd": 0.4203,
+      "tokens_entrada": 212580,
+      "tokens_saida": 66251,
+      "acuracia_por_campo": 0.7824074074074074,
+      "abstencao_recall": 0.9620253164556962,
+      "abstencao_precisao": 0.4840764331210191,
+      "acerto_geral": 0.8101761252446184,
+      "n_colunas_com_campo": 432,
+      "n_colunas_para_abster": 79,
+      "ic95_acuracia_por_campo": [
+        0.6666666666666666,
+        0.8702928870292888
+      ],
+      "segundos_por_planilha": 24.81,
+      "custo_por_planilha_usd": 0.01501
+    },
+    "qwen3-vl-235b": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "qwen3-vl-235b",
+      "situacao": "completo",
+      "planilhas_pontuadas": 28,
+      "falhas_do_provedor": [
+        {
+          "planilha": 114,
+          "motivo": "falha no provedor: Server error '500 Internal Server Error' for url 'https://bedrock-runtime.us-east-1.amazonaws.com/model/qwen.qwen3-vl-235b-a22b/converse'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+        },
+        {
+          "planilha": 215,
+          "motivo": "falha no provedor: Server error '500 Internal Server Error' for url 'https://bedrock-runtime.us-east-1.amazonaws.com/model/qwen.qwen3-vl-235b-a22b/converse'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+        }
+      ],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.2347,
+      "tokens_entrada": 139474,
+      "tokens_saida": 52425,
+      "acuracia_por_campo": 0.8395348837209302,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.5970149253731343,
+      "acerto_geral": 0.8647058823529412,
+      "n_colunas_com_campo": 430,
+      "n_colunas_para_abster": 80,
+      "ic95_acuracia_por_campo": [
+        0.8048780487804879,
+        0.8713968957871396
+      ],
+      "segundos_por_planilha": 37.76,
+      "custo_por_planilha_usd": 0.00838
+    },
+    "deepseek-v3.2": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "deepseek-v3.2",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.2238,
+      "tokens_entrada": 158621,
+      "tokens_saida": 56812,
+      "acuracia_por_campo": 0.7628205128205128,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.46408839779005523,
+      "acerto_geral": 0.7989130434782609,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7191780821917808,
+        0.803960396039604
+      ],
+      "segundos_por_planilha": 37.78,
+      "custo_por_planilha_usd": 0.00746
+    }
+  },
+  "b0": {
+    "provedor": "—",
+    "modelo": "B0 (dicionário, sem IA)",
+    "situacao": "completo",
+    "planilhas_pontuadas": 30,
+    "custo_usd": 0.0,
+    "acuracia_por_campo": 0.5341880341880342,
+    "abstencao_recall": 0.5952380952380952,
+    "abstencao_precisao": 0.5555555555555556,
+    "acerto_geral": 0.5434782608695652,
+    "n_colunas_com_campo": 468,
+    "n_colunas_para_abster": 84,
+    "ic95_acuracia_por_campo": [
+      0.5011709601873536,
+      0.564870259481038
+    ],
+    "segundos_por_planilha": 0.0061
+  },
+  "observacao": "Dois processos ao mesmo tempo, com o mesmo código e a mesma amostra: o Sonnet 4.6 (teto US$ 1,70) e os outros 6 modelos (teto US$ 0,55 cada), para a soma dos tetos caber no teto da sessão."
+}

@@ -1,0 +1,684 @@
+{
+ "gerado_em": "2026-09-30T17:54:20",
+ "por_tipo": {
+  "T1": {
+   "nome": "Planilha no padrão do banco",
+   "sem_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 1.0,
+    "celulas": 3252,
+    "celulas_certas": 3252,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 2.0,
+    "perguntas_por_pessoa": 0.13333333333333333,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 1.0,
+    "segundos_p50": 9.22,
+    "segundos_p95": 25.47,
+    "custo_usd": 0.0,
+    "custo_por_arquivo_usd": 0.0,
+    "custo_por_funcionario_usd": 0.0,
+    "chamadas_reais": 0,
+    "chamadas_simuladas": 5
+   },
+   "com_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 1.0,
+    "celulas": 3252,
+    "celulas_certas": 3252,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 0.0,
+    "perguntas_por_pessoa": 0.0,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 1.0,
+    "segundos_p50": 38.84,
+    "segundos_p95": 46.83,
+    "custo_usd": 0.5296,
+    "custo_por_arquivo_usd": 0.1059,
+    "custo_por_funcionario_usd": 0.0071,
+    "chamadas_reais": 5,
+    "chamadas_simuladas": 0
+   },
+   "ganho": {
+    "acerto_por_campo": {
+     "diferenca": 0.0,
+     "ic_95": [
+      0.0,
+      0.0
+     ],
+     "arquivos": 5,
+     "itens": 3252,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 0,
+     "valor_p": 1.0,
+     "valor_p_holm": 1.0
+    },
+    "obrigatorios_certos": {
+     "diferenca": 0.0,
+     "ic_95": [
+      0.0,
+      0.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 0,
+     "valor_p": 1.0,
+     "valor_p_holm": 1.0
+    },
+    "sem_pergunta": {
+     "diferenca": 0.0,
+     "ic_95": [
+      0.0,
+      0.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 0,
+     "valor_p": 1.0,
+     "valor_p_holm": 1.0
+    },
+    "custo_com_ia_usd": 0.5296,
+    "custo_por_ponto_do_acerto_usd": null,
+    "custo_por_ponto_dos_obrigatorios_usd": null
+   }
+  },
+  "T2": {
+   "nome": "Planilha com colunas fora de ordem, a mais e faltando",
+   "sem_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 1.0,
+    "celulas": 2393,
+    "celulas_certas": 2393,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 3.2,
+    "perguntas_por_pessoa": 0.21333333333333335,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 0.9888268156424581,
+    "segundos_p50": 6.28,
+    "segundos_p95": 13.55,
+    "custo_usd": 0.0,
+    "custo_por_arquivo_usd": 0.0,
+    "custo_por_funcionario_usd": 0.0,
+    "chamadas_reais": 0,
+    "chamadas_simuladas": 5
+   },
+   "com_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 1.0,
+    "celulas": 2393,
+    "celulas_certas": 2393,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 0.0,
+    "perguntas_por_pessoa": 0.0,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 1.0,
+    "segundos_p50": 31.52,
+    "segundos_p95": 34.28,
+    "custo_usd": 0.4398,
+    "custo_por_arquivo_usd": 0.088,
+    "custo_por_funcionario_usd": 0.0059,
+    "chamadas_reais": 5,
+    "chamadas_simuladas": 0
+   },
+   "ganho": {
+    "acerto_por_campo": {
+     "diferenca": 0.0,
+     "ic_95": [
+      0.0,
+      0.0
+     ],
+     "arquivos": 5,
+     "itens": 2393,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 0,
+     "valor_p": 1.0,
+     "valor_p_holm": 1.0
+    },
+    "obrigatorios_certos": {
+     "diferenca": 0.0,
+     "ic_95": [
+      0.0,
+      0.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 0,
+     "valor_p": 1.0,
+     "valor_p_holm": 1.0
+    },
+    "sem_pergunta": {
+     "diferenca": 0.0,
+     "ic_95": [
+      0.0,
+      0.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 0,
+     "valor_p": 1.0,
+     "valor_p_holm": 1.0
+    },
+    "custo_com_ia_usd": 0.4398,
+    "custo_por_ponto_do_acerto_usd": null,
+    "custo_por_ponto_dos_obrigatorios_usd": null
+   }
+  },
+  "T3": {
+   "nome": "Planilha com nomes próximos",
+   "sem_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 0.6072,
+    "celulas": 1250,
+    "celulas_certas": 759,
+    "obrigatorios_certos": 0.0,
+    "sem_pergunta": 0.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 6.4,
+    "perguntas_por_pessoa": 0.4266666666666667,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 0.638095238095238,
+    "segundos_p50": 3.22,
+    "segundos_p95": 4.38,
+    "custo_usd": 0.0,
+    "custo_por_arquivo_usd": 0.0,
+    "custo_por_funcionario_usd": 0.0,
+    "chamadas_reais": 0,
+    "chamadas_simuladas": 5
+   },
+   "com_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 0.988,
+    "celulas": 1250,
+    "celulas_certas": 1235,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 2.2,
+    "perguntas_por_pessoa": 0.14666666666666667,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 0.9904761904761905,
+    "segundos_p50": 25.09,
+    "segundos_p95": 28.31,
+    "custo_usd": 0.2859,
+    "custo_por_arquivo_usd": 0.0572,
+    "custo_por_funcionario_usd": 0.0038,
+    "chamadas_reais": 5,
+    "chamadas_simuladas": 0
+   },
+   "ganho": {
+    "acerto_por_campo": {
+     "diferenca": 0.3808,
+     "ic_95": [
+      0.2966168371361133,
+      0.45433255269320844
+     ],
+     "arquivos": 5,
+     "itens": 1250,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 476,
+     "valor_p": 1.0250665447337477e-143,
+     "valor_p_holm": 4.100266178934991e-143
+    },
+    "obrigatorios_certos": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "sem_pergunta": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "custo_com_ia_usd": 0.2859,
+    "custo_por_ponto_do_acerto_usd": 0.0075,
+    "custo_por_ponto_dos_obrigatorios_usd": 0.0029
+   }
+  },
+  "T4": {
+   "nome": "Planilha com cabeçalho difícil",
+   "sem_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 0.49333333333333335,
+    "celulas": 1125,
+    "celulas_certas": 555,
+    "obrigatorios_certos": 0.0,
+    "sem_pergunta": 0.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 3.8,
+    "perguntas_por_pessoa": 0.25333333333333335,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 0.4857142857142857,
+    "segundos_p50": 2.53,
+    "segundos_p95": 4.26,
+    "custo_usd": 0.0,
+    "custo_por_arquivo_usd": 0.0,
+    "custo_por_funcionario_usd": 0.0,
+    "chamadas_reais": 0,
+    "chamadas_simuladas": 5
+   },
+   "com_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 1.0,
+    "celulas": 1125,
+    "celulas_certas": 1125,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 1.2,
+    "perguntas_por_pessoa": 0.08,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 1.0,
+    "segundos_p50": 18.59,
+    "segundos_p95": 19.88,
+    "custo_usd": 0.2239,
+    "custo_por_arquivo_usd": 0.0448,
+    "custo_por_funcionario_usd": 0.003,
+    "chamadas_reais": 5,
+    "chamadas_simuladas": 0
+   },
+   "ganho": {
+    "acerto_por_campo": {
+     "diferenca": 0.5066666666666667,
+     "ic_95": [
+      0.4625,
+      0.5466666666666666
+     ],
+     "arquivos": 5,
+     "itens": 1125,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 570,
+     "valor_p": 5.17526350329881e-172,
+     "valor_p_holm": 2.5876317516494047e-171
+    },
+    "obrigatorios_certos": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "sem_pergunta": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "custo_com_ia_usd": 0.2239,
+    "custo_por_ponto_do_acerto_usd": 0.0044,
+    "custo_por_ponto_dos_obrigatorios_usd": 0.0022
+   }
+  },
+  "T5": {
+   "nome": "Word com tabela ou fichas",
+   "sem_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 0.7205882352941176,
+    "celulas": 1020,
+    "celulas_certas": 735,
+    "obrigatorios_certos": 0.0,
+    "sem_pergunta": 0.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 2.0,
+    "perguntas_por_pessoa": 0.13333333333333333,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 0.7205882352941176,
+    "segundos_p50": 2.7,
+    "segundos_p95": 3.75,
+    "custo_usd": 0.0,
+    "custo_por_arquivo_usd": 0.0,
+    "custo_por_funcionario_usd": 0.0,
+    "chamadas_reais": 0,
+    "chamadas_simuladas": 5
+   },
+   "com_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 1.0,
+    "celulas": 1020,
+    "celulas_certas": 1020,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 3.0,
+    "perguntas_por_pessoa": 0.2,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": 1.0,
+    "segundos_p50": 15.31,
+    "segundos_p95": 21.26,
+    "custo_usd": 0.2192,
+    "custo_por_arquivo_usd": 0.0438,
+    "custo_por_funcionario_usd": 0.0029,
+    "chamadas_reais": 5,
+    "chamadas_simuladas": 0
+   },
+   "ganho": {
+    "acerto_por_campo": {
+     "diferenca": 0.27941176470588236,
+     "ic_95": [
+      0.25,
+      0.3026315789473684
+     ],
+     "arquivos": 5,
+     "itens": 1020,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 285,
+     "valor_p": 3.217223493417518e-86,
+     "valor_p_holm": 9.651670480252554e-86
+    },
+    "obrigatorios_certos": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "sem_pergunta": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "custo_com_ia_usd": 0.2192,
+    "custo_por_ponto_do_acerto_usd": 0.0078,
+    "custo_por_ponto_dos_obrigatorios_usd": 0.0022
+   }
+  },
+  "T6": {
+   "nome": "Word com texto corrido simples ou variado",
+   "sem_ia": {
+    "arquivos": 5,
+    "recusados": 5,
+    "pessoas": 75,
+    "acerto_por_campo": 0.0,
+    "celulas": 885,
+    "celulas_certas": 0,
+    "obrigatorios_certos": 0.0,
+    "sem_pergunta": 0.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 0,
+    "perguntas_por_arquivo": null,
+    "perguntas_por_pessoa": 0.0,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": null,
+    "segundos_p50": 0.1,
+    "segundos_p95": 0.12,
+    "custo_usd": 0.0,
+    "custo_por_arquivo_usd": 0.0,
+    "custo_por_funcionario_usd": 0.0,
+    "chamadas_reais": 0,
+    "chamadas_simuladas": 0
+   },
+   "com_ia": {
+    "arquivos": 5,
+    "recusados": 0,
+    "pessoas": 75,
+    "acerto_por_campo": 0.9977401129943503,
+    "celulas": 885,
+    "celulas_certas": 883,
+    "obrigatorios_certos": 1.0,
+    "sem_pergunta": 1.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 75,
+    "perguntas_por_arquivo": 0.0,
+    "perguntas_por_pessoa": 0.0,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "0 de 0",
+    "perguntas_esperadas_feitas": "0 de 0",
+    "colunas_certas": null,
+    "segundos_p50": 74.94,
+    "segundos_p95": 81.5,
+    "custo_usd": 1.4756,
+    "custo_por_arquivo_usd": 0.2951,
+    "custo_por_funcionario_usd": 0.0197,
+    "chamadas_reais": 155,
+    "chamadas_simuladas": 0
+   },
+   "ganho": {
+    "acerto_por_campo": {
+     "diferenca": 0.9977401129943503,
+     "ic_95": [
+      0.9960199004975124,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 885,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 883,
+     "valor_p": 3.10130032290503e-266,
+     "valor_p_holm": 1.860780193743018e-265
+    },
+    "obrigatorios_certos": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "sem_pergunta": {
+     "diferenca": 1.0,
+     "ic_95": [
+      1.0,
+      1.0
+     ],
+     "arquivos": 5,
+     "itens": 75,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 75,
+     "valor_p": 5.293955920339377e-23,
+     "valor_p_holm": 3.705769144237564e-22
+    },
+    "custo_com_ia_usd": 1.4756,
+    "custo_por_ponto_do_acerto_usd": 0.0148,
+    "custo_por_ponto_dos_obrigatorios_usd": 0.0148
+   }
+  },
+  "T7": {
+   "nome": "Word com texto misturado e armadilhas",
+   "sem_ia": {
+    "arquivos": 5,
+    "recusados": 5,
+    "pessoas": 75,
+    "acerto_por_campo": 0.0,
+    "celulas": 1370,
+    "celulas_certas": 0,
+    "obrigatorios_certos": 0.0,
+    "sem_pergunta": 0.0,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 0,
+    "perguntas_por_arquivo": null,
+    "perguntas_por_pessoa": 0.0,
+    "alarmes_falsos": 0,
+    "armadilhas_respeitadas": "55 de 55",
+    "perguntas_esperadas_feitas": "0 de 40",
+    "colunas_certas": null,
+    "segundos_p50": 0.13,
+    "segundos_p95": 0.19,
+    "custo_usd": 0.0,
+    "custo_por_arquivo_usd": 0.0,
+    "custo_por_funcionario_usd": 0.0,
+    "chamadas_reais": 0,
+    "chamadas_simuladas": 0
+   },
+   "com_ia": {
+    "arquivos": 4,
+    "recusados": 0,
+    "pessoas": 60,
+    "acerto_por_campo": 0.9890510948905109,
+    "celulas": 1096,
+    "celulas_certas": 1084,
+    "obrigatorios_certos": 0.9,
+    "sem_pergunta": 0.3333333333333333,
+    "erro_silencioso": 0,
+    "pessoas_encontradas": 60,
+    "perguntas_por_arquivo": 10.0,
+    "perguntas_por_pessoa": 0.6666666666666666,
+    "alarmes_falsos": 2,
+    "armadilhas_respeitadas": "44 de 44",
+    "perguntas_esperadas_feitas": "32 de 32",
+    "colunas_certas": null,
+    "segundos_p50": 92.9,
+    "segundos_p95": 121.13,
+    "custo_usd": 1.6038,
+    "custo_por_arquivo_usd": 0.4009,
+    "custo_por_funcionario_usd": 0.0267,
+    "chamadas_reais": 124,
+    "chamadas_simuladas": 0
+   },
+   "ganho": {
+    "acerto_por_campo": {
+     "diferenca": 0.9890510948905109,
+     "ic_95": [
+      0.9863138686131386,
+      0.9917883211678832
+     ],
+     "arquivos": 4,
+     "itens": 1096,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 1084,
+     "valor_p": 0.0,
+     "valor_p_holm": 0.0
+    },
+    "obrigatorios_certos": {
+     "diferenca": 0.9,
+     "ic_95": [
+      0.8666666666666667,
+      0.9333333333333333
+     ],
+     "arquivos": 4,
+     "itens": 60,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 54,
+     "valor_p": 1.1102230246251565e-16,
+     "valor_p_holm": 3.3306690738754696e-16
+    },
+    "sem_pergunta": {
+     "diferenca": 0.3333333333333333,
+     "ic_95": [
+      0.26666666666666666,
+      0.4
+     ],
+     "arquivos": 4,
+     "itens": 60,
+     "so_sem_ia_acertou": 0,
+     "so_com_ia_acertou": 20,
+     "valor_p": 1.9073486328125e-06,
+     "valor_p_holm": 5.7220458984375e-06
+    },
+    "custo_com_ia_usd": 1.6038,
+    "custo_por_ponto_do_acerto_usd": 0.0162,
+    "custo_por_ponto_dos_obrigatorios_usd": 0.0178
+   }
+  }
+ }
+}

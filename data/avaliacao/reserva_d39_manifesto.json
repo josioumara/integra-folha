@@ -1,0 +1,30 @@
+{
+ "conjunto": "texto_dificil_reserva",
+ "arquivos": {
+  "gabarito.json": "f09a1151ee0e928503260ceef3ac5694ca2434b8e30a3d1ed11099693943a239",
+  "N6_apelido_1.docx": "b4b06e52129523a1ced9301db63794f8dccb960083bc69b994007e41e2e121f7",
+  "N6_apelido_2.docx": "9316b71d4853d06183b7a76242fdf331f2d3425c229b29208817bb89277de758",
+  "N6_apelido_3.docx": "310311f265ea0d46511917bb89a8b9f419082b6dc6fe222b396510a3366a3f22",
+  "N6_apelido_4.docx": "92530f40246d932c9ad4574192766a74dd8f50d3104db4a140ec6f86dcdf4839",
+  "N6_cpf_repetido_1.docx": "1c969c85042f31c0fbfd9551b89e58eb449a0f0fa0d680caf9eaf5cd6353634e",
+  "N6_cpf_repetido_2.docx": "c15f29068af373f264f5d7d1231cd0bd43efb19bcc972df8e45f551f8de9594a",
+  "N6_cpf_repetido_3.docx": "48b1bc41a34661b103b8c8e72f624e276e7e4073aafbb3f18e2e1094f0e97025",
+  "N6_cpf_repetido_4.docx": "688a1f9c2ad1bb73d36c8c61adae4e605bed4d537f1330c258ff45a60da58dff",
+  "N6_dependentes_1.docx": "1b5e88454ce4c860757b650d7d5f7e1b123ba2d612a2c36b2cfa81e4ed174d61",
+  "N6_dependentes_2.docx": "67dd52c3be4ddc08e75869b7eda90b4dee6262e1515ba6b519b48bc97318f55c",
+  "N6_dependentes_3.docx": "fc55d0eb5ff6dc896b20a89a41003727e95b9b46bde40f5717508e76a07fdaee",
+  "N6_dependentes_4.docx": "415652a02ca80c4fb9a9af5f35ce003c272cd5cfb155de61c777486fa4703be5",
+  "N6_nome_curto_1.docx": "de07279b56fc4fa53c8fef2843260404ad9498e852979cb91e9f269882ee9ae8",
+  "N6_nome_curto_2.docx": "4fe52c8fcc474542b5d509cbe842e912f3870cd7b4b4cd65d7425d39c02b7299",
+  "N6_nome_curto_3.docx": "2aaf3af28abfd18c38777c065a6d351030c4d77d853714b58c54b5b1b566773d",
+  "N6_nome_curto_4.docx": "d655d7d6d5ef95c70cc7826be935b1525b8c6c9dce8a2930ce8ef81dfa03e7d5",
+  "N6_ordem_trocada_1.docx": "734e4d04a727a00c1c4f51883fc15055c882755e6ef22885002e5401aea78938",
+  "N6_ordem_trocada_2.docx": "51ad0eaa6c4865028c8d855e8d7a29ccf20d07d55e14548e33cb81a5014c3942",
+  "N6_ordem_trocada_3.docx": "a0e407b64e775d9a8af73fb8298f311e95375eef631503bbeba7b7b49abaa477",
+  "N6_ordem_trocada_4.docx": "5b64f1a41583a5a963beb5fabffe8ae6e9fb43c1da2edf6918460bb5131f2040",
+  "N6_referencia_por_cpf_1.docx": "95065feed35a8f5e363c2317a7acd064c30346778a4d62e5cc7aa08b8b5fe346",
+  "N6_referencia_por_cpf_2.docx": "e54c66d521cd992bd64c86e384ff1e5de7582b108425e2d10d4b87a4ebd35d9a",
+  "N6_referencia_por_cpf_3.docx": "76c0d5a6a71631c2297600b6c0681d4c66d644977bae59944ef482850527a3b6",
+  "N6_referencia_por_cpf_4.docx": "aff95f715a3355e2f739510393fdf74c0e57356dc0ea5087517dd0be7342ed85"
+ }
+}

@@ -1,0 +1,283 @@
+# =====================================================================================================================
+# usuario-publicador.yaml: o usuário da AWS que publica o Integra Folha (modelo CloudFormation)
+#
+# Para que serve:
+#   A conta da AWS nasce com um usuário principal (o "root"), que pode tudo: até fechar a conta e mexer na cobrança.
+#   É como a chave-mestra de um prédio. Este modelo cria um usuário só para publicar, o `integra-publicador`, que
+#   abre apenas as portas que a publicação usa: a pilha do CloudFormation, a máquina (EC2) e o IP fixo, o bucket do
+#   backup, o alarme de orçamento e os papéis de IAM que começam com `integra-`.
+#
+# O freio de segurança (o "limite de permissões", em inglês "permissions boundary"):
+#   Para a máquina poder fazer o backup, o integra-publicador precisa criar um papel de IAM (uma "credencial da
+#   máquina"). Sem freio, ele poderia criar um papel com poder total e usá-lo para passar das próprias permissões.
+#   Por isso, todo papel que ele cria é obrigado a levar o limite `integra-limite-dos-papeis`, que diz o máximo
+#   que um papel pode fazer: gravar o backup (sem apagar), chamar o Bedrock e mandar métricas e logs. O
+#   integra-publicador não pode mudar esse limite.
+#
+# Como usar (uma vez só, com a conta principal, porque o integra-publicador não pode criar a si mesmo):
+#   aws cloudformation deploy --template-file usuario-publicador.yaml --stack-name conta-usuario-publicador
+#       --capabilities CAPABILITY_NAMED_IAM --region us-east-1 --profile integra-publicacao
+#   Depois, a dona da conta define a senha e o MFA do usuário no console. Nenhuma senha passa por este arquivo.
+#
+# Por que a pilha não começa com "integra-": o integra-publicador só mexe em pilhas "integra-*". Assim, ele não
+# consegue alterar a pilha que define as próprias permissões.
+#
+# Custo: nenhum. Usuários, políticas e pilhas do CloudFormation não são cobrados.
+# =====================================================================================================================
+
+# Versão do formato de modelo do CloudFormation (é sempre esta data).
+AWSTemplateFormatVersion: "2010-09-09"
+# Descrição que aparece no console (com hífen, sem travessão, pela regra do projeto).
+Description: "Integra Folha - usuario integra-publicador, so com as permissoes de publicar, e o limite dos papeis"
+
+Parameters:
+  # A região única onde o integra-publicador pode criar recursos (a Virgínia, ADR-134).
+  RegiaoPermitida:
+    Type: String
+    Default: us-east-1
+    Description: "Regiao onde o publicador pode criar recursos"
+
+Resources:
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 1. O limite dos papéis: o máximo que qualquer papel criado pelo integra-publicador pode fazer.
+  # -------------------------------------------------------------------------------------------------------------------
+  LimiteDosPapeis:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      # Nome fixo, para as regras abaixo poderem citá-lo.
+      ManagedPolicyName: integra-limite-dos-papeis
+      # Texto explicativo que aparece no console.
+      Description: "Teto das permissoes de todo papel criado pelo integra-publicador"
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          # O papel da máquina pode ler e gravar o backup nos buckets "integra-*", mas nunca apagar.
+          - Sid: BackupSemApagar
+            Effect: Allow
+            Action:
+              - s3:PutObject
+              - s3:GetObject
+              - s3:ListBucket
+            Resource:
+              - arn:aws:s3:::integra-*
+              - arn:aws:s3:::integra-*/*
+          # O papel da máquina pode chamar o Bedrock (a melhoria de usar o papel, sem chave no servidor).
+          - Sid: ChamarOBedrock
+            Effect: Allow
+            Action:
+              - bedrock:InvokeModel
+              - bedrock:InvokeModelWithResponseStream
+              - bedrock:Converse
+              - bedrock:ConverseStream
+            Resource: "*"
+          # O papel da máquina pode mandar métricas e logs para o CloudWatch (o painel de saúde da AWS).
+          - Sid: MetricasELogs
+            Effect: Allow
+            Action:
+              - cloudwatch:PutMetricData
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Resource: "*"
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 2. As permissões de publicar: o que o integra-publicador pode fazer na conta.
+  # -------------------------------------------------------------------------------------------------------------------
+  PermissoesDePublicar:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      # Nome fixo da política, para achar no console.
+      ManagedPolicyName: integra-permissoes-de-publicar
+      # Texto explicativo que aparece no console.
+      Description: "O que o integra-publicador pode fazer: pilhas integra, EC2, bucket integra, orcamento e papeis integra"
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          # Ler pilhas e validar modelos vale para qualquer pilha (só leitura).
+          - Sid: LerPilhas
+            Effect: Allow
+            Action:
+              - cloudformation:Describe*
+              - cloudformation:List*
+              - cloudformation:Get*
+              - cloudformation:ValidateTemplate
+              - cloudformation:EstimateTemplateCost
+            Resource: "*"
+          # Criar, mudar e apagar só as pilhas cujo nome começa com "integra-", e só na região permitida.
+          - Sid: MexerNasPilhasIntegra
+            Effect: Allow
+            Action: cloudformation:*
+            Resource: !Sub "arn:aws:cloudformation:${RegiaoPermitida}:${AWS::AccountId}:stack/integra-*/*"
+          # A máquina, o disco, o IP fixo, a chave SSH e o firewall (EC2), só na região permitida.
+          - Sid: MaquinaNaRegiao
+            Effect: Allow
+            Action: ec2:*
+            Resource: "*"
+            Condition:
+              StringEquals:
+                aws:RequestedRegion: !Ref RegiaoPermitida
+          # Compras que prendem dinheiro por meses ou anos ficam proibidas (reservas e hosts dedicados).
+          - Sid: SemComprasDeLongoPrazo
+            Effect: Deny
+            Action:
+              - ec2:PurchaseReservedInstancesOffering
+              - ec2:PurchaseHostReservation
+              - ec2:PurchaseScheduledInstances
+              - ec2:AllocateHosts
+              - ec2:CreateCapacityReservation
+            Resource: "*"
+          # Só as máquinas pequenas (t3.micro, t3.small e t3.medium): qualquer outro tamanho é recusado.
+          - Sid: SoMaquinasPequenas
+            Effect: Deny
+            Action: ec2:RunInstances
+            Resource: !Sub "arn:aws:ec2:${RegiaoPermitida}:${AWS::AccountId}:instance/*"
+            Condition:
+              StringNotEquals:
+                ec2:InstanceType:
+                  - t3.micro
+                  - t3.small
+                  - t3.medium
+          # Ler os parâmetros públicos da AWS (é onde fica o código da imagem mais nova do Ubuntu).
+          - Sid: LerImagemDoUbuntu
+            Effect: Allow
+            Action:
+              - ssm:GetParameter
+              - ssm:GetParameters
+            Resource: !Sub "arn:aws:ssm:${RegiaoPermitida}::parameter/aws/service/*"
+          # Listar os buckets da conta (só os nomes).
+          - Sid: ListarBuckets
+            Effect: Allow
+            Action: s3:ListAllMyBuckets
+            Resource: "*"
+          # Tudo nos buckets que começam com "integra-" (o do backup).
+          - Sid: BucketsIntegra
+            Effect: Allow
+            Action: s3:*
+            Resource:
+              - arn:aws:s3:::integra-*
+              - arn:aws:s3:::integra-*/*
+          # O alarme de orçamento (AWS Budgets): criar, ver e mudar.
+          - Sid: AlarmeDeOrcamento
+            Effect: Allow
+            Action: budgets:*
+            Resource: "*"
+          # Consultar preços e o custo real (só leitura), para as propostas e o registro de gastos.
+          - Sid: PrecosECustos
+            Effect: Allow
+            Action:
+              - pricing:*
+              - ce:GetCostAndUsage
+              - ce:GetCostForecast
+              - ce:GetDimensionValues
+            Resource: "*"
+          # Os alarmes e as métricas do CloudWatch (por exemplo, o alarme de máquina parada).
+          - Sid: AlarmesDaMaquina
+            Effect: Allow
+            Action:
+              - cloudwatch:PutMetricAlarm
+              - cloudwatch:DeleteAlarms
+              - cloudwatch:Describe*
+              - cloudwatch:GetMetricData
+              - cloudwatch:ListMetrics
+            Resource: "*"
+          # Conferir a configuração do Bedrock (como a retenção zero), sem chamar os modelos.
+          - Sid: LerOBedrock
+            Effect: Allow
+            Action:
+              - bedrock:Get*
+              - bedrock:List*
+            Resource: "*"
+          # Ler usuários, papéis e políticas (só leitura), para conferir e diagnosticar.
+          - Sid: LerIam
+            Effect: Allow
+            Action:
+              - iam:Get*
+              - iam:List*
+            Resource: "*"
+          # Criar e mudar papéis "integra-" só se o papel levar o limite dos papéis (o freio de segurança).
+          - Sid: PapeisSoComLimite
+            Effect: Allow
+            Action:
+              - iam:CreateRole
+              - iam:PutRolePolicy
+              - iam:DeleteRolePolicy
+              - iam:AttachRolePolicy
+              - iam:DetachRolePolicy
+              - iam:PutRolePermissionsBoundary
+            Resource: !Sub "arn:aws:iam::${AWS::AccountId}:role/integra-*"
+            Condition:
+              StringEquals:
+                iam:PermissionsBoundary: !Ref LimiteDosPapeis
+          # Ações dos papéis "integra-" que não dão poder novo (apagar, etiquetar, descrever).
+          - Sid: PapeisSemPoderNovo
+            Effect: Allow
+            Action:
+              - iam:DeleteRole
+              - iam:TagRole
+              - iam:UntagRole
+              - iam:UpdateRole
+              - iam:UpdateRoleDescription
+            Resource: !Sub "arn:aws:iam::${AWS::AccountId}:role/integra-*"
+          # Entregar um papel "integra-" só para a máquina EC2 (e para mais nenhum serviço).
+          - Sid: EntregarPapelAMaquina
+            Effect: Allow
+            Action: iam:PassRole
+            Resource: !Sub "arn:aws:iam::${AWS::AccountId}:role/integra-*"
+            Condition:
+              StringEquals:
+                iam:PassedToService: ec2.amazonaws.com
+          # O "perfil da instância", que é o envelope que leva o papel até a máquina.
+          - Sid: PerfilDaMaquina
+            Effect: Allow
+            Action:
+              - iam:CreateInstanceProfile
+              - iam:DeleteInstanceProfile
+              - iam:AddRoleToInstanceProfile
+              - iam:RemoveRoleFromInstanceProfile
+              - iam:TagInstanceProfile
+              - iam:UntagInstanceProfile
+            Resource: !Sub "arn:aws:iam::${AWS::AccountId}:instance-profile/integra-*"
+          # Tirar o limite de um papel fica proibido, mesmo que outra regra um dia permita.
+          - Sid: NuncaTirarOLimite
+            Effect: Deny
+            Action: iam:DeleteRolePermissionsBoundary
+            Resource: "*"
+          # Trocar a própria senha (o console pode pedir isso no primeiro acesso).
+          - Sid: TrocarAPropriaSenha
+            Effect: Allow
+            Action:
+              - iam:ChangePassword
+              - iam:GetAccountPasswordPolicy
+            Resource: !Sub "arn:aws:iam::${AWS::AccountId}:user/integra-publicador"
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 3. O usuário que publica, com as permissões acima e a entrada pelo `aws login`.
+  # -------------------------------------------------------------------------------------------------------------------
+  UsuarioPublicador:
+    Type: AWS::IAM::User
+    Properties:
+      # O nome com que a dona da conta entra no console e no `aws login`.
+      UserName: integra-publicador
+      ManagedPolicyArns:
+        # As permissões de publicar, definidas acima.
+        - !Ref PermissoesDePublicar
+        # A política da AWS que libera o `aws login` (a entrada pelo navegador, sem chave de acesso).
+        - arn:aws:iam::aws:policy/SignInLocalDevelopmentAccess
+      Tags:
+        # Etiqueta que marca de qual projeto é o recurso.
+        - Key: projeto
+          Value: integra-folha
+        # Etiqueta que marca a origem do recurso (a rotina de publicação).
+        - Key: criado-por
+          Value: publicador
+
+Outputs:
+  # O endereço do usuário na AWS (o "Arn"), para conferir depois do `aws login`.
+  ArnDoUsuario:
+    Description: "Arn do usuario integra-publicador"
+    Value: !GetAtt UsuarioPublicador.Arn
+  # O endereço do console para entrar com este usuário.
+  EnderecoDoConsole:
+    Description: "Endereco para entrar no console como integra-publicador"
+    Value: !Sub "https://${AWS::AccountId}.signin.aws.amazon.com/console"

@@ -1,0 +1,15 @@
+cargo,tipo_renda,mediana,faixa_minima,faixa_maxima
+Auxiliar administrativo,CLT,2600,1560.00,4160.00
+Assistente administrativo,CLT,3400,2040.00,5440.00
+Analista,CLT,5200,3120.00,8320.00
+Analista sênior,CLT,8200,4920.00,13120.00
+Coordenador,CLT,11500,6900.00,18400.00
+Gerente,CLT,16000,9600.00,25600.00
+Diretor,CLT,28000,16800.00,44800.00
+Operador de logística,CLT,2900,1740.00,4640.00
+Motorista,CLT,3300,1980.00,5280.00
+Desenvolvedor,CLT,7800,4680.00,12480.00
+Vendedor,CLT,2800,1680.00,4480.00
+Técnico de enfermagem,CLT,3600,2160.00,5760.00
+Enfermeiro,CLT,6200,3720.00,9920.00
+Sócio-administrador,PRO_LABORE,20000,12000.00,32000.00

@@ -1,0 +1,50 @@
+{
+  "arquivo": "horizonte_inclusao.csv",
+  "empresa_id": "EMP002",
+  "tipo_carga": "INCLUSAO",
+  "desafio": "CSV com ponto e vírgula, acentos em Windows-1252, datas DD/MM/AAAA e vírgula decimal",
+  "formato": {
+    "tipo": "csv",
+    "separador": ";",
+    "codificacao": "cp1252",
+    "linha_do_cabecalho": 1
+  },
+  "mapeamento": {
+    "Matrícula": "matricula",
+    "Colaborador": "nome_completo",
+    "CPF do Colaborador": "cpf",
+    "Dt. Nasc.": "data_nascimento",
+    "Sexo": "sexo",
+    "Estado Civil Func": "estado_civil",
+    "Código Postal": "cep_residencial",
+    "Endereço Residencial": "logradouro_residencial",
+    "Número Endereço": "numero_residencial",
+    "Bairro Res.": "bairro_residencial",
+    "Cidade Residência": "municipio_residencial",
+    "Sigla UF": "uf_residencial",
+    "Celular": "telefone_celular",
+    "CNPJ": "cnpj_empregador",
+    "Centro de Custo": "codigo_unidade",
+    "Local de Trabalho": "nome_unidade",
+    "Título do Cargo": "cargo",
+    "Início": "data_admissao",
+    "Vínculo": "tipo_renda",
+    "Salário Base": "valor_renda",
+    "Competência": "data_referencia_renda",
+    "CEP Com.": "cep_comercial",
+    "Rua Empresa": "logradouro_comercial",
+    "Nº Comercial": "numero_comercial",
+    "Bairro Empresa": "bairro_comercial",
+    "Cidade da Unidade": "municipio_comercial",
+    "UF Trabalho": "uf_comercial"
+  },
+  "colunas_ambiguas": {},
+  "colunas_extras": [],
+  "funcionario_ids": [
+    "EMP002-0051",
+    "EMP002-0052",
+    "EMP002-0053",
+    "EMP002-0054"
+  ],
+  "erros": []
+}

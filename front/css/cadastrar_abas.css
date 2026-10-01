@@ -1,0 +1,66 @@
+/*
+  cadastrar_abas.css — as duas abas do resultado da leitura, na tela "Cadastrar funcionários" (js/cadastrar_abas.js).
+
+  Para que serve: dá a forma das abas "Funcionários" e "Como o agente leu" (a linha na cor da marca embaixo da aba
+  aberta, o mesmo jeito das abas do Portal Interno) e do conteúdo de cada uma, com o mesmo respiro do resto do cartão.
+  Usa as variáveis de cor do css/estilos.css, que é carregado antes deste arquivo.
+*/
+
+/* A barra das abas: lado a lado, com a linha fina embaixo que separa as abas do conteúdo. Em tela estreita, a barra
+   rola para o lado em vez de quebrar a página. */
+.abas-do-resultado {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--linha-divisoria);
+  overflow-x: auto;
+}
+
+/* Cada aba: texto cinza, sem fundo e sem borda; a linha embaixo só aparece na aba aberta. */
+.aba-do-resultado {
+  padding: 10px 16px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  font-family: var(--fonte-titulos);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Ao passar o mouse, o texto escurece: dá para clicar. */
+.aba-do-resultado:hover {
+  color: var(--texto-principal);
+}
+
+/* A aba aberta: o texto e a linha de baixo na cor da marca. */
+.aba-do-resultado-ativa {
+  color: var(--cor-marca);
+  border-bottom-color: var(--cor-marca);
+}
+
+/* Contorno de foco para quem usa o teclado (na cor da marca, por dentro da aba). */
+.aba-do-resultado:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: -2px;
+  border-radius: 8px 8px 0 0;
+}
+
+/* O conteúdo de cada aba: os blocos empilhados com o mesmo espaço do cartão do resultado (css/estilos.css,
+   .resultado-real). O "hidden" continua escondendo a aba fechada (a regra geral do css/estilos.css vence esta). */
+.painel-do-resultado {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Na aba dos funcionários, a nota, o aviso, a legenda e a contagem ficam juntinhos, logo acima da grade. */
+.painel-do-resultado[data-painel-do-resultado="funcionarios"] {
+  gap: 8px;
+}
+
+/* A grade dos funcionários não precisa de espaço embaixo: os botões do cartão já têm o deles. */
+.tabela-da-previa {
+  margin-bottom: 0;
+}

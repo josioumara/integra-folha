@@ -1,0 +1,183 @@
+coluna_origem,campo,empresa_origem,versao_layout
+Bairro Empresa,bairro_comercial,HIST-01,1
+Bairro Unidade,bairro_comercial,HIST-02,1
+Bairro Com.,bairro_comercial,HIST-03,1
+Região do Trabalho,bairro_comercial,HIST-04,1
+Bairro Res.,bairro_residencial,HIST-05,1
+Distrito,bairro_residencial,HIST-06,1
+Setor,bairro_residencial,HIST-07,1
+Bairro Casa,bairro_residencial,HIST-08,1
+Função,cargo,HIST-09,1
+Cargo,cargo,HIST-10,1
+Posição,cargo,HIST-11,1
+Título do Cargo,cargo,HIST-12,1
+CEP Local Trabalho,cep_comercial,HIST-01,1
+CEP Trabalho,cep_comercial,HIST-02,1
+CEP Unidade,cep_comercial,HIST-03,1
+CEP Com.,cep_comercial,HIST-04,1
+CEP Res.,cep_residencial,HIST-05,1
+CEP,cep_residencial,HIST-06,1
+Código Postal,cep_residencial,HIST-07,1
+CEP Residência,cep_residencial,HIST-08,1
+CNPJ,cnpj_empregador,HIST-09,1
+CNPJ Matriz,cnpj_empregador,HIST-10,1
+Cadastro Empresa,cnpj_empregador,HIST-11,1
+Nº CNPJ,cnpj_empregador,HIST-12,1
+Código da Filial,codigo_unidade,HIST-01,1
+Centro de Custo,codigo_unidade,HIST-02,1
+Cód. Unidade,codigo_unidade,HIST-03,1
+Filial,codigo_unidade,HIST-04,1
+Andar,complemento_comercial,HIST-05,1
+Compl. Com.,complemento_comercial,HIST-06,1
+Sala,complemento_comercial,HIST-07,1
+Compl. Unidade,complemento_comercial,HIST-08,1
+Complemento Endereço,complemento_residencial,HIST-09,1
+Complemento,complemento_residencial,HIST-10,1
+Complemento Res.,complemento_residencial,HIST-11,1
+Apto,complemento_residencial,HIST-12,1
+CPF,cpf,HIST-01,1
+Nº CPF,cpf,HIST-02,1
+Documento CPF,cpf,HIST-03,1
+CPF do Colaborador,cpf,HIST-04,1
+Início,data_admissao,HIST-05,1
+Data de Entrada,data_admissao,HIST-06,1
+Admissão,data_admissao,HIST-07,1
+Dt. Admissão,data_admissao,HIST-08,1
+Dt. Efetivação,data_efetivacao,HIST-09,1
+Data de Efetivação,data_efetivacao,HIST-10,1
+Efetivação,data_efetivacao,HIST-11,1
+Fim da Experiência,data_efetivacao,HIST-12,1
+Dt Exp,data_emissao_documento,HIST-01,1
+Emissão RG,data_emissao_documento,HIST-02,1
+Data Expedição,data_emissao_documento,HIST-03,1
+Expedido em,data_emissao_documento,HIST-04,1
+Dt. Nasc.,data_nascimento,HIST-05,1
+DN,data_nascimento,HIST-06,1
+Aniversário,data_nascimento,HIST-07,1
+Data Nasc,data_nascimento,HIST-08,1
+Competência,data_referencia_renda,HIST-09,1
+Referência Salarial,data_referencia_renda,HIST-10,1
+Mês de Referência,data_referencia_renda,HIST-11,1
+Data Ref.,data_referencia_renda,HIST-12,1
+Email Corp.,email_corporativo,HIST-01,1
+Email Institucional,email_corporativo,HIST-02,1
+E-mail Profissional,email_corporativo,HIST-03,1
+E-mail Trabalho,email_corporativo,HIST-04,1
+E-mail,email_pessoal,HIST-05,1
+Endereço de E-mail,email_pessoal,HIST-06,1
+E-mail Contato,email_pessoal,HIST-07,1
+Email Pessoal,email_pessoal,HIST-08,1
+Instrução,escolaridade,HIST-09,1
+Formação,escolaridade,HIST-10,1
+Grau Escolar,escolaridade,HIST-11,1
+Grau de Instrução,escolaridade,HIST-12,1
+Estado Civil Func,estado_civil,HIST-01,1
+Situação Conjugal,estado_civil,HIST-02,1
+Est. Civil,estado_civil,HIST-03,1
+EC,estado_civil,HIST-04,1
+Rua Empresa,logradouro_comercial,HIST-05,1
+Endereço Com.,logradouro_comercial,HIST-06,1
+End. Unidade,logradouro_comercial,HIST-07,1
+Endereço Comercial,logradouro_comercial,HIST-08,1
+Endereço Residencial,logradouro_residencial,HIST-09,1
+Logradouro Res.,logradouro_residencial,HIST-10,1
+Logradouro,logradouro_residencial,HIST-11,1
+Endereço Casa,logradouro_residencial,HIST-12,1
+ID Funcionário,matricula,HIST-01,1
+Nº Registro,matricula,HIST-02,1
+Matrícula,matricula,HIST-03,1
+Cód. Funcionário,matricula,HIST-04,1
+Registro,matricula,HIST-05,1
+Código do Colaborador,matricula,HIST-06,1
+Cidade Comercial,municipio_comercial,HIST-07,1
+Cidade da Unidade,municipio_comercial,HIST-08,1
+Município Com.,municipio_comercial,HIST-09,1
+Município Trabalho,municipio_comercial,HIST-10,1
+Naturalidade,municipio_naturalidade,HIST-11,1
+Cidade Nasc.,municipio_naturalidade,HIST-12,1
+Município de Nascimento,municipio_naturalidade,HIST-01,1
+Natural de,municipio_naturalidade,HIST-02,1
+Cidade Residência,municipio_residencial,HIST-03,1
+Localidade,municipio_residencial,HIST-04,1
+Município Res.,municipio_residencial,HIST-05,1
+Cidade Casa,municipio_residencial,HIST-06,1
+Nacionalidade,nacionalidade,HIST-07,1
+País Origem,nacionalidade,HIST-08,1
+País de Nacionalidade,nacionalidade,HIST-09,1
+Nacionalidade Func,nacionalidade,HIST-10,1
+Nº PIS,nis_pis,HIST-11,1
+PIS/PASEP,nis_pis,HIST-12,1
+NIS,nis_pis,HIST-01,1
+PIS,nis_pis,HIST-02,1
+Empregado,nome_completo,HIST-03,1
+Colaborador,nome_completo,HIST-04,1
+Funcionário,nome_completo,HIST-05,1
+Nome Func.,nome_completo,HIST-06,1
+Nome do Empregado,nome_completo,HIST-07,1
+Genitora,nome_mae,HIST-08,1
+Filiação (Mãe),nome_mae,HIST-09,1
+Mãe,nome_mae,HIST-10,1
+Filiação Materna,nome_mae,HIST-11,1
+Local de Trabalho,nome_unidade,HIST-12,1
+Departamento,nome_unidade,HIST-01,1
+Estabelecimento,nome_unidade,HIST-02,1
+Nome da Filial,nome_unidade,HIST-03,1
+Num. Trabalho,numero_comercial,HIST-04,1
+Nº Comercial,numero_comercial,HIST-05,1
+Número Comercial,numero_comercial,HIST-06,1
+Número Unidade,numero_comercial,HIST-07,1
+Nº Documento,numero_documento,HIST-08,1
+Documento Nº,numero_documento,HIST-09,1
+Número do RG,numero_documento,HIST-10,1
+Identidade,numero_documento,HIST-11,1
+Nº,numero_residencial,HIST-12,1
+Número Endereço,numero_residencial,HIST-01,1
+Num. Residência,numero_residencial,HIST-02,1
+Número,numero_residencial,HIST-03,1
+Org. Emissor,orgao_emissor,HIST-04,1
+Órgão Expedidor,orgao_emissor,HIST-05,1
+Emissor,orgao_emissor,HIST-06,1
+Expedidor,orgao_emissor,HIST-07,1
+Sexo,sexo,HIST-08,1
+Sx,sexo,HIST-09,1
+Sexo (M/F),sexo,HIST-10,1
+Genero Func,sexo,HIST-11,1
+Telefone Celular,telefone_celular,HIST-12,1
+Whatsapp,telefone_celular,HIST-01,1
+Móvel,telefone_celular,HIST-02,1
+Celular,telefone_celular,HIST-03,1
+Tel Casa,telefone_residencial,HIST-04,1
+Telefone Fixo,telefone_residencial,HIST-05,1
+Telefone,telefone_residencial,HIST-06,1
+Fone Res.,telefone_residencial,HIST-07,1
+Tipo de Documento,tipo_documento,HIST-08,1
+Tp Documento,tipo_documento,HIST-09,1
+Tipo Doc.,tipo_documento,HIST-10,1
+Tipo Identidade,tipo_documento,HIST-11,1
+Vínculo,tipo_renda,HIST-12,1
+Tipo de Vínculo,tipo_renda,HIST-01,1
+Natureza da Remuneração,tipo_renda,HIST-02,1
+CLT/Pró-labore,tipo_renda,HIST-03,1
+UF Com.,uf_comercial,HIST-04,1
+Estado de Trabalho,uf_comercial,HIST-05,1
+UF Trabalho,uf_comercial,HIST-06,1
+Estado Empresa,uf_comercial,HIST-07,1
+UF Expedição,uf_emissor,HIST-08,1
+UF do RG,uf_emissor,HIST-09,1
+UF Órgão,uf_emissor,HIST-10,1
+Estado Emissor,uf_emissor,HIST-11,1
+UF Naturalidade,uf_naturalidade,HIST-12,1
+UF de Origem,uf_naturalidade,HIST-01,1
+UF Nasc.,uf_naturalidade,HIST-02,1
+Estado Natal,uf_naturalidade,HIST-03,1
+UF Residência,uf_residencial,HIST-04,1
+Estado Residência,uf_residencial,HIST-05,1
+UF,uf_residencial,HIST-06,1
+Sigla UF,uf_residencial,HIST-07,1
+Remuneração,valor_renda,HIST-08,1
+Salário Base,valor_renda,HIST-09,1
+Salário Bruto,valor_renda,HIST-10,1
+Vlr Salário,valor_renda,HIST-11,1
+CNPJ Holding,cnpj_grupo,HIST-12,1
+CNPJ Controladora,cnpj_grupo,HIST-01,1
+CNPJ do Grupo Econômico,cnpj_grupo,HIST-02,1

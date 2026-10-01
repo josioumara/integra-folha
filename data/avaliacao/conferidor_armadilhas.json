@@ -1,0 +1,141 @@
+{
+  "descricao": "Armadilhas do Conferidor da Leitura (D26, ADR-131). Documentos 100% fictícios, escritos para este conjunto (nada vem de Imports_Arquivos nem das capturas do QA). Em cada documento, a leitura de cada pessoa é dada. 'erros' lista os valores que estão errados de verdade (pessoa começa em 1); lista vazia quer dizer que a leitura está toda certa e qualquer suspeita é alarme falso. As distrações são gerais: benefícios ao lado do salário, CPF de quem não é o funcionário, líquido × bruto, outras datas e o salário de outro momento.",
+  "criado_em": "2026-09-29",
+  "documentos": [
+    {
+      "nome": "A01_beneficio_va_ao_lado",
+      "distracao": "beneficio",
+      "texto": "Cadastro do novo colaborador\nNome: Renata Albuquerque Sales\nCPF 815.994.185-41, nascida em 14/03/1991\nAdmitida em 02/09/2026 como Analista Financeira.\nSalário mensal bruto de R$ 5.300,00. Recebe também vale-alimentação de R$ 720,00 e vale-transporte.",
+      "pessoas": [{"nome_completo": "Renata Albuquerque Sales", "cpf": "815.994.185-41", "data_nascimento": "14/03/1991", "data_admissao": "02/09/2026", "cargo": "Analista Financeira", "valor_renda": "5300.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A02_beneficios_em_lista",
+      "distracao": "beneficio",
+      "texto": "Oi, pessoal do RH, seguem os dois contratados desta semana.\n1) Caio Mendes Borba, CPF 660.017.351-31, nascimento 22/07/1988, entrou dia 15/09/2026, auxiliar de estoque. Remuneração: R$ 2.150,00. Benefícios: VR R$ 38,00 por dia, cesta básica e plano de saúde (desconto de R$ 95,00).\n2) Lívia Prado Nogueira, CPF 759.863.723-79, nascimento 03/12/1996, entrou dia 16/09/2026, assistente de compras. Remuneração: R$ 2.900,00. Benefícios: VR R$ 38,00 por dia e auxílio-creche de R$ 400,00.",
+      "pessoas": [
+        {"nome_completo": "Caio Mendes Borba", "cpf": "660.017.351-31", "data_nascimento": "22/07/1988", "data_admissao": "15/09/2026", "cargo": "Auxiliar de Estoque", "valor_renda": "2150.00"},
+        {"nome_completo": "Lívia Prado Nogueira", "cpf": "759.863.723-79", "data_nascimento": "03/12/1996", "data_admissao": "16/09/2026", "cargo": "Assistente de Compras", "valor_renda": "2900.00"}
+      ],
+      "erros": []
+    },
+    {
+      "nome": "A03_beneficio_antes_do_salario",
+      "distracao": "beneficio",
+      "texto": "Ficha - Otávio Reis Carvalho\nVale-refeição: R$ 880,00/mês | Vale-transporte: sim | Seguro de vida: sim\nSalário base: R$ 4.100,00\nCPF: 669.838.644-84 | Nasc.: 09/05/1985 | Admissão: 21/08/2026 | Função: Técnico de Manutenção",
+      "pessoas": [{"nome_completo": "Otávio Reis Carvalho", "cpf": "669.838.644-84", "data_nascimento": "09/05/1985", "data_admissao": "21/08/2026", "cargo": "Técnico de Manutenção", "valor_renda": "4100.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A04_ajuda_de_custo_e_gratificacao_fixa",
+      "distracao": "beneficio",
+      "texto": "Contratação de Bianca Torres Lemos (CPF 836.782.449-04), nascida em 30/01/1993, no cargo de Coordenadora de Vendas desde 01/09/2026. Salário bruto: R$ 7.800,00 por mês. Além disso, ajuda de custo de combustível de R$ 600,00 e comissão variável sobre as vendas, paga à parte.",
+      "pessoas": [{"nome_completo": "Bianca Torres Lemos", "cpf": "836.782.449-04", "data_nascimento": "30/01/1993", "data_admissao": "01/09/2026", "cargo": "Coordenadora de Vendas", "valor_renda": "7800.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A05_cpf_do_dependente",
+      "distracao": "cpf_de_outra_pessoa",
+      "texto": "Funcionário: Márcio Antunes Figueira, CPF 769.152.425-03, nascido em 11/11/1987, admitido em 08/09/2026 como Motorista. Salário: R$ 3.450,00.\nDependente para o plano de saúde: filha Sofia Figueira, CPF 186.266.749-70, nascida em 19/04/2017.",
+      "pessoas": [{"nome_completo": "Márcio Antunes Figueira", "cpf": "769.152.425-03", "data_nascimento": "11/11/1987", "data_admissao": "08/09/2026", "cargo": "Motorista", "valor_renda": "3450.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A06_cpf_do_conjuge_primeiro",
+      "distracao": "cpf_de_outra_pessoa",
+      "texto": "Cônjuge: Paulo Henrique Duarte (CPF 253.400.668-19), para o cadastro do seguro.\nColaboradora: Juliana Duarte Farias - CPF 262.400.041-03 - nascimento 25/06/1990 - admissão 10/09/2026 - Enfermeira - salário R$ 6.200,00.",
+      "pessoas": [{"nome_completo": "Juliana Duarte Farias", "cpf": "262.400.041-03", "data_nascimento": "25/06/1990", "data_admissao": "10/09/2026", "cargo": "Enfermeira", "valor_renda": "6200.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A07_cpf_de_cliente_citado",
+      "distracao": "cpf_de_outra_pessoa",
+      "texto": "Anotação do gerente: o novo consultor, Henrique Lopes Batista, já atendeu o cliente Ronaldo Vieira (CPF 080.080.227-60) no primeiro dia.\nDados do Henrique: CPF 531.034.702-07, nasceu em 17/02/1994, começou em 05/09/2026, cargo Consultor de Atendimento, salário de R$ 3.000,00.",
+      "pessoas": [{"nome_completo": "Henrique Lopes Batista", "cpf": "531.034.702-07", "data_nascimento": "17/02/1994", "data_admissao": "05/09/2026", "cargo": "Consultor de Atendimento", "valor_renda": "3000.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A08_liquido_e_bruto",
+      "distracao": "liquido_e_bruto",
+      "texto": "Proposta aceita por Elaine Moura Castro, CPF 312.063.338-04, nascida em 06/08/1989. Início em 12/09/2026, Analista de Sistemas. Salário bruto de R$ 9.500,00 (líquido estimado de R$ 7.240,00 depois do INSS e do IR).",
+      "pessoas": [{"nome_completo": "Elaine Moura Castro", "cpf": "312.063.338-04", "data_nascimento": "06/08/1989", "data_admissao": "12/09/2026", "cargo": "Analista de Sistemas", "valor_renda": "9500.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A09_adiantamento_e_salario_anterior",
+      "distracao": "outro_valor",
+      "texto": "Rodrigo Pacheco Leme foi promovido e recontratado pela nova filial em 03/09/2026 como Supervisor de Produção. CPF 353.091.945-41. Nascimento 28/10/1982. No cargo anterior ganhava R$ 3.800,00; o salário atual é R$ 5.100,00, com adiantamento quinzenal de R$ 2.040,00.",
+      "pessoas": [{"nome_completo": "Rodrigo Pacheco Leme", "cpf": "353.091.945-41", "data_nascimento": "28/10/1982", "data_admissao": "03/09/2026", "cargo": "Supervisor de Produção", "valor_renda": "5100.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A10_outras_datas",
+      "distracao": "outras_datas",
+      "texto": "Nome: Tatiane Ribeiro Gusmão. RG 34.567.890-1, emitido em 12/05/2010. CPF 360.564.924-60. Data de nascimento: 01/02/1992. Exame admissional feito em 28/08/2026; admissão em 04/09/2026. Cargo: Recepcionista. Salário: R$ 2.050,00.",
+      "pessoas": [{"nome_completo": "Tatiane Ribeiro Gusmão", "cpf": "360.564.924-60", "data_nascimento": "01/02/1992", "data_admissao": "04/09/2026", "cargo": "Recepcionista", "valor_renda": "2050.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A11_datas_em_texto_e_experiencia",
+      "distracao": "outras_datas",
+      "texto": "Segue o cadastro do Fábio Nunes Aragão, soldador, que começou no dia 9 de setembro de 2026, com contrato de experiência de 90 dias (até 7 de dezembro de 2026). Ele nasceu em 23 de março de 1984 e o CPF é 616.066.705-06. O salário combinado foi de R$ 3.600,00, mais o adicional de insalubridade.",
+      "pessoas": [{"nome_completo": "Fábio Nunes Aragão", "cpf": "616.066.705-06", "data_nascimento": "23/03/1984", "data_admissao": "09/09/2026", "cargo": "Soldador", "valor_renda": "3600.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A12_gestor_citado",
+      "distracao": "outra_pessoa_citada",
+      "texto": "A Priscila Campos Serra (CPF 622.259.768-80, nascida em 15/09/1995) entra em 11/09/2026 como Assistente Administrativa, com salário de R$ 2.700,00. Ela vai responder ao gerente Anderson Lima, CPF 153.707.393-15, que está na empresa desde 03/02/2015.",
+      "pessoas": [{"nome_completo": "Priscila Campos Serra", "cpf": "622.259.768-80", "data_nascimento": "15/09/1995", "data_admissao": "11/09/2026", "cargo": "Assistente Administrativa", "valor_renda": "2700.00"}],
+      "erros": []
+    },
+    {
+      "nome": "A13_tabela_com_beneficio_e_pensao",
+      "distracao": "beneficio",
+      "texto": "Nome | CPF | Nascimento | Admissão | Cargo | Salário | VT | Desconto de pensão\nWagner Sousa Prates | 728.522.070-10 | 13/06/1979 | 01/09/2026 | Eletricista | R$ 3.900,00 | R$ 264,00 | R$ 780,00\nCamila Brito Assis | 874.014.353-81 | 29/11/1998 | 01/09/2026 | Auxiliar Administrativa | R$ 2.200,00 | R$ 264,00 | -",
+      "pessoas": [
+        {"nome_completo": "Wagner Sousa Prates", "cpf": "728.522.070-10", "data_nascimento": "13/06/1979", "data_admissao": "01/09/2026", "cargo": "Eletricista", "valor_renda": "3900.00"},
+        {"nome_completo": "Camila Brito Assis", "cpf": "874.014.353-81", "data_nascimento": "29/11/1998", "data_admissao": "01/09/2026", "cargo": "Auxiliar Administrativa", "valor_renda": "2200.00"}
+      ],
+      "erros": []
+    },
+    {
+      "nome": "E01_salario_lido_era_o_beneficio",
+      "distracao": "beneficio",
+      "texto": "Cadastro: Leonardo Freitas Moraes, CPF 139.231.455-00, nascido em 18/01/1990, admitido em 07/09/2026 como Almoxarife. Salário mensal: R$ 2.600,00. Vale-alimentação: R$ 650,00.",
+      "pessoas": [{"nome_completo": "Leonardo Freitas Moraes", "cpf": "139.231.455-00", "data_nascimento": "18/01/1990", "data_admissao": "07/09/2026", "cargo": "Almoxarife", "valor_renda": "650.00"}],
+      "erros": [{"pessoa": 1, "campo": "valor_renda"}]
+    },
+    {
+      "nome": "E02_cpf_lido_era_do_dependente",
+      "distracao": "cpf_de_outra_pessoa",
+      "texto": "Colaborador Diego Rocha Tavares, CPF 025.336.344-68, nascimento 04/04/1986, admissão 14/09/2026, Operador de Máquinas, salário R$ 3.200,00. Dependente: esposa Aline Tavares, CPF 855.674.312-95.",
+      "pessoas": [{"nome_completo": "Diego Rocha Tavares", "cpf": "855.674.312-95", "data_nascimento": "04/04/1986", "data_admissao": "14/09/2026", "cargo": "Operador de Máquinas", "valor_renda": "3200.00"}],
+      "erros": [{"pessoa": 1, "campo": "cpf"}]
+    },
+    {
+      "nome": "E03_nascimento_lido_era_a_emissao_do_rg",
+      "distracao": "outras_datas",
+      "texto": "Vanessa Lima Coutinho, CPF 991.411.332-00. RG emitido em 20/07/2012. Nasceu em 10/10/1994. Admitida em 13/09/2026 como Farmacêutica, salário de R$ 6.800,00.",
+      "pessoas": [{"nome_completo": "Vanessa Lima Coutinho", "cpf": "991.411.332-00", "data_nascimento": "20/07/2012", "data_admissao": "13/09/2026", "cargo": "Farmacêutica", "valor_renda": "6800.00"}],
+      "erros": [{"pessoa": 1, "campo": "data_nascimento"}]
+    },
+    {
+      "nome": "E04_salario_lido_era_o_do_cargo_anterior",
+      "distracao": "outro_valor",
+      "texto": "Guilherme Assunção Pires (CPF 045.514.156-85), nascido em 27/12/1983, volta à empresa em 06/09/2026 como Encarregado de Obras. Da outra vez recebia R$ 3.100,00; agora o salário é de R$ 4.650,00.",
+      "pessoas": [{"nome_completo": "Guilherme Assunção Pires", "cpf": "045.514.156-85", "data_nascimento": "27/12/1983", "data_admissao": "06/09/2026", "cargo": "Encarregado de Obras", "valor_renda": "3100.00"}],
+      "erros": [{"pessoa": 1, "campo": "valor_renda"}]
+    },
+    {
+      "nome": "E05_salario_de_outra_pessoa_com_beneficio",
+      "distracao": "beneficio",
+      "texto": "Novos na loja: Sabrina Dias Vilela (CPF 515.419.852-22, nasc. 02/03/1997), vendedora, salário R$ 1.950,00 e VR de R$ 500,00; e Mateus Corrêa Paiva (CPF 828.073.536-49, nasc. 21/08/1992), gerente de loja, salário R$ 5.600,00 e VR de R$ 500,00. Os dois começaram em 02/09/2026.",
+      "pessoas": [
+        {"nome_completo": "Sabrina Dias Vilela", "cpf": "515.419.852-22", "data_nascimento": "02/03/1997", "data_admissao": "02/09/2026", "cargo": "Vendedora", "valor_renda": "5600.00"},
+        {"nome_completo": "Mateus Corrêa Paiva", "cpf": "828.073.536-49", "data_nascimento": "21/08/1992", "data_admissao": "02/09/2026", "cargo": "Gerente de Loja", "valor_renda": "5600.00"}
+      ],
+      "erros": [{"pessoa": 1, "campo": "valor_renda"}]
+    }
+  ]
+}

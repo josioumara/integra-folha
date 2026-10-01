@@ -1,0 +1,1411 @@
+{
+  "experimento": "conferidor",
+  "quando": "2026-09-29T02:25:00",
+  "conjunto": "desenvolvimento",
+  "modo_da_ia": "llm",
+  "modelo": "nova-2-lite",
+  "versao_prompt": "conferidor_da_leitura_v1",
+  "semente": 12,
+  "repeticoes": 3,
+  "resumo": {
+    "plantados": 18,
+    "achados": 18,
+    "alarmes_falsos": 4,
+    "suspeitas": 22,
+    "perguntas_simples": 0,
+    "documentos_certos": 3,
+    "custo_usd": 0.010038039,
+    "documentos": 5,
+    "acerto": 1.0
+  },
+  "resumo_por_repeticao": [
+    {
+      "plantados": 18,
+      "achados": 18,
+      "alarmes_falsos": 4,
+      "suspeitas": 22,
+      "perguntas_simples": 0,
+      "documentos_certos": 3,
+      "custo_usd": 0.010038039,
+      "documentos": 5,
+      "acerto": 1.0
+    },
+    {
+      "plantados": 18,
+      "achados": 18,
+      "alarmes_falsos": 3,
+      "suspeitas": 21,
+      "perguntas_simples": 0,
+      "documentos_certos": 3,
+      "custo_usd": 0.010004764,
+      "documentos": 5,
+      "acerto": 1.0
+    },
+    {
+      "plantados": 18,
+      "achados": 18,
+      "alarmes_falsos": 4,
+      "suspeitas": 22,
+      "perguntas_simples": 0,
+      "documentos_certos": 3,
+      "custo_usd": 0.010252814,
+      "documentos": 5,
+      "acerto": 1.0
+    }
+  ],
+  "certos_em_todas_as_repeticoes": 3,
+  "documentos": [
+    {
+      "documento": "N3_texto_simples",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0013584670000000001,
+        "segundos": 3.4,
+        "perguntas": [
+          {
+            "pessoa": 3,
+            "campo": "cpf",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é de outra pessoa (Gláucia Bittencourt Leal) Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de outra pessoa (Gláucia Bittencourt Leal) Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 8,
+            "campo": "data_nascimento",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é a data de admissão Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 8,
+            "campo": "data_admissao",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de admissão é a data de nascimento Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N4_texto_variado_a",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0017576460000000003,
+        "segundos": 2.4,
+        "perguntas": [
+          {
+            "pessoa": 2,
+            "campo": "cpf",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é do cadastro de pessoa física 36183882500 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de 5.842,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "data_nascimento",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 22/05/89 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "data_admissao",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de admissão é 17-07-2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N4_texto_variado_b",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "perguntas_simples": 0,
+        "certo": true,
+        "custo_usd": 0.0018297620000000002,
+        "segundos": 2.2,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "data_nascimento",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 2000-10-25, não 12/06/2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 1,
+            "campo": "data_admissao",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é 2024-06-12, não 25/10/2000 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 3,
+            "campo": "cpf",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 37399828962, não 80479821259 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é R$ 5.192, não 6.208,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N5_texto_misturado_a",
+      "medida": {
+        "plantados": 2,
+        "achados": 2,
+        "alarmes_falsos": 2,
+        "suspeitas": 4,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.0022942810000000004,
+        "segundos": 3.1,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é 2.613,00, mas o gestor escreveu 03/06/2025 para a data de admissão Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 2,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que há comissão de 3% sobre vendas e garantia mínima de R$ 800,00, não apenas o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": false,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz salário mensal 6.914,00, não 2.613,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "cpf",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 19384646300, não 09005054514 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N5_texto_misturado_b",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 2,
+        "suspeitas": 6,
+        "perguntas_simples": 0,
+        "certo": false,
+        "custo_usd": 0.0027978829999999997,
+        "segundos": 3.3,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 9.367, não R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 2,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a base salarial é R$ 2.945,00 fixo, mais comissão de 1,5% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, não apenas R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": false,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "data_nascimento",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 11/04/1986, não 03/10/2025 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "data_admissao",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão foi em 03/10/2025, não 11/04/1986 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 5,
+            "campo": "cpf",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 505 816 685 29, não 03799493859 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": true,
+              "simples": false
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "valor_renda",
+            "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a base salarial é R$ 9.478 fixo, mais comissão de 1,5% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, não apenas R$ 9.478,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+            "qualidade": {
+              "sem_jargao": false,
+              "termina_com_interrogacao": false,
+              "uma_pergunta_so": false,
+              "curta": false,
+              "simples": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "documentos_por_repeticao": [
+    [
+      {
+        "documento": "N3_texto_simples",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0013584670000000001,
+          "segundos": 3.4,
+          "perguntas": [
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é de outra pessoa (Gláucia Bittencourt Leal) Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de outra pessoa (Gláucia Bittencourt Leal) Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é a data de admissão Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de admissão é a data de nascimento Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_a",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0017576460000000003,
+          "segundos": 2.4,
+          "perguntas": [
+            {
+              "pessoa": 2,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é do cadastro de pessoa física 36183882500 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de 5.842,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 22/05/89 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de admissão é 17-07-2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0018297620000000002,
+          "segundos": 2.2,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 2000-10-25, não 12/06/2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é 2024-06-12, não 25/10/2000 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 37399828962, não 80479821259 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é R$ 5.192, não 6.208,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_a",
+        "medida": {
+          "plantados": 2,
+          "achados": 2,
+          "alarmes_falsos": 2,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0022942810000000004,
+          "segundos": 3.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é 2.613,00, mas o gestor escreveu 03/06/2025 para a data de admissão Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que há comissão de 3% sobre vendas e garantia mínima de R$ 800,00, não apenas o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz salário mensal 6.914,00, não 2.613,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 19384646300, não 09005054514 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 2,
+          "suspeitas": 6,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0027978829999999997,
+          "segundos": 3.3,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 9.367, não R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a base salarial é R$ 2.945,00 fixo, mais comissão de 1,5% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, não apenas R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 11/04/1986, não 03/10/2025 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão foi em 03/10/2025, não 11/04/1986 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 5,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 505 816 685 29, não 03799493859 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a base salarial é R$ 9.478 fixo, mais comissão de 1,5% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, não apenas R$ 9.478,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "documento": "N3_texto_simples",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.001406867,
+          "segundos": 2.5,
+          "perguntas": [
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF de Leandro Leal Siqueira é 49303341287 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário de Irene Brandão Monteiro é R$ 4.972,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que Sérgio Nogueira Valadares nasceu em 18/11/1983 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que Sérgio Nogueira Valadares foi admitido em 24/01/2025 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_a",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0017576460000000003,
+          "segundos": 2.5,
+          "perguntas": [
+            {
+              "pessoa": 2,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é do cadastro de pessoa física 36183882500 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de 5.842,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 22/05/89 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de admissão é 17-07-2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0018297620000000002,
+          "segundos": 2.6,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 2000-10-25, não 12/06/2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é 2024-06-12, não 25/10/2000 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 37399828962, não 80479821259 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é R$ 5.192, não 6.208,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_a",
+        "medida": {
+          "plantados": 2,
+          "achados": 2,
+          "alarmes_falsos": 2,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0024606560000000003,
+          "segundos": 3.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é 2.613,00, mas o gestor escreveu 03/06/2025 no lugar da data de admissão Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a renda inclui comissão de 3% sobre vendas e garantia mínima, não apenas o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz salário mensal 6.914,00, mas a leitura colocou 2.613,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz CPF 19384646300, mas a leitura usou o CPF de outra pessoa (Caio Pacheco Bittencourt) Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 1,
+          "suspeitas": 5,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0025498329999999996,
+          "segundos": 2.8,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 9.367, não R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a base salarial é R$ 2.945,00 fixo, mais comissão de 1,5% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, não apenas R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 11/04/1986, não 03/10/2025 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão foi em 03/10/2025, não 11/04/1986 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 5,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 505 816 685 29, não 03799493859 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "documento": "N3_texto_simples",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.001406867,
+          "segundos": 2.1,
+          "perguntas": [
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF de Leandro Leal Siqueira é 49303341287 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário de Irene Brandão Monteiro é R$ 4.972,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que Sérgio Nogueira Valadares nasceu em 18/11/1983 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que Sérgio Nogueira Valadares foi admitido em 24/01/2025 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_a",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0017576460000000003,
+          "segundos": 2.0,
+          "perguntas": [
+            {
+              "pessoa": 2,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é do cadastro de pessoa física 36183882500 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é de 5.842,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 22/05/89 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de admissão é 17-07-2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": true,
+          "custo_usd": 0.0018297620000000002,
+          "segundos": 2.2,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 2000-10-25, não 12/06/2024 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão é 2024-06-12, não 25/10/2000 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 37399828962, não 80479821259 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é R$ 5.192, não 6.208,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_a",
+        "medida": {
+          "plantados": 2,
+          "achados": 2,
+          "alarmes_falsos": 2,
+          "suspeitas": 4,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0024606560000000003,
+          "segundos": 3.5,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário é 2.613,00, mas o gestor escreveu 03/06/2025 no lugar da data de admissão Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a renda inclui comissão de 3% sobre vendas e garantia mínima, não apenas o salário fixo Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz salário mensal 6.914,00, mas a leitura colocou 2.613,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz CPF 19384646300, mas a leitura usou o CPF de outra pessoa (Caio Pacheco Bittencourt) Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 2,
+          "suspeitas": 6,
+          "perguntas_simples": 0,
+          "certo": false,
+          "custo_usd": 0.0027978829999999997,
+          "segundos": 5.7,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o salário mensal é R$ 9.367, não R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 2,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a base salarial é R$ 2.945,00 fixo, mais comissão de 1,5% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, não apenas R$ 2.945,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_nascimento",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a data de nascimento é 11/04/1986, não 03/10/2025 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_admissao",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a admissão foi em 03/10/2025, não 11/04/1986 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 5,
+              "campo": "cpf",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que o CPF é 505 816 685 29, não 03799493859 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": true,
+                "simples": false
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Uma segunda IA desconfia deste valor: o documento diz que a base salarial é R$ 9.478 fixo, mais comissão de 1,5% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, não apenas R$ 9.478,00 Confira no seu arquivo e corrija, ou confirme se está certo.",
+              "qualidade": {
+                "sem_jargao": false,
+                "termina_com_interrogacao": false,
+                "uma_pergunta_so": false,
+                "curta": false,
+                "simples": false
+              }
+            }
+          ]
+        }
+      }
+    ]
+  ]
+}

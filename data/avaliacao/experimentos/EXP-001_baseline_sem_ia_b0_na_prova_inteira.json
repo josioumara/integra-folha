@@ -1,0 +1,32 @@
+{
+  "id": "EXP-001",
+  "data": "2026-09-24",
+  "titulo": "Baseline sem IA (B0) na prova inteira",
+  "tipo": "interpretador",
+  "pergunta": "Quanto acerta a melhor solução SEM IA? É a régua que a IA precisa superar.",
+  "o_que_testamos": "Dicionário de sinônimos do treino + comparação aproximada de textos (RapidFuzz WRatio, limite 75, calibrados numa validação tirada do treino).",
+  "amostra": "300 planilhas da prova congelada (4.306 colunas com campo, 746 que deveriam virar pergunta)",
+  "modo": "sem IA",
+  "resultados": [
+    {
+      "nome": "B0",
+      "modelo": "dicionário (sem IA)",
+      "metricas": {
+        "acuracia_por_campo": 0.5088248954946586,
+        "ic95_acuracia_por_campo": [
+          0.4951635191156149,
+          0.5223391812865497
+        ],
+        "abstencao_recall": 0.5938337801608579,
+        "abstencao_precisao": 0.47737068965517243,
+        "acerto_geral": 0.5213776722090261,
+        "custo_usd": 0.0,
+        "planilhas_pontuadas": 300
+      }
+    }
+  ],
+  "leitura": "Acerta metade dos campos e zero em 8 (ex.: valor_renda, matricula). Pede ajuda em só 59% das colunas que precisavam: chuta onde deveria perguntar.",
+  "decisao": "B0 vira a régua de todas as comparações com IA (ADR-41).",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/B0.json"
+}

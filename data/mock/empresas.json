@@ -1,0 +1,68 @@
+[
+  {
+    "empresa_id": "EMP001",
+    "nome": "Aurora Alimentos Ltda.",
+    "setor": "Indústria",
+    "municipio": "Campinas",
+    "uf": "SP",
+    "cnpj": "10433218000193",
+    "endereco_comercial": "Avenida Industrial, 4338",
+    "dominio_email": "aurora.com.br",
+    "contrato_desde": "2026-08-01"
+  },
+  {
+    "empresa_id": "EMP002",
+    "nome": "Horizonte Logística Ltda.",
+    "setor": "Logística",
+    "municipio": "Contagem",
+    "uf": "MG",
+    "cnpj": "88805929000139",
+    "endereco_comercial": "Avenida Central, 4889",
+    "dominio_email": "horizontelog.com.br",
+    "contrato_desde": "2026-08-01"
+  },
+  {
+    "empresa_id": "EMP003",
+    "nome": "Brisa Tecnologia Ltda.",
+    "setor": "Tecnologia",
+    "municipio": "Florianópolis",
+    "uf": "SC",
+    "cnpj": "22332061000199",
+    "endereco_comercial": "Avenida Central, 3937",
+    "dominio_email": "brisatec.com.br",
+    "contrato_desde": "2026-08-01"
+  },
+  {
+    "empresa_id": "EMP004",
+    "nome": "Vale Verde Serviços Ltda.",
+    "setor": "Serviços",
+    "municipio": "Curitiba",
+    "uf": "PR",
+    "cnpj": "66938011000125",
+    "endereco_comercial": "Avenida Central, 1116",
+    "dominio_email": "valeverde.com.br",
+    "contrato_desde": "2026-08-01"
+  },
+  {
+    "empresa_id": "EMP005",
+    "nome": "Prisma Comércio Ltda.",
+    "setor": "Varejo",
+    "municipio": "Recife",
+    "uf": "PE",
+    "cnpj": "39155963000108",
+    "endereco_comercial": "Avenida Central, 3804",
+    "dominio_email": "prismacomercio.com.br",
+    "contrato_desde": "2026-08-01"
+  },
+  {
+    "empresa_id": "EMP006",
+    "nome": "Atlântico Saúde Ltda.",
+    "setor": "Saúde",
+    "municipio": "Salvador",
+    "uf": "BA",
+    "cnpj": "33155206000140",
+    "endereco_comercial": "Avenida Central, 4629",
+    "dominio_email": "atlanticosaude.com.br",
+    "contrato_desde": "2026-08-01"
+  }
+]

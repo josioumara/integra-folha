@@ -1,0 +1,87 @@
+{
+  "id": "EXP-022",
+  "data": "2026-09-30",
+  "titulo": "Arquivos grandes: até onde o envio aguenta, e o que cresce com o tamanho (parcial)",
+  "tipo": "arquivos_grandes",
+  "pergunta": "Até que tamanho de planilha o envio funciona, e o que cresce com o tamanho: o tempo, a memória ou o custo da IA?",
+  "o_que_testamos": "Planilhas sintéticas com as 44 colunas do layout (scripts/gerar_dados.py, semente 20260930 com um deslocamento por arquivo, para cada um ter pessoas novas), em CSV (separado por \";\") e em XLSX, pelo caminho da tela: enviar o arquivo (cadastro.enviar_arquivo: a leitura e o fluxo até a proposta das colunas) e aceitar as colunas (cadastro.aceitar_mapeamento: padronizar e validar), num banco SQLite novo e temporário. Em MOCK: a IA é simulada, e cada chamada é contada, com o tamanho do pedido. Medidas: o tempo de cada etapa, o pico de memória do processo (RSS, lido a cada 0,1 s), as chamadas à IA e o tamanho da resposta que a tela recebe. O banco temporário usou o parâmetro v1 dos arquivos do projeto, e não a v7 em uso: a medida é de volume, e não de acerto. A máquina: o notebook do projeto: Intel Core i5-9300H (4 núcleos e 8 threads), 16 GB de RAM, Windows 11 Pro, Python 3.12.10. O script ficou fora do repositório (a ferramenta do agente cientista-dados).",
+  "amostra": "5 arquivos de 11 previstos: CSV de 1.000, 5.000 e 10.000 linhas e XLSX de 1.000 e 5.000 linhas (de 0,27 a 4,53 MB). Ficaram sem medir: o XLSX de 10.000, os de 20.000 e 20.001 linhas, o CSV mínimo de 20.000 linhas e os documentos Word. Limitação: medido até 10.000 linhas em CSV e 5.000 em XLSX; sem documentos (Word e PDF); medição interrompida.",
+  "modo": "MOCK (IA simulada; nenhuma chamada real) · SQLite temporário · máquina local",
+  "resultados": [
+    {
+      "nome": "CSV · 1.000 linhas (0,45 MB)",
+      "modelo": "MOCK",
+      "metricas": {
+        "Até a proposta das colunas": "15,0 s",
+        "No aceite (padronizar e validar)": "5,0 s",
+        "Total": "20,0 s",
+        "Pico de memória": "750 MB",
+        "Chamadas à IA": "1 (interpretar as colunas)",
+        "Pedido à IA": "26.322 caracteres",
+        "Resposta para a tela": "14 e 15 KB",
+        "Erro": "nenhum"
+      }
+    },
+    {
+      "nome": "XLSX · 1.000 linhas (0,27 MB)",
+      "modelo": "MOCK",
+      "metricas": {
+        "Até a proposta das colunas": "23,7 s",
+        "No aceite (padronizar e validar)": "20,1 s",
+        "Total": "43,8 s",
+        "Pico de memória": "776 MB",
+        "Chamadas à IA": "1 (interpretar as colunas)",
+        "Pedido à IA": "26.310 caracteres",
+        "Resposta para a tela": "14 e 15 KB",
+        "Erro": "nenhum"
+      }
+    },
+    {
+      "nome": "CSV · 5.000 linhas (2,27 MB)",
+      "modelo": "MOCK",
+      "metricas": {
+        "Até a proposta das colunas": "16,9 s",
+        "No aceite (padronizar e validar)": "17,1 s",
+        "Total": "34,0 s",
+        "Pico de memória": "815 MB",
+        "Chamadas à IA": "1 (interpretar as colunas)",
+        "Pedido à IA": "26.332 caracteres",
+        "Resposta para a tela": "14 e 15 KB",
+        "Erro": "nenhum"
+      }
+    },
+    {
+      "nome": "XLSX · 5.000 linhas (1,30 MB)",
+      "modelo": "MOCK",
+      "metricas": {
+        "Até a proposta das colunas": "61,6 s",
+        "No aceite (padronizar e validar)": "109,0 s",
+        "Total": "170,6 s",
+        "Pico de memória": "928 MB",
+        "Chamadas à IA": "1 (interpretar as colunas)",
+        "Pedido à IA": "26.332 caracteres",
+        "Resposta para a tela": "14 e 15 KB",
+        "Erro": "nenhum"
+      }
+    },
+    {
+      "nome": "CSV · 10.000 linhas (4,53 MB)",
+      "modelo": "MOCK",
+      "metricas": {
+        "Até a proposta das colunas": "36,0 s",
+        "No aceite (padronizar e validar)": "51,9 s",
+        "Total": "87,9 s",
+        "Pico de memória": "917 MB",
+        "Chamadas à IA": "1 (interpretar as colunas)",
+        "Pedido à IA": "26.325 caracteres",
+        "Resposta para a tela": "14 e 15 KB",
+        "Erro": "nenhum"
+      }
+    }
+  ],
+  "leitura": "O custo da IA não cresce com o tamanho: cada arquivo, de 1.000 a 10.000 linhas, fez 1 chamada só (interpretar as colunas), com um pedido de ≈ 26 mil caracteres em todos, porque a IA lê os nomes e alguns exemplos das colunas, e nunca todas as linhas. O tempo cresce com as linhas, e muito mais no Excel: com 5.000 linhas, o CSV levou 34,0 s no total (16,9 s até a proposta das colunas e 17,1 s no aceite) e o XLSX, 170,6 s (61,6 s e 109,0 s), ≈ 5 vezes mais. O CSV de 10.000 linhas levou 87,9 s. O pico de memória do processo ficou entre 750 e 928 MB, abaixo de 1 GB, e a resposta para a tela ficou em 14 a 15 KB em todos (a tela recebe um resumo, e não as linhas). Nenhum erro: todos chegaram ao fim da validação e pararam em \"aguardar correção\", com as pendências do conteúdo. O 1º arquivo (o CSV de 1.000) inclui o aquecimento do processo, e o tempo dele até a proposta das colunas fica inflado. O teto que aparece primeiro é o do envio, e não o do processamento: o CSV de 10.000 linhas tem 4,53 MB, perto do limite de 5 MB (LIMITE_UPLOAD_MB). Pela conta, sem medir, com as 44 colunas o CSV passa do limite a partir de ≈ 11 mil linhas, e o XLSX, de ≈ 19 mil. Limitação: medido até 10.000 linhas em CSV e 5.000 em XLSX; sem documentos (Word e PDF); medição interrompida.",
+  "decisao": "Fica como está: até onde foi medido, o envio aguenta, com o custo da IA fixo por arquivo e menos de 1 GB de memória. Dois pontos vão para a documentação: o limite de envio de 5 MB chega antes do processamento (≈ 11 mil linhas num CSV com as 44 colunas), e um XLSX grande faz a empresa esperar ≈ 3 min com 5.000 linhas. Ficam sem medir agora, pela decisão dela de 30/09 (sem análises novas): os tamanhos maiores, os documentos (Word e PDF) e a máquina do site (a EC2).",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/arquivos_grandes_parcial.json (os 5 resultados brutos); o script, fora do repositório: D:\\AI_Payroll_Hub\\.claude\\agent-memory\\cientista-dados\\ferramentas\\teste_arquivos_grandes.py",
+  "commit": "4e3f644"
+}

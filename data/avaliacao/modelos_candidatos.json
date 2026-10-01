@@ -1,0 +1,288 @@
+{
+  "_sobre": "Triagem dos modelos candidatos a provedor de IA (ADR-11; docs/avaliacao.md, seção 12). Preços por 1 milhão de tokens (entrada / saída), das páginas oficiais em 2026-09-24. 'geracao': 'atual' = linha atual do provedor; 'anterior' = ainda vendido, mas de geração passada. 'raciocinio': o que a documentação oficial diz sobre o modelo pensar antes de responder (tokens de raciocínio são cobrados como saída, então o custo real tende a ser maior que a estimativa); 'não informado' quando a página não diz. Regra de corte: geração anterior → cortado; linha atual acima de US$ 4 / 20 (mais que o dobro do intermediário) → cortado por custo; o resto é testado.",
+  "data_dos_precos": "2026-09-24",
+  "fontes": [
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/api/docs/models",
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://platform.claude.com/docs/en/about-claude/models/overview"
+  ],
+  "tokens_por_chamada": {
+    "entrada": 4994,
+    "saida": 1528,
+    "fonte": "data/avaliacao/resultados/tamanho_dos_pedidos.json (Interpretador, B3)"
+  },
+  "planilhas_na_comparacao": 30,
+  "modelos": [
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-6-astra",
+      "geracao": "atual",
+      "entrada": 10.0,
+      "saida": 50.0,
+      "decisao": "cortado",
+      "motivo": "muito caro",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-6-sol",
+      "geracao": "atual",
+      "entrada": 2.0,
+      "saida": 10.0,
+      "decisao": "testar",
+      "motivo": "linha atual, intermediário",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-6-luna",
+      "geracao": "atual",
+      "entrada": 0.1,
+      "saida": 0.5,
+      "decisao": "testar",
+      "motivo": "linha atual, pequeno",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-5.6-sol",
+      "geracao": "anterior",
+      "entrada": 4.0,
+      "saida": 20.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-5.5",
+      "geracao": "anterior",
+      "entrada": 5.0,
+      "saida": 30.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-5.4",
+      "geracao": "anterior",
+      "entrada": 2.5,
+      "saida": 15.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-5.4-mini",
+      "geracao": "anterior",
+      "entrada": 0.75,
+      "saida": 4.5,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-5.4-nano",
+      "geracao": "anterior",
+      "entrada": 0.2,
+      "saida": 1.25,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-5-mini",
+      "geracao": "anterior",
+      "entrada": 0.25,
+      "saida": 2.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-5-nano",
+      "geracao": "anterior",
+      "entrada": 0.05,
+      "saida": 0.4,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-4o",
+      "geracao": "anterior",
+      "entrada": 2.5,
+      "saida": 10.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "gpt-4o-mini",
+      "geracao": "anterior",
+      "entrada": 0.15,
+      "saida": 0.6,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "o1",
+      "geracao": "anterior",
+      "entrada": 15.0,
+      "saida": 60.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior e muito caro",
+      "raciocinio": "modelo de raciocínio"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "o3",
+      "geracao": "anterior",
+      "entrada": 2.0,
+      "saida": 8.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "modelo de raciocínio"
+    },
+    {
+      "provedor": "OpenAI",
+      "modelo": "o4-mini",
+      "geracao": "anterior",
+      "entrada": 1.1,
+      "saida": 4.4,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "modelo de raciocínio"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-fable-5-1",
+      "geracao": "atual",
+      "entrada": 10.0,
+      "saida": 50.0,
+      "decisao": "cortado",
+      "motivo": "muito caro",
+      "raciocinio": "sempre ligado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-opus-5-5",
+      "geracao": "atual",
+      "entrada": 4.0,
+      "saida": 20.0,
+      "decisao": "testar",
+      "motivo": "linha atual, o recomendado pelo provedor",
+      "raciocinio": "sempre ligado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-sonnet-5",
+      "geracao": "atual",
+      "entrada": 2.0,
+      "saida": 10.0,
+      "decisao": "testar",
+      "motivo": "linha atual, intermediário",
+      "raciocinio": "adaptativo"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-haiku-4-5",
+      "geracao": "atual",
+      "entrada": 1.0,
+      "saida": 5.0,
+      "decisao": "testar",
+      "motivo": "linha atual, pequeno (aposentadoria a partir de 15/10/2026)",
+      "raciocinio": "estendido (opcional)"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-fable-5",
+      "geracao": "anterior",
+      "entrada": 10.0,
+      "saida": 50.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior e muito caro",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-opus-5",
+      "geracao": "anterior",
+      "entrada": 5.0,
+      "saida": 25.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-opus-4-8",
+      "geracao": "anterior",
+      "entrada": 5.0,
+      "saida": 25.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-opus-4-7",
+      "geracao": "anterior",
+      "entrada": 5.0,
+      "saida": 25.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-opus-4-6",
+      "geracao": "anterior",
+      "entrada": 5.0,
+      "saida": 25.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-opus-4-5",
+      "geracao": "anterior",
+      "entrada": 5.0,
+      "saida": 25.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-sonnet-4-6",
+      "geracao": "anterior",
+      "entrada": 3.0,
+      "saida": 15.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    },
+    {
+      "provedor": "Anthropic",
+      "modelo": "claude-sonnet-4-5",
+      "geracao": "anterior",
+      "entrada": 3.0,
+      "saida": 15.0,
+      "decisao": "cortado",
+      "motivo": "geração anterior",
+      "raciocinio": "não informado"
+    }
+  ]
+}

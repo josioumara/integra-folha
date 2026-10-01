@@ -1,0 +1,7 @@
+empresa_id,nome,setor,cnpj,municipio,uf,status_convenio,data_inicio
+EMP001,Aurora Alimentos Ltda.,Indústria,10433218000193,Campinas,SP,ATIVO,2026-08-01
+EMP002,Horizonte Logística Ltda.,Logística,88805929000139,Contagem,MG,ATIVO,2026-08-01
+EMP003,Brisa Tecnologia Ltda.,Tecnologia,22332061000199,Florianópolis,SC,ATIVO,2026-08-01
+EMP004,Vale Verde Serviços Ltda.,Serviços,66938011000125,Curitiba,PR,ATIVO,2026-08-01
+EMP005,Prisma Comércio Ltda.,Varejo,39155963000108,Recife,PE,ATIVO,2026-08-01
+EMP006,Atlântico Saúde Ltda.,Saúde,33155206000140,Salvador,BA,ATIVO,2026-08-01

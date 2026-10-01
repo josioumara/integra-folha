@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+  termos_de_uso.html — a página "Termos de uso" do Integra Folha.
+
+  Para que serve: explicar, em linguagem simples, o que é a plataforma, quem pode usar, o que não é permitido, o papel
+  da inteligência artificial e o que esperar da disponibilidade. Os links "Termos de uso" dos rodapés abrem esta
+  página.
+
+  Abre SEM login (api/principal.py, ENDERECOS_PUBLICOS): a pessoa lê antes de entrar, e a página não mostra dado
+  nenhum. Como a tela de login, não cita o nome do banco parceiro.
+  Aparência: css/estilos.css (cores, fontes e rodapé) e css/documento.css (o texto).
+  Interações: js/voltar.js (o link "Voltar") e js/data_da_versao.js (a data da versão no rodapé).
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Termos de uso | Integra Folha</title>
+  <!-- Fontes do Google (as mesmas das outras telas). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- A aparência de todas as telas e a das páginas de texto. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/documento.css">
+</head>
+<body class="documento-pagina">
+
+  <!-- ============ 1. FAIXA DE CIMA: O NOME E O "VOLTAR" ============ -->
+  <header class="documento-cabecalho">
+    <div class="documento-largura documento-cabecalho-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <!-- Volta para a tela de onde a pessoa veio; aberto direto, leva ao login (js/voltar.js). -->
+      <a href="login.html" class="link-simples" data-voltar>Voltar</a>
+    </div>
+  </header>
+
+  <!-- ============ 2. O TEXTO ============ -->
+  <main class="documento documento-largura">
+    <h1>Termos de uso</h1>
+    <p class="documento-resumo">O que é o Integra Folha, quem pode usar e as regras de uso.</p>
+
+    <!-- O aviso de que o site é um projeto, em destaque. -->
+    <p class="documento-aviso">
+      O Integra Folha é um projeto acadêmico de engenharia de IA. Todos os dados usados aqui são fictícios, e este não
+      é um sistema oficial de nenhum banco.
+    </p>
+
+    <section>
+      <h2>O que é o Integra Folha</h2>
+      <p>
+        Uma plataforma que ajuda a empresa a cadastrar os funcionários no banco parceiro, para a abertura da conta em
+        que ela paga o salário. A empresa envia o arquivo, agentes de inteligência artificial leem o arquivo e apontam
+        o que falta, e o banco confere e aprova.
+      </p>
+    </section>
+
+    <section>
+      <h2>Quem pode usar</h2>
+      <ul>
+        <li>Só quem recebeu um usuário do banco: o RH da empresa e o especialista do banco.</li>
+        <li>O usuário é pessoal: não compartilhe a sua senha.</li>
+        <li>A senha provisória vale 48 horas e é trocada no primeiro acesso.</li>
+        <li>O acesso vale 12 meses e é suspenso depois de 90 dias sem uso; o banco pode renová-lo.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>O que não é permitido</h2>
+      <ul>
+        <li>Enviar dados reais de pessoas: aqui, só dados fictícios.</li>
+        <li>Tentar ver dados de outra empresa ou driblar as proteções do site.</li>
+        <li>Esconder instruções para a IA dentro dos arquivos: a plataforma barra, e a tentativa fica registrada.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>O papel da inteligência artificial</h2>
+      <ul>
+        <li>Os agentes de IA sugerem, e não decidem: a empresa confere a lista antes de enviar, e o banco aprova.</li>
+        <li>A IA pode errar. Confira sempre o que ela propõe.</li>
+        <li>O material de divulgação para os funcionários só chega à empresa depois de revisado e publicado pelo
+          banco.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Disponibilidade</h2>
+      <ul>
+        <li>Por ser um projeto, a plataforma pode ficar fora do ar ou mudar sem aviso.</li>
+        <li>Quando o teto de gasto com a IA é atingido, a análise automática pausa, e o envio fica guardado até ela
+          voltar.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Privacidade</h2>
+      <p>
+        Como os dados são tratados e protegidos está na página
+        <a href="privacidade.html" class="link-simples">Privacidade e LGPD</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Mudanças nestes termos</h2>
+      <p>Os termos podem mudar junto com a plataforma. A data da versão em uso aparece no rodapé.</p>
+    </section>
+  </main>
+
+  <!-- ============ 3. RODAPÉ ============ -->
+  <footer class="rodape">
+    <div class="conteudo-centralizado rodape-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <nav class="rodape-links" aria-label="Links institucionais">
+        <a href="privacidade.html">Privacidade e LGPD</a>
+        <a href="termos_de_uso.html" aria-current="page">Termos de uso</a>
+      </nav>
+    </div>
+    <!-- O aviso de que o site é um projeto (sem o nome do banco parceiro, como na tela de login). -->
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o banco é ilustrativa: este não é um sistema oficial de nenhum banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- O link "Voltar" e a data da versão. -->
+  <script src="js/voltar.js"></script>
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

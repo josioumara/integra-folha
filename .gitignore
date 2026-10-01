@@ -1,0 +1,48 @@
+# Ambiente Python local
+.venv/
+# O ambiente separado da avaliação com o RAGAS (requirements-avaliacao.txt)
+.venv-avaliacao/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Segredos: nunca vão para o Git (use .env.example como modelo)
+.env
+
+# Bancos SQLite gerados localmente (são recriados pelos scripts)
+*.db
+
+# Arquivos de envio gerados por scripts/gerar_dados.py (o Excel grava a hora da criação,
+# então os bytes mudam a cada execução; o conteúdo é sempre o mesmo e é testado)
+data/synthetic/envios/
+
+# Modelo de embeddings (baixado uma vez) e índices do RAG (refeitos por scripts/build_index.py)
+storage/modelos/
+storage/indices/
+
+# Arquivos originais enviados pelas empresas (guardados com hash, nunca no Git)
+storage/uploads/
+storage/homologados/
+
+# Painel de acompanhamento local (não faz parte da aplicação): refeito a cada tarefa
+storage/painel/
+
+# Logs do servidor da porta 8000 gravados em storage/ (ex.: storage/servidor_8000.log): podem ter dados das telas e
+# nunca vão para o Git (achado B-04 dos testes de segurança)
+storage/*.log
+
+# Cópias isoladas do repositório (git worktree): nunca vão para o Git
+.claude/worktrees/
+
+# Arquivos públicos baixados para calcular a faixa salarial por profissão (scripts/calcular_faixas_cbo.py, ADR-129):
+# a CBO original e os microdados da RAIS (3,8 GB). Só a tabela agregada, em data/cbo/, vai para o Git
+storage/fontes_publicas/
+
+# Arquivos auxiliares do SQLite (modo WAL e diário): aparecem ao lado do .db enquanto o servidor ou os testes rodam
+*.db-shm
+*.db-wal
+*.db-journal
+
+# Todo o resto da storage/ também é gerado na máquina: as cópias do índice dos testes e das medições
+# (storage/indices_*), os registros da fila de testes (bateria_na_fila_*.log), os .csv baixados e as cópias de banco
+storage/

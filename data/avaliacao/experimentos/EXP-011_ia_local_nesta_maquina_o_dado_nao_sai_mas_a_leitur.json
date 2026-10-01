@@ -1,0 +1,47 @@
+{
+  "id": "EXP-011",
+  "data": "2026-09-27",
+  "titulo": "IA local nesta máquina: o dado não sai, mas a leitura não funciona",
+  "tipo": "provedor_de_ia",
+  "pergunta": "Um modelo aberto rodando nesta máquina (sem o dado sair do computador) consegue fazer o trabalho do Interpretador?",
+  "o_que_testamos": "Três modelos abertos que cabem numa placa de vídeo de 4 GB (GTX 1650), servidos pelo Ollama só na própria máquina (nuvem do Ollama desligada): granite4.2:3b, qwen3.5:4b e gemma4:e4b-it-qat. Primeiro uma pergunta curta; depois a primeira planilha da prova congelada (18 colunas, configuração B3, pedido de 5.146 tokens). O teste foi interrompido pelo usuário depois do primeiro resultado da planilha.",
+  "amostra": "1 pergunta curta por modelo; 1 planilha da prova congelada (granite4.2:3b)",
+  "modo": "IA local (Ollama)",
+  "resultados": [
+    {
+      "nome": "granite4.2:3b",
+      "modelo": "local:granite4.2:3b",
+      "metricas": {
+        "carregar_na_memoria_s": 34.6,
+        "pergunta_curta_carregado_s": 0.6,
+        "planilha_18_colunas_s": 685,
+        "respostas_fora_do_contrato": 2,
+        "colunas_certas": "0 de 18",
+        "tokens_por_segundo_escrevendo": "3,5 a 5,0",
+        "camadas_na_placa": "26 de 41 (memória 16k) · 33 de 41 (memória 8k)"
+      }
+    },
+    {
+      "nome": "qwen3.5:4b",
+      "modelo": "local:qwen3.5:4b",
+      "metricas": {
+        "carregar_na_memoria_s": 45.5,
+        "pergunta_curta_carregado_s": 1.6,
+        "planilha": "não medida"
+      }
+    },
+    {
+      "nome": "gemma4:e4b-it-qat",
+      "modelo": "local:gemma4:e4b-it-qat",
+      "metricas": {
+        "carregar_na_memoria_s": 111.4,
+        "pergunta_curta_carregado_s": 1.7,
+        "planilha": "não medida"
+      }
+    }
+  ],
+  "leitura": "Nesta máquina, a IA local não serve: o modelo que mais cabe na placa levou 11 minutos numa planilha que os modelos pagos leem em cerca de 30 segundos, respondeu duas vezes fora do contrato e marcou todas as colunas como 'sem campo', inclusive CEP e telefone (0 de 18). O gargalo é escrever a resposta (3,5 a 5 tokens por segundo com parte do modelo no processador). Os três acertaram uma pergunta curta de um campo só, então o limite é a tarefa longa, não o português. Uma IA local de verdade pediria placa de 16 a 24 GB (servidor com GPU).",
+  "decisao": "IA local descartada nesta versão (decisão do usuário). A proteção passa a ser o destino: AWS Bedrock no perfil EUA, com retenção zero (ADR-96).",
+  "custo_usd": 0.0,
+  "fonte": "Conversa de 2026-09-27; registros do Ollama (o código do teste foi desfeito, sem ir para o Git)"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "EXP-002",
+  "data": "2026-09-24",
+  "titulo": "Busca do RAG (hit@k) nos dois índices",
+  "tipo": "rag",
+  "pergunta": "A busca traz o trecho certo? Quantos trechos mandar ao agente?",
+  "o_que_testamos": "Busca por significado (embeddings locais) no índice do layout e no catálogo de benefícios, com filtro obrigatório por empresa.",
+  "amostra": "10 consultas de teste por índice (com resposta, sem resposta e de outra empresa)",
+  "modo": "sem IA",
+  "resultados": [
+    {
+      "nome": "índice layout",
+      "modelo": "embeddings locais (MiniLM multilíngue)",
+      "metricas": {
+        "hit_no_k_escolhido": 1.0,
+        "k_escolhido": 4,
+        "trechos_de_outra_empresa": 0
+      }
+    },
+    {
+      "nome": "índice catalogo",
+      "modelo": "embeddings locais (MiniLM multilíngue)",
+      "metricas": {
+        "hit_no_k_escolhido": 1.0,
+        "k_escolhido": 2,
+        "trechos_de_outra_empresa": 0
+      }
+    }
+  ],
+  "leitura": "100% das respostas certas entre os 4 primeiros (layout) e os 2 primeiros (catálogo); nenhum trecho de outra empresa. No layout, a distância não separa 'tem' de 'não tem': o 'não sei' fica com o Interpretador.",
+  "decisao": "k = 4 no layout e k = 2 no catálogo (ADR-42).",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/rag.json"
+}

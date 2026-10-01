@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--
+  login.html — tela de entrada do Portal da Empresa (Integra Folha).
+
+  Para que serve: é a porta de entrada dos dois portais, ligada à aplicação (ADR-69). A pessoa informa
+  usuário e senha; o js/login.js manda os dois para a API (/api/entrar), que confere no cadastro de usuários.
+  Se conferir, o PERFIL do cadastro decide o portal: EMPRESA vai para home.html e BANCO para banco_inicio.html.
+  Se não conferir, aparece "Usuário ou senha incorretos." (a mesma
+  mensagem para qualquer erro, para não revelar se o usuário existe).
+
+  Como abrir: com a API ligada (python -m uvicorn api.principal:aplicacao --port 8000), em
+  http://localhost:8000/login.html. Aberto com dois cliques, sem servidor, o login não funciona.
+  Aparência: css/estilos.css (seção "Tela de login"). Interações: js/login.js.
+
+  Ordem da página:
+    1. Painel cor da marca (a mensagem que vende o portal)
+    2. Formulário de login
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Entrar | Integra Folha</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Mesmo arquivo de aparência da home. -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="login-pagina">
+
+  <!-- Biblioteca de ícones usados nesta tela (mesmos desenhos da home). -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Estrela com brilho: inteligência artificial. -->
+    <symbol id="icone-ia" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/><path d="M19 3v4M17 5h4"/></symbol>
+    <!-- Prancheta com visto: acompanhar cadastros. -->
+    <symbol id="icone-acompanhar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Escudo: segurança. -->
+    <symbol id="icone-escudo" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <!-- Seta para a direita: botão Entrar. -->
+    <symbol id="icone-seta" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+  </svg>
+
+  <main class="login-grade">
+    <!-- ============ 1. PAINEL NA COR DA MARCA ============ -->
+    <section class="login-painel-marca">
+      <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+      <div class="logotipo">
+        <span class="logotipo-marca">Integra Folha</span>
+        <span class="logotipo-portal">Portal Empresa · Folha de Pagamento</span>
+      </div>
+
+      <!-- Mensagem principal e as três coisas que o portal faz. -->
+      <div>
+        <h1 class="login-titulo">Nosso relacionamento começa aqui.</h1>
+        <p class="login-texto">
+          Cadastre sua equipe em poucos minutos e ofereça a cada funcionário as vantagens de receber o salário no banco parceiro.
+        </p>
+        <ul class="login-lista-vantagens">
+          <li class="login-vantagem">
+            <span class="login-vantagem-icone"><svg class="icone"><use href="#icone-ia"/></svg></span>
+            Cadastro da equipe com ajuda de agentes inteligentes
+          </li>
+          <li class="login-vantagem">
+            <span class="login-vantagem-icone"><svg class="icone"><use href="#icone-acompanhar"/></svg></span>
+            Acompanhamento de cada cadastro, do envio à aprovação
+          </li>
+          <li class="login-vantagem">
+            <span class="login-vantagem-icone"><svg class="icone"><use href="#icone-endomarketing"/></svg></span>
+            Materiais prontos para engajar o seu time
+          </li>
+        </ul>
+      </div>
+
+      <!-- Rodapé do painel: o aviso de projeto e, logo abaixo, os links das páginas de texto (abrem sem login). -->
+      <div class="login-rodape">
+        <p class="login-rodape-painel">Integra Folha é um projeto acadêmico de engenharia de IA · todos os dados são fictícios</p>
+        <p class="login-rodape-painel login-links-do-painel"><a href="privacidade.html">Privacidade e LGPD</a> · <a href="termos_de_uso.html">Termos de uso</a></p>
+      </div>
+      <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+      <p class="login-rodape-painel login-data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+    </section>
+
+    <!-- ============ 2. FORMULÁRIO DE LOGIN ============ -->
+    <section class="login-painel-formulario">
+      <!-- O envio do formulário é tratado em js/login.js (leva para a home). -->
+      <form class="formulario-login" id="formulario-login">
+        <div>
+          <h2 class="formulario-titulo">Acesse o Portal Empresa</h2>
+          <p class="formulario-subtitulo">Entre com o usuário criado pelo seu especialista.</p>
+        </div>
+
+        <!-- Campo de usuário (e-mail corporativo). -->
+        <label class="campo">
+          <span class="campo-rotulo">Usuário</span>
+          <input class="campo-entrada" type="text" name="usuario" placeholder="Seu usuário" autocomplete="username" required>
+        </label>
+
+        <!-- Campo de senha, com botão para mostrar ou esconder o que foi digitado. -->
+        <label class="campo">
+          <span class="campo-rotulo">Senha</span>
+          <span class="campo-senha">
+            <input class="campo-entrada" id="campo-senha" type="password" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+            <button class="botao-mostrar-senha" id="botao-mostrar-senha" type="button" aria-pressed="false">Mostrar</button>
+          </span>
+        </label>
+
+        <!-- Esqueci a senha: abre a janela que explica o caminho (js/login.js). Não há "Lembrar de mim": a sessão
+             acaba ao fechar o navegador (ADR-100). -->
+        <div class="login-linha-opcoes">
+          <a href="#" class="link-simples" id="link-esqueci-a-senha" aria-haspopup="dialog">Esqueci minha senha</a>
+        </div>
+
+        <!-- Botão principal: leva para a home. -->
+        <button class="botao botao-principal botao-largura-total" type="submit">
+          Entrar
+          <svg class="icone"><use href="#icone-seta"/></svg>
+        </button>
+
+        <!-- Para quem ainda não tem usuário. -->
+        <p class="login-primeiro-acesso">
+          Primeiro acesso ou esqueceu a senha? <a href="#" class="link-simples">Fale com o especialista do banco que
+          cuida do relacionamento com a sua empresa.</a>
+        </p>
+
+        <!-- Aviso de login recusado (preenchido pelo js/login.js com a mensagem do servidor). -->
+        <p class="aviso-login" id="aviso-login" role="alert" hidden></p>
+
+        <!-- Aviso de segurança. -->
+        <p class="login-seguranca">
+          <svg class="icone"><use href="#icone-escudo"/></svg>
+          Ambiente seguro. Seus dados e os da sua equipe são protegidos.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Janela "Esqueci minha senha": só explica o caminho. A aplicação não manda
+       e-mail: quem gera uma senha provisória nova é o especialista do banco (ADR-109). Um <dialog> é a janela pronta
+       do navegador: escurece o fundo e fecha com Esc. -->
+  <dialog class="janela-beneficio" id="janela-esqueci-a-senha" aria-labelledby="titulo-esqueci-a-senha">
+    <div class="janela-conteudo">
+      <h2 class="janela-titulo" id="titulo-esqueci-a-senha">Esqueci minha senha</h2>
+      <p class="janela-resumo">Peça uma senha provisória nova ao especialista do banco que atende a sua empresa. Ao entrar com ela, você cria uma senha só sua.</p>
+      <div class="janela-botoes">
+        <button class="botao botao-principal" type="button" id="botao-entendi-a-senha">Entendi</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Interações da tela (mostrar senha, esqueci a senha e entrar). -->
+  <script src="js/login.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

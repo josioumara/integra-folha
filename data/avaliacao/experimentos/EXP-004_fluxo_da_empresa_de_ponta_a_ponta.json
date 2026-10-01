@@ -1,0 +1,27 @@
+{
+  "id": "EXP-004",
+  "data": "2026-09-24",
+  "titulo": "Fluxo da empresa de ponta a ponta",
+  "tipo": "fluxo",
+  "pergunta": "O arquivo vai do envio à homologação, com os erros achados e o controle humano?",
+  "o_que_testamos": "Os 9 arquivos de envio pelo fluxo inteiro, com uma pessoa simulada decidindo pelo gabarito.",
+  "amostra": "9 arquivos de envio com 9 erros injetados",
+  "modo": "MOCK",
+  "resultados": [
+    {
+      "nome": "fluxo completo",
+      "modelo": "simulador (MOCK)",
+      "metricas": {
+        "arquivos_homologados": "9 de 9",
+        "recall_dos_erros_injetados": 1.0,
+        "achados_fora_do_gabarito": 0,
+        "homologados_sem_edicao_manual": "5 de 9",
+        "etapas_refeitas_na_retomada": 0
+      }
+    }
+  ],
+  "leitura": "9 de 9 homologados, 9 de 9 erros achados, nenhum a mais; 0 etapas refeitas em 26 retomadas.",
+  "decisao": "Fluxo aprovado para o MVP (ADR-59).",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/fluxo.json"
+}

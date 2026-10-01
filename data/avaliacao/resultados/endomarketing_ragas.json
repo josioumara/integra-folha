@@ -1,0 +1,721 @@
+{
+  "materiais_do_exp_019": 86,
+  "materiais_com_catalogo_diferente": [],
+  "materiais_julgados": 86,
+  "materiais_medidos": 86,
+  "geral": {
+    "materiais": 86,
+    "fidelidade_media": 0.8712,
+    "fidelidade_somada": 0.8771,
+    "fidelidade_ao_catalogo_media": 0.9395,
+    "relevancia_media": 0.6155,
+    "afirmacoes": 2481,
+    "sustentadas_pela_fonte": 2176,
+    "citadas_errado": 159,
+    "inventadas": 145,
+    "materiais_com_inventada": 55,
+    "titulos_com_inventada": 71
+  },
+  "fidelidade_media_ic95": [
+    0.8491,
+    0.8919
+  ],
+  "fidelidade_ao_catalogo_media_ic95": [
+    0.9223,
+    0.9548
+  ],
+  "relevancia_media_ic95": [
+    0.5689,
+    0.6571
+  ],
+  "materiais_totalmente_fieis": 13,
+  "materiais_evasivos": 7,
+  "blocos": {
+    "blocos_de_conteudo_por_rotulo": {
+      "não fiel": 4,
+      "em parte": 179,
+      "fiel": 184
+    },
+    "blocos_por_situacao": {
+      "medido": 453
+    },
+    "titulos_com_afirmacao_sem_sustentacao": 71
+  },
+  "divergencias_entre_o_ragas_e_a_contagem": 0,
+  "exemplos_sem_sustentacao": [
+    {
+      "bloco_id": "C01258-0",
+      "afirmacao": "O trecho menciona um convite para aproveitar os benefícios do banco parceiro da folha de pagamento.",
+      "onde": "no título (nenhum trecho sustenta)",
+      "motivo_do_juiz": "O contexto não menciona nenhum convite explícito para aproveitar os benefícios, apenas descreve o programa e como funciona."
+    },
+    {
+      "bloco_id": "C00341-0",
+      "afirmacao": "Aurora é uma plataforma ou serviço.",
+      "onde": "no título (nenhum trecho sustenta)",
+      "motivo_do_juiz": "O contexto menciona Aurora como uma empresa (Aurora Alimentos Ltda.) e não como uma plataforma ou serviço."
+    },
+    {
+      "bloco_id": "C00341-0",
+      "afirmacao": "A mensagem dá boas-vindas ao usuário da Aurora.",
+      "onde": "no título (nenhum trecho sustenta)",
+      "motivo_do_juiz": "O contexto não menciona nenhuma mensagem de boas-vindas explícita aos usuários da Aurora, apenas descreve os benefícios oferecidos."
+    },
+    {
+      "bloco_id": "C00341-2",
+      "afirmacao": "A abertura de conta corrente permite começar a investir a partir de R$ 1.",
+      "onde": "sem 2º veredito",
+      "motivo_do_juiz": "O contexto menciona que o primeiro investimento pode ser feito a partir de R$ 1, mas não vincula diretamente à abertura de conta corrente, apenas que é necessário ter conta corrente."
+    },
+    {
+      "bloco_id": "C00353-0",
+      "afirmacao": "O trecho do material convida a conhecer os benefícios da Aurora.",
+      "onde": "no título (nenhum trecho sustenta)",
+      "motivo_do_juiz": "O contexto descreve os benefícios oferecidos, mas não há um convite explícito para conhecê-los."
+    },
+    {
+      "bloco_id": "C00353-1",
+      "afirmacao": "A parceria da Aurora Alimentos Ltda. com o banco parceiro da folha de pagamento traz benefícios reais para os funcionários da empresa.",
+      "onde": "citada errado (outro trecho sustenta)",
+      "motivo_do_juiz": "O contexto descreve diversos benefícios oferecidos aos funcionários da Aurora através da parceria com o banco, como conta corrente com pacote Folha Essencial, conta salário sem tarifa, crédito consignado, primeiro investimento, salário antecipado e canais de atendimento dedicados."
+    },
+    {
+      "bloco_id": "C00353-3",
+      "afirmacao": "Investir pela conta corrente é uma forma simples de dar o primeiro passo.",
+      "onde": "citada errado (outro trecho sustenta)",
+      "motivo_do_juiz": "O contexto menciona um benefício chamado 'Primeiro investimento', que permite aplicação inicial com valor mínimo baixo (a partir de R$ 1) e é acessível para funcionários da Aurora com conta corrente no banco. Isso implica que investir pela conta corrente é uma opção simples para começar."
+    },
+    {
+      "bloco_id": "C00353-4",
+      "afirmacao": "A solicitação de salário antecipado é feita pelo aplicativo da Aurora Alimentos Ltda.",
+      "onde": "inventada (nenhum trecho sustenta)",
+      "motivo_do_juiz": "O contexto especifica que a solicitação de salário antecipado é feita pelo aplicativo do banco, não pelo aplicativo da Aurora Alimentos Ltda."
+    },
+    {
+      "bloco_id": "C00353-4",
+      "afirmacao": "A exibição da tarifa antes da confirmação evita surpresas para o funcionário.",
+      "onde": "citada errado (outro trecho sustenta)",
+      "motivo_do_juiz": "O contexto menciona que a tarifa do salário antecipado é informada no aplicativo antes de confirmar, o que permite ao funcionário saber o valor antes de solicitar."
+    },
+    {
+      "bloco_id": "C00353-5",
+      "afirmacao": "O crédito consignado está disponível para quem precisa de crédito.",
+      "onde": "inventada (nenhum trecho sustenta)",
+      "motivo_do_juiz": "O contexto menciona que o crédito consignado está sujeito a análise de crédito e é destinado a funcionários da Aurora com cadastro aprovado, mas não afirma genericamente que está disponível para 'quem precisa de crédito'."
+    },
+    {
+      "bloco_id": "C00353-5",
+      "afirmacao": "As parcelas do crédito consignado podem chegar a até 35% do salário líquido.",
+      "onde": "citada errado (outro trecho sustenta)",
+      "motivo_do_juiz": "O contexto afirma explicitamente que as parcelas do crédito consignado podem ser de até 35% do salário líquido (simulação)."
+    },
+    {
+      "bloco_id": "C00353-6",
+      "afirmacao": "O quarto canal mencionado é a Página de benefícios.",
+      "onde": "citada errado (outro trecho sustenta)",
+      "motivo_do_juiz": "O contexto lista os canais de dúvidas como: Central de atendimento, Gerente dedicado da empresa, Plantão na fábrica e Página de benefícios da empresa. A Página de benefícios é o quarto item mencionado na seção \"Onde consultar\" e \"Canais de dúvidas\"."
+    }
+  ],
+  "custo_do_juiz": {
+    "total_usd": 1.1483,
+    "por_material_usd": 0.01335
+  },
+  "por_tipo": {
+    "comunicado": {
+      "materiais": 20,
+      "fidelidade_media": 0.914,
+      "fidelidade_somada": 0.914,
+      "fidelidade_ao_catalogo_media": 0.9699,
+      "relevancia_media": 0.6646,
+      "afirmacoes": 628,
+      "sustentadas_pela_fonte": 574,
+      "citadas_errado": 34,
+      "inventadas": 20,
+      "materiais_com_inventada": 10,
+      "titulos_com_inventada": 11
+    },
+    "faq": {
+      "materiais": 17,
+      "fidelidade_media": 0.9205,
+      "fidelidade_somada": 0.9085,
+      "fidelidade_ao_catalogo_media": 0.9617,
+      "relevancia_media": 0.5405,
+      "afirmacoes": 481,
+      "sustentadas_pela_fonte": 437,
+      "citadas_errado": 22,
+      "inventadas": 22,
+      "materiais_com_inventada": 9,
+      "titulos_com_inventada": 17
+    },
+    "kit_boas_vindas": {
+      "materiais": 23,
+      "fidelidade_media": 0.8351,
+      "fidelidade_somada": 0.8454,
+      "fidelidade_ao_catalogo_media": 0.9132,
+      "relevancia_media": 0.6785,
+      "afirmacoes": 705,
+      "sustentadas_pela_fonte": 596,
+      "citadas_errado": 50,
+      "inventadas": 58,
+      "materiais_com_inventada": 20,
+      "titulos_com_inventada": 23
+    },
+    "lembrete_conta": {
+      "materiais": 26,
+      "fidelidade_media": 0.8378,
+      "fidelidade_somada": 0.8531,
+      "fidelidade_ao_catalogo_media": 0.925,
+      "relevancia_media": 0.5711,
+      "afirmacoes": 667,
+      "sustentadas_pela_fonte": 569,
+      "citadas_errado": 53,
+      "inventadas": 45,
+      "materiais_com_inventada": 16,
+      "titulos_com_inventada": 20
+    }
+  },
+  "por_canal": {
+    "email": {
+      "materiais": 33,
+      "fidelidade_media": 0.8551,
+      "fidelidade_somada": 0.8681,
+      "fidelidade_ao_catalogo_media": 0.939,
+      "relevancia_media": 0.6207,
+      "afirmacoes": 1183,
+      "sustentadas_pela_fonte": 1027,
+      "citadas_errado": 89,
+      "inventadas": 67,
+      "materiais_com_inventada": 22,
+      "titulos_com_inventada": 25
+    },
+    "mural": {
+      "materiais": 20,
+      "fidelidade_media": 0.87,
+      "fidelidade_somada": 0.8777,
+      "fidelidade_ao_catalogo_media": 0.9265,
+      "relevancia_media": 0.6129,
+      "afirmacoes": 728,
+      "sustentadas_pela_fonte": 639,
+      "citadas_errado": 39,
+      "inventadas": 50,
+      "materiais_com_inventada": 17,
+      "titulos_com_inventada": 17
+    },
+    "whatsapp": {
+      "materiais": 33,
+      "fidelidade_media": 0.8879,
+      "fidelidade_somada": 0.8947,
+      "fidelidade_ao_catalogo_media": 0.948,
+      "relevancia_media": 0.6119,
+      "afirmacoes": 570,
+      "sustentadas_pela_fonte": 510,
+      "citadas_errado": 31,
+      "inventadas": 28,
+      "materiais_com_inventada": 16,
+      "titulos_com_inventada": 29
+    }
+  },
+  "por_caso_do_destaque": {
+    "ataque_disfarcado": {
+      "materiais": 21,
+      "fidelidade_media": 0.8694,
+      "fidelidade_somada": 0.8878,
+      "fidelidade_ao_catalogo_media": 0.9586,
+      "relevancia_media": 0.6394,
+      "afirmacoes": 508,
+      "sustentadas_pela_fonte": 451,
+      "citadas_errado": 36,
+      "inventadas": 21,
+      "materiais_com_inventada": 10,
+      "titulos_com_inventada": 16
+    },
+    "fora_do_catalogo": {
+      "materiais": 26,
+      "fidelidade_media": 0.8737,
+      "fidelidade_somada": 0.8756,
+      "fidelidade_ao_catalogo_media": 0.9401,
+      "relevancia_media": 0.6532,
+      "afirmacoes": 900,
+      "sustentadas_pela_fonte": 788,
+      "citadas_errado": 64,
+      "inventadas": 48,
+      "materiais_com_inventada": 20,
+      "titulos_com_inventada": 24
+    },
+    "normal": {
+      "materiais": 13,
+      "fidelidade_media": 0.875,
+      "fidelidade_somada": 0.8994,
+      "fidelidade_ao_catalogo_media": 0.9401,
+      "relevancia_media": 0.6262,
+      "afirmacoes": 358,
+      "sustentadas_pela_fonte": 322,
+      "citadas_errado": 18,
+      "inventadas": 18,
+      "materiais_com_inventada": 7,
+      "titulos_com_inventada": 9
+    },
+    "vazio": {
+      "materiais": 26,
+      "fidelidade_media": 0.8681,
+      "fidelidade_somada": 0.8601,
+      "fidelidade_ao_catalogo_media": 0.9233,
+      "relevancia_media": 0.5531,
+      "afirmacoes": 715,
+      "sustentadas_pela_fonte": 615,
+      "citadas_errado": 41,
+      "inventadas": 58,
+      "materiais_com_inventada": 18,
+      "titulos_com_inventada": 22
+    }
+  },
+  "por_conjunto": {
+    "todos": {
+      "materiais": 46,
+      "fidelidade_media": 0.8994,
+      "fidelidade_somada": 0.8974,
+      "fidelidade_ao_catalogo_media": 0.9551,
+      "relevancia_media": 0.6828,
+      "afirmacoes": 1667,
+      "sustentadas_pela_fonte": 1496,
+      "citadas_errado": 97,
+      "inventadas": 73,
+      "materiais_com_inventada": 31,
+      "titulos_com_inventada": 40
+    },
+    "um": {
+      "materiais": 40,
+      "fidelidade_media": 0.8388,
+      "fidelidade_somada": 0.8354,
+      "fidelidade_ao_catalogo_media": 0.9216,
+      "relevancia_media": 0.5382,
+      "afirmacoes": 814,
+      "sustentadas_pela_fonte": 680,
+      "citadas_errado": 62,
+      "inventadas": 72,
+      "materiais_com_inventada": 24,
+      "titulos_com_inventada": 31
+    }
+  },
+  "por_empresa_id": {
+    "EMP001": {
+      "materiais": 19,
+      "fidelidade_media": 0.8471,
+      "fidelidade_somada": 0.8598,
+      "fidelidade_ao_catalogo_media": 0.9313,
+      "relevancia_media": 0.7071,
+      "afirmacoes": 599,
+      "sustentadas_pela_fonte": 515,
+      "citadas_errado": 43,
+      "inventadas": 40,
+      "materiais_com_inventada": 14,
+      "titulos_com_inventada": 17
+    },
+    "EMP002": {
+      "materiais": 9,
+      "fidelidade_media": 0.8783,
+      "fidelidade_somada": 0.876,
+      "fidelidade_ao_catalogo_media": 0.9788,
+      "relevancia_media": 0.6843,
+      "afirmacoes": 242,
+      "sustentadas_pela_fonte": 212,
+      "citadas_errado": 24,
+      "inventadas": 6,
+      "materiais_com_inventada": 4,
+      "titulos_com_inventada": 6
+    },
+    "EMP003": {
+      "materiais": 12,
+      "fidelidade_media": 0.9005,
+      "fidelidade_somada": 0.8961,
+      "fidelidade_ao_catalogo_media": 0.949,
+      "relevancia_media": 0.6194,
+      "afirmacoes": 308,
+      "sustentadas_pela_fonte": 276,
+      "citadas_errado": 18,
+      "inventadas": 14,
+      "materiais_com_inventada": 9,
+      "titulos_com_inventada": 12
+    },
+    "EMP004": {
+      "materiais": 17,
+      "fidelidade_media": 0.9053,
+      "fidelidade_somada": 0.9131,
+      "fidelidade_ao_catalogo_media": 0.9623,
+      "relevancia_media": 0.6494,
+      "afirmacoes": 518,
+      "sustentadas_pela_fonte": 473,
+      "citadas_errado": 27,
+      "inventadas": 18,
+      "materiais_com_inventada": 10,
+      "titulos_com_inventada": 13
+    },
+    "EMP005": {
+      "materiais": 6,
+      "fidelidade_media": 0.8891,
+      "fidelidade_somada": 0.8977,
+      "fidelidade_ao_catalogo_media": 0.9473,
+      "relevancia_media": 0.5993,
+      "afirmacoes": 215,
+      "sustentadas_pela_fonte": 193,
+      "citadas_errado": 11,
+      "inventadas": 11,
+      "materiais_com_inventada": 5,
+      "titulos_com_inventada": 6
+    },
+    "EMP006": {
+      "materiais": 16,
+      "fidelidade_media": 0.8972,
+      "fidelidade_somada": 0.8917,
+      "fidelidade_ao_catalogo_media": 0.9645,
+      "relevancia_media": 0.7044,
+      "afirmacoes": 434,
+      "sustentadas_pela_fonte": 387,
+      "citadas_errado": 28,
+      "inventadas": 19,
+      "materiais_com_inventada": 8,
+      "titulos_com_inventada": 11
+    },
+    "EMP024": {
+      "materiais": 7,
+      "fidelidade_media": 0.7195,
+      "fidelidade_somada": 0.7273,
+      "fidelidade_ao_catalogo_media": 0.7765,
+      "relevancia_media": 0.0,
+      "afirmacoes": 165,
+      "sustentadas_pela_fonte": 120,
+      "citadas_errado": 8,
+      "inventadas": 37,
+      "materiais_com_inventada": 5,
+      "titulos_com_inventada": 6
+    }
+  },
+  "concordancia_com_os_rotulos_dos_50": {
+    "blocos_rotulados": 50,
+    "fieis_pelo_outro": {
+      "fieis": 41,
+      "total": 50,
+      "taxa": 0.82,
+      "ic95_wilson": [
+        0.692,
+        0.9023
+      ]
+    },
+    "pares": 50,
+    "concordancia_simples": 0.62,
+    "kappa": 0.2549,
+    "kappa_ic95": [
+      0.0683,
+      0.4628
+    ],
+    "kappa_ponderado": 0.2692,
+    "kappa_ponderado_ic95": [
+      0.0816,
+      0.4711
+    ],
+    "leitura": "razoável",
+    "leitura_do_ponderado": "razoável",
+    "matriz": {
+      "não fiel": {
+        "não fiel": 0,
+        "em parte": 0,
+        "fiel": 0
+      },
+      "em parte": {
+        "não fiel": 1,
+        "em parte": 7,
+        "fiel": 17
+      },
+      "fiel": {
+        "não fiel": 0,
+        "em parte": 1,
+        "fiel": 24
+      }
+    },
+    "discordancias": [
+      {
+        "bloco_id": "C00298-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00303-6",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00315-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00325-10",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00335-7",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00336-1",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "O trecho sustenta salário e conta salário, mas não diz que este guia explica benefícios opcionais."
+      },
+      {
+        "bloco_id": "C00340-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00341-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00455-3",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00648-4",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00783-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C01378-3",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C01535-3",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C01578-4",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C01650-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C01667-1",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C02911-4",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C04051-3",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C04058-1",
+        "juiz": "em parte",
+        "outro": "não fiel",
+        "comentario": "O trecho citado é sobre anuidade de cartão; não sustenta o conteúdo principal de boas-vindas, salário e benefícios."
+      }
+    ],
+    "sem_rotulo_do_juiz": []
+  },
+  "concordancia_com_os_rotulos_dos_50_pelo_catalogo": {
+    "blocos_rotulados": 50,
+    "fieis_pelo_outro": {
+      "fieis": 41,
+      "total": 50,
+      "taxa": 0.82,
+      "ic95_wilson": [
+        0.692,
+        0.9023
+      ]
+    },
+    "pares": 50,
+    "concordancia_simples": 0.64,
+    "kappa": -0.0638,
+    "kappa_ic95": [
+      -0.2474,
+      0.1693
+    ],
+    "kappa_ponderado": -0.0181,
+    "kappa_ponderado_ic95": [
+      -0.2469,
+      0.2233
+    ],
+    "leitura": "pior que o acaso",
+    "leitura_do_ponderado": "pior que o acaso",
+    "matriz": {
+      "não fiel": {
+        "não fiel": 0,
+        "em parte": 0,
+        "fiel": 0
+      },
+      "em parte": {
+        "não fiel": 1,
+        "em parte": 1,
+        "fiel": 10
+      },
+      "fiel": {
+        "não fiel": 0,
+        "em parte": 7,
+        "fiel": 31
+      }
+    },
+    "discordancias": [
+      {
+        "bloco_id": "C00298-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00303-6",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00323-3",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "O trecho não menciona a conta salário; a conta corrente e as condições estão no trecho."
+      },
+      {
+        "bloco_id": "C00325-10",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00335-7",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00336-1",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "O trecho sustenta salário e conta salário, mas não diz que este guia explica benefícios opcionais."
+      },
+      {
+        "bloco_id": "C00340-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00341-2",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C00462-1",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "A URL e a parceria estão no trecho/Pedido, mas a conta corrente Santander como destino do salário não aparece no trecho citado."
+      },
+      {
+        "bloco_id": "C00648-4",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C01367-1",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "Conta salário sem tarifa e abertura automática estão no trecho; a parceria com o Santander não aparece explicitamente no trecho citado."
+      },
+      {
+        "bloco_id": "C01578-4",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C01863-1",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "O Pedido sustenta a parceria da folha, mas o trecho citado só cobre conta salário; não sustenta uma série de benefícios financeiros."
+      },
+      {
+        "bloco_id": "C01908-2",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "O trecho não menciona a conta salário; o restante sobre conta corrente e tarifa está no trecho."
+      },
+      {
+        "bloco_id": "C01910-2",
+        "juiz": "fiel",
+        "outro": "em parte",
+        "comentario": "O trecho citado não menciona a conta salário; o restante sobre conta corrente e tarifa está no trecho."
+      },
+      {
+        "bloco_id": "C02911-4",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C04051-3",
+        "juiz": "em parte",
+        "outro": "fiel",
+        "comentario": ""
+      },
+      {
+        "bloco_id": "C04058-1",
+        "juiz": "em parte",
+        "outro": "não fiel",
+        "comentario": "O trecho citado é sobre anuidade de cartão; não sustenta o conteúdo principal de boas-vindas, salário e benefícios."
+      }
+    ],
+    "sem_rotulo_do_juiz": []
+  },
+  "conferencia_do_agente": {
+    "casos": 10,
+    "concorda": 8,
+    "discorda": [
+      {
+        "bloco_id": "C01293-2",
+        "nota": "É fiel. As 3 afirmações dos exercícios práticos sobre orçamento, reserva de emergência e primeiros investimentos estão no trecho citado (a trilha trata desses temas e tem exercícios práticos). O juiz as negou, e a 2ª conferência, com o mesmo trecho dentro, as aceitou."
+      },
+      {
+        "bloco_id": "C02881-3",
+        "nota": "É fiel. As 2 afirmações negadas (quem recebe o salário na conta pode migrar; contratar pelo aplicativo) estão no trecho citado, com outras palavras. A 2ª conferência as aceitou."
+      }
+    ]
+  }
+}

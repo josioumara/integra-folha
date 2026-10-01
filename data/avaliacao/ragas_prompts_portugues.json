@@ -1,0 +1,97 @@
+{
+  "_sobre": "Os 3 prompts do RAGAS 0.4.3 usados na medição do Endomarketing (Faithfulness: afirmacoes e veredito; AnswerRelevancy: perguntas), traduzidos pelo próprio RAGAS (BasePrompt.adapt com adapt_instruction=True) com o juiz Mistral Large 3 e conferidos à mão. Correção à mão: Dado uma pergunta → Dadas uma pergunta e uma resposta. O resto do texto do prompt (o esquema JSON e o fecho) o RAGAS monta em inglês.",
+  "afirmacoes": {
+    "idioma": "portuguese",
+    "instrucao": "Dadas uma pergunta e uma resposta, analise a complexidade de cada sentença na resposta. Divida cada sentença em uma ou mais declarações totalmente compreensíveis. Garanta que nenhum pronome seja usado em qualquer declaração.",
+    "exemplos": [
+      {
+        "entrada": {
+          "question": "Quem foi Albert Einstein e pelo que ele é mais conhecido?",
+          "answer": "Ele foi um físico teórico nascido na Alemanha, amplamente reconhecido como um dos maiores e mais influentes físicos de todos os tempos. Ele é mais conhecido por desenvolver a teoria da relatividade, mas também fez contribuições importantes para o desenvolvimento da teoria da mecânica quântica."
+        },
+        "saida": {
+          "statements": [
+            "Albert Einstein foi um físico teórico nascido na Alemanha.",
+            "Albert Einstein é reconhecido como um dos maiores e mais influentes físicos de todos os tempos.",
+            "Albert Einstein é mais conhecido por desenvolver a teoria da relatividade.",
+            "Albert Einstein fez contribuições importantes para o desenvolvimento da teoria da mecânica quântica."
+          ]
+        }
+      }
+    ]
+  },
+  "veredito": {
+    "idioma": "portuguese",
+    "instrucao": "Sua tarefa é julgar a fidelidade de uma série de declarações com base em um contexto dado. Para cada declaração, você deve retornar o veredito como 1 se a declaração puder ser diretamente inferida com base no contexto ou 0 se a declaração não puder ser diretamente inferida com base no contexto.",
+    "exemplos": [
+      {
+        "entrada": {
+          "context": "John é um estudante na Universidade XYZ. Ele está cursando um diploma em Ciência da Computação. Ele está matriculado em vários cursos neste semestre, incluindo Estruturas de Dados, Algoritmos e Gerenciamento de Banco de Dados. John é um estudante diligente e passa uma quantidade significativa de tempo estudando e completando tarefas. Ele frequentemente fica até tarde na biblioteca para trabalhar em seus projetos.",
+          "statements": [
+            "John está se especializando em Biologia.",
+            "John está fazendo um curso sobre Inteligência Artificial.",
+            "John é um estudante dedicado.",
+            "John tem um emprego de meio período."
+          ]
+        },
+        "saida": {
+          "statements": [
+            {
+              "statement": "John está se especializando em Biologia.",
+              "reason": "A especialização de John é explicitamente declarada como Ciência da Computação, não Biologia.",
+              "verdict": 0
+            },
+            {
+              "statement": "John está fazendo um curso sobre Inteligência Artificial.",
+              "reason": "O contexto menciona cursos em Estruturas de Dados, Algoritmos e Gerenciamento de Banco de Dados, mas não menciona Inteligência Artificial.",
+              "verdict": 0
+            },
+            {
+              "statement": "John é um estudante dedicado.",
+              "reason": "O contexto afirma que John é um estudante diligente que passa uma quantidade significativa de tempo estudando e completando tarefas.",
+              "verdict": 1
+            },
+            {
+              "statement": "John tem um emprego de meio período.",
+              "reason": "Não há informações no contexto sobre John ter um emprego de meio período.",
+              "verdict": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "perguntas": {
+    "idioma": "portuguese",
+    "instrucao": "Gere uma pergunta para a resposta dada e identifique se a resposta é evasiva.\nAtribua 1 para evasiva se a resposta for não comprometedora (evasiva, vaga ou ambígua) e 0 se a resposta for substantiva.\nExemplos de respostas não comprometedoras: \"Eu não sei\", \"Não tenho certeza\", \"Depende\".",
+    "exemplos": [
+      {
+        "entrada": {
+          "response": "Albert Einstein nasceu na Alemanha."
+        },
+        "saida": {
+          "question": "Onde Albert Einstein nasceu?",
+          "noncommittal": 0
+        }
+      },
+      {
+        "entrada": {
+          "response": "A capital da França é Paris, uma cidade conhecida por sua arquitetura e cultura."
+        },
+        "saida": {
+          "question": "Qual é a capital da França?",
+          "noncommittal": 0
+        }
+      },
+      {
+        "entrada": {
+          "response": "Não conheço o recurso inovador do smartphone inventado em 2023, pois não tenho informações além de 2022."
+        },
+        "saida": {
+          "question": "Qual foi o recurso inovador do smartphone inventado em 2023?",
+          "noncommittal": 1
+        }
+      }
+    ]
+  }
+}

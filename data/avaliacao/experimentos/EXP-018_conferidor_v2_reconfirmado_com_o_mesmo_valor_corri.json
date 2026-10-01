@@ -1,0 +1,67 @@
+{
+  "id": "EXP-018",
+  "data": "2026-09-29",
+  "titulo": "Conferidor v2 reconfirmado com o _mesmo_valor corrigido (reconfirma o EXP-016)",
+  "tipo": "conferidor",
+  "pergunta": "O conserto do _mesmo_valor (dinheiro como número, CPF e data pelos dígitos inteiros; revisão do ADR-131) muda o resultado do EXP-016, que foi medido com a comparação antiga (sem os zeros do fim)?",
+  "o_que_testamos": "O mesmo Conferidor v2 (prompt conferidor_da_leitura_v2, Amazon Nova 2 Lite), agora com o _mesmo_valor corrigido (main 125b20e), nos mesmos conjuntos do EXP-016: o de desenvolvimento (5 documentos, 18 erros plantados, a mesma semente), 3 repetições, porque é onde a varredura sem custo achou o único par que o conserto poderia mudar; e as armadilhas (18 documentos, congelados), 1 repetição, onde a varredura não achou nenhum. Teto combinado com a usuária: cerca de US$ 0,05.",
+  "amostra": "5 documentos de desenvolvimento × 3 repetições + 18 armadilhas × 1 repetição",
+  "modo": "IA real",
+  "resultados": [
+    {
+      "nome": "Armadilhas (18 documentos, congelados) · v2 com o conserto",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "versao_prompt": "conferidor_da_leitura_v2",
+        "modelo": "nova-2-lite",
+        "repeticoes": 1,
+        "documentos": 18,
+        "errados_de_verdade": 5,
+        "achados_por_repeticao": [
+          5
+        ],
+        "alarmes_falsos_por_repeticao": [
+          0
+        ],
+        "documentos_certos_por_repeticao": [
+          18
+        ],
+        "documentos_certos_em_todas": 18,
+        "custo_usd": 0.0123
+      }
+    },
+    {
+      "nome": "Desenvolvimento (5 documentos, 18 erros plantados) · v2 com o conserto",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "versao_prompt": "conferidor_da_leitura_v2",
+        "modelo": "nova-2-lite",
+        "repeticoes": 3,
+        "documentos": 5,
+        "errados_de_verdade": 18,
+        "achados_por_repeticao": [
+          18,
+          18,
+          18
+        ],
+        "alarmes_falsos_por_repeticao": [
+          0,
+          0,
+          1
+        ],
+        "documentos_certos_por_repeticao": [
+          5,
+          5,
+          4
+        ],
+        "documentos_certos_em_todas": 4,
+        "custo_usd": 0.0337
+      }
+    }
+  ],
+  "leitura": "O conserto não mudou o resultado: todos os erros de verdade seguem achados (5/5 nas armadilhas; 18/18 nas 3 repetições do desenvolvimento) e as armadilhas seguem com 0 alarme falso e 18/18 documentos certos. Apareceu 1 alarme falso na 3ª repetição do desenvolvimento, e ele NÃO vem do conserto: é o telefone com e sem o código do país ('+55 48 99852-9502' × '48998529502'), que a comparação antiga também não igualava. É a variação da própria IA entre repetições (no EXP-016 ela não apontou isso), e mostra uma lacuna nova e pequena: o código do país no telefone. Documentos certos nas 3 repetições do desenvolvimento: 4/5 (no EXP-016, 5/5). Os números do EXP-016 ficam de pé; o registro dele não muda (ADR-66).",
+  "decisao": "Manter o Conferidor v2 com o conserto. Levar ao engenheiro-ia a regra geral do telefone: o código do país (+55) e o zero da operadora não mudam o número (com variações novas nos testes).",
+  "custo_usd": 0.046,
+  "fonte": "data/avaliacao/resultados/conferidor_armadilhas_v2_reconfirmacao.json, conferidor_desenvolvimento_v2_reconfirmacao.json",
+  "commit": "125b20e"
+}

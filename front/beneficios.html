@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<!--
+  beneficios.html — aba "Benefícios do seu time" do Portal da Empresa (Integra Folha).
+
+  Para que serve: rascunho visual (layout) da vitrine dos benefícios que o banco definiu para os funcionários da
+  empresa. A pessoa do RH consulta cada benefício (como funciona, quem pode usar, como contratar e DE ONDE VEM a
+  informação), filtra por categoria, vê as dúvidas comuns da equipe e vai aos materiais que o Santander preparou
+  para divulgar ("Ver materiais"; a empresa não cria material: ADR-115).
+
+  Como abrir: dois cliques neste arquivo (abre no navegador). Não precisa de servidor.
+  Aparência: css/estilos.css (seção 11). Interações: js/janela_beneficio.js (a mesma janela da home) e
+  js/beneficios.js (filtros e busca).
+
+  Dados: 100% fictícios. No sistema real, tudo vem do catálogo de benefícios da empresa (documento versionado, com
+  vigência, cadastrado pelo banco: ADR-19), o mesmo que o Agente de Endomarketing consulta.
+  Com servidor, o exemplo nunca aparece: o que está marcado com data-aguarda-dado (um texto) ou data-aguarda-bloco
+  (uma lista) fica como barra cinza até o catálogo chegar (js/carregando_dados.js e js/beneficios_real.js).
+
+  Ordem da página: 1. cabeçalho · 2. título · 3. filtros e busca · 4. cartões dos benefícios ·
+  5. perguntas comuns e atendimento · rodapé, assistente e a janela de detalhes.
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Benefícios do seu time | Integra Folha</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Arquivo com toda a aparência do portal. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Conversa com o especialista do banco (o "Posso ajudar?"). -->
+  <link rel="stylesheet" href="css/conversa.css">
+  <!-- Com servidor, esconde os exemplos do protótipo até o catálogo real chegar (barras cinza de "carregando"). -->
+  <script src="js/carregando_dados.js"></script>
+</head>
+<body>
+
+  <!--
+    Biblioteca de ícones: cada <symbol> é um desenho guardado com um nome (id).
+    No resto da página, <use href="#nome"> "carimba" o desenho, sem repetir o código.
+  -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Casa: aba Início. -->
+    <symbol id="icone-inicio" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <!-- Pessoa com "+": cadastrar funcionário. -->
+    <symbol id="icone-cadastrar" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/></symbol>
+    <!-- Prancheta com visto: acompanhar cadastros. -->
+    <symbol id="icone-acompanhar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Porta com seta: sair do portal. -->
+    <symbol id="icone-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <!-- Ampulheta: em análise. -->
+    <symbol id="icone-analise" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12"/><path d="M7 3c0 5 10 5 10 9s-10 4-10 9"/><path d="M17 3c0 5-10 5-10 9s10 4 10 9"/></symbol>
+    <!-- Presente: benefícios. -->
+    <symbol id="icone-beneficios" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8c-2-4-6-4-6-1s6 1 6 1c0 0 6 2 6-1s-4-3-6 1"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Sino: avisos. -->
+    <!-- Visto: etapa concluída. -->
+    <symbol id="icone-visto" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <!-- X: fechar a janela de detalhes. -->
+    <symbol id="icone-fechar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <!-- Seta para a direita: links "ver detalhes". -->
+    <symbol id="icone-seta" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+    <!-- Aperto de mãos: parceria. -->
+    <symbol id="icone-parceria" viewBox="0 0 24 24"><path d="M11 17l2 2a1.4 1.4 0 0 0 2-2"/><path d="M14 14l2.5 2.5a1.4 1.4 0 0 0 2-2L15 11"/><path d="M2 12l5-5 4 1 3-2 8 6-3 3"/><path d="M2 12l6 6 1-1"/></symbol>
+    <!-- Pessoas: equipe. -->
+    <symbol id="icone-equipe" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M15 14.5c3 0 6 1.8 6 5.5"/></symbol>
+    <!-- Cartão: conta aberta. -->
+    <symbol id="icone-cartao" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></symbol>
+    <!-- Estrela com brilho: inteligência artificial. -->
+    <symbol id="icone-ia" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/><path d="M19 3v4M17 5h4"/></symbol>
+    <!-- Gráfico subindo: crescimento. -->
+    <symbol id="icone-grafico" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l5-5 3 3 6-7"/><path d="M15 7h4v4"/></symbol>
+    <!-- Porcentagem: taxa reduzida. -->
+    <symbol id="icone-porcentagem" viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+    <!-- Cofrinho: reserva. -->
+    <symbol id="icone-cofre" viewBox="0 0 24 24"><path d="M5 11a7 6 0 0 1 13-2h2v4l-2 1v3h-3v2h-3v-2H9v2H6v-3a6 6 0 0 1-1-5z"/><circle cx="15" cy="11" r="0.5"/></symbol>
+    <!-- Coração: saúde e seguro. -->
+    <symbol id="icone-coracao" viewBox="0 0 24 24"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/></symbol>
+    <!-- Documento: comunicado. -->
+    <symbol id="icone-documento" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
+    <!-- Balão de pergunta: FAQ. -->
+    <symbol id="icone-pergunta" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/><path d="M10 10a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.3"/><path d="M12 16h.01"/></symbol>
+    <!-- Caixa: kit de boas-vindas. -->
+    <symbol id="icone-kit" viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></symbol>
+    <!-- Lupa: busca. -->
+    <symbol id="icone-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <!-- Cadeado: sigilo e privacidade. -->
+    <symbol id="icone-cadeado" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  </svg>
+
+  <!-- ============ 1. CABEÇALHO COM AS ABAS ============ -->
+  <header class="barra-topo">
+    <div class="conteudo-centralizado">
+      <!-- Linha de cima: marca e usuário logado. -->
+      <div class="barra-topo-linha">
+        <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+        <a href="home.html" class="logotipo" aria-label="Início do Portal Empresa">
+          <span class="logotipo-marca">Integra Folha</span>
+        </a>
+        <!-- O banco parceiro do Integra Folha: aparece em todas as telas depois do login (nunca no login). -->
+        <span class="selo-banco-parceiro">Banco parceiro: <strong>Santander</strong></span>
+        <!-- Ações de quem está logado. -->
+        <div class="acoes-usuario">
+          <!-- Pessoa logada (perfil EMPRESA). -->
+          <div class="usuario-logado">
+            <span class="iniciais-usuario">MC</span>
+            <div class="usuario-logado-texto">
+              <div class="nome-usuario">Marina Costa</div>
+              <div class="empresa-usuario">RH · Aurora Alimentos Ltda.</div>
+            </div>
+          </div>
+          <!-- Sair: volta para a tela de login. -->
+          <a href="/api/sair" class="botao-sair" aria-label="Sair do portal">
+            <svg class="icone"><use href="#icone-sair"/></svg>
+            <span class="botao-sair-texto">Sair</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Abas do portal. A aba da página atual recebe a classe "aba-ativa". -->
+      <nav class="abas-portal" aria-label="Seções do portal">
+        <a href="home.html" class="aba">
+          <svg class="icone"><use href="#icone-inicio"/></svg>Início
+        </a>
+        <a href="acompanhar.html" class="aba">
+          <svg class="icone"><use href="#icone-acompanhar"/></svg>Acompanhar cadastros
+        </a>
+        <a href="beneficios.html" class="aba aba-ativa" aria-current="page">
+          <svg class="icone"><use href="#icone-beneficios"/></svg>Benefícios do seu time
+        </a>
+        <a href="endomarketing.html" class="aba">
+          <svg class="icone"><use href="#icone-endomarketing"/></svg>Materiais de endomarketing
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 2. TÍTULO DA PÁGINA ============ -->
+    <section class="cabecalho-pagina">
+      <div class="conteudo-centralizado">
+        <span class="selo-ia">
+          <svg class="icone"><use href="#icone-beneficios"/></svg>
+          Benefícios do seu time
+        </span>
+        <h1 class="titulo-pagina">
+          O que a sua equipe ganha com o Santander.
+          <span class="titulo-pagina-leve" data-beneficios-subtitulo data-aguarda-dado>Vantagens que o banco definiu para os funcionários da Aurora Alimentos. Consulte, tire dúvidas e divulgue para a equipe.</span>
+        </h1>
+        <div class="acoes-pagina">
+          <!-- A ação principal da aba: levar os benefícios à equipe com os materiais que o Santander preparou. -->
+          <a href="endomarketing.html" class="botao botao-principal">
+            <svg class="icone"><use href="#icone-endomarketing"/></svg>
+            Baixar materiais para divulgar
+          </a>
+          <!-- De onde vem o catálogo: definido pelo banco, com versão e vigência (ADR-19). -->
+          <p class="origem-catalogo" data-origem-catalogo data-aguarda-dado>
+            <svg class="icone"><use href="#icone-documento"/></svg>
+            Catálogo definido pelo banco para a Aurora Alimentos · versão 1 · vigente até 31/12/2026
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="conteudo-centralizado area-acompanhar">
+
+      <!-- ============ 3. FILTROS E BUSCA ============ -->
+      <div class="barra-beneficios">
+        <!-- "Todos" aparece sempre; as categorias esperam o catálogo (só ficam as que ele usa). -->
+        <div class="grupo-filtros" role="group" aria-label="Filtrar por categoria">
+          <button class="filtro-rapido filtro-rapido-ativo" type="button" data-categoria-filtro="todas">Todos</button>
+          <button class="filtro-rapido" type="button" data-categoria-filtro="conta" data-aguarda-dado>Conta e dia a dia</button>
+          <button class="filtro-rapido" type="button" data-categoria-filtro="credito" data-aguarda-dado>Crédito</button>
+          <button class="filtro-rapido" type="button" data-categoria-filtro="protecao" data-aguarda-dado>Proteção</button>
+          <button class="filtro-rapido" type="button" data-categoria-filtro="investimentos" data-aguarda-dado>Investimentos</button>
+        </div>
+        <label class="campo-busca campo-busca-curto">
+          <svg class="icone"><use href="#icone-lupa"/></svg>
+          <input class="campo-entrada" type="search" placeholder="Buscar benefício" aria-label="Buscar benefício" data-busca-beneficio>
+        </label>
+      </div>
+
+      <!-- ============ 4. CARTÕES DOS BENEFÍCIOS ============ -->
+      <!--
+        Cada cartão guarda os detalhes numa lista escondida (beneficio-detalhes), que a janela copia ao abrir
+        (js/janela_beneficio.js, o mesmo da home). data-beneficio é o nome curto (vai para o endomarketing) e
+        data-categoria é usada pelos filtros (js/beneficios.js). No sistema real, tudo vem do catálogo da empresa.
+      -->
+      <section class="grade-beneficios" aria-label="Benefícios" data-grade-beneficios data-aguarda-bloco>
+        <article class="cartao cartao-beneficio" data-beneficio="conta-salario" data-categoria="conta">
+          <div class="beneficio-topo">
+            <span class="beneficio-icone"><svg class="icone"><use href="#icone-cartao"/></svg></span>
+            <span class="selo selo-sucesso">Sem tarifa</span>
+          </div>
+          <h3 class="beneficio-titulo">Conta salário sem tarifa</h3>
+          <p class="beneficio-texto">O salário cai numa conta salário sem tarifa de manutenção, e a portabilidade é livre.</p>
+          <dl class="beneficio-detalhes" hidden>
+            <dt>Como funciona</dt>
+            <dd>O salário é depositado numa conta salário, que não tem tarifa de manutenção.</dd>
+            <dt>Quem pode usar</dt>
+            <dd>Todo funcionário cadastrado pela empresa.</dd>
+            <dt>Como contratar</dt>
+            <dd>Não precisa contratar: a conta salário é aberta a partir do cadastro feito pela empresa. Quem quiser receber em outro banco pede a portabilidade, sem custo.</dd>
+            <dt>De onde vem</dt>
+            <dd>Catálogo da Aurora · versão 1 · seção "Conta salário"</dd>
+          </dl>
+          <div class="beneficio-acoes">
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+            <a class="link-divulgar" href="endomarketing.html">Ver materiais</a>
+          </div>
+        </article>
+        <article class="cartao cartao-beneficio" data-beneficio="conta-sem-mensalidade" data-categoria="conta">
+          <div class="beneficio-topo">
+            <span class="beneficio-icone"><svg class="icone"><use href="#icone-cartao"/></svg></span>
+            <span class="selo selo-marca">12 meses</span>
+          </div>
+          <h3 class="beneficio-titulo">Conta sem mensalidade</h3>
+          <p class="beneficio-texto">Pacote Folha Essencial sem tarifa no primeiro ano para quem abrir a conta corrente.</p>
+          <dl class="beneficio-detalhes" hidden>
+            <dt>Como funciona</dt>
+            <dd>Quem abrir a conta corrente fica 12 meses sem a tarifa do pacote Folha Essencial. Depois, vale a tarifa padrão do pacote, informada na abertura.</dd>
+            <dt>Quem pode usar</dt>
+            <dd>Todo funcionário cadastrado que abrir a conta corrente.</dd>
+            <dt>Como contratar</dt>
+            <dd>O funcionário abre a conta pelo aplicativo com o CPF. O cadastro feito pela empresa já adianta os dados.</dd>
+            <dt>De onde vem</dt>
+            <dd>Catálogo da Aurora · versão 1 · seção "Conta corrente com pacote Folha Essencial"</dd>
+          </dl>
+          <div class="beneficio-acoes">
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+            <a class="link-divulgar" href="endomarketing.html">Ver materiais</a>
+          </div>
+        </article>
+        <article class="cartao cartao-beneficio" data-beneficio="salario-antecipado" data-categoria="conta">
+          <div class="beneficio-topo">
+            <span class="beneficio-icone"><svg class="icone"><use href="#icone-cofre"/></svg></span>
+            <span class="selo selo-sucesso">Exclusivo</span>
+          </div>
+          <h3 class="beneficio-titulo">Salário antecipado</h3>
+          <p class="beneficio-texto">Parte do salário disponível antes da data, direto no aplicativo, para imprevistos.</p>
+          <dl class="beneficio-detalhes" hidden>
+            <dt>Como funciona</dt>
+            <dd>O funcionário pode pegar uma parte do salário do mês antes do dia do pagamento.</dd>
+            <dt>Quem pode usar</dt>
+            <dd>Funcionário que já recebeu pelo menos um salário na conta Santander.</dd>
+            <dt>Como contratar</dt>
+            <dd>No aplicativo, escolhendo o valor dentro do limite liberado para ele.</dd>
+            <dt>De onde vem</dt>
+            <dd>Catálogo da Aurora · versão 1 · seção "Salário antecipado"</dd>
+          </dl>
+          <div class="beneficio-acoes">
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+            <a class="link-divulgar" href="endomarketing.html">Ver materiais</a>
+          </div>
+        </article>
+        <article class="cartao cartao-beneficio" data-beneficio="credito-consignado" data-categoria="credito">
+          <div class="beneficio-topo">
+            <span class="beneficio-icone"><svg class="icone"><use href="#icone-porcentagem"/></svg></span>
+            <span class="selo selo-sucesso">Taxa negociada</span>
+          </div>
+          <h3 class="beneficio-titulo">Crédito consignado</h3>
+          <p class="beneficio-texto">Empréstimo com parcelas descontadas na folha e taxa negociada para a Aurora.</p>
+          <dl class="beneficio-detalhes" hidden>
+            <dt>Como funciona</dt>
+            <dd>As parcelas são descontadas direto do salário. Por ter esse desconto garantido, a taxa é menor.</dd>
+            <dt>Quem pode usar</dt>
+            <dd>Funcionário com conta salário ativa, sujeito à análise de crédito e ao limite de desconto em folha.</dd>
+            <dt>Como contratar</dt>
+            <dd>Pelo aplicativo, com simulação na hora. As condições vigentes ficam na página de benefícios da empresa.</dd>
+            <dt>De onde vem</dt>
+            <dd>Catálogo da Aurora · versão 1 · seção "Crédito consignado"</dd>
+          </dl>
+          <div class="beneficio-acoes">
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+            <a class="link-divulgar" href="endomarketing.html">Ver materiais</a>
+          </div>
+        </article>
+        <article class="cartao cartao-beneficio" data-beneficio="cartao-cashback" data-categoria="credito">
+          <div class="beneficio-topo">
+            <span class="beneficio-icone"><svg class="icone"><use href="#icone-beneficios"/></svg></span>
+            <span class="selo selo-sucesso">Exclusivo</span>
+          </div>
+          <h3 class="beneficio-titulo">Cartão com cashback</h3>
+          <p class="beneficio-texto">Parte das compras volta para a conta todo mês, sem anuidade no primeiro ano.</p>
+          <dl class="beneficio-detalhes" hidden>
+            <dt>Como funciona</dt>
+            <dd>Uma parte do valor de cada compra volta como crédito na conta, todo mês.</dd>
+            <dt>Quem pode usar</dt>
+            <dd>Funcionário com conta salário ativa, sujeito à análise de crédito.</dd>
+            <dt>Como contratar</dt>
+            <dd>Pedido pelo aplicativo, com o cartão entregue no endereço cadastrado.</dd>
+            <dt>De onde vem</dt>
+            <dd>Catálogo da Aurora · versão 1 · seção "Cartão com cashback"</dd>
+          </dl>
+          <div class="beneficio-acoes">
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+            <a class="link-divulgar" href="endomarketing.html">Ver materiais</a>
+          </div>
+        </article>
+        <article class="cartao cartao-beneficio" data-beneficio="seguro-de-vida" data-categoria="protecao">
+          <div class="beneficio-topo">
+            <span class="beneficio-icone"><svg class="icone"><use href="#icone-coracao"/></svg></span>
+            <span class="selo selo-marca">Novo</span>
+          </div>
+          <h3 class="beneficio-titulo">Seguro de vida acessível</h3>
+          <p class="beneficio-texto">Proteção para a família a partir de um valor mensal pequeno, contratado pelo app.</p>
+          <dl class="beneficio-detalhes" hidden>
+            <dt>Como funciona</dt>
+            <dd>Seguro de vida com pagamento mensal baixo, que protege a família do funcionário.</dd>
+            <dt>Quem pode usar</dt>
+            <dd>Todo funcionário com conta salário ativa.</dd>
+            <dt>Como contratar</dt>
+            <dd>Pelo aplicativo, em poucos passos, com débito automático na conta.</dd>
+            <dt>De onde vem</dt>
+            <dd>Catálogo da Aurora · versão 1 · seção "Seguro de vida"</dd>
+          </dl>
+          <div class="beneficio-acoes">
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+            <a class="link-divulgar" href="endomarketing.html">Ver materiais</a>
+          </div>
+        </article>
+        <article class="cartao cartao-beneficio" data-beneficio="primeiro-investimento" data-categoria="investimentos">
+          <div class="beneficio-topo">
+            <span class="beneficio-icone"><svg class="icone"><use href="#icone-grafico"/></svg></span>
+            <span class="selo selo-sucesso">Exclusivo</span>
+          </div>
+          <h3 class="beneficio-titulo">Primeiro investimento</h3>
+          <p class="beneficio-texto">Reserva de emergência que rende desde o primeiro real, com orientação no app.</p>
+          <dl class="beneficio-detalhes" hidden>
+            <dt>Como funciona</dt>
+            <dd>O dinheiro guardado rende todo dia e pode ser resgatado quando o funcionário precisar.</dd>
+            <dt>Quem pode usar</dt>
+            <dd>Todo funcionário com conta salário ativa, a partir de R$ 1.</dd>
+            <dt>Como contratar</dt>
+            <dd>No aplicativo, com uma trilha curta que explica o que é reserva de emergência.</dd>
+            <dt>De onde vem</dt>
+            <dd>Catálogo da Aurora · versão 1 · seção "Primeiro investimento"</dd>
+          </dl>
+          <div class="beneficio-acoes">
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+            <a class="link-divulgar" href="endomarketing.html">Ver materiais</a>
+          </div>
+        </article>
+      </section>
+      <!-- Aviso quando o filtro ou a busca não acha nenhum benefício. -->
+      <p class="painel-vazio painel-vazio-neutro" data-sem-beneficios hidden>Nenhum benefício com esse nome nesta categoria.</p>
+      <p class="nota-condicoes">Condições ilustrativas, sujeitas a análise e à política vigente do banco.</p>
+
+      <!-- ============ 5. PERGUNTAS QUE A EQUIPE COSTUMA FAZER ============ -->
+      <!-- As respostas saem do catálogo; cada uma diz de qual seção veio. Cada pergunta abre e fecha (<details>). -->
+      <section class="grade-duvidas" aria-labelledby="titulo-duvidas">
+        <!-- O quadro inteiro espera o catálogo: as perguntas abaixo são de exemplo. -->
+        <div class="cartao painel-acompanhar" data-quadro-duvidas data-aguarda-bloco>
+          <div>
+            <span class="sobretitulo">Dúvidas comuns</span>
+            <h2 class="painel-titulo" id="titulo-duvidas" data-titulo-duvidas>Perguntas que a equipe costuma fazer</h2>
+          </div>
+          <details class="pergunta-frequente">
+            <summary>Preciso abrir conta corrente para receber o salário?</summary>
+            <p>Não. O salário cai na conta salário, sem tarifa de manutenção. A conta corrente é opcional: para quem abrir, o pacote Folha Essencial fica sem tarifa por 12 meses.</p>
+            <span class="fonte-resposta">Catálogo da Aurora · "Conta salário" e "Conta corrente com pacote Folha Essencial"</span>
+          </details>
+          <details class="pergunta-frequente">
+            <summary>Posso receber o salário em outro banco?</summary>
+            <p>Pode. A portabilidade para outro banco pode ser pedida a qualquer momento, sem custo.</p>
+            <span class="fonte-resposta">Catálogo da Aurora · "Conta salário"</span>
+          </details>
+          <details class="pergunta-frequente">
+            <summary>Como funciona o crédito consignado?</summary>
+            <p>A taxa foi negociada para a Aurora e as parcelas são descontadas na folha. Depende de análise de crédito; as condições vigentes ficam na página de benefícios da empresa.</p>
+            <span class="fonte-resposta">Catálogo da Aurora · "Crédito consignado"</span>
+          </details>
+          <details class="pergunta-frequente">
+            <summary>Onde a equipe tira dúvidas?</summary>
+            <p>Na central de atendimento (0800 000 0001, dias úteis, das 8h às 20h) ou com o gerente dedicado da empresa.</p>
+            <span class="fonte-resposta">Catálogo da Aurora · "Canais de dúvidas"</span>
+          </details>
+          <!-- Abre os materiais já filtrados nas perguntas frequentes que o Santander publicou. -->
+          <a href="endomarketing.html?tipo=faq" class="botao botao-contorno">
+            <svg class="icone"><use href="#icone-pergunta"/></svg>
+            Ver as perguntas frequentes para a equipe
+          </a>
+        </div>
+
+        <!-- Canais de atendimento da empresa (do catálogo). -->
+        <aside class="cartao painel-acompanhar" data-canais-atendimento data-aguarda-bloco>
+          <div>
+            <span class="sobretitulo">Atendimento</span>
+            <h2 class="painel-titulo">Precisa de ajuda com os benefícios?</h2>
+          </div>
+          <div class="canal-atendimento">
+            <span class="envio-icone"><svg class="icone"><use href="#icone-parceria"/></svg></span>
+            <div>
+              <strong>Gerente dedicado da Aurora</strong>
+              <span>atendimento.aurora@banco.example</span>
+            </div>
+          </div>
+          <div class="canal-atendimento">
+            <span class="envio-icone"><svg class="icone"><use href="#icone-pergunta"/></svg></span>
+            <div>
+              <strong>Central de atendimento</strong>
+              <span>0800 000 0001 · dias úteis, das 8h às 20h</span>
+            </div>
+          </div>
+          <div class="canal-atendimento">
+            <span class="envio-icone"><svg class="icone"><use href="#icone-documento"/></svg></span>
+            <div>
+              <strong>Página de benefícios da empresa</strong>
+              <span>beneficios.banco.example/aurora</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ RODAPÉ E ASSISTENTE ============ -->
+  <footer class="rodape">
+    <div class="conteudo-centralizado rodape-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <nav class="rodape-links" aria-label="Links institucionais">
+        <!-- Oculto nesta versão (ADR-148): a central de ajuda ainda não existe. -->
+        <template data-oculto-nesta-versao="central-de-ajuda"><a href="#">Central de ajuda</a></template>
+        <a href="privacidade.html">Privacidade e LGPD</a>
+        <a href="termos_de_uso.html">Termos de uso</a>
+        <!-- Oculto nesta versão (ADR-148): a empresa fala com o especialista pelo "Posso ajudar?". -->
+        <template data-oculto-nesta-versao="fale-com-seu-especialista"><a href="#">Fale com seu especialista</a></template>
+      </nav>
+    </div>
+    <!-- O aviso de que o site é um projeto. -->
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o Santander é ilustrativa: este não é um sistema oficial do banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- Assistente de IA sempre à mão, no canto da tela. -->
+  <button class="assistente-flutuante" type="button" aria-label="Abrir o assistente">
+    <svg class="icone"><use href="#icone-ia"/></svg>
+    <span class="assistente-texto">Posso ajudar?</span>
+  </button>
+
+  <!--
+    Janela de detalhes do benefício. Começa fechada; abre ao clicar em "Ver detalhes" num cartão.
+    <dialog> é um elemento pronto do navegador para janelas: escurece o fundo e fecha com a tecla Esc.
+    O ícone, o título, o resumo e os detalhes são copiados do cartão clicado (js/janela_beneficio.js).
+  -->
+  <dialog class="janela-beneficio" id="janela-beneficio" aria-labelledby="janela-beneficio-titulo">
+    <!-- Bloco interno: o espaçamento fica aqui, para que só o fundo escuro conte como "clique fora". -->
+    <div class="janela-conteudo">
+      <div class="janela-cabecalho">
+        <span class="beneficio-icone" id="janela-beneficio-icone"></span>
+        <div class="janela-cabecalho-textos">
+          <span class="sobretitulo">Benefício do seu time</span>
+          <h2 class="janela-titulo" id="janela-beneficio-titulo"></h2>
+        </div>
+        <button class="botao-fechar-janela" type="button" aria-label="Fechar" data-fechar-janela>
+          <svg class="icone"><use href="#icone-fechar"/></svg>
+        </button>
+      </div>
+      <p class="janela-resumo" id="janela-beneficio-resumo"></p>
+      <dl class="janela-detalhes" id="janela-beneficio-detalhes"></dl>
+      <p class="nota-condicoes">Condições ilustrativas, sujeitas a análise e à política vigente do banco.</p>
+      <!-- Ações: voltar ou ir aos materiais que o Santander preparou para divulgar à equipe. -->
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-fechar-janela>Voltar</button>
+        <!-- Abre a aba "Materiais de endomarketing": a empresa baixa o que o Santander publicou (ADR-115). -->
+        <a href="endomarketing.html" class="botao botao-principal" id="janela-beneficio-usar">
+          <svg class="icone"><use href="#icone-endomarketing"/></svg>
+          Ver materiais para divulgar
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Janela de detalhes (a mesma da home) e filtros da vitrine. -->
+  <script src="js/janela_beneficio.js"></script>
+  <script src="js/beneficios.js"></script>
+  <!-- Com servidor, troca o exemplo pelo catálogo real da empresa de quem entrou (ADR-69). -->
+  <script src="js/beneficios_do_catalogo.js"></script>
+  <script src="js/beneficios_real.js"></script>
+  <!-- "Posso ajudar?": conversa com o especialista do banco (conversas.js guarda; ajuda_empresa.js mostra). -->
+  <!-- Cabeçalho com quem entrou, os contadores reais e "Minha senha" (ADR-69). -->
+  <script src="js/cabecalho_real.js"></script>
+  <script src="js/conversas.js"></script>
+  <!-- "Cadastrar funcionários": o botão do canto abre a janela do envio. -->
+  <script src="js/novo_envio.js"></script>
+  <script src="js/ajuda_empresa.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

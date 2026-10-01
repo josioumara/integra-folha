@@ -1,0 +1,2083 @@
+{
+ "conjunto": "texto_dificil",
+ "semente": 20260929,
+ "documentos": [
+  {
+   "arquivo": "N6_nome_curto_1.docx",
+   "nivel": "N6",
+   "estrutura": "nome_curto",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Otávio Fontes Nogueira",
+      "cpf": "18048996740",
+      "data_nascimento": "22/12/1989",
+      "data_admissao": "28/05/2025",
+      "cargo": "desenvolvedor back-end",
+      "valor_renda": "7.309,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "2867",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30133-497"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Wesley Fontes Assunção",
+      "cpf": "09506489300",
+      "data_nascimento": "16/12/1984",
+      "data_admissao": "22/03/2025",
+      "cargo": "designer gráfico",
+      "valor_renda": "8.315,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "2834",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41935-990"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Everton Monteiro Pacheco",
+      "cpf": "22468849930",
+      "data_nascimento": "12/10/1976",
+      "data_admissao": "18/09/2025",
+      "cargo": "analista financeiro",
+      "valor_renda": "2.584,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "1761",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41991-779"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Luíza Tavares Leal",
+      "cpf": "64252716128",
+      "data_nascimento": "29/11/1973",
+      "data_admissao": "03/03/2024",
+      "cargo": "analista financeiro",
+      "valor_renda": "8.186,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "2209",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74119-851"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_nome_curto_2.docx",
+   "nivel": "N6",
+   "estrutura": "nome_curto",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Yasmin Tavares Quintela",
+      "cpf": "71272117871",
+      "data_nascimento": "10/08/1979",
+      "data_admissao": "11/10/2025",
+      "cargo": "vendedor externo",
+      "valor_renda": "2.638,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "2953",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13039-692"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Priscila Pacheco Siqueira",
+      "cpf": "30237899752",
+      "data_nascimento": "03/01/1991",
+      "data_admissao": "19/06/2025",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "5.590,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "2522",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69071-336"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sílvia Tavares Fontes",
+      "cpf": "03606169922",
+      "data_nascimento": "27/10/1984",
+      "data_admissao": "28/12/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "4.143,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "1631",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41945-929"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Helena Guimarães Quintela",
+      "cpf": "47242877806",
+      "data_nascimento": "15/08/1986",
+      "data_admissao": "25/04/2025",
+      "cargo": "analista financeiro",
+      "valor_renda": "5.005,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "722",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41985-566"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Noemi Leal Duarte",
+      "cpf": "93999525177",
+      "data_nascimento": "06/11/1975",
+      "data_admissao": "13/03/2024",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "3.263,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "1293",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80733-922"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_nome_curto_3.docx",
+   "nivel": "N6",
+   "estrutura": "nome_curto",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Irene Siqueira Pimentel",
+      "cpf": "02180428928",
+      "data_nascimento": "31/07/1983",
+      "data_admissao": "26/10/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "6.915,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "951",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69053-840"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Leandro Pacheco Monteiro",
+      "cpf": "06725178502",
+      "data_nascimento": "10/08/1996",
+      "data_admissao": "13/04/2024",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "2.063,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "1755",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41967-506"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Priscila Valadares Leal",
+      "cpf": "76249628290",
+      "data_nascimento": "05/08/1993",
+      "data_admissao": "27/09/2024",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "8.259,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "1513",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69074-318"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Luíza Bittencourt Xavier",
+      "cpf": "63252722771",
+      "data_nascimento": "17/06/1983",
+      "data_admissao": "10/02/2024",
+      "cargo": "assistente de logística",
+      "valor_renda": "6.593,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "204",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30175-803"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Caio Leal Pimentel",
+      "cpf": "13517637840",
+      "data_nascimento": "31/07/1977",
+      "data_admissao": "21/05/2025",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "7.457,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "523",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90486-627"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_nome_curto_4.docx",
+   "nivel": "N6",
+   "estrutura": "nome_curto",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Sílvia Valadares Brandão",
+      "cpf": "28776278107",
+      "data_nascimento": "06/04/1998",
+      "data_admissao": "01/10/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "8.688,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "2490",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30127-706"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Marta Pacheco Duarte",
+      "cpf": "43723671551",
+      "data_nascimento": "13/09/1980",
+      "data_admissao": "07/01/2024",
+      "cargo": "supervisor de loja",
+      "valor_renda": "5.898,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "1953",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80799-046"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Valter Pimentel Quintela",
+      "cpf": "76229549344",
+      "data_nascimento": "05/09/1984",
+      "data_admissao": "08/09/2024",
+      "cargo": "desenvolvedor back-end",
+      "valor_renda": "5.499,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "2570",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90489-948"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_apelido_1.docx",
+   "nivel": "N6",
+   "estrutura": "apelido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Gláucia Monteiro Tavares",
+      "cpf": "92930469030",
+      "data_nascimento": "26/08/1973",
+      "data_admissao": "10/06/2025",
+      "cargo": "desenvolvedor back-end",
+      "valor_renda": "8.966,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "1039",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13041-725"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Nelson Guimarães Fontes",
+      "cpf": "40607852968",
+      "data_nascimento": "03/05/2002",
+      "data_admissao": "22/08/2024",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "8.813,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "2477",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90444-604"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Rafael Monteiro Quintela",
+      "cpf": "98431392320",
+      "data_nascimento": "04/07/1983",
+      "data_admissao": "12/08/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "8.572,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "1642",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69032-707"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sérgio Xavier Rezende",
+      "cpf": "03373965667",
+      "data_nascimento": "19/02/1994",
+      "data_admissao": "17/11/2025",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "6.470,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "260",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60155-740"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_apelido_2.docx",
+   "nivel": "N6",
+   "estrutura": "apelido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Otávio Bittencourt Duarte",
+      "cpf": "44756000738",
+      "data_nascimento": "14/03/1975",
+      "data_admissao": "29/05/2025",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "4.862,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "560",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30132-141"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Anderson Duarte Quintela",
+      "cpf": "73637196328",
+      "data_nascimento": "08/01/1994",
+      "data_admissao": "04/10/2024",
+      "cargo": "recepcionista",
+      "valor_renda": "9.056,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "1422",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60169-728"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Everton Nogueira Moura",
+      "cpf": "01294986880",
+      "data_nascimento": "26/04/1999",
+      "data_admissao": "15/02/2024",
+      "cargo": "assistente de logística",
+      "valor_renda": "3.132,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "450",
+      "bairro_residencial": "Trindade",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52092-145"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_apelido_3.docx",
+   "nivel": "N6",
+   "estrutura": "apelido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Lorena Pacheco Sampaio",
+      "cpf": "14061112368",
+      "data_nascimento": "03/12/1997",
+      "data_admissao": "18/11/2025",
+      "cargo": "designer gráfico",
+      "valor_renda": "5.071,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "2973",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52012-025"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Fernanda Guimarães Rezende",
+      "cpf": "77681275606",
+      "data_nascimento": "18/02/1991",
+      "data_admissao": "20/05/2025",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "8.989,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "718",
+      "bairro_residencial": "Trindade",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52034-112"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Mauro Sampaio Tavares",
+      "cpf": "57979301889",
+      "data_nascimento": "25/12/2003",
+      "data_admissao": "07/10/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "2.925,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "1320",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30151-928"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_apelido_4.docx",
+   "nivel": "N6",
+   "estrutura": "apelido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Otávio Rezende Fontes",
+      "cpf": "70403729831",
+      "data_nascimento": "12/07/1978",
+      "data_admissao": "21/10/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "7.389,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "1596",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30167-095"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Júlio Nogueira Valadares",
+      "cpf": "59460863914",
+      "data_nascimento": "13/12/1989",
+      "data_admissao": "20/10/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "1.908,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "1914",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80751-607"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Geraldo Coutinho Guimarães",
+      "cpf": "22658398506",
+      "data_nascimento": "22/08/2003",
+      "data_admissao": "05/02/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "7.336,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "2797",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90454-547"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tatiane Brandão Assunção",
+      "cpf": "22008445658",
+      "data_nascimento": "23/05/2001",
+      "data_admissao": "28/06/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "4.851,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "1551",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69090-648"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Renata Pimentel Fontes",
+      "cpf": "59784953862",
+      "data_nascimento": "06/02/1976",
+      "data_admissao": "04/04/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "8.829,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "159",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52098-155"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_ordem_trocada_1.docx",
+   "nivel": "N6",
+   "estrutura": "ordem_trocada",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Yasmin Pimentel Pacheco",
+      "cpf": "36446828527",
+      "data_nascimento": "26/02/1971",
+      "data_admissao": "15/03/2024",
+      "cargo": "supervisor de loja",
+      "valor_renda": "8.015,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "1989",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13087-313"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Irene Assunção Nogueira",
+      "cpf": "45310022023",
+      "data_nascimento": "27/02/1970",
+      "data_admissao": "25/01/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "4.190,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "2771",
+      "bairro_residencial": "Trindade",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69069-039"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Vanessa Bittencourt Monteiro",
+      "cpf": "04140394242",
+      "data_nascimento": "20/11/1990",
+      "data_admissao": "04/01/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "3.788,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "1852",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30124-395"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_ordem_trocada_2.docx",
+   "nivel": "N6",
+   "estrutura": "ordem_trocada",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Jéssica Xavier Sampaio",
+      "cpf": "13849235947",
+      "data_nascimento": "20/08/1992",
+      "data_admissao": "10/04/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "3.227,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "1343",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88077-242"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Fernanda Tavares Pacheco",
+      "cpf": "24221431300",
+      "data_nascimento": "01/12/1990",
+      "data_admissao": "03/05/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "4.628,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "832",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52086-167"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tatiane Brandão Nogueira",
+      "cpf": "35213115039",
+      "data_nascimento": "01/11/1984",
+      "data_admissao": "24/09/2024",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "6.249,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "1296",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90412-941"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Valter Bittencourt Nogueira",
+      "cpf": "00879891661",
+      "data_nascimento": "27/05/1989",
+      "data_admissao": "04/08/2024",
+      "cargo": "analista financeiro",
+      "valor_renda": "3.496,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "2273",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80778-084"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Wesley Xavier Assunção",
+      "cpf": "21731312733",
+      "data_nascimento": "30/01/1974",
+      "data_admissao": "02/06/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "2.659,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "1938",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69080-418"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_ordem_trocada_3.docx",
+   "nivel": "N6",
+   "estrutura": "ordem_trocada",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Nelson Pacheco Monteiro",
+      "cpf": "66581029459",
+      "data_nascimento": "04/05/2000",
+      "data_admissao": "26/04/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "5.603,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "2229",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52089-891"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Noemi Pimentel Duarte",
+      "cpf": "78752769003",
+      "data_nascimento": "12/03/1997",
+      "data_admissao": "25/02/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "4.986,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "2933",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69061-266"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tatiane Duarte Moura",
+      "cpf": "36757450909",
+      "data_nascimento": "24/09/1982",
+      "data_admissao": "02/11/2025",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "2.826,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "555",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74167-289"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Igor Duarte Tavares",
+      "cpf": "64790837173",
+      "data_nascimento": "03/03/1991",
+      "data_admissao": "17/06/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "2.378,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "1683",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80727-616"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Júlio Valadares Quintela",
+      "cpf": "83462865030",
+      "data_nascimento": "05/05/1972",
+      "data_admissao": "28/06/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "6.463,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "16",
+      "bairro_residencial": "Trindade",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88012-611"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_ordem_trocada_4.docx",
+   "nivel": "N6",
+   "estrutura": "ordem_trocada",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Hugo Sampaio Quintela",
+      "cpf": "83573797377",
+      "data_nascimento": "24/07/1991",
+      "data_admissao": "17/06/2024",
+      "cargo": "supervisor de loja",
+      "valor_renda": "8.207,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "743",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41950-746"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Leandro Quintela Sampaio",
+      "cpf": "97608189908",
+      "data_nascimento": "07/09/1987",
+      "data_admissao": "08/09/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "6.881,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "435",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69020-229"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tiago Coutinho Xavier",
+      "cpf": "47970813097",
+      "data_nascimento": "29/03/1982",
+      "data_admissao": "11/08/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "6.664,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "1101",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60168-881"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Caio Moura Fontes",
+      "cpf": "49725710983",
+      "data_nascimento": "05/10/1998",
+      "data_admissao": "29/08/2025",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "9.073,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "1806",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90498-183"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Jéssica Pimentel Leal",
+      "cpf": "93143437316",
+      "data_nascimento": "24/12/1996",
+      "data_admissao": "02/04/2024",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "2.599,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "737",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52051-964"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_referencia_por_cpf_1.docx",
+   "nivel": "N6",
+   "estrutura": "referencia_por_cpf",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Gláucia Brandão Duarte",
+      "cpf": "16479653491",
+      "data_nascimento": "04/01/1985",
+      "data_admissao": "25/01/2025",
+      "cargo": "analista financeiro",
+      "valor_renda": "7.286,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "2055",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30198-965"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Noemi Valadares Brandão",
+      "cpf": "20351234101",
+      "data_nascimento": "06/01/1996",
+      "data_admissao": "14/07/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "7.486,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "2567",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13077-877"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tatiane Assunção Coutinho",
+      "cpf": "73367117153",
+      "data_nascimento": "07/10/1979",
+      "data_admissao": "10/01/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "5.109,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "1083",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30181-700"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Anderson Monteiro Nogueira",
+      "cpf": "20339687827",
+      "data_nascimento": "20/05/1981",
+      "data_admissao": "07/09/2025",
+      "cargo": "recepcionista",
+      "valor_renda": "2.660,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "581",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30111-682"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_referencia_por_cpf_2.docx",
+   "nivel": "N6",
+   "estrutura": "referencia_por_cpf",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Olívia Quintela Coutinho",
+      "cpf": "93559919320",
+      "data_nascimento": "15/03/1986",
+      "data_admissao": "16/04/2025",
+      "cargo": "desenvolvedor back-end",
+      "valor_renda": "7.825,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "2407",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13017-601"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Igor Bittencourt Fontes",
+      "cpf": "92628216205",
+      "data_nascimento": "13/09/2002",
+      "data_admissao": "27/06/2025",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "9.122,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "631",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80799-144"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Jéssica Rezende Valadares",
+      "cpf": "74453735006",
+      "data_nascimento": "15/02/1995",
+      "data_admissao": "04/12/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "5.130,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "2544",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69069-120"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_referencia_por_cpf_3.docx",
+   "nivel": "N6",
+   "estrutura": "referencia_por_cpf",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Valter Monteiro Rezende",
+      "cpf": "54538691860",
+      "data_nascimento": "16/05/1994",
+      "data_admissao": "20/07/2025",
+      "cargo": "recepcionista",
+      "valor_renda": "2.950,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "1995",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30165-746"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Nelson Nogueira Leal",
+      "cpf": "13269028229",
+      "data_nascimento": "10/02/1982",
+      "data_admissao": "23/04/2024",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "8.997,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "498",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88068-702"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Gláucia Assunção Coutinho",
+      "cpf": "10110304705",
+      "data_nascimento": "30/06/1989",
+      "data_admissao": "12/05/2025",
+      "cargo": "desenvolvedor back-end",
+      "valor_renda": "8.083,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "1413",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13024-272"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_referencia_por_cpf_4.docx",
+   "nivel": "N6",
+   "estrutura": "referencia_por_cpf",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Olívia Duarte Rezende",
+      "cpf": "01739035259",
+      "data_nascimento": "06/07/1993",
+      "data_admissao": "18/10/2024",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "9.456,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "951",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88070-384"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Leandro Guimarães Duarte",
+      "cpf": "63953907166",
+      "data_nascimento": "30/01/1979",
+      "data_admissao": "20/02/2025",
+      "cargo": "supervisor de loja",
+      "valor_renda": "8.332,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "729",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69043-320"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Yasmin Pacheco Fontes",
+      "cpf": "27072576304",
+      "data_nascimento": "29/03/1971",
+      "data_admissao": "14/07/2025",
+      "cargo": "supervisor de loja",
+      "valor_renda": "9.450,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "792",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60179-019"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Vanessa Rezende Coutinho",
+      "cpf": "14500072950",
+      "data_nascimento": "12/12/1973",
+      "data_admissao": "27/02/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "8.729,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "1793",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74144-946"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_cpf_repetido_1.docx",
+   "nivel": "N6",
+   "estrutura": "cpf_repetido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Otávio Guimarães Bittencourt",
+      "cpf": "33749694028",
+      "data_nascimento": "31/07/2001",
+      "data_admissao": "18/09/2025",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "6.771,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "427",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13060-846"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tiago Valadares Tavares",
+      "cpf": "31568171803",
+      "data_nascimento": "09/03/1976",
+      "data_admissao": "29/12/2024",
+      "cargo": "supervisor de loja",
+      "valor_renda": "7.074,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "568",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80777-755"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Renata Sampaio Nogueira",
+      "cpf": "53109511215",
+      "data_nascimento": "11/03/1984",
+      "data_admissao": "28/04/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "5.310,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "2016",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80710-756"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sérgio Assunção Guimarães",
+      "cpf": "73058021585",
+      "data_nascimento": "07/07/1993",
+      "data_admissao": "18/01/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "4.155,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "166",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80772-511"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Yasmin Brandão Guimarães",
+      "cpf": "65227541507",
+      "data_nascimento": "09/08/1978",
+      "data_admissao": "27/09/2024",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "8.210,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "2959",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74184-326"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_cpf_repetido_2.docx",
+   "nivel": "N6",
+   "estrutura": "cpf_repetido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Otávio Tavares Xavier",
+      "cpf": "50563842598",
+      "data_nascimento": "05/03/2002",
+      "data_admissao": "01/11/2024",
+      "cargo": "analista financeiro",
+      "valor_renda": "1.875,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "402",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30149-649"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Everton Valadares Nogueira",
+      "cpf": "83147165450",
+      "data_nascimento": "20/01/1989",
+      "data_admissao": "06/11/2025",
+      "cargo": "vendedor externo",
+      "valor_renda": "2.520,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "472",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80728-019"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tiago Tavares Pimentel",
+      "cpf": "43530506052",
+      "data_nascimento": "21/01/1987",
+      "data_admissao": "02/03/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "8.263,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "40",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90464-351"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Priscila Sampaio Tavares",
+      "cpf": "41068293985",
+      "data_nascimento": "11/12/2001",
+      "data_admissao": "01/11/2025",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "5.016,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "2471",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13051-885"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_cpf_repetido_3.docx",
+   "nivel": "N6",
+   "estrutura": "cpf_repetido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Gláucia Guimarães Coutinho",
+      "cpf": "24813314600",
+      "data_nascimento": "31/07/1987",
+      "data_admissao": "04/05/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "6.842,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "1781",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88086-724"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Irene Coutinho Nogueira",
+      "cpf": "61502249960",
+      "data_nascimento": "03/08/1998",
+      "data_admissao": "26/06/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "7.766,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "2542",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80793-201"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tiago Siqueira Assunção",
+      "cpf": "28124235449",
+      "data_nascimento": "01/07/1979",
+      "data_admissao": "07/08/2024",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "3.953,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "1534",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90456-588"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_cpf_repetido_4.docx",
+   "nivel": "N6",
+   "estrutura": "cpf_repetido",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Yasmin Leal Tavares",
+      "cpf": "07428299284",
+      "data_nascimento": "17/09/1973",
+      "data_admissao": "02/03/2024",
+      "cargo": "analista financeiro",
+      "valor_renda": "9.449,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "1709",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88020-646"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Júlio Duarte Brandão",
+      "cpf": "43523800595",
+      "data_nascimento": "08/10/1987",
+      "data_admissao": "11/07/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "4.994,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "1837",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60122-241"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Geraldo Xavier Nogueira",
+      "cpf": "07101570291",
+      "data_nascimento": "20/06/1988",
+      "data_admissao": "14/12/2025",
+      "cargo": "vendedor externo",
+      "valor_renda": "8.359,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "2612",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69035-344"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_dependentes_1.docx",
+   "nivel": "N6",
+   "estrutura": "dependentes",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Rafael Brandão Valadares",
+      "cpf": "83696476501",
+      "data_nascimento": "04/03/1977",
+      "data_admissao": "24/02/2024",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "8.643,00",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "2026",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88053-393"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Luíza Brandão Valadares",
+       "data": "31/10/2014"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Irene Pimentel Monteiro",
+      "cpf": "98207104210",
+      "data_nascimento": "23/12/1993",
+      "data_admissao": "03/08/2025",
+      "cargo": "recepcionista",
+      "valor_renda": "9.019,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "607",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52092-984"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Anderson Pimentel Monteiro",
+       "data": "06/11/2019"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Fernanda Valadares Rezende",
+      "cpf": "99080158186",
+      "data_nascimento": "28/05/1975",
+      "data_admissao": "19/02/2025",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "3.468,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "923",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74150-999"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Leandro Valadares Rezende",
+       "data": "21/05/2018"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Yasmin Rezende Pimentel",
+      "cpf": "41712797204",
+      "data_nascimento": "25/04/1994",
+      "data_admissao": "08/01/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "7.724,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "2508",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88010-251"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Sérgio Rezende Pimentel",
+       "data": "10/08/2018"
+      }
+     ]
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_dependentes_2.docx",
+   "nivel": "N6",
+   "estrutura": "dependentes",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Geraldo Brandão Siqueira",
+      "cpf": "85425889402",
+      "data_nascimento": "30/05/1988",
+      "data_admissao": "07/10/2024",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "9.183,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "1388",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90464-029"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Tiago Brandão Siqueira",
+       "data": "09/03/2015"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Renata Pacheco Bittencourt",
+      "cpf": "79700487814",
+      "data_nascimento": "18/04/1975",
+      "data_admissao": "14/11/2025",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "4.047,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "105",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74187-385"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Olívia Pacheco Bittencourt",
+       "data": "11/02/2013"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Sérgio Duarte Pimentel",
+      "cpf": "67264570657",
+      "data_nascimento": "15/03/1995",
+      "data_admissao": "16/08/2024",
+      "cargo": "supervisor de loja",
+      "valor_renda": "7.206,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "870",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69051-208"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Mauro Duarte Pimentel",
+       "data": "16/02/2011"
+      }
+     ]
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_dependentes_3.docx",
+   "nivel": "N6",
+   "estrutura": "dependentes",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Lorena Rezende Pimentel",
+      "cpf": "29971819252",
+      "data_nascimento": "03/09/1976",
+      "data_admissao": "23/12/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "6.294,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "55",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41977-903"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Wesley Rezende Pimentel",
+       "data": "06/09/2016"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Jéssica Brandão Coutinho",
+      "cpf": "66414354155",
+      "data_nascimento": "08/06/1987",
+      "data_admissao": "19/08/2024",
+      "cargo": "assistente de logística",
+      "valor_renda": "4.885,00",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "2878",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Salvador",
+      "uf_residencial": "BA",
+      "cep_residencial": "41930-297"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Tatiane Brandão Coutinho",
+       "data": "18/01/2019"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Fernanda Coutinho Assunção",
+      "cpf": "62595656902",
+      "data_nascimento": "11/09/1999",
+      "data_admissao": "02/06/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "5.427,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "358",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88083-854"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Anderson Coutinho Assunção",
+       "data": "06/05/2011"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Noemi Tavares Valadares",
+      "cpf": "37958814631",
+      "data_nascimento": "06/12/1998",
+      "data_admissao": "08/04/2024",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "5.975,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "364",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80753-033"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Sílvia Tavares Valadares",
+       "data": "10/06/2010"
+      }
+     ]
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N6_dependentes_4.docx",
+   "nivel": "N6",
+   "estrutura": "dependentes",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Jéssica Moura Leal",
+      "cpf": "97297712604",
+      "data_nascimento": "25/02/1976",
+      "data_admissao": "07/12/2025",
+      "cargo": "supervisor de loja",
+      "valor_renda": "7.875,00",
+      "logradouro_residencial": "Alameda dos Ipês",
+      "numero_residencial": "1550",
+      "bairro_residencial": "Trindade",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52014-824"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Anderson Moura Leal",
+       "data": "26/11/2017"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Júlio Pacheco Tavares",
+      "cpf": "21485875609",
+      "data_nascimento": "20/12/1993",
+      "data_admissao": "15/01/2025",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "4.488,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "40",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52024-128"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Noemi Pacheco Tavares",
+       "data": "24/06/2014"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Hugo Moura Valadares",
+      "cpf": "36642450914",
+      "data_nascimento": "23/08/1984",
+      "data_admissao": "21/10/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "5.788,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "875",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60146-354"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Wesley Moura Valadares",
+       "data": "30/11/2017"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Caio Siqueira Nogueira",
+      "cpf": "24193774783",
+      "data_nascimento": "30/01/2001",
+      "data_admissao": "26/01/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "3.860,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "1124",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30199-300"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Sílvia Siqueira Nogueira",
+       "data": "19/06/2010"
+      }
+     ]
+    },
+    {
+     "campos": {
+      "nome_completo": "Rafael Guimarães Tavares",
+      "cpf": "41678072036",
+      "data_nascimento": "24/04/1983",
+      "data_admissao": "13/11/2025",
+      "cargo": "vendedor externo",
+      "valor_renda": "2.660,00",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "623",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88064-416"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Olívia Guimarães Tavares",
+       "data": "27/08/2011"
+      }
+     ]
+    }
+   ],
+   "cabecalho_para_campo": {}
+  }
+ ]
+}

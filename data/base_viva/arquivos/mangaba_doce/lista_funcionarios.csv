@@ -1,0 +1,27 @@
+Nome;CPF;Nascimento;Sexo;Cargo;CBO;Admissão;Salário;Tipo;Unidade;Cidade;UF;Telefone
+Valéria Freitas;129.807.167-40;26/07/1978;F;Sócio-administrador;1210-10;12/09/2018;25.000,00;PRO_LABORE;Colégio Sede;João Pessoa;PB;(83) 99463-6335
+Luciano Moreira Nascimento;816.114.816-35;28/10/1983;M;Sócio-administrador;1210-10;23/06/2014;20.000,00;PRO_LABORE;Colégio Sede;João Pessoa;PB;(83) 99139-3164
+André Machado Santana;690.135.235-28;03/05/1974;M;Professora de educação infantil;2311-05;04/10/2021;3.090,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98668-9965
+Luciano Ferreira;742.603.290-65;12/10/1991;M;Professora de educação infantil;2311-05;18/02/2011;3.790,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99903-7179
+Mônica Borges Gonçalves;286.603.036-28;25/08/1997;F;Auxiliar de desenvolvimento infantil;3311-10;19/05/2026;1.760,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99157-4561
+Valéria Lima Correia;633.906.864-28;20/08/1998;F;Professor de educação física;2313-15;25/08/2023;3.970,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98743-2942
+Daniel Machado;543.728.120-00;17/07/1999;M;Professora de educação infantil;2311-05;07/09/2021;3.790,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99865-9651
+Bruno Nunes;861.744.800-89;09/03/1997;M;Professora de educação infantil;2311-05;27/03/2023;3.090,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98101-1059
+Fernanda Almeida Aguiar;221.801.052-66;20/03/1998;F;Auxiliar de desenvolvimento infantil;3311-10;17/10/2024;1.630,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99529-9485
+Karina Figueiredo;493.439.787-66;06/10/1989;F;Professor de português;2313-35;04/04/2022;4.490,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99673-2338
+Simone Pacheco Farias;661.005.306-51;08/07/1991;F;Recepcionista;4221-05;25/03/2026;1.840,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99798-0663
+Tiago Paiva Assis;483.235.877-44;16/05/1990;M;Professora de educação infantil;2311-05;09/01/2023;4.500,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98257-6582
+Bruno Martins;246.178.336-50;24/05/1992;M;Professor de educação física;2313-15;22/02/2025;4.940,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98699-0062
+Giovana Andrade Correia;455.610.136-02;06/01/1971;F;Auxiliar de desenvolvimento infantil;3311-10;08/07/2018;1.760,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98232-8767
+Francisca Pereira;360.172.242-98;20/01/1981;F;Professora de educação infantil;2311-05;10/09/2014;4.500,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99337-2136
+Bruna Mendes Correia;400.392.670-67;27/09/1990;F;Faxineiro;5143-20;04/09/2019;1.630,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99027-6186
+Olívia Vieira;103.738.101-72;28/10/1980;F;Inspetor de alunos;3341-05;04/08/2019;2.160,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99851-1539
+Rafaela Marques Gonçalves;052.259.859-55;31/08/1985;F;Coordenadora pedagógica;2394-05;05/11/2020;6.320,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98380-2335
+Patrícia Cardoso;174.452.011-90;21/11/1990;F;Professor de português;2313-35;17/06/2022;5.510,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98671-7368
+Juliana Sales;763.452.072-17;04/03/1996;F;Professor de português;2313-35;23/09/2023;3.470,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98622-2097
+Bruno Tavares Moura;980.331.885-37;20/07/1993;M;Professora de educação infantil;2311-05;02/07/2018;4.500,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99174-8915
+Mônica Cavalcanti;769.051.560-60;17/02/1992;F;Professor de português;2313-35;28/04/2025;4.490,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98157-8262
+Flávia Ramos;482.874.476-23;06/03/1996;F;Professor de português;2313-35;03/01/2026;6.520,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99978-9149
+Rafaela Freitas Queiroz;603.324.888-02;23/08/1984;F;Inspetor de alunos;3341-05;18/04/2026;2.160,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99752-1049
+Emerson Vieira;029.506.911-29;17/11/1997;M;Professora de educação infantil;2311-05;22/11/2023;4.500,00;CLT;Colégio Sede;João Pessoa;PB;(83) 99304-2896
+Wellington Martins;961.045.801-73;29/09/2002;M;Auxiliar de desenvolvimento infantil;3311-10;17/07/2026;2.120,00;CLT;Colégio Sede;João Pessoa;PB;(83) 98405-4671

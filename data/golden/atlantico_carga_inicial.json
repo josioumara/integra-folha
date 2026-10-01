@@ -1,0 +1,85 @@
+{
+  "arquivo": "atlantico_carga_inicial.xlsx",
+  "empresa_id": "EMP006",
+  "tipo_carga": "INICIAL",
+  "desafio": "coluna ambígua (\"Vencimentos\") e rendas fora do padrão do cargo",
+  "formato": {
+    "tipo": "xlsx",
+    "separador": null,
+    "codificacao": null,
+    "linha_do_cabecalho": 1
+  },
+  "mapeamento": {
+    "ID Funcionário": "matricula",
+    "Funcionário": "nome_completo",
+    "Documento CPF": "cpf",
+    "Aniversário": "data_nascimento",
+    "Mãe": "nome_mae",
+    "Nº PIS": "nis_pis",
+    "CEP Residência": "cep_residencial",
+    "Endereço Casa": "logradouro_residencial",
+    "Num. Residência": "numero_residencial",
+    "Setor": "bairro_residencial",
+    "Localidade": "municipio_residencial",
+    "Estado Residência": "uf_residencial",
+    "Nº CNPJ": "cnpj_empregador",
+    "Centro de Custo": "codigo_unidade",
+    "Estabelecimento": "nome_unidade",
+    "Posição": "cargo",
+    "Dt. Admissão": "data_admissao",
+    "Data de Efetivação": "data_efetivacao",
+    "Natureza da Remuneração": "tipo_renda",
+    "Vencimentos": null,
+    "Competência": "data_referencia_renda",
+    "CEP Trabalho": "cep_comercial",
+    "End. Unidade": "logradouro_comercial",
+    "Nº Comercial": "numero_comercial",
+    "Bairro Unidade": "bairro_comercial",
+    "Cidade da Unidade": "municipio_comercial",
+    "Estado de Trabalho": "uf_comercial",
+    "Sexo": "sexo"
+  },
+  "colunas_ambiguas": {
+    "Vencimentos": {
+      "campo_apos_confirmacao": "valor_renda",
+      "por_que": "pode ser salário bruto, líquido ou valor do crédito"
+    }
+  },
+  "colunas_extras": [],
+  "funcionario_ids": [
+    "EMP006-0001",
+    "EMP006-0002",
+    "EMP006-0003",
+    "EMP006-0004",
+    "EMP006-0005",
+    "EMP006-0006",
+    "EMP006-0007",
+    "EMP006-0008",
+    "EMP006-0009",
+    "EMP006-0010",
+    "EMP006-0011",
+    "EMP006-0012",
+    "EMP006-0013",
+    "EMP006-0014",
+    "EMP006-0015",
+    "EMP006-0016",
+    "EMP006-0017",
+    "EMP006-0018",
+    "EMP006-0019",
+    "EMP006-0020"
+  ],
+  "erros": [
+    {
+      "linha": 5,
+      "campo": "valor_renda",
+      "tipo": "RENDA_FORA_DO_CARGO",
+      "valor_no_arquivo": "50960.00"
+    },
+    {
+      "linha": 4,
+      "campo": "valor_renda",
+      "tipo": "RENDA_FORA_DO_CARGO",
+      "valor_no_arquivo": "38000.00"
+    }
+  ]
+}

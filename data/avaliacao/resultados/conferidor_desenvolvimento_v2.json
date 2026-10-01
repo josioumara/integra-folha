@@ -1,0 +1,1231 @@
+{
+  "experimento": "conferidor",
+  "quando": "2026-09-29T02:35:16",
+  "conjunto": "desenvolvimento",
+  "modo_da_ia": "llm",
+  "modelo": "nova-2-lite",
+  "versao_prompt": "conferidor_da_leitura_v2",
+  "semente": 12,
+  "repeticoes": 3,
+  "resumo": {
+    "plantados": 18,
+    "achados": 18,
+    "alarmes_falsos": 0,
+    "suspeitas": 18,
+    "perguntas_simples": 18,
+    "documentos_certos": 5,
+    "custo_usd": 0.010974579000000002,
+    "documentos": 5,
+    "acerto": 1.0
+  },
+  "resumo_por_repeticao": [
+    {
+      "plantados": 18,
+      "achados": 18,
+      "alarmes_falsos": 0,
+      "suspeitas": 18,
+      "perguntas_simples": 18,
+      "documentos_certos": 5,
+      "custo_usd": 0.010974579000000002,
+      "documentos": 5,
+      "acerto": 1.0
+    },
+    {
+      "plantados": 18,
+      "achados": 18,
+      "alarmes_falsos": 0,
+      "suspeitas": 18,
+      "perguntas_simples": 18,
+      "documentos_certos": 5,
+      "custo_usd": 0.010962479,
+      "documentos": 5,
+      "acerto": 1.0
+    },
+    {
+      "plantados": 18,
+      "achados": 18,
+      "alarmes_falsos": 0,
+      "suspeitas": 18,
+      "perguntas_simples": 18,
+      "documentos_certos": 5,
+      "custo_usd": 0.010814254,
+      "documentos": 5,
+      "acerto": 1.0
+    }
+  ],
+  "certos_em_todas_as_repeticoes": 5,
+  "documentos": [
+    {
+      "documento": "N3_texto_simples",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "perguntas_simples": 4,
+        "certo": true,
+        "custo_usd": 0.0015312550000000002,
+        "segundos": 2.7,
+        "perguntas": [
+          {
+            "pessoa": 3,
+            "campo": "cpf",
+            "pergunta": "Confira este valor: no documento está 49303341287, mas ficou 27937663219. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 4.972,00, mas ficou R$ 2.554,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 8,
+            "campo": "data_nascimento",
+            "pergunta": "Confira este valor: no documento está 18/11/1983, mas ficou 24/01/2025. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 8,
+            "campo": "data_admissao",
+            "pergunta": "Confira este valor: no documento está 24/01/2025, mas ficou 18/11/1983. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N4_texto_variado_a",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "perguntas_simples": 4,
+        "certo": true,
+        "custo_usd": 0.0019455590000000001,
+        "segundos": 2.3,
+        "perguntas": [
+          {
+            "pessoa": 2,
+            "campo": "cpf",
+            "pergunta": "Confira este valor: no documento está 36183882500, mas ficou 58942566316. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 5.842,00, mas ficou R$ 2.755,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "data_nascimento",
+            "pergunta": "Confira este valor: no documento está 22/05/1989, mas ficou 17/07/2024. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "data_admissao",
+            "pergunta": "Confira este valor: no documento está 17-07-2024, mas ficou 22/05/1989. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N4_texto_variado_b",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "perguntas_simples": 4,
+        "certo": true,
+        "custo_usd": 0.0022748,
+        "segundos": 2.5,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "data_nascimento",
+            "pergunta": "Confira este valor: no documento está 2000-10-25, mas ficou 12/06/2024. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 1,
+            "campo": "data_admissao",
+            "pergunta": "Confira este valor: no documento está 2024-06-12, mas ficou 25/10/2000. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 3,
+            "campo": "cpf",
+            "pergunta": "Confira este valor: no documento está 37399828962, mas ficou 80479821259. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 5.192,00, mas ficou R$ 6.208,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N5_texto_misturado_a",
+      "medida": {
+        "plantados": 2,
+        "achados": 2,
+        "alarmes_falsos": 0,
+        "suspeitas": 2,
+        "perguntas_simples": 2,
+        "certo": true,
+        "custo_usd": 0.002303719,
+        "segundos": 2.5,
+        "perguntas": [
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 6.914,00, mas ficou R$ 2.613,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 6,
+            "campo": "cpf",
+            "pergunta": "Confira este valor: no documento está 19384646300, mas ficou 09005054514. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "documento": "N5_texto_misturado_b",
+      "medida": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "perguntas_simples": 4,
+        "certo": true,
+        "custo_usd": 0.0029192460000000003,
+        "segundos": 3.4,
+        "perguntas": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "pergunta": "Confira este valor: no documento está R$ 9,37, mas ficou R$ 2.945,00. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "data_nascimento",
+            "pergunta": "Confira este valor: no documento está 11/04/1986, mas ficou 03/10/2025. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 4,
+            "campo": "data_admissao",
+            "pergunta": "Confira este valor: no documento está 03/10/2025, mas ficou 11/04/1986. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          },
+          {
+            "pessoa": 5,
+            "campo": "cpf",
+            "pergunta": "Confira este valor: no documento está 505 816 685 29, mas ficou 03799493859. Qual é o certo?",
+            "qualidade": {
+              "sem_jargao": true,
+              "termina_com_interrogacao": true,
+              "uma_pergunta_so": true,
+              "curta": true,
+              "simples": true
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "documentos_por_repeticao": [
+    [
+      {
+        "documento": "N3_texto_simples",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0015312550000000002,
+          "segundos": 2.7,
+          "perguntas": [
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 49303341287, mas ficou 27937663219. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 4.972,00, mas ficou R$ 2.554,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 18/11/1983, mas ficou 24/01/2025. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 24/01/2025, mas ficou 18/11/1983. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_a",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0019455590000000001,
+          "segundos": 2.3,
+          "perguntas": [
+            {
+              "pessoa": 2,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 36183882500, mas ficou 58942566316. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 5.842,00, mas ficou R$ 2.755,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 22/05/1989, mas ficou 17/07/2024. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 17-07-2024, mas ficou 22/05/1989. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0022748,
+          "segundos": 2.5,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 2000-10-25, mas ficou 12/06/2024. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 2024-06-12, mas ficou 25/10/2000. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 37399828962, mas ficou 80479821259. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 5.192,00, mas ficou R$ 6.208,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_a",
+        "medida": {
+          "plantados": 2,
+          "achados": 2,
+          "alarmes_falsos": 0,
+          "suspeitas": 2,
+          "perguntas_simples": 2,
+          "certo": true,
+          "custo_usd": 0.002303719,
+          "segundos": 2.5,
+          "perguntas": [
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 6.914,00, mas ficou R$ 2.613,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 19384646300, mas ficou 09005054514. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0029192460000000003,
+          "segundos": 3.4,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 9,37, mas ficou R$ 2.945,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 11/04/1986, mas ficou 03/10/2025. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 03/10/2025, mas ficou 11/04/1986. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 5,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 505 816 685 29, mas ficou 03799493859. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "documento": "N3_texto_simples",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0015433550000000002,
+          "segundos": 2.3,
+          "perguntas": [
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 49303341287, mas ficou 27937663219. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 4.972,00, mas ficou R$ 2.554,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 18/11/1983, mas ficou 24/01/2025. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 24/01/2025, mas ficou 18/11/1983. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_a",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0019455590000000001,
+          "segundos": 2.1,
+          "perguntas": [
+            {
+              "pessoa": 2,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 36183882500, mas ficou 58942566316. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 5.842,00, mas ficou R$ 2.755,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 22/05/1989, mas ficou 17/07/2024. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 17-07-2024, mas ficou 22/05/1989. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.00228085,
+          "segundos": 2.6,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 2000-10-25, mas ficou 12/06/2024. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 2024-06-12, mas ficou 25/10/2000. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 37399828962, mas ficou 80479821259. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 5.192,00, mas ficou R$ 6.208,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_a",
+        "medida": {
+          "plantados": 2,
+          "achados": 2,
+          "alarmes_falsos": 0,
+          "suspeitas": 2,
+          "perguntas_simples": 2,
+          "certo": true,
+          "custo_usd": 0.002291619,
+          "segundos": 2.4,
+          "perguntas": [
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 6.914,00, mas ficou R$ 2.613,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 19384646300, mas ficou 09005054514. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.002901096,
+          "segundos": 3.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 9,37, mas ficou R$ 2.945,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 11/04/1986, mas ficou 03/10/2025. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 03/10/2025, mas ficou 11/04/1986. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 5,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 505 816 685 29, mas ficou 03799493859. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "documento": "N3_texto_simples",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0015433550000000002,
+          "segundos": 2.4,
+          "perguntas": [
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 49303341287, mas ficou 27937663219. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 4.972,00, mas ficou R$ 2.554,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 18/11/1983, mas ficou 24/01/2025. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 8,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 24/01/2025, mas ficou 18/11/1983. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_a",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0019455590000000001,
+          "segundos": 2.4,
+          "perguntas": [
+            {
+              "pessoa": 2,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 36183882500, mas ficou 58942566316. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 5.842,00, mas ficou R$ 2.755,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 22/05/1989, mas ficou 17/07/2024. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 17-07-2024, mas ficou 22/05/1989. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N4_texto_variado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.0021205250000000003,
+          "segundos": 3.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 2000-10-25, mas ficou 12/06/2024. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 1,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 2024-06-12, mas ficou 25/10/2000. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 3,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 37399828962, mas ficou 80479821259. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 5.192,00, mas ficou R$ 6.208,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_a",
+        "medida": {
+          "plantados": 2,
+          "achados": 2,
+          "alarmes_falsos": 0,
+          "suspeitas": 2,
+          "perguntas_simples": 2,
+          "certo": true,
+          "custo_usd": 0.002303719,
+          "segundos": 2.3,
+          "perguntas": [
+            {
+              "pessoa": 4,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 6.914,00, mas ficou R$ 2.613,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 6,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 19384646300, mas ficou 09005054514. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "documento": "N5_texto_misturado_b",
+        "medida": {
+          "plantados": 4,
+          "achados": 4,
+          "alarmes_falsos": 0,
+          "suspeitas": 4,
+          "perguntas_simples": 4,
+          "certo": true,
+          "custo_usd": 0.002901096,
+          "segundos": 3.1,
+          "perguntas": [
+            {
+              "pessoa": 1,
+              "campo": "valor_renda",
+              "pergunta": "Confira este valor: no documento está R$ 9,37, mas ficou R$ 2.945,00. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_nascimento",
+              "pergunta": "Confira este valor: no documento está 11/04/1986, mas ficou 03/10/2025. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 4,
+              "campo": "data_admissao",
+              "pergunta": "Confira este valor: no documento está 03/10/2025, mas ficou 11/04/1986. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            },
+            {
+              "pessoa": 5,
+              "campo": "cpf",
+              "pergunta": "Confira este valor: no documento está 505 816 685 29, mas ficou 03799493859. Qual é o certo?",
+              "qualidade": {
+                "sem_jargao": true,
+                "termina_com_interrogacao": true,
+                "uma_pergunta_so": true,
+                "curta": true,
+                "simples": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  ]
+}

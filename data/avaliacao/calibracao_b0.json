@@ -1,0 +1,258 @@
+{
+  "seed": 11,
+  "termos_ajuste": 135,
+  "termos_validacao": 44,
+  "exemplos_validacao": 300,
+  "escolhida": {
+    "comparador": "WRatio",
+    "limite": 75,
+    "acuracia_por_campo": 0.5658021133525456,
+    "abstencao_recall": 0.6338215712383488,
+    "abstencao_precisao": 0.7083333333333334,
+    "acerto_geral": 0.5761953204476093,
+    "n_colunas_com_campo": 4164,
+    "n_colunas_para_abster": 751
+  },
+  "todas": [
+    {
+      "comparador": "ratio",
+      "limite": 70,
+      "acuracia_por_campo": 0.4356388088376561,
+      "abstencao_recall": 0.8828229027962716,
+      "abstencao_precisao": 0.3474842767295597,
+      "acerto_geral": 0.5039674465920652,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "ratio",
+      "limite": 75,
+      "acuracia_por_campo": 0.38736791546589816,
+      "abstencao_recall": 0.8828229027962716,
+      "abstencao_precisao": 0.28763557483731017,
+      "acerto_geral": 0.46307222787385555,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "ratio",
+      "limite": 80,
+      "acuracia_por_campo": 0.3316522574447647,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.2587870434183322,
+      "acerto_geral": 0.4337741607324517,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "ratio",
+      "limite": 85,
+      "acuracia_por_campo": 0.1978866474543708,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.19119144602851323,
+      "acerto_geral": 0.32044760935910477,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "ratio",
+      "limite": 90,
+      "acuracia_por_campo": 0.0888568683957733,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.16523652365236524,
+      "acerto_geral": 0.22807731434384537,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "ratio",
+      "limite": 95,
+      "acuracia_por_campo": 0.06724303554274735,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.16202804746494068,
+      "acerto_geral": 0.20976602238046796,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_sort_ratio",
+      "limite": 70,
+      "acuracia_por_campo": 0.4303554274735831,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.34386446886446886,
+      "acerto_geral": 0.5173957273652086,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_sort_ratio",
+      "limite": 75,
+      "acuracia_por_campo": 0.3818443804034582,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.2909724912824487,
+      "acerto_geral": 0.4762970498474059,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_sort_ratio",
+      "limite": 80,
+      "acuracia_por_campo": 0.3078770413064361,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.2511705685618729,
+      "acerto_geral": 0.4136317395727365,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_sort_ratio",
+      "limite": 85,
+      "acuracia_por_campo": 0.17843419788664747,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.18760929303022733,
+      "acerto_geral": 0.3039674465920651,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_sort_ratio",
+      "limite": 90,
+      "acuracia_por_campo": 0.11143131604226705,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.1687261289597843,
+      "acerto_geral": 0.24720244150559512,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_sort_ratio",
+      "limite": 95,
+      "acuracia_por_campo": 0.0888568683957733,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.16523652365236524,
+      "acerto_geral": 0.22807731434384537,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_set_ratio",
+      "limite": 70,
+      "acuracia_por_campo": 0.5038424591738713,
+      "abstencao_recall": 0.6338215712383488,
+      "abstencao_precisao": 0.38825448613376834,
+      "acerto_geral": 0.523702950152594,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_set_ratio",
+      "limite": 75,
+      "acuracia_por_campo": 0.49879923150816524,
+      "abstencao_recall": 0.6338215712383488,
+      "abstencao_precisao": 0.3739198743126473,
+      "acerto_geral": 0.5194303153611394,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_set_ratio",
+      "limite": 80,
+      "acuracia_por_campo": 0.44860710854947167,
+      "abstencao_recall": 0.7509986684420772,
+      "abstencao_precisao": 0.3371189479976091,
+      "acerto_geral": 0.4948118006103764,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_set_ratio",
+      "limite": 85,
+      "acuracia_por_campo": 0.4397214217098943,
+      "abstencao_recall": 0.7509986684420772,
+      "abstencao_precisao": 0.26806083650190116,
+      "acerto_geral": 0.4872838250254323,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_set_ratio",
+      "limite": 90,
+      "acuracia_por_campo": 0.3729586935638809,
+      "abstencao_recall": 0.7509986684420772,
+      "abstencao_precisao": 0.22065727699530516,
+      "acerto_geral": 0.43072227873855545,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "token_set_ratio",
+      "limite": 95,
+      "acuracia_por_campo": 0.37175792507204614,
+      "abstencao_recall": 0.7509986684420772,
+      "abstencao_precisao": 0.22022647403358064,
+      "acerto_geral": 0.42970498474059005,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "WRatio",
+      "limite": 70,
+      "acuracia_por_campo": 0.5658021133525456,
+      "abstencao_recall": 0.3848202396804261,
+      "abstencao_precisao": 0.6071428571428571,
+      "acerto_geral": 0.5381485249237029,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "WRatio",
+      "limite": 75,
+      "acuracia_por_campo": 0.5658021133525456,
+      "abstencao_recall": 0.6338215712383488,
+      "abstencao_precisao": 0.7083333333333334,
+      "acerto_geral": 0.5761953204476093,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "WRatio",
+      "limite": 80,
+      "acuracia_por_campo": 0.558837656099904,
+      "abstencao_recall": 0.6338215712383488,
+      "abstencao_precisao": 0.5840490797546012,
+      "acerto_geral": 0.57029501525941,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "WRatio",
+      "limite": 85,
+      "acuracia_por_campo": 0.5468299711815562,
+      "abstencao_recall": 0.6338215712383488,
+      "abstencao_precisao": 0.44569288389513106,
+      "acerto_geral": 0.5601220752797559,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "WRatio",
+      "limite": 90,
+      "acuracia_por_campo": 0.44668587896253603,
+      "abstencao_recall": 0.7509986684420772,
+      "abstencao_precisao": 0.29497907949790797,
+      "acerto_geral": 0.4931841302136317,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    },
+    {
+      "comparador": "WRatio",
+      "limite": 95,
+      "acuracia_por_campo": 0.16714697406340057,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.1851577909270217,
+      "acerto_geral": 0.2944048830111902,
+      "n_colunas_com_campo": 4164,
+      "n_colunas_para_abster": 751
+    }
+  ]
+}

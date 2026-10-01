@@ -1,0 +1,45 @@
+{
+  "id": "EXP-007",
+  "data": "2026-09-25",
+  "titulo": "Primeiro teste com IA real: Consultor v1 x v2 e fontes do Endomarketing",
+  "tipo": "agentes",
+  "pergunta": "Os agentes funcionam com um modelo de verdade, não só com o simulador?",
+  "o_que_testamos": "As mesmas perguntas ao Consultor (2 vezes cada) e o kit de boas-vindas, com gpt-6-luna, antes e depois das correções de prompt e de conferência.",
+  "amostra": "3 perguntas x 2 execuções; 1 a 2 kits de boas-vindas",
+  "modo": "IA real (gpt-6-luna)",
+  "resultados": [
+    {
+      "nome": "Consultor v1",
+      "modelo": "gpt-6-luna",
+      "metricas": {
+        "perguntas_com_empresa_e_filtros_certos": "0 de 6"
+      }
+    },
+    {
+      "nome": "Consultor v2 (lista de empresas + filtros + nova tentativa)",
+      "modelo": "gpt-6-luna",
+      "metricas": {
+        "perguntas_com_empresa_e_filtros_certos": "6 de 6"
+      }
+    },
+    {
+      "nome": "Endomarketing antes (fonte com colchetes)",
+      "modelo": "gpt-6-luna",
+      "metricas": {
+        "blocos_aceitos": "0"
+      }
+    },
+    {
+      "nome": "Endomarketing depois (fonte sem colchetes)",
+      "modelo": "gpt-6-luna",
+      "metricas": {
+        "blocos_aceitos": "4 de 4"
+      }
+    }
+  ],
+  "leitura": "O simulador escondia dois problemas: a IA real não sabia que 'Aurora' é EMP001 e inventava o filtro 'estado'; e copiava a fonte com colchetes, e a conferência removia tudo. Corrigidos no prompt e na conferência. Custo: frações de centavo, não somado (não medido).",
+  "decisao": "Prompt consultor_v2 e fonte comparada sem colchetes (commit a5b5a27).",
+  "custo_usd": null,
+  "fonte": "docs/prompts.md (histórico de versões)",
+  "commit": "a5b5a27"
+}

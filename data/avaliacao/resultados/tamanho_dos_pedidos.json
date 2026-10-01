@@ -1,0 +1,47 @@
+{
+  "caracteres_por_token": 4,
+  "por_tarefa": {
+    "interpretar_colunas": {
+      "chamadas": 9,
+      "caracteres_de_entrada_por_chamada": 19979,
+      "caracteres_de_saida_por_chamada": 6113,
+      "tokens_de_entrada_estimados": 4994,
+      "tokens_de_saida_estimados": 1528
+    },
+    "consultor_supervisor": {
+      "chamadas": 9,
+      "caracteres_de_entrada_por_chamada": 1154,
+      "caracteres_de_saida_por_chamada": 190,
+      "tokens_de_entrada_estimados": 288,
+      "tokens_de_saida_estimados": 47
+    },
+    "consultor_subagente": {
+      "chamadas": 10,
+      "caracteres_de_entrada_por_chamada": 608,
+      "caracteres_de_saida_por_chamada": 101,
+      "tokens_de_entrada_estimados": 152,
+      "tokens_de_saida_estimados": 25
+    },
+    "consultor_sintese": {
+      "chamadas": 16,
+      "caracteres_de_entrada_por_chamada": 1755,
+      "caracteres_de_saida_por_chamada": 316,
+      "tokens_de_entrada_estimados": 438,
+      "tokens_de_saida_estimados": 79
+    },
+    "consultor_agente_unico": {
+      "chamadas": 9,
+      "caracteres_de_entrada_por_chamada": 550,
+      "caracteres_de_saida_por_chamada": 175,
+      "tokens_de_entrada_estimados": 137,
+      "tokens_de_saida_estimados": 43
+    },
+    "endomarketing_gerar": {
+      "chamadas": 26,
+      "caracteres_de_entrada_por_chamada": 2019,
+      "caracteres_de_saida_por_chamada": 980,
+      "tokens_de_entrada_estimados": 504,
+      "tokens_de_saida_estimados": 245
+    }
+  }
+}

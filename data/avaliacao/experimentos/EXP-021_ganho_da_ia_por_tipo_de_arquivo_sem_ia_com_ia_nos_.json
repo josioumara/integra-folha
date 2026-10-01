@@ -1,0 +1,122 @@
+{
+  "id": "EXP-021",
+  "data": "2026-09-30",
+  "titulo": "Ganho da IA por tipo de arquivo: sem IA × com IA nos mesmos arquivos, em 7 tipos",
+  "tipo": "ganho_por_tipo",
+  "pergunta": "Em cada tipo de arquivo que as empresas mandam, quanto a IA acrescenta ao acerto e às perguntas que sobram para a empresa, e quanto custa?",
+  "o_que_testamos": "O caminho da tela (enviar o arquivo, aceitar as colunas, decidir o formato), num banco novo por arquivo (o primeiro envio de cada empresa), em dois braços no MESMO arquivo: sem IA (o dicionário B0 e as regras do simulador no lugar do Interpretador; tabela e fichas do Word por regra; o texto corrido com a IA fora do ar, que a aplicação recusa) × com IA (o Interpretador com o formato garantido, o Leitor de Documentos e o Conferidor da Leitura, como a aplicação funciona hoje). Uma pessoa simulada responde só as perguntas de coluna, pelo gabarito; as pendências das pessoas ficam como o trabalho que sobra. A prova, a foto do parâmetro v7 e a régua foram congeladas antes de medir.",
+  "amostra": "7 tipos × 5 arquivos, as MESMAS 75 pessoas fictícias (15 por arquivo; semente 20260930): 4 tipos de planilha (padrão do banco; fora de ordem e com colunas a mais e faltando; nomes próximos do vocabulário da prova; cabeçalho difícil com coluna sem nome e \"Nome - CPF\") e 3 de Word (tabela ou fichas; texto corrido simples ou variado; texto misturado com armadilhas). Com IA, 34 arquivos: o texto misturado ficou com 4, porque a trava de custo parou antes do 5º. PDF e foto ficam de fora (a aplicação ainda não lê).",
+  "modo": "MOCK (sem IA) + IA real (claude-sonnet-4-6 + nova-2-lite)",
+  "resultados": [
+    {
+      "nome": "T1 · Planilha no padrão do banco",
+      "modelo": "sem IA (B0 e regras) × com IA",
+      "metricas": {
+        "Acerto por campo (sem → com IA)": "100,0% → 100,0%",
+        "Ganho (IC 95%; Holm)": "+0,0 pontos (+0,0 a +0,0; p 1,00)",
+        "4 obrigatórios certos": "100,0% → 100,0%",
+        "Pessoas sem pergunta": "100,0% → 100,0%",
+        "Perguntas por arquivo": "2,0 → 0,0",
+        "Erro silencioso": "0 → 0",
+        "Custo por funcionário": "US$ 0,0071",
+        "Tempo p50 com IA": "39 s",
+        "Arquivos": "5 (75 pessoas)"
+      }
+    },
+    {
+      "nome": "T2 · Planilha com colunas fora de ordem, a mais e faltando",
+      "modelo": "sem IA (B0 e regras) × com IA",
+      "metricas": {
+        "Acerto por campo (sem → com IA)": "100,0% → 100,0%",
+        "Ganho (IC 95%; Holm)": "+0,0 pontos (+0,0 a +0,0; p 1,00)",
+        "4 obrigatórios certos": "100,0% → 100,0%",
+        "Pessoas sem pergunta": "100,0% → 100,0%",
+        "Perguntas por arquivo": "3,2 → 0,0",
+        "Erro silencioso": "0 → 0",
+        "Custo por funcionário": "US$ 0,0059",
+        "Tempo p50 com IA": "32 s",
+        "Arquivos": "5 (75 pessoas)"
+      }
+    },
+    {
+      "nome": "T3 · Planilha com nomes próximos",
+      "modelo": "sem IA (B0 e regras) × com IA",
+      "metricas": {
+        "Acerto por campo (sem → com IA)": "60,7% → 98,8%",
+        "Ganho (IC 95%; Holm)": "+38,1 pontos (+29,7 a +45,4; p < 0,001)",
+        "4 obrigatórios certos": "0,0% → 100,0%",
+        "Pessoas sem pergunta": "0,0% → 100,0%",
+        "Perguntas por arquivo": "6,4 → 2,2",
+        "Erro silencioso": "0 → 0",
+        "Custo por funcionário": "US$ 0,0038",
+        "Tempo p50 com IA": "25 s",
+        "Arquivos": "5 (75 pessoas)"
+      }
+    },
+    {
+      "nome": "T4 · Planilha com cabeçalho difícil",
+      "modelo": "sem IA (B0 e regras) × com IA",
+      "metricas": {
+        "Acerto por campo (sem → com IA)": "49,3% → 100,0%",
+        "Ganho (IC 95%; Holm)": "+50,7 pontos (+46,2 a +54,7; p < 0,001)",
+        "4 obrigatórios certos": "0,0% → 100,0%",
+        "Pessoas sem pergunta": "0,0% → 100,0%",
+        "Perguntas por arquivo": "3,8 → 1,2",
+        "Erro silencioso": "0 → 0",
+        "Custo por funcionário": "US$ 0,0030",
+        "Tempo p50 com IA": "19 s",
+        "Arquivos": "5 (75 pessoas)"
+      }
+    },
+    {
+      "nome": "T5 · Word com tabela ou fichas",
+      "modelo": "sem IA (B0 e regras) × com IA",
+      "metricas": {
+        "Acerto por campo (sem → com IA)": "72,1% → 100,0%",
+        "Ganho (IC 95%; Holm)": "+27,9 pontos (+25,0 a +30,3; p < 0,001)",
+        "4 obrigatórios certos": "0,0% → 100,0%",
+        "Pessoas sem pergunta": "0,0% → 100,0%",
+        "Perguntas por arquivo": "2,0 → 3,0",
+        "Erro silencioso": "0 → 0",
+        "Custo por funcionário": "US$ 0,0029",
+        "Tempo p50 com IA": "15 s",
+        "Arquivos": "5 (75 pessoas)"
+      }
+    },
+    {
+      "nome": "T6 · Word com texto corrido simples ou variado",
+      "modelo": "sem IA (B0 e regras) × com IA",
+      "metricas": {
+        "Acerto por campo (sem → com IA)": "0,0% → 99,8%",
+        "Ganho (IC 95%; Holm)": "+99,8 pontos (+99,6 a +100,0; p < 0,001)",
+        "4 obrigatórios certos": "0,0% → 100,0%",
+        "Pessoas sem pergunta": "0,0% → 100,0%",
+        "Perguntas por arquivo": "recusado → 0,0",
+        "Erro silencioso": "0 → 0",
+        "Custo por funcionário": "US$ 0,0197",
+        "Tempo p50 com IA": "75 s",
+        "Arquivos": "5 (75 pessoas)"
+      }
+    },
+    {
+      "nome": "T7 · Word com texto misturado e armadilhas",
+      "modelo": "sem IA (B0 e regras) × com IA",
+      "metricas": {
+        "Acerto por campo (sem → com IA)": "0,0% → 98,9%",
+        "Ganho (IC 95%; Holm)": "+98,9 pontos (+98,6 a +99,2; p < 0,001)",
+        "4 obrigatórios certos": "0,0% → 90,0%",
+        "Pessoas sem pergunta": "0,0% → 33,3%",
+        "Perguntas por arquivo": "recusado → 10,0",
+        "Erro silencioso": "0 → 0",
+        "Custo por funcionário": "US$ 0,0267",
+        "Tempo p50 com IA": "93 s",
+        "Arquivos": "4 (60 pessoas)"
+      }
+    }
+  ],
+  "leitura": "No padrão do banco (T1 e T2), o dicionário empata com a IA: os dois acertam 100%, e a IA só tira as 2 a 3 perguntas por arquivo (no dicionário, o CBO, um campo novo, é confundido com o código da unidade); ali a IA custa ≈ US$ 0,10 por arquivo sem ganho de acerto. Onde a empresa foge do padrão, a IA é o que faz o cadastro andar: nos nomes próximos, no cabeçalho difícil e na tabela do Word, as pessoas com os 4 obrigatórios certos vão de 0% para 100% (o acerto por campo sobe 38,1, 50,7 e 27,9 pontos; p < 0,001 com Holm); sem IA, a planilha trava numa pendência de coluna obrigatória que falta. No texto corrido, sem a IA o documento volta para a empresa (0%); com IA, 99,8% no simples ou variado e 98,9% no misturado, com 32 de 32 perguntas esperadas feitas e 44 de 44 armadilhas respeitadas. Nenhum erro silencioso (pessoa pronta com um obrigatório errado) em nenhum tipo; 2 alarmes falsos em 60 pessoas do texto misturado; lá, 6 CPFs ficaram em branco com pergunta, 5 deles ao lado do \"PIS ilegível\" (a dúvida contagiou o CPF). As perguntas que sobram com IA são de ambiguidade de verdade (\"Dt.\", \"Proventos\"; CEP, Cidade e UF de casa ou do trabalho; a coluna de datas sem nome). Custo de US$ 0,003 a US$ 0,027 por funcionário (o texto corrido é o mais caro) e 15 s a 93 s por arquivo de 15 pessoas (3 s a 9 s sem IA). Realismo: no EXP-014, só com os nomes das colunas, o Sonnet 4.6 acertou 82,9% (aqui, com as amostras e pelo caminho real, 98,8% no T3); o EXP-010 deu 100% no texto simples e variado e 98,9% no misturado; o EXP-017 mostrou 0 de 7 documentos exatos no texto corrido difícil do lote guardado, então os números de texto corrido desta prova são o teto. Limites: arquivos sintéticos dos geradores do projeto; o sem IA é o dicionário B0 de hoje (mantido à mão, fecharia parte da diferença do T3 ao T5); 5 arquivos por tipo (o intervalo por arquivo é grosso; o McNemar célula a célula é o teste principal); o 1º arquivo de cada medição carrega o processo (~15 s; infla o p95 do T1 nos dois braços).",
+  "decisao": "A IA fica em todos os tipos: custa centavos por funcionário e é o que leva do \"trava\" ao \"cadastra\" fora do padrão do banco. Sugestões, sem medir agora: reconhecer o padrão do banco sem chamar a IA (economia de ≈ US$ 0,10 por arquivo) e não deixar a dúvida de um campo opcional contaminar um obrigatório da mesma linha.",
+  "custo_usd": 4.78,
+  "fonte": "data/avaliacao/resultados/ganho_por_tipo.json, ganho_por_tipo_sem_ia.json e ganho_por_tipo_com_ia.json; a prova em data/avaliacao/prova_por_tipo/",
+  "commit": "c1e67c9"
+}

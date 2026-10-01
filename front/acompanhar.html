@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<!--
+  acompanhar.html — aba "Acompanhar cadastros" do Portal da Empresa (Integra Folha).
+
+  Para que serve: rascunho visual (layout) da tela em que a empresa vê TUDO o que já cadastrou:
+    - o resumo do cadastro (quantos cadastrados, em análise, pendências e contas abertas);
+    - as pendências que ela precisa resolver para fechar os cadastros, com a ajuda do Agente de validação;
+    - a abertura das contas: o total da equipe aqui e a conta de cada funcionário na lista (é nela que a empresa paga
+      o salário; ADR-102);
+    - os envios que ela já fez, cada um com a sua linha do tempo (os arquivos em si não ficam guardados);
+    - a lista de funcionários, com busca, filtros, atalhos de consulta, quem incluiu e quando, ficha e download.
+
+  Como abrir: dois cliques neste arquivo (abre no navegador). Não precisa de servidor.
+  Aparência: css/estilos.css (seção 10). Interações e dados de exemplo: js/acompanhar.js.
+
+  Dados: 100% fictícios. A empresa "Aurora Alimentos Ltda." é a EMP001 da base sintética do projeto.
+  Os números batem com a home (312 com cadastro aprovado, 24 em análise, 3 envios). Nesta versão a ferramenta
+  ainda não sabe quantos funcionários a empresa tem no total: por isso não há "X de Y" nem barra de progresso.
+
+  Ordem da página (de cima para baixo):
+    1. Cabeçalho com as abas do portal
+    2. Título da página, com atalhos para cada parte
+    3. O bloco de cima: os 5 números numa linha só, menores, e embaixo as pendências. O clique num cartão das pendências
+       abre a conversa numa janela por cima da tela. O "Depois do cadastro" (o painel da abertura das contas) está
+       oculto nesta versão: o único número dele que os cartões não mostravam virou o 5º cartão
+    4. Pronto para enviar ao banco (só quando há envio pronto)
+    5. Funcionários: busca por CPF e por situação, tabela e download (vem antes dos envios: é o que o RH mais consulta)
+    6. Envios, recolhíveis e 5 por vez (uma empresa pode ter centenas)
+    7. Rodapé, assistente e as janelas (a conversa da pendência, a conferência antes do envio e a ficha)
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Acompanhar cadastros | Integra Folha</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Arquivo com toda a aparência do portal. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Conversa com o especialista do banco (o "Posso ajudar?"). -->
+  <link rel="stylesheet" href="css/conversa.css">
+  <!-- O bloco de cima de Acompanhar: números 2 a 2, cartões compactos e o painel do lado com a conversa (ADR-138). -->
+  <link rel="stylesheet" href="css/acompanhar_painel.css">
+  <!-- O "i" em cima da grade, que explica cada situação (js/legenda_dos_status.js). -->
+  <link rel="stylesheet" href="css/legenda_dos_status.css">
+  <!-- O joinha nas respostas dos agentes (js/opiniao_dos_agentes.js, ADR-151). -->
+  <link rel="stylesheet" href="css/opiniao_dos_agentes.css">
+  <!-- Com a aplicação, os exemplos do protótipo nunca aparecem: barras de "carregando" até os dados chegarem. -->
+  <script src="js/carregando_dados.js"></script>
+</head>
+<body>
+
+  <!--
+    Biblioteca de ícones: cada <symbol> é um desenho guardado com um nome (id).
+    No resto da página, <use href="#nome"> "carimba" o desenho, sem repetir o código.
+  -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Casa: aba Início. -->
+    <symbol id="icone-inicio" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <!-- Pessoa com "+": cadastrar funcionário. -->
+    <symbol id="icone-cadastrar" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/></symbol>
+    <!-- Prancheta com visto: acompanhar cadastros. -->
+    <symbol id="icone-acompanhar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Presente: benefícios. -->
+    <symbol id="icone-beneficios" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8c-2-4-6-4-6-1s6 1 6 1c0 0 6 2 6-1s-4-3-6 1"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Porta com seta: sair do portal. -->
+    <symbol id="icone-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <!-- Sino: avisos. -->
+    <!-- Pessoas: equipe. -->
+    <symbol id="icone-equipe" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M15 14.5c3 0 6 1.8 6 5.5"/></symbol>
+    <!-- Ampulheta: em análise. -->
+    <symbol id="icone-analise" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12"/><path d="M7 3c0 5 10 5 10 9s-10 4-10 9"/><path d="M17 3c0 5-10 5-10 9s10 4 10 9"/></symbol>
+    <!-- Triângulo com exclamação: pendência. -->
+    <symbol id="icone-alerta" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5"/><path d="M12 18h.01"/></symbol>
+    <!-- Cartão: conta aberta. -->
+    <symbol id="icone-cartao" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></symbol>
+    <!-- Cartão com um relógio no canto: quem ainda não abriu a conta. -->
+    <symbol id="icone-sem-conta" viewBox="0 0 24 24"><path d="M13 19H5a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v3"/><path d="M2 10h20"/><circle cx="18" cy="17" r="4"/><path d="M18 15v2l1 1"/></symbol>
+    <!-- Estrela com brilho: inteligência artificial. -->
+    <symbol id="icone-ia" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/><path d="M19 3v4M17 5h4"/></symbol>
+    <!-- Cadeado: sigilo bancário. -->
+    <symbol id="icone-cadeado" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <!-- Documento: arquivo enviado. -->
+    <symbol id="icone-documento" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
+    <!-- Lupa: busca. -->
+    <symbol id="icone-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <!-- Seta para baixo numa bandeja: baixar a lista. -->
+    <symbol id="icone-baixar" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></symbol>
+    <!-- Visto: etapa concluída. -->
+    <symbol id="icone-visto" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <!-- X: fechar a janela. -->
+    <symbol id="icone-fechar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <!-- Seta para baixo: abrir e fechar um envio. -->
+    <symbol id="icone-abrir" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <!-- Seta para a direita: links "ver mais". -->
+    <symbol id="icone-seta" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+  </svg>
+
+  <!-- ============ 1. CABEÇALHO COM AS ABAS ============ -->
+  <header class="barra-topo">
+    <div class="conteudo-centralizado">
+      <!-- Linha de cima: marca e usuário logado. -->
+      <div class="barra-topo-linha">
+        <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+        <a href="home.html" class="logotipo" aria-label="Início do Portal Empresa">
+          <span class="logotipo-marca">Integra Folha</span>
+        </a>
+        <!-- O banco parceiro do Integra Folha: aparece em todas as telas depois do login (nunca no login). -->
+        <span class="selo-banco-parceiro">Banco parceiro: <strong>Santander</strong></span>
+        <!-- Ações de quem está logado. -->
+        <div class="acoes-usuario">
+          <!-- Pessoa logada (perfil EMPRESA). -->
+          <div class="usuario-logado">
+            <span class="iniciais-usuario">MC</span>
+            <div class="usuario-logado-texto">
+              <div class="nome-usuario">Marina Costa</div>
+              <div class="empresa-usuario">RH · Aurora Alimentos Ltda.</div>
+            </div>
+          </div>
+          <!-- Sair: volta para a tela de login. -->
+          <a href="/api/sair" class="botao-sair" aria-label="Sair do portal">
+            <svg class="icone"><use href="#icone-sair"/></svg>
+            <span class="botao-sair-texto">Sair</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Abas do portal. A aba da página atual recebe a classe "aba-ativa". -->
+      <nav class="abas-portal" aria-label="Seções do portal">
+        <a href="home.html" class="aba">
+          <svg class="icone"><use href="#icone-inicio"/></svg>Início
+        </a>
+        <a href="acompanhar.html" class="aba aba-ativa" aria-current="page">
+          <svg class="icone"><use href="#icone-acompanhar"/></svg>Acompanhar cadastros
+        </a>
+        <a href="beneficios.html" class="aba">
+          <svg class="icone"><use href="#icone-beneficios"/></svg>Benefícios do seu time
+        </a>
+        <a href="endomarketing.html" class="aba">
+          <svg class="icone"><use href="#icone-endomarketing"/></svg>Materiais de endomarketing
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 2. TÍTULO DA PÁGINA ============ -->
+    <section class="cabecalho-pagina">
+      <div class="conteudo-centralizado">
+        <span class="selo-ia">
+          <svg class="icone"><use href="#icone-acompanhar"/></svg>
+          Acompanhar cadastros
+        </span>
+        <h1 class="titulo-pagina">
+          Sua equipe no Santander, em um só lugar.
+          <span class="titulo-pagina-leve">Consulte cada funcionário, veja o que falta para fechar os cadastros e como está a abertura das contas.</span>
+        </h1>
+        <!-- Linha de ações: "Cadastrar funcionários" (abre a janela do envio, js/novo_envio.js) e os atalhos. -->
+        <div class="acoes-pagina">
+          <!-- A ação principal da página, logo no começo: mandar mais funcionários. -->
+          <a href="cadastrar.html" class="botao botao-principal">
+            <svg class="icone"><use href="#icone-cadastrar"/></svg>
+            Cadastrar funcionários
+          </a>
+          <!-- Atalhos: levam direto a cada parte da página, sem precisar rolar. -->
+          <nav class="navegacao-pagina" aria-label="Ir para uma parte da página">
+            <span class="navegacao-rotulo">Ir para</span>
+            <!-- "Prontos para enviar": a seção verde "Pronto para enviar ao banco". Só
+                 aparece quando há envio pronto; o número é o de envios prontos. -->
+            <a href="#prontos" class="filtro-rapido" data-atalho-prontos hidden>Prontos para enviar <span class="navegacao-contador" data-atalho-contagem-prontos>0</span></a>
+            <a href="#pendencias" class="filtro-rapido">Pendências <span class="navegacao-contador" data-atalho-pendencias data-aguarda-dado>3</span></a>
+            <!-- Oculto nesta versão, com o "Depois do cadastro" (o painel da abertura das contas): o atalho levava a ele. -->
+            <template data-oculto-nesta-versao="depois-do-cadastro"><a href="#contas" class="filtro-rapido">Abertura das contas</a></template>
+            <a href="#funcionarios" class="filtro-rapido">Funcionários</a>
+            <a href="#envios" class="filtro-rapido">Envios <span class="navegacao-contador" data-atalho-envios data-aguarda-dado>3</span></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <div class="conteudo-centralizado area-acompanhar">
+      <!-- Aviso de recebimento: aparece quando a pessoa chega aqui logo depois de enviar uma lista conferida. -->
+      <p class="aviso-recebido" data-aviso-recebido hidden>
+        <svg class="icone"><use href="#icone-visto"/></svg>
+        <span data-aviso-recebido-texto></span>
+      </p>
+
+      <!--
+        ============ 3. O BLOCO DE CIMA (ADR-138) ============
+        Uma coluna só: os 5 números numa linha, menores e discretos, e embaixo a lista das pendências. O clique num
+        cartão da lista abre a conversa com o Agente de validação numa janela por cima da tela (js/painel_da_conversa.js).
+        O painel do lado ("Depois do cadastro", a abertura das contas) está oculto nesta versão; o código e os números
+        dele continuam na página. No celular, os números descem em duas colunas, e a conversa ocupa a tela inteira, com o
+        "Voltar à lista".
+      -->
+      <div class="bloco-acompanhar">
+      <div class="coluna-principal-acompanhar">
+      <!-- Os 5 números numa linha só. -->
+      <section class="grade-numeros grade-numeros-numa-linha" aria-label="Resumo do cadastro">
+        <!-- Total com cadastro aprovado pelo banco (o total da empresa ainda não é conhecido nesta versão). -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-equipe"/></svg></span>
+          <div class="cartao-numero-valor" data-resumo-aprovados data-aguarda-dado>312</div>
+          <div class="cartao-numero-legenda">funcionários com cadastro aprovado</div>
+          <span class="selo selo-sucesso" data-selo-aprovados data-aguarda-dado>+22 em setembro</span>
+        </div>
+        <!-- Pessoas em análise pelo banco: o mesmo total do filtro "Em análise" da lista de funcionários. -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-analise"/></svg></span>
+          <div class="cartao-numero-valor" data-resumo-andamento-valor data-aguarda-dado>24</div>
+          <div class="cartao-numero-legenda" data-resumo-andamento-legenda data-aguarda-dado>pessoas em análise pelo banco</div>
+          <span class="selo selo-marca" data-resumo-andamento-selo data-aguarda-dado>Retorno em até 1 dia útil</span>
+        </div>
+        <!-- Pendências: o número muda quando a pessoa resolve uma; com zero, o cartão fica verde (js/acompanhar.js). -->
+        <div class="cartao cartao-numero cartao-numero-atencao" data-cartao-pendencias>
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-alerta" data-icone-pendencias/></svg></span>
+          <div class="cartao-numero-valor" data-total-pendencias data-aguarda-dado>3</div>
+          <div class="cartao-numero-legenda" data-legenda-pendencias data-aguarda-dado>pendências para você fechar os cadastros</div>
+          <a href="#pendencias" class="link-seta" data-link-pendencias data-aguarda-dado>Resolver agora <svg class="icone"><use href="#icone-seta"/></svg></a>
+          <span class="selo selo-sucesso" data-selo-em-dia hidden>Tudo em dia</span>
+        </div>
+        <!-- Contas abertas: o total da empresa (a conta de cada um fica na lista de funcionários). -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-cartao"/></svg></span>
+          <div class="cartao-numero-valor" data-resumo-contas-valor data-aguarda-dado>78%</div>
+          <div class="cartao-numero-legenda" data-resumo-contas-legenda data-aguarda-dado>dos cadastrados já abriram a conta</div>
+          <!-- Oculto nesta versão, com o "Depois do cadastro": o link levava a ele. -->
+          <template data-oculto-nesta-versao="depois-do-cadastro"><a href="#contas" class="link-seta">Ver a abertura das contas <svg class="icone"><use href="#icone-seta"/></svg></a></template>
+        </div>
+        <!-- Os cadastrados que ainda não abriram a conta: o número que só o "Depois do cadastro" mostrava (o painel está
+             oculto nesta versão). Sem o arquivo de contas do banco, um traço (js/acompanhar.js, mostrar_contas_reais). -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-sem-conta"/></svg></span>
+          <div class="cartao-numero-valor" data-resumo-sem-conta-valor data-aguarda-dado>69</div>
+          <div class="cartao-numero-legenda" data-resumo-sem-conta-legenda data-aguarda-dado>funcionários cadastrados ainda sem conta (22%)</div>
+        </div>
+      </section>
+
+        <!-- Embaixo dos números: as pendências. Cada cartão é compacto; o clique abre a conversa no painel do lado. -->
+        <section class="cartao painel-acompanhar" id="pendencias" aria-labelledby="titulo-pendencias">
+          <div class="painel-cabecalho">
+            <div>
+              <span class="sobretitulo">Para fechar os cadastros</span>
+              <h2 class="painel-titulo" id="titulo-pendencias">Pendências para você</h2>
+            </div>
+            <!-- Os dois filtros: o que falta resolver e o que já foi resolvido pela
+                 conversa (js/acompanhar.js). -->
+            <div class="grupo-filtros" role="group" aria-label="Filtrar pendências" data-filtros-pendencias>
+              <!-- O número entre parênteses é contado pelo js/acompanhar.js (pessoas: o cartão de um grupo vale por todas). -->
+              <button class="filtro-rapido filtro-rapido-ativo" type="button" data-filtro-pendencia="abertas">Pendências em aberto <span data-contagem-tipo="abertas" data-aguarda-dado></span></button>
+              <button class="filtro-rapido" type="button" data-filtro-pendencia="resolvidas">Resolvidas <span data-contagem-tipo="resolvidas" data-aguarda-dado></span></button>
+            </div>
+          </div>
+          <!-- Os envios parados na conferência das colunas (ADR-127): um aviso por envio, com o botão para
+               continuar. Com um deles, a tela nunca diz "Tudo em dia" (js/acompanhar.js). -->
+          <div class="envios-parados" data-envios-parados hidden></div>
+          <!-- Filtro por arquivo: fechar as pendências de um arquivo de cada vez. Montado
+               pelo js/acompanhar.js com as pendências de verdade. -->
+          <label class="filtro-arquivo-pendencias" data-bloco-filtro-arquivo hidden>
+            <span class="campo-rotulo">Arquivo</span>
+            <select class="campo-entrada campo-filtro" data-filtro-arquivo-pendencias aria-label="Filtrar pendências por arquivo">
+              <option value="">Todos os arquivos</option>
+            </select>
+          </label>
+          <!-- O arquivo escolhido ainda tem pendência: ele só vai para "Pronto para enviar ao banco" quando todas acabarem. -->
+          <p class="aviso-arquivo-pendente" data-aviso-arquivo-pendente hidden></p>
+
+          <!--
+            Cada pendência é uma conversa com o Agente de validação: o nome e o campo, a
+            pergunta num balão do agente, as respostas rápidas, a caixa para responder e o arquivo com a data.
+            Resolvida pela conversa, a pendência fica no lugar (faixa verde, com o "Pronto: ..." e o Desfazer) até a
+            pessoa mexer em outro cartão ou trocar o filtro; aí ela sai e passa para "Resolvidas".
+          -->
+          <div class="lista-ajustes" data-lista-pendencias data-aguarda-bloco>
+            <!-- Pendência 1: estado civil fora da lista, com o palpite do agente. As respostas rápidas: o "Sim" do palpite e
+                 os outros valores da lista do banco. -->
+            <article class="ajuste" data-pendencia data-tipo-pendencia="corrigir">
+              <div class="ajuste-cabecalho">
+                <span class="ajuste-titulo">Rafael Moreira Lima</span>
+                <span class="ajuste-campo">Estado civil</span>
+              </div>
+              <div class="conversa-ia-pendencia">
+                <div class="historico-conversa-ia">
+                  <div class="balao balao-ia fala-ia"><span class="selo-ia">✦ Agente de validação</span><p>Para Rafael, a informação "Estado civil" veio como "Solteiro (a)", que não está entre as opções aceitas. Acredito que o certo é "Solteiro". Posso usar?</p></div>
+                </div>
+                <div class="respostas-rapidas">
+                  <button class="resposta-rapida" type="button" data-resolver-pendencia>Sim, use "Solteiro"</button>
+                  <button class="resposta-rapida" type="button" data-resolver-pendencia>Casado</button>
+                  <button class="resposta-rapida" type="button" data-resolver-pendencia>Divorciado</button>
+                  <button class="resposta-rapida" type="button" data-resolver-pendencia>Viúvo</button>
+                  <button class="resposta-rapida" type="button" data-resolver-pendencia>União estável</button>
+                </div>
+                <form class="formulario-conversa-ia">
+                  <input class="campo-entrada campo-pequeno" type="text" placeholder="Responda ao agente..." aria-label="Sua resposta para o agente sobre esta pendência de Rafael Moreira Lima">
+                  <button class="botao-enviar-conversa" type="button" aria-label="Enviar" title="Enviar" data-resolver-pendencia>➤</button>
+                </form>
+              </div>
+              <p class="ajuste-origem">folha_setembro.xlsx · 24/09</p>
+            </article>
+
+            <!-- Pendência 2: CPF inválido, com a conversa já respondida e o Desfazer dentro do balão do agente. -->
+            <article class="ajuste" data-pendencia data-tipo-pendencia="corrigir">
+              <div class="ajuste-cabecalho">
+                <span class="ajuste-titulo">Juliana Castro Pires</span>
+                <span class="ajuste-campo">CPF</span>
+              </div>
+              <div class="conversa-ia-pendencia">
+                <div class="historico-conversa-ia">
+                  <div class="balao balao-ia fala-ia"><span class="selo-ia">✦ Agente de validação</span><p>Para Juliana, a informação "CPF" veio como "123.482.917-00", e o dígito verificador não bate. Qual é o CPF certo?</p></div>
+                  <div class="balao balao-voce fala-empresa"><p>É 529.982.247-25</p><span class="marca-voce">você</span></div>
+                  <div class="balao balao-ia fala-ia mudanca-da-ia"><span class="selo-ia">✦ Agente de validação</span><p>Pronto: CPF = 529.982.247-25.</p><div class="desfazer-do-balao"><button class="botao botao-contorno botao-pequeno" type="button">Desfazer</button></div></div>
+                </div>
+                <div class="respostas-rapidas">
+                </div>
+                <form class="formulario-conversa-ia">
+                  <input class="campo-entrada campo-pequeno" type="text" placeholder="Responda ao agente..." aria-label="Sua resposta para o agente sobre esta pendência de Juliana Castro Pires">
+                  <button class="botao-enviar-conversa" type="button" aria-label="Enviar" title="Enviar" data-resolver-pendencia>➤</button>
+                </form>
+              </div>
+              <p class="ajuste-origem">folha_setembro.xlsx · 24/09</p>
+            </article>
+
+            <!-- Pendência 3: o banco pede uma confirmação (renda muito acima do comum para o cargo). -->
+            <article class="ajuste" data-pendencia data-tipo-pendencia="confirmar">
+              <div class="ajuste-cabecalho">
+                <span class="ajuste-titulo">Carlos Eduardo Nunes</span>
+                <span class="ajuste-campo">Valor da renda</span>
+              </div>
+              <div class="conversa-ia-pendencia">
+                <div class="historico-conversa-ia">
+                  <div class="balao balao-ia fala-ia"><span class="selo-ia">✦ Agente de validação</span><p>Para Carlos, a informação "Valor da renda" veio como "R$ 48.000,00", bem acima do comum para o cargo. Está certa?</p></div>
+                  <div class="balao balao-voce fala-empresa"><p>não cadastrar esta pessoa</p><span class="marca-voce">você</span></div>
+                  <div class="balao balao-ia fala-ia"><span class="selo-ia">✦ Agente de validação</span><p>Confirma que não vamos cadastrar Carlos neste envio? Fica registrado com o seu nome.</p><div class="confirmacao-do-balao"><button class="botao botao-principal botao-pequeno" type="button" data-resolver-pendencia>Sim, não cadastrar</button><button class="botao botao-contorno botao-pequeno" type="button">Cancelar</button></div></div>
+                </div>
+                <div class="respostas-rapidas">
+                  <button class="resposta-rapida" type="button" data-resolver-pendencia>Está certo assim</button>
+                </div>
+                <form class="formulario-conversa-ia">
+                  <input class="campo-entrada campo-pequeno" type="text" placeholder="Responda ao agente..." aria-label="Sua resposta para o agente sobre esta pendência de Carlos Eduardo Nunes">
+                  <button class="botao-enviar-conversa" type="button" aria-label="Enviar" title="Enviar" data-resolver-pendencia>➤</button>
+                </form>
+              </div>
+              <p class="ajuste-origem">folha_setembro.xlsx · 24/09</p>
+            </article>
+          </div>
+
+          <!-- Dica que aparece só quando há mais pendências do que cabem no painel. -->
+          <p class="dica-rolagem" data-dica-rolagem hidden>Role a lista para ver as outras pendências.</p>
+
+          <!-- O arquivo escolhido no filtro não tem mais pendência em aberto. -->
+          <p class="painel-vazio painel-vazio-neutro" data-sem-pendencias-do-tipo hidden>Nenhuma pendência em aberto neste arquivo.</p>
+
+          <!--
+            Filtro "Resolvidas": o que a empresa resolveu pela conversa, enquanto o arquivo não foi ao banco, com o
+            resumo, quem e quando, e a conversa guardada no servidor para abrir de novo (js/acompanhar.js).
+          -->
+          <div class="lista-ajustes lista-resolvidas" data-lista-resolvidas hidden></div>
+          <p class="painel-vazio painel-vazio-neutro" data-sem-resolvidas hidden>Nenhuma pendência resolvida ainda.</p>
+
+          <!--
+            Rodapé fixo: os dois jeitos de desistir do arquivo, sempre à vista. Valem
+            para o arquivo do filtro; com "Todos os arquivos" e mais de um arquivo, a janela pergunta qual
+            (js/acompanhar.js e js/descartar_envio.js).
+          -->
+          <div class="rodape-das-pendencias" data-rodape-pendencias>
+            <p class="rodape-das-pendencias-arquivo" data-arquivo-do-rodape data-aguarda-dado>Arquivo: folha_setembro.xlsx</p>
+            <div class="rodape-das-pendencias-botoes">
+              <button class="botao botao-contorno botao-pequeno" type="button" data-descartar-pelo-rodape>Descartar a leitura</button>
+              <button class="botao botao-principal botao-pequeno" type="button" data-descartar-e-enviar-outro>Descartar a leitura e enviar outro arquivo</button>
+            </div>
+          </div>
+
+          <!-- Estado "tudo em dia": aparece no lugar da lista e dos filtros quando não sobra nenhuma pendência. -->
+          <div class="estado-em-dia" data-sem-pendencias hidden>
+            <span class="estado-em-dia-icone"><svg class="icone"><use href="#icone-visto"/></svg></span>
+            <h3 class="estado-em-dia-titulo">Tudo em dia!</h3>
+            <p class="estado-em-dia-texto">
+              Nenhum cadastro está esperando por você. Se o banco ou o Agente de validação precisar de alguma informação,
+              avisamos aqui e no sino, lá em cima.
+            </p>
+            <a href="cadastrar.html" class="botao botao-contorno">
+              <svg class="icone"><use href="#icone-cadastrar"/></svg>
+              Fazer um novo envio
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- O painel do lado, oculto nesta versão: a marca data-oculto-nesta-versao o esconde sempre (css/estilos.css). O
+           único número dele que os cartões do alto não mostravam (os cadastrados ainda sem conta) virou o 5º cartão. O
+           js/acompanhar.js continua escrevendo nele, e ele volta tirando a marca. -->
+      <aside class="painel-do-lado" data-painel-do-lado aria-label="Painel do lado" hidden
+             data-oculto-nesta-versao="depois-do-cadastro">
+        <!-- "Depois do cadastro": abertura das contas, SÓ em números agregados. -->
+        <section class="cartao painel-acompanhar" id="contas" aria-labelledby="titulo-contas">
+          <div class="painel-cabecalho">
+            <div>
+              <span class="sobretitulo">Depois do cadastro</span>
+              <h2 class="painel-titulo" id="titulo-contas">Abertura das contas</h2>
+            </div>
+          </div>
+
+          <!-- Anel com o total da empresa: 243 de 312 cadastrados (78%). Some com menos de 10 aprovados. -->
+          <div class="contas-total" data-contas-total data-aguarda-bloco>
+            <div class="anel-progresso anel-grande" style="--porcentagem: 78" data-contas-anel>
+              <div class="anel-miolo">
+                <div>
+                  <div class="anel-numero" data-contas-anel-numero>78%</div>
+                  <div class="anel-legenda">abriram</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="contas-frase" data-contas-frase><strong>243 de 312</strong> funcionários cadastrados já abriram a conta.</p>
+              <p class="contas-frase-leve" data-contas-frase-leve><strong>69 (22%)</strong> ainda não abriram: um lembrete ajuda.</p>
+            </div>
+          </div>
+
+          <!--
+            Por unidade: só aparecem grupos com pelo menos 10 pessoas; unidades menores entram juntas em
+            "Outras unidades" (se essa soma também tiver 10 ou mais). Com uma unidade só, este bloco dá lugar
+            ao "Por envio", logo abaixo (a barra única repetiria o total do anel).
+          -->
+          <div class="contas-detalhe" data-contas-por-unidade data-aguarda-bloco>
+          <div class="cartao-titulo-pequeno">Por unidade</div>
+          <ul class="barras-unidade">
+            <li class="barra-unidade">
+              <div class="barra-unidade-linha"><span>Fábrica · Campinas</span><strong>74%</strong></div>
+              <div class="barra-progresso"><div class="barra-progresso-preenchida" style="width: 74%"></div></div>
+              <span class="barra-unidade-detalhe">133 de 180</span>
+            </li>
+            <li class="barra-unidade">
+              <div class="barra-unidade-linha"><span>Centro de distribuição · Jundiaí</span><strong>83%</strong></div>
+              <div class="barra-progresso"><div class="barra-progresso-preenchida" style="width: 83%"></div></div>
+              <span class="barra-unidade-detalhe">76 de 92</span>
+            </li>
+            <li class="barra-unidade">
+              <div class="barra-unidade-linha"><span>Escritório · São Paulo</span><strong>85%</strong></div>
+              <div class="barra-progresso"><div class="barra-progresso-preenchida" style="width: 85%"></div></div>
+              <span class="barra-unidade-detalhe">34 de 40</span>
+            </li>
+          </ul>
+          </div>
+
+          <!-- Empresa com uma unidade só: a abertura por envio (os mais recentes ainda estão no prazo). -->
+          <div class="contas-detalhe" data-contas-por-envio hidden>
+            <div class="cartao-titulo-pequeno">Por envio</div>
+            <ul class="barras-unidade">
+              <li class="barra-unidade">
+                <div class="barra-unidade-linha"><span>Carga inicial · 01/08</span><strong>79%</strong></div>
+                <div class="barra-progresso"><div class="barra-progresso-preenchida" style="width: 79%"></div></div>
+                <span class="barra-unidade-detalhe">228 de 290</span>
+              </li>
+              <li class="barra-unidade">
+                <div class="barra-unidade-linha"><span>Inclusão · 02/09</span><strong>68%</strong></div>
+                <div class="barra-progresso"><div class="barra-progresso-preenchida" style="width: 68%"></div></div>
+                <span class="barra-unidade-detalhe">15 de 22 · entraram há menos de um mês</span>
+              </li>
+              <li class="barra-unidade">
+                <div class="barra-unidade-linha"><span>Inclusão · 24/09</span><strong>—</strong></div>
+                <span class="barra-unidade-detalhe">Em análise pelo banco: as contas são abertas depois do cadastro aprovado.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- O banco ainda não mandou o arquivo de contas abertas: o aviso no lugar dos números. -->
+          <div class="contas-poucos" data-contas-poucos hidden>
+            <span class="contas-poucos-icone"><svg class="icone"><use href="#icone-cartao"/></svg></span>
+            <p class="contas-poucos-titulo" data-contas-poucos-titulo>A abertura das contas ainda não chegou</p>
+            <p class="contas-poucos-texto" data-contas-poucos-texto>
+              Os números aparecem assim que o banco enviar o arquivo de contas abertas da sua equipe.
+            </p>
+          </div>
+
+          <!-- Por que a conta de cada funcionário aparece (ADR-102, que revê o ADR-30). -->
+          <p class="nota-sigilo" data-nota-sigilo>
+            <svg class="icone"><use href="#icone-cadeado"/></svg>
+            <span><strong>Onde ver a conta salário de cada funcionário?</strong> Na lista de funcionários, logo abaixo:
+              agência, número e data de abertura. É nessa conta que a sua empresa paga o salário. Ao abrir a conta para
+              receber o salário, o funcionário autoriza o banco a informar esses dados à empresa
+              (Lei Complementar nº 105/2001, art. 1º, § 3º, V).</span>
+          </p>
+
+          <!-- O caminho para aumentar a adesão: um comunicado feito pela IA de endomarketing, para toda a equipe
+               (o "lembrete" ainda não existe no agente; o comunicado já vem com o assunto "Como abrir a conta"). -->
+          <a href="endomarketing.html?tipo=comunicado&amp;assunto=conta" class="botao botao-principal botao-largo" data-criar-lembrete>
+            <svg class="icone"><use href="#icone-endomarketing"/></svg>
+            Criar lembrete para a equipe
+          </a>
+        </section>
+      </aside>
+      </div>
+
+      <!--
+        ============ PRONTO PARA ENVIAR AO BANCO ============
+        A lista pendente da empresa: os envios sem pendência, com as pessoas de
+        cada um para conferir, e UM "Enviar ao banco" para tudo o que está pronto (js/acompanhar.js). Some quando não há
+        nada pronto. Fica logo abaixo do bloco dos números e das pendências (ADR-138).
+      -->
+      <section class="cartao prontos-para-o-banco" id="prontos" data-prontos hidden aria-labelledby="titulo-prontos">
+        <div class="painel-cabecalho">
+          <div>
+            <span class="sobretitulo">Tudo certo por aqui</span>
+            <h2 class="painel-titulo" id="titulo-prontos">Pronto para enviar ao banco</h2>
+          </div>
+        </div>
+        <p class="nota-tabela">Estes envios não têm mais pendência. Confira a lista inteira, com todas as informações que o
+          banco espera, e envie: o especialista do banco avalia e, aprovado, o cadastro entra na lista de funcionários.</p>
+        <ul class="lista-prontos" data-lista-prontos></ul>
+        <div class="resultado-botoes-real">
+          <button class="botao botao-principal" type="button" data-abrir-conferencia-prontos>Conferir a lista e enviar para o banco</button>
+        </div>
+      </section>
+
+      <!-- ============ 5. FUNCIONÁRIOS ============ -->
+      <section class="secao-acompanhar" id="funcionarios" aria-labelledby="titulo-funcionarios">
+        <div class="cabecalho-secao">
+          <div>
+            <span class="sobretitulo">Consulta</span>
+            <h2 class="titulo-secao" id="titulo-funcionarios">Funcionários</h2>
+          </div>
+          <!-- Baixa a lista que está na tela (com os filtros aplicados), em CSV. -->
+          <button class="botao botao-contorno" type="button" data-baixar-lista>
+            <svg class="icone"><use href="#icone-baixar"/></svg>
+            Baixar lista
+          </button>
+        </div>
+        <!-- O recado do "Baixar lista" (ex.: ninguém na tabela com esses filtros), logo abaixo do botão, à vista
+             (js/acompanhar.js, mostrar_recado_do_download). -->
+        <p class="recado-do-download" data-recado-do-download role="status" hidden></p>
+
+        <div class="cartao painel-consulta">
+          <!-- A busca por funcionário é sempre por CPF e pela situação (js/acompanhar.js, funcionario_aparece). -->
+          <div class="barra-consulta barra-consulta-cpf-e-situacao">
+            <label class="campo-busca">
+              <svg class="icone"><use href="#icone-lupa"/></svg>
+              <input class="campo-entrada" type="search" inputmode="numeric" placeholder="Buscar por CPF" aria-label="Buscar funcionário pelo CPF" data-busca>
+            </label>
+            <select class="campo-entrada campo-filtro" aria-label="Filtrar por situação" data-filtro-situacao>
+              <option value="">Todas as situações</option>
+              <option value="Aguardando envio">Aguardando envio</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Em análise">Em análise</option>
+              <option value="Cadastrado">Cadastrado</option>
+              <option value="Conta aberta">Conta aberta</option>
+              <option value="Já é correntista">Já é correntista</option>
+            </select>
+            <!-- O filtro de unidade, oculto nesta versão (a busca é por CPF e situação): o js/acompanhar.js continua
+                 montando as opções, e com a lista escondida ele fica em "Todas as unidades". -->
+            <select class="campo-entrada campo-filtro" aria-label="Filtrar por unidade" data-filtro-unidade data-aguarda-dado
+                    hidden data-oculto-nesta-versao="filtro-de-unidade">
+              <option value="">Todas as unidades</option>
+              <option value="Fábrica · Campinas">Fábrica · Campinas</option>
+              <option value="Centro de distribuição · Jundiaí">Centro de distribuição · Jundiaí</option>
+              <option value="Escritório · São Paulo">Escritório · São Paulo</option>
+            </select>
+          </div>
+
+          <!-- Só o "Limpar filtros": esta versão não tem as consultas rápidas. -->
+          <div class="limpar-filtros">
+            <button class="filtro-rapido" type="button" data-limpar-filtros>Limpar filtros</button>
+          </div>
+
+          <!-- Quantos aparecem com os filtros atuais. -->
+          <p class="contador-resultados" data-contador-resultados aria-live="polite" data-aguarda-dado></p>
+
+          <!-- Legenda da grade com os campos obrigatórios do parâmetro (ADR-111 e ADR-143): aparece quando os dados
+               são de verdade. -->
+          <div class="legenda-da-grade" data-legenda-grade hidden>
+            <p>A grade mostra as informações obrigatórias. Clique numa pessoa para ver tudo o que os agentes encontraram.</p>
+            <p><span class="marca-obrigatorio" aria-hidden="true">*</span> Campo obrigatório no parâmetro do banco.</p>
+            <p><span class="valor-nao-encontrado">Informação não encontrada</span>: o valor não veio no arquivo ou não foi
+              identificado.</p>
+            <p><strong>Informações bancárias</strong> (código do banco, agência, conta salário e data de abertura):
+              enviadas pelo banco ao final da integração, quando a conta salário da pessoa é aberta.</p>
+          </div>
+          <!-- O "i" no canto direito, em cima da grade: explica cada situação (js/legenda_dos_status.js, textos do servidor). -->
+          <div class="linha-do-i-dos-status" data-legenda-dos-status="funcionarios" data-portal="empresa"></div>
+          <!-- Tabela: com servidor, uma coluna por campo obrigatório do parâmetro do banco (js/acompanhar.js); sem, a
+               amostra. -->
+          <div class="tabela-rolavel tabela-com-titulo-fixo" data-tabela-funcionarios data-aguarda-bloco>
+            <table class="tabela-montada tabela-funcionarios">
+              <thead data-cabeca-tabela>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">CPF</th>
+                  <th scope="col">Matrícula</th>
+                  <th scope="col">Cargo e unidade</th>
+                  <th scope="col">Admissão</th>
+                  <th scope="col">Salário</th>
+                  <th scope="col">Conta salário</th>
+                  <th scope="col">Incluído</th>
+                  <th scope="col">Situação</th>
+                </tr>
+              </thead>
+              <tbody data-corpo-tabela></tbody>
+            </table>
+          </div>
+          <!-- Aviso quando a busca não encontra ninguém. -->
+          <p class="painel-vazio" data-sem-resultados hidden>Ninguém encontrado com essa busca. Tente outro CPF ou limpe os filtros.</p>
+          <p class="nota-tabela">Clique numa pessoa para ver a ficha completa. Abrir a lista, a ficha ou baixar o arquivo fica registrado com o seu nome. "Incluído" mostra a data e quem do RH fez o envio.</p>
+        </div>
+      </section>
+
+      <!-- ============ 6. ENVIOS ============ -->
+      <!--
+        Cada envio é um <details>: um bloco pronto do navegador que abre e fecha ao clicar no <summary>
+        (a linha de resumo), sem precisar de programação. Só o envio em andamento começa aberto.
+        Com muitos envios, a lista mostra 5 por vez e o botão "Mostrar mais envios" traz os próximos
+        (js/acompanhar.js). Os arquivos em si não ficam guardados nesta versão: só a data, quem enviou,
+        quantos funcionários e a linha do tempo.
+      -->
+      <section class="secao-acompanhar" id="envios" aria-labelledby="titulo-envios">
+        <div class="cabecalho-secao">
+          <div>
+            <span class="sobretitulo">Histórico</span>
+            <h2 class="titulo-secao" id="titulo-envios">Envios</h2>
+          </div>
+          <div class="acoes-secao">
+            <!-- Abre ou fecha todos os envios de uma vez. -->
+            <button class="botao botao-contorno" type="button" data-expandir-envios>Expandir todos</button>
+            <a href="cadastrar.html" class="botao botao-contorno">
+              <svg class="icone"><use href="#icone-cadastrar"/></svg>
+              Novo envio
+            </a>
+          </div>
+        </div>
+
+        <!-- Depois de descartar um envio: o aviso, com o caminho para mandar outro arquivo (js/acompanhar.js). -->
+        <p class="aviso-descartado" data-aviso-descartado hidden role="status">
+          Envio descartado e registrado: nada foi enviado ao banco.
+          <a href="cadastrar.html">Enviar outro arquivo</a>
+        </p>
+        <div class="lista-envios" data-lista-envios data-aguarda-bloco>
+          <!-- Envio mais recente, ainda em andamento: começa aberto. -->
+          <details class="cartao envio" open data-envio>
+            <summary class="envio-cabecalho">
+              <span class="envio-icone"><svg class="icone"><use href="#icone-documento"/></svg></span>
+              <span class="envio-textos">
+                <span class="envio-titulo" data-nome-do-arquivo>inclusao_setembro.xlsx (v2)</span>
+                <span class="envio-arquivos">Inclusão · 24/09/2026 · 26 funcionários · enviado por Marina Costa</span>
+              </span>
+              <span class="selo selo-marca">Em análise</span>
+              <svg class="icone envio-seta" aria-hidden="true"><use href="#icone-abrir"/></svg>
+            </summary>
+            <!-- Linha do tempo: as 6 etapas do envio, lado a lado. Feitas (verde), a atual (na cor da marca) e a que falta (cinza). -->
+            <ol class="linha-do-tempo">
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Arquivo carregado</span><span class="passo-data">24/09 · 10:12</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Lido pelos agentes</span><span class="passo-data">24/09 · 10:13</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Conferido por você</span><span class="passo-data">24/09 · 10:20</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Enviado ao banco</span><span class="passo-data">24/09 · 10:25</span></li>
+              <li class="passo passo-atual"><span class="passo-marca"></span><span class="passo-nome">Aprovação das contas enviadas</span><span class="passo-data"></span></li>
+              <li class="passo"><span class="passo-marca"></span><span class="passo-nome">Contas abertas</span><span class="passo-data"></span></li>
+            </ol>
+            <p class="envio-nota">2 funcionários deste envio esperam um ajuste seu (veja as pendências).</p>
+          </details>
+
+          <!-- Primeira inclusão: concluída, começa recolhida. -->
+          <details class="cartao envio" data-envio>
+            <summary class="envio-cabecalho">
+              <span class="envio-icone"><svg class="icone"><use href="#icone-documento"/></svg></span>
+              <span class="envio-textos">
+                <span class="envio-titulo" data-nome-do-arquivo>inclusao_setembro.xlsx (v1)</span>
+                <span class="envio-arquivos">Inclusão · 02/09/2026 · 22 funcionários · enviado por Paulo Andrade</span>
+              </span>
+              <span class="selo selo-sucesso">Concluído</span>
+              <svg class="icone envio-seta" aria-hidden="true"><use href="#icone-abrir"/></svg>
+            </summary>
+            <ol class="linha-do-tempo">
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Arquivo carregado</span><span class="passo-data">02/09 · 14:40</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Lido pelos agentes</span><span class="passo-data">02/09 · 14:41</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Conferido por você</span><span class="passo-data">02/09 · 14:50</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Enviado ao banco</span><span class="passo-data">02/09 · 14:55</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Aprovação das contas enviadas</span><span class="passo-data">04/09 · 09:10</span></li>
+              <li class="passo passo-feito passo-parcial"><span class="passo-marca"></span><span class="passo-nome">Contas abertas</span><span class="passo-data">11/09 · 08:00</span><span class="passo-data passo-detalhe">14 de 22 contas (63%)</span></li>
+            </ol>
+          </details>
+
+          <!-- Carga inicial: concluída, começa recolhida. -->
+          <details class="cartao envio" data-envio>
+            <summary class="envio-cabecalho">
+              <span class="envio-icone"><svg class="icone"><use href="#icone-documento"/></svg></span>
+              <span class="envio-textos">
+                <span class="envio-titulo" data-nome-do-arquivo>carga_inicial_aurora.xlsx</span>
+                <span class="envio-arquivos">Carga inicial · 01/08/2026 · 290 funcionários · enviado por Marina Costa</span>
+              </span>
+              <span class="selo selo-sucesso">Concluído</span>
+              <svg class="icone envio-seta" aria-hidden="true"><use href="#icone-abrir"/></svg>
+            </summary>
+            <ol class="linha-do-tempo">
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Arquivo carregado</span><span class="passo-data">01/08 · 09:05</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Lido pelos agentes</span><span class="passo-data">01/08 · 09:07</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Conferido por você</span><span class="passo-data">01/08 · 09:30</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Enviado ao banco</span><span class="passo-data">01/08 · 09:40</span></li>
+              <li class="passo passo-feito"><span class="passo-marca"></span><span class="passo-nome">Aprovação das contas enviadas</span><span class="passo-data">05/08 · 11:00</span></li>
+              <li class="passo passo-feito passo-parcial"><span class="passo-marca"></span><span class="passo-nome">Contas abertas</span><span class="passo-data">12/08 · 08:00</span><span class="passo-data passo-detalhe">261 de 290 contas (90%)</span></li>
+            </ol>
+          </details>
+        </div>
+
+        <!-- Rodapé da lista: quantos aparecem e o botão para trazer os próximos 5. -->
+        <div class="rodape-envios">
+          <span class="contador-resultados" data-contador-envios data-aguarda-dado></span>
+          <button class="botao botao-contorno" type="button" data-mostrar-mais-envios hidden>Mostrar mais envios</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ 7. RODAPÉ, ASSISTENTE E FICHA ============ -->
+  <footer class="rodape">
+    <div class="conteudo-centralizado rodape-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <nav class="rodape-links" aria-label="Links institucionais">
+        <!-- Oculto nesta versão (ADR-148): a central de ajuda ainda não existe. -->
+        <template data-oculto-nesta-versao="central-de-ajuda"><a href="#">Central de ajuda</a></template>
+        <a href="privacidade.html">Privacidade e LGPD</a>
+        <a href="termos_de_uso.html">Termos de uso</a>
+        <!-- Oculto nesta versão (ADR-148): a empresa fala com o especialista pelo "Posso ajudar?". -->
+        <template data-oculto-nesta-versao="fale-com-seu-especialista"><a href="#">Fale com seu especialista</a></template>
+      </nav>
+    </div>
+    <!-- O aviso de que o site é um projeto. -->
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o Santander é ilustrativa: este não é um sistema oficial do banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- Assistente de IA sempre à mão, no canto da tela. -->
+  <button class="assistente-flutuante" type="button" aria-label="Abrir o assistente">
+    <svg class="icone"><use href="#icone-ia"/></svg>
+    <span class="assistente-texto">Posso ajudar?</span>
+  </button>
+
+  <!--
+    Janela com a ficha completa do funcionário. Começa fechada; abre ao clicar na pessoa na tabela.
+    Com os dados de verdade, mostra todos os campos do parâmetro, nos grupos dele (Titular, Documento, Endereço
+    residencial, Renda...), com "Informação não encontrada" no que veio em branco (ADR-143).
+  -->
+  <!--
+    Janela "Conferir a lista e enviar para o banco": a grade de cada envio pronto, com
+    as informações obrigatórias do parâmetro (js/grade_do_parametro.js; ADR-143); o clique numa pessoa mostra, logo
+    abaixo, todas as informações dela. No fim, o aceite e o envio.
+  -->
+  <dialog class="janela-beneficio janela-conferir-envio" id="janela-conferir-envio" aria-labelledby="titulo-conferir-envio">
+    <div class="janela-conteudo">
+      <div class="janela-cabecalho">
+        <div class="janela-cabecalho-textos">
+          <span class="sobretitulo">Antes de enviar</span>
+          <h2 class="janela-titulo" id="titulo-conferir-envio">Confira a lista que vai para o banco</h2>
+        </div>
+      </div>
+      <p class="janela-resumo">Cada linha é uma pessoa, com as informações obrigatórias. Confira essas; as outras que os
+        agentes encontraram vão junto. Clique numa pessoa para ver tudo o que vai para o banco.</p>
+      <div class="legenda-da-grade">
+        <p><span class="marca-obrigatorio" aria-hidden="true">*</span> Campo obrigatório no parâmetro do banco.</p>
+        <p><span class="valor-nao-encontrado">Informação não encontrada</span>: o valor não veio no arquivo ou não foi
+          identificado.</p>
+      </div>
+      <div data-grades-dos-prontos></div>
+      <label class="caixa-conferi">
+        <input type="checkbox" data-conferi-prontos>
+        Conferi a lista: as pessoas e os dados estão certos
+      </label>
+      <p class="erro-pendencia" data-erro-prontos hidden></p>
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-fechar-conferencia-prontos>Voltar</button>
+        <button class="botao botao-principal" type="button" data-enviar-prontos disabled>Enviar ao banco</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="janela-beneficio janela-ficha" id="janela-ficha" aria-labelledby="janela-ficha-nome">
+    <div class="janela-conteudo">
+      <div class="janela-cabecalho">
+        <span class="iniciais-usuario iniciais-grandes" id="janela-ficha-iniciais"></span>
+        <div class="janela-cabecalho-textos">
+          <span class="sobretitulo" id="janela-ficha-situacao"></span>
+          <h2 class="janela-titulo" id="janela-ficha-nome"></h2>
+          <p class="janela-resumo" id="janela-ficha-resumo"></p>
+        </div>
+        <button class="botao-fechar-janela" type="button" aria-label="Fechar" data-fechar-ficha>
+          <svg class="icone"><use href="#icone-fechar"/></svg>
+        </button>
+      </div>
+      <!-- Os grupos de campos são preenchidos pelo js/acompanhar.js. -->
+      <div class="ficha-grupos" id="janela-ficha-grupos"></div>
+      <!-- Histórico do cadastro dessa pessoa. -->
+      <div class="cartao-titulo-pequeno">Histórico do cadastro</div>
+      <ol class="ficha-historico" id="janela-ficha-historico"></ol>
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-fechar-ficha>Voltar</button>
+        <a href="cadastrar.html" class="botao botao-principal">Enviar uma alteração</a>
+      </div>
+    </div>
+  </dialog>
+
+  <!--
+    A conversa do cartão escolhido na lista das pendências (js/painel_da_conversa.js), numa janela por cima da tela: o
+    título do ajuste, a pergunta do agente, as respostas rápidas, a caixa e o Desfazer, do mesmo jeito que ficavam dentro
+    do cartão (a conversa, as rotas e o agente são os mesmos). O X, o Esc ou o clique fora dela fecham. No celular, ela
+    ocupa a tela inteira e fecha pelo "Voltar à lista".
+  -->
+  <dialog class="janela-beneficio janela-da-conversa" id="conversa" data-painel-da-conversa
+          aria-labelledby="titulo-da-conversa">
+    <section class="painel-acompanhar painel-da-conversa">
+      <div class="painel-cabecalho">
+        <!-- Só no celular: volta para a lista (a conversa ocupa a tela inteira). -->
+        <button class="botao botao-contorno botao-pequeno botao-voltar-a-lista" type="button" data-voltar-a-lista>
+          ← Voltar à lista
+        </button>
+        <div>
+          <span class="sobretitulo">Conversa com o Agente de validação</span>
+          <h2 class="painel-titulo" id="titulo-da-conversa" data-titulo-da-conversa>Ajuste</h2>
+        </div>
+        <!-- No computador: fecha a conversa (a tela de trás fica como estava). -->
+        <button class="botao-fechar-conversa" type="button" data-fechar-conversa aria-label="Fechar a conversa"
+                title="Fechar a conversa">
+          <svg class="icone"><use href="#icone-fechar"/></svg>
+        </button>
+      </div>
+      <!-- O cartão da conversa, montado pelo js/painel_da_conversa.js. -->
+      <div class="corpo-da-conversa" data-corpo-da-conversa></div>
+    </section>
+  </dialog>
+
+  <!-- Dados de exemplo e interações da tela. -->
+  <!-- A janela "Descartar esta leitura?", a mesma da tela Cadastrar. -->
+  <script src="js/descartar_envio.js"></script>
+  <!-- A conversa com a IA em cada pendência (o Assistente de Correção): resolve a pendência conversando. -->
+  <script src="js/assistente_de_correcao.js"></script>
+  <!-- O joinha embaixo das respostas do agente e das perguntas da leitura (ADR-151). -->
+  <script src="js/opiniao_dos_agentes.js"></script>
+  <script src="js/grade_do_parametro.js"></script>
+  <script src="js/quem_fica_de_fora.js"></script>
+  <script src="js/acompanhar.js"></script>
+  <!-- A conversa do cartão escolhido, numa janela por cima da tela (ADR-138). -->
+  <script src="js/painel_da_conversa.js"></script>
+  <!-- "Posso ajudar?": conversa com o especialista do banco (conversas.js guarda; ajuda_empresa.js mostra). -->
+  <!-- Cabeçalho com quem entrou, os contadores reais e "Minha senha" (ADR-69). -->
+  <script src="js/cabecalho_real.js"></script>
+  <script src="js/conversas.js"></script>
+  <!-- "Cadastrar funcionários": o botão do canto abre a janela do envio. -->
+  <script src="js/novo_envio.js"></script>
+  <script src="js/ajuda_empresa.js"></script>
+  <!-- O "i" em cima da grade: abre o balão com o que quer dizer cada situação (textos do servidor). -->
+  <script src="js/legenda_dos_status.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

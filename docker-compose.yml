@@ -1,0 +1,80 @@
+# Sobe a aplicação e o banco juntos, com um comando só: docker compose up (ADR-35, ADR-67).
+#
+# São dois contêineres (duas "caixas" isoladas):
+# - banco: a imagem oficial do PostgreSQL. Na primeira subida, o script docker/postgres/criar_usuario_da_aplicacao.sh
+#   cria o usuário da aplicação (sem poderes de administrador) e o banco. Os dados ficam no volume dados_do_banco,
+#   que sobrevive quando os contêineres são desligados;
+# - aplicacao: a imagem do Dockerfile. Espera o banco ficar pronto, roda scripts/preparar_servidor.py (dados de
+#   exemplo, índices do RAG e usuários da demo) e sobe a API, que atende as telas e as rotas /api na porta 8000
+#   (ADR-108).
+#
+# As senhas NUNCA ficam neste arquivo: o Docker Compose lê as variáveis ${...} do arquivo .env da mesma pasta.
+# Antes de subir, preencha no .env: SENHA_POSTGRES_ADMIN, SENHA_POSTGRES_APLICACAO (só letras e números) e as
+# três SENHA_USUARIO_* da demo. Passo a passo no README ("Com Docker").
+
+services:
+  banco:
+    # A versão do PostgreSQL da máquina local (18), na variante enxuta "alpine"
+    image: postgres:18-alpine
+    environment:
+      # O administrador do servidor: usado só pelo script da primeira subida, nunca pela aplicação
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${SENHA_POSTGRES_ADMIN:?defina SENHA_POSTGRES_ADMIN no .env}
+      # A senha do usuário da aplicação, lida pelo script de preparação
+      SENHA_POSTGRES_APLICACAO: ${SENHA_POSTGRES_APLICACAO:?defina SENHA_POSTGRES_APLICACAO no .env}
+    volumes:
+      # Onde o PostgreSQL guarda os dados (persistente)
+      - dados_do_banco:/var/lib/postgresql
+      # O script da primeira subida (só leitura)
+      - ./docker/postgres/criar_usuario_da_aplicacao.sh:/docker-entrypoint-initdb.d/criar_usuario_da_aplicacao.sh:ro
+    ports:
+      # Só para consultar pelo DBeaver na própria máquina: porta 5433 (a 5432 pode estar em uso por um PostgreSQL
+      # instalado) e só em 127.0.0.1, fechada para a rede
+      - "127.0.0.1:5433:5432"
+    healthcheck:
+      # "Pronto" só quando o servidor definitivo aceita conexão pela rede. Durante a primeira preparação, o
+      # PostgreSQL oficial sobe um servidor provisório sem rede, então a aplicação não entra antes da hora
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  aplicacao:
+    build: .
+    depends_on:
+      banco:
+        # Espera o teste de saúde do banco passar
+        condition: service_healthy
+    environment:
+      # O banco é o PostgreSQL do contêiner "banco" (o nome do serviço funciona como endereço na rede interna)
+      BANCO: postgres
+      POSTGRES_URL: postgresql://integra_folha_app:${SENHA_POSTGRES_APLICACAO}@banco:5432/integra_folha
+      # Sem chave, a aplicação roda em modo MOCK (sem custo)
+      MODE: ${MODE:-mock}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      # A rota da IA (ADR-96): "bedrock" usa a chave e a região abaixo
+      ROTA_DA_IA: ${ROTA_DA_IA:-bedrock}
+      AWS_BEARER_TOKEN_BEDROCK: ${AWS_BEARER_TOKEN_BEDROCK:-}
+      REGIAO_BEDROCK: ${REGIAO_BEDROCK:-us-east-1}
+      MODELO_GRANDE: ${MODELO_GRANDE:-}
+      MODELO_PEQUENO: ${MODELO_PEQUENO:-}
+      TETO_DE_GASTO_USD: ${TETO_DE_GASTO_USD:-10.00}
+      # Plano B (ADR-107) e conferidor (ADR-105): os mesmos valores do .env
+      INTERPRETADOR_FORMATO_GARANTIDO: ${INTERPRETADOR_FORMATO_GARANTIDO:-sim}
+      CONFERIDOR_DA_LEITURA: ${CONFERIDOR_DA_LEITURA:-sim}
+      LEITOR_ESFORCO: ${LEITOR_ESFORCO:-low}
+      # Senhas dos dois usuários da demo: o preparar_servidor.py cria os usuários com elas
+      SENHA_USUARIO_EMPRESA: ${SENHA_USUARIO_EMPRESA:-}
+      SENHA_USUARIO_BANCO: ${SENHA_USUARIO_BANCO:-}
+    volumes:
+      # Índices do RAG, modelo de embeddings (~220 MB, baixado na primeira subida), originais e arquivos homologados
+      - arquivos_da_aplicacao:/app/storage
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+volumes:
+  dados_do_banco:
+  arquivos_da_aplicacao:

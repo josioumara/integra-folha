@@ -1,0 +1,329 @@
+/*
+  acompanhar_painel.css — o bloco de cima da tela "Acompanhar cadastros" e a janela da conversa (ADR-138).
+
+  Para que serve: dá a forma do layout, sem mexer no css/estilos.css (que o portal inteiro usa):
+    - uma coluna só: os 5 números numa linha, menores e discretos, e embaixo a lista das pendências (o painel do lado,
+      "Depois do cadastro", está oculto nesta versão);
+    - os cartões da lista ficam compactos, e o cartão escolhido ganha a borda da marca;
+    - a conversa do cartão abre numa janela por cima da tela; no celular, a janela ocupa a tela inteira;
+    - a célula da grade que acabou de mudar fica amarela e se apaga devagar;
+    - a busca de funcionários por CPF e situação, e a linha das ações de cada envio do histórico.
+  Usa as variáveis de cor do css/estilos.css (ex.: --cor-marca), que é carregado antes deste arquivo.
+*/
+
+/* ===== 1. O bloco de cima ===== */
+/* Uma coluna só: os números em cima e a lista das pendências embaixo, com o mesmo respiro entre eles. */
+.bloco-acompanhar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* A coluna dos números e da lista (ela era a coluna da esquerda, ao lado do painel que está oculto). */
+.coluna-principal-acompanhar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* ===== 2. Os números numa linha só, menores e discretos ===== */
+/* Os 5 cartões lado a lado (no css/estilos.css, a grade é de 4). */
+.grade-numeros-numa-linha {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Cada cartão mais baixo: menos respiro e sem a sombra forte. */
+.grade-numeros-numa-linha .cartao-numero {
+  padding: 14px 16px;
+  gap: 4px;
+  box-shadow: none;
+  border: 1px solid var(--linha-divisoria);
+}
+
+/* O quadradinho do ícone, pequeno. */
+.grade-numeros-numa-linha .cartao-numero-icone {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+/* O ícone dentro do quadradinho, do tamanho dele. */
+.grade-numeros-numa-linha .cartao-numero-icone .icone {
+  width: 16px;
+  height: 16px;
+}
+
+/* O número em si, menor que o padrão (32 px). */
+.grade-numeros-numa-linha .cartao-numero-valor {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+/* A legenda e os selos e links do cartão, em letra pequena. */
+.grade-numeros-numa-linha .cartao-numero-legenda,
+.grade-numeros-numa-linha .link-seta,
+.grade-numeros-numa-linha .selo {
+  font-size: 12px;
+}
+
+/* A faixa colorida de cima do cartão das pendências fica mais fina: laranja com pendência, verde sem nenhuma (a borda
+   fina de cima apagaria a cor do css/estilos.css, que por isso volta aqui). */
+.grade-numeros-numa-linha .cartao-numero-atencao {
+  border-top: 3px solid var(--amarelo-atencao);
+}
+
+.grade-numeros-numa-linha .cartao-numero-em-dia {
+  border-top: 3px solid var(--verde-sucesso);
+}
+
+/* ===== 3. O painel do lado (oculto nesta versão) ===== */
+/* Quando voltar, ele gruda logo abaixo da barra do topo enquanto a página rola, e rola por dentro se for maior que a
+   tela. */
+.painel-do-lado {
+  position: sticky;
+  top: 136px;
+  max-height: calc(100vh - 152px);
+  overflow-y: auto;
+  border-radius: var(--raio-cartao);
+}
+
+/* ===== 4. A janela da conversa ===== */
+/* Mais larga que as outras janelas (a conversa tem os balões, as respostas rápidas e a caixa), e nunca mais alta que a
+   tela: o conteúdo rola por dentro. */
+.janela-da-conversa {
+  width: min(720px, calc(100% - 32px));
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+/* A linha de cima da conversa: o título à esquerda e o X à direita, alinhados pelo alto. */
+.painel-da-conversa .painel-cabecalho {
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+/* O título do ajuste pode ser longo: quebra a linha em vez de empurrar o X para fora. */
+.painel-da-conversa .painel-titulo {
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+/* O X que fecha a conversa: um botão redondo e discreto. */
+.botao-fechar-conversa {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 50%;
+  background: var(--branco);
+  color: var(--texto-secundario);
+  cursor: pointer;
+}
+
+/* Ao passar o mouse, o X ganha a cor da marca. */
+.botao-fechar-conversa:hover {
+  color: var(--cor-marca);
+  border-color: var(--cor-marca);
+}
+
+/* O "Voltar à lista" só existe no celular (a janela em tela cheia); no computador, fica escondido. */
+.botao-voltar-a-lista {
+  display: none;
+}
+
+/* O cartão da conversa dentro da janela: sem a borda de cartão (a janela já é o cartão), com a faixa de atenção. */
+.ajuste-no-painel {
+  padding: 0 0 0 14px;
+  border: none;
+  border-left: 4px solid var(--amarelo-atencao);
+  border-radius: 0;
+}
+
+/* Resolvida na janela: a faixa fica verde, como o cartão na lista. */
+.ajuste-no-painel.ajuste-resolvido {
+  border-left-color: var(--verde-sucesso);
+}
+
+/* O resumo e o "quem resolveu" de uma pendência resolvida, abertos na janela. */
+.ajuste-no-painel .resumo-da-resolvida,
+.ajuste-no-painel .quem-resolveu {
+  margin: 0;
+}
+
+/* ===== 5. Os cartões compactos da lista ===== */
+/* O cartão inteiro responde ao clique (abre a conversa na janela). */
+.ajuste-compacto {
+  cursor: pointer;
+  gap: 6px;
+}
+
+/* Ao passar o mouse, a borda escurece um pouco: dá para clicar. */
+.ajuste-compacto:hover {
+  border-color: var(--cor-marca-degrade);
+}
+
+/* A pergunta do agente, em até 2 linhas (o resto fica na conversa, na janela). */
+.ajuste-previa {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* O "Abrir a conversa ›": um link discreto na cor da marca, à direita, embaixo do cartão. */
+.botao-abrir-conversa {
+  align-self: flex-end;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--cor-marca);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* O cartão escolhido (a conversa dele está aberta na janela): a borda e o fundo suave da marca. */
+.ajuste-escolhido {
+  border-color: var(--cor-marca);
+  background: var(--cor-marca-clara);
+}
+
+/* ===== 6. A célula da grade que acabou de mudar ===== */
+/* Amarela no começo, e o amarelo se apaga devagar (20 s, o mesmo tempo do destaque no js/acompanhar.js). */
+.celula-que-mudou {
+  animation: destacar-a-celula 20s ease-out forwards;
+  font-weight: 700;
+}
+
+@keyframes destacar-a-celula {
+  0%,
+  25% {
+    background: #fff3b0;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+/* Com "reduzir movimento" ligado no computador, o amarelo fica parado (sem a animação), até o destaque acabar. */
+@media (prefers-reduced-motion: reduce) {
+  .celula-que-mudou {
+    animation: none;
+    background: #fff3b0;
+  }
+}
+
+/* ===== 7. A busca de funcionários e as ações de cada envio ===== */
+/* A busca por CPF (mais larga) e a situação, lado a lado (no css/estilos.css, a barra tem 3 colunas: a terceira era a
+   da unidade, oculta nesta versão). */
+.barra-consulta-cpf-e-situacao {
+  grid-template-columns: 2fr 1fr;
+}
+
+/* A linha das ações no fim do cartão de um envio: "Descartar este envio" no canto esquerdo e "Conferir arquivo" no
+   canto direito. */
+.acoes-do-envio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* "Descartar este envio": com cara de link, em letra menor. */
+.botao-descartar-envio {
+  font-size: 12px;
+}
+
+/* "Conferir arquivo": sempre no canto direito (mesmo sozinho na linha), discreto, em cinza, sublinhado ao passar o
+   mouse. */
+.link-conferir-arquivo {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+  text-decoration: none;
+}
+
+/* Ao passar o mouse (ou com o foco do teclado), o link ganha a cor da marca e o sublinhado. */
+.link-conferir-arquivo:hover,
+.link-conferir-arquivo:focus-visible {
+  color: var(--cor-marca);
+  text-decoration: underline;
+}
+
+/* ===== 8. Telas menores ===== */
+/* Tablets e celulares: os números em duas colunas, e a janela da conversa ocupa a tela inteira, com o "Voltar à
+   lista" no lugar do X. */
+@media (max-width: 1024px) {
+  .grade-numeros-numa-linha {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* A janela em tela cheia, por cima de tudo, rolando por dentro. */
+  .janela-da-conversa {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  /* Com a janela em tela cheia, a página de trás não rola. */
+  body.conversa-em-tela-cheia {
+    overflow: hidden;
+  }
+
+  /* No celular, a conversa fecha pelo "Voltar à lista", e não pelo X. */
+  .botao-voltar-a-lista {
+    display: inline-flex;
+  }
+
+  .botao-fechar-conversa {
+    display: none;
+  }
+
+  /* O cabeçalho da conversa em coluna: o "Voltar à lista" em cima do título. */
+  .painel-da-conversa .painel-cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Celulares estreitos: os números continuam 2 a 2 (o css/estilos.css põe um embaixo do outro nessa largura), e a busca
+   e a situação ficam uma embaixo da outra. */
+@media (max-width: 640px) {
+  .grade-numeros-numa-linha {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .barra-consulta-cpf-e-situacao {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* O recado do "Baixar lista" (js/acompanhar.js, mostrar_recado_do_download): logo abaixo do botão e alinhado com ele,
+   em laranja, como as outras recusas da tela. O cabeçalho da seção tem um respiro grande embaixo, e o recado sobe
+   para ficar perto do botão. */
+.recado-do-download {
+  margin: -18px 0 16px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amarelo-atencao);
+}
+
+/* No celular, o cabeçalho da seção vira coluna e o botão fica à esquerda: o recado acompanha. */
+@media (max-width: 640px) {
+  .recado-do-download {
+    text-align: left;
+  }
+}

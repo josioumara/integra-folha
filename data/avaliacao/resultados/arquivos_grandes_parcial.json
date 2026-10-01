@@ -1,0 +1,119 @@
+{
+  "medido_em": "2026-09-30",
+  "modo": "MOCK (IA simulada: cada chamada contada, com o tamanho do pedido); SQLite temporário",
+  "maquina": "o notebook do projeto: Intel Core i5-9300H (4 núcleos e 8 threads), 16 GB de RAM, Windows 11 Pro, Python 3.12.10",
+  "caminho": "cadastro.enviar_arquivo (até a proposta das colunas) + cadastro.aceitar_mapeamento (padronizar e validar), sem nenhuma escolha de coluna",
+  "arquivos": "as 44 colunas do layout v1 (scripts/gerar_dados.py, semente 20260930 com um deslocamento por arquivo); CSV separado por \";\" e XLSX",
+  "parametro_do_banco_temporario": "a v1 dos arquivos do projeto (o banco novo nasce com ela), e não a v7 em uso",
+  "memoria": "o pico de memória do processo (RSS), lido a cada 0,1 s com o psutil",
+  "limite_de_envio_mb": 5,
+  "interrompido": true,
+  "limitacao": "medido até 10.000 linhas em CSV e 5.000 em XLSX; sem documentos (Word e PDF); medição interrompida",
+  "ficaram_sem_medir": [
+    "grande_10000.xlsx",
+    "grande_20000.csv",
+    "grande_20000.xlsx",
+    "grande_20001.csv",
+    "grande_20001.xlsx",
+    "minima_20000.csv",
+    "documentos Word: tabela (200, 1.000 e 3.000 pessoas) e texto corrido simples e variado (50, 200 e 1.000 pessoas)"
+  ],
+  "script": "D:\\AI_Payroll_Hub\\.claude\\agent-memory\\cientista-dados\\ferramentas\\teste_arquivos_grandes.py (fora do repositório)",
+  "medidas": [
+    {
+      "arquivo": "grande_1000.csv",
+      "megabytes": 0.45,
+      "passa_do_limite_de_upload": false,
+      "segundos_ate_o_mapeamento": 15.0,
+      "pico_de_memoria_mb_no_envio": 740,
+      "resposta_do_envio_kb": 14,
+      "segundos_no_aceite": 5.0,
+      "pico_de_memoria_mb_no_aceite": 750,
+      "resposta_do_aceite_kb": 15,
+      "etapa": "aguardar_correcao",
+      "erro_na_leitura": null,
+      "chamadas_a_ia": {
+        "interpretar_colunas": 1
+      },
+      "caracteres_dos_pedidos": {
+        "interpretar_colunas": 26322
+      }
+    },
+    {
+      "arquivo": "grande_1000.xlsx",
+      "megabytes": 0.27,
+      "passa_do_limite_de_upload": false,
+      "segundos_ate_o_mapeamento": 23.7,
+      "pico_de_memoria_mb_no_envio": 774,
+      "resposta_do_envio_kb": 14,
+      "segundos_no_aceite": 20.1,
+      "pico_de_memoria_mb_no_aceite": 776,
+      "resposta_do_aceite_kb": 15,
+      "etapa": "aguardar_correcao",
+      "erro_na_leitura": null,
+      "chamadas_a_ia": {
+        "interpretar_colunas": 1
+      },
+      "caracteres_dos_pedidos": {
+        "interpretar_colunas": 26310
+      }
+    },
+    {
+      "arquivo": "grande_5000.csv",
+      "megabytes": 2.27,
+      "passa_do_limite_de_upload": false,
+      "segundos_ate_o_mapeamento": 16.9,
+      "pico_de_memoria_mb_no_envio": 799,
+      "resposta_do_envio_kb": 14,
+      "segundos_no_aceite": 17.1,
+      "pico_de_memoria_mb_no_aceite": 815,
+      "resposta_do_aceite_kb": 15,
+      "etapa": "aguardar_correcao",
+      "erro_na_leitura": null,
+      "chamadas_a_ia": {
+        "interpretar_colunas": 1
+      },
+      "caracteres_dos_pedidos": {
+        "interpretar_colunas": 26332
+      }
+    },
+    {
+      "arquivo": "grande_5000.xlsx",
+      "megabytes": 1.3,
+      "passa_do_limite_de_upload": false,
+      "segundos_ate_o_mapeamento": 61.6,
+      "pico_de_memoria_mb_no_envio": 871,
+      "resposta_do_envio_kb": 14,
+      "segundos_no_aceite": 109.0,
+      "pico_de_memoria_mb_no_aceite": 928,
+      "resposta_do_aceite_kb": 15,
+      "etapa": "aguardar_correcao",
+      "erro_na_leitura": null,
+      "chamadas_a_ia": {
+        "interpretar_colunas": 1
+      },
+      "caracteres_dos_pedidos": {
+        "interpretar_colunas": 26332
+      }
+    },
+    {
+      "arquivo": "grande_10000.csv",
+      "megabytes": 4.53,
+      "passa_do_limite_de_upload": false,
+      "segundos_ate_o_mapeamento": 36.0,
+      "pico_de_memoria_mb_no_envio": 917,
+      "resposta_do_envio_kb": 14,
+      "segundos_no_aceite": 51.9,
+      "pico_de_memoria_mb_no_aceite": 907,
+      "resposta_do_aceite_kb": 15,
+      "etapa": "aguardar_correcao",
+      "erro_na_leitura": null,
+      "chamadas_a_ia": {
+        "interpretar_colunas": 1
+      },
+      "caracteres_dos_pedidos": {
+        "interpretar_colunas": 26325
+      }
+    }
+  ]
+}

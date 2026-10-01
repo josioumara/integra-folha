@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+  banco_beneficios.html — endereço antigo da tela "Benefícios e KBs" do Portal Interno, que foi aposentada (ADR-125).
+
+  Para que serve: só leva quem ainda abre este endereço (um favorito, um link velho) para as guias da aba
+  Endomarketing, onde as KBs ficam: "Base de Conhecimento" (as de cada empresa) e "Regras gerais" (as que valem
+  para todas as empresas). Quem leva é o js/levar_ao_endomarketing.js (o servidor não deixa script dentro da página).
+  Como o nome começa com "banco_", o servidor continua deixando só o perfil do banco abrir.
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Endomarketing | Portal Interno</title>
+  <!-- Aparência comum aos dois portais (para o link de reserva abaixo). -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <!-- Reserva: se o navegador não seguir sozinho, a pessoa clica. -->
+  <p class="conteudo-centralizado">As KBs ficam nas guias do Endomarketing.
+    <a href="banco_endomarketing.html?aba=regras">Ir para o Endomarketing</a></p>
+  <!-- Leva para a guia certa (a Base de Conhecimento da empresa pedida, ou as Regras gerais). -->
+  <script src="js/levar_ao_endomarketing.js"></script>
+</body>
+</html>

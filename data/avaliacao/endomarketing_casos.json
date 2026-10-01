@@ -1,0 +1,132 @@
+{
+  "_sobre": "Casos da avaliação do Agente de Endomarketing (Fase 14, ADR-61). 'materiais': todo tipo de material para toda empresa. 'destaques_fora_do_catalogo': assuntos que o catálogo da empresa NÃO traz (três deles existem no catálogo de OUTRA empresa, o que também testa o isolamento): o certo é avisar e não escrever nada sobre eles. 'destaques_no_catalogo': assuntos que o catálogo da empresa traz: o certo é achar e citar a seção. 'desenvolvimento_da_distancia': destaques de OUTROS assuntos, usados só para ver se uma distância máxima separa 'o catálogo tem' de 'não tem' (não servem para medir o resultado final).",
+  "materiais": {
+    "empresas": [
+      "EMP001",
+      "EMP002",
+      "EMP003",
+      "EMP004",
+      "EMP005",
+      "EMP006"
+    ],
+    "tipos": [
+      "comunicado",
+      "faq",
+      "kit_boas_vindas"
+    ]
+  },
+  "destaques_fora_do_catalogo": [
+    {
+      "id": "aurora_seguro",
+      "empresa_id": "EMP001",
+      "destaque": "seguro de vida em grupo",
+      "existe_em": "EMP002"
+    },
+    {
+      "id": "brisa_previdencia",
+      "empresa_id": "EMP003",
+      "destaque": "previdência privada",
+      "existe_em": "EMP006"
+    },
+    {
+      "id": "vale_verde_investimentos",
+      "empresa_id": "EMP004",
+      "destaque": "investimentos",
+      "existe_em": "EMP003"
+    },
+    {
+      "id": "horizonte_refeicao",
+      "empresa_id": "EMP002",
+      "destaque": "vale-refeição",
+      "existe_em": null
+    }
+  ],
+  "destaques_no_catalogo": [
+    {
+      "id": "horizonte_seguro",
+      "empresa_id": "EMP002",
+      "destaque": "seguro de vida em grupo",
+      "secao": "Seguro de vida em grupo"
+    },
+    {
+      "id": "atlantico_previdencia",
+      "empresa_id": "EMP006",
+      "destaque": "previdência privada",
+      "secao": "Previdência privada"
+    },
+    {
+      "id": "prisma_cartao",
+      "empresa_id": "EMP005",
+      "destaque": "cartão de crédito",
+      "secao": "Cartão de crédito"
+    },
+    {
+      "id": "brisa_investimentos",
+      "empresa_id": "EMP003",
+      "destaque": "investimentos",
+      "secao": "Investimentos"
+    }
+  ],
+  "desenvolvimento_da_distancia": [
+    {
+      "empresa_id": "EMP002",
+      "destaque": "adiantamento salarial",
+      "catalogo_tem": true
+    },
+    {
+      "empresa_id": "EMP003",
+      "destaque": "conta digital",
+      "catalogo_tem": true
+    },
+    {
+      "empresa_id": "EMP004",
+      "destaque": "crédito consignado",
+      "catalogo_tem": true
+    },
+    {
+      "empresa_id": "EMP005",
+      "destaque": "pacote Folha Plus",
+      "catalogo_tem": true
+    },
+    {
+      "empresa_id": "EMP006",
+      "destaque": "conta para profissionais de saúde",
+      "catalogo_tem": true
+    },
+    {
+      "empresa_id": "EMP001",
+      "destaque": "portabilidade do salário",
+      "catalogo_tem": true
+    },
+    {
+      "empresa_id": "EMP005",
+      "destaque": "adiantamento salarial",
+      "catalogo_tem": false
+    },
+    {
+      "empresa_id": "EMP001",
+      "destaque": "conta digital",
+      "catalogo_tem": false
+    },
+    {
+      "empresa_id": "EMP003",
+      "destaque": "crédito consignado",
+      "catalogo_tem": false
+    },
+    {
+      "empresa_id": "EMP006",
+      "destaque": "pacote Folha Plus",
+      "catalogo_tem": false
+    },
+    {
+      "empresa_id": "EMP004",
+      "destaque": "plano odontológico",
+      "catalogo_tem": false
+    },
+    {
+      "empresa_id": "EMP002",
+      "destaque": "desconto em academia",
+      "catalogo_tem": false
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "id": "EXP-013",
+  "data": "2026-09-27",
+  "titulo": "Formato garantido no Bedrock: triagem de 7 modelos no Interpretador (B3)",
+  "tipo": "interpretador",
+  "pergunta": "Com o formato garantido (esquema ou ferramenta forçada), o Nova e os modelos de pesos abertos chegam perto do Claude? Algum é melhor ou mais barato que o Sonnet 4.6?",
+  "o_que_testamos": "INTERPRETADOR_FORMATO_GARANTIDO=sim: esquema da resposta pelo Converse (Sonnet 4.6, Haiku 4.5, Mistral Large 3, DeepSeek V3.2, Qwen3 VL 235B) e ferramenta forçada (Nova Pro e Nova 2 Lite, que recusam o esquema). Triagem nas 10 primeiras planilhas da amostra do EXP-008, 7 modelos ao mesmo tempo. Kimi K3 ficou de fora: US$ 0,21 por planilha na prova rápida (4 vezes o Sonnet 4.6).",
+  "amostra": "10 planilhas sorteadas da prova congelada (semente fixa)",
+  "modo": "IA real",
+  "resultados": [
+    {
+      "nome": "B0",
+      "modelo": "dicionário (sem IA)",
+      "metricas": {
+        "acuracia_por_campo": 0.5272727272727272,
+        "ic95_acuracia_por_campo": [
+          0.46496815286624205,
+          0.5900621118012422
+        ],
+        "abstencao_recall": 0.6086956521739131,
+        "abstencao_precisao": 0.4827586206896552,
+        "acerto_geral": 0.5372340425531915,
+        "custo_usd": 0.0,
+        "segundos_por_planilha": 0.0066,
+        "planilhas_pontuadas": 10
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "mistral-large-3",
+      "metricas": {
+        "acuracia_por_campo": 0.7696969696969697,
+        "ic95_acuracia_por_campo": [
+          0.6962962962962963,
+          0.8435754189944135
+        ],
+        "abstencao_recall": 0.8695652173913043,
+        "abstencao_precisao": 0.40816326530612246,
+        "acerto_geral": 0.7819148936170213,
+        "custo_usd": 0.0595,
+        "custo_por_planilha_usd": 0.00595,
+        "segundos_por_planilha": 9.25,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 10
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "acuracia_por_campo": 0.7878787878787878,
+        "ic95_acuracia_por_campo": [
+          0.7555555555555555,
+          0.8235294117647058
+        ],
+        "abstencao_recall": 0.9565217391304348,
+        "abstencao_precisao": 0.4230769230769231,
+        "acerto_geral": 0.8085106382978723,
+        "custo_usd": 0.0799,
+        "custo_por_planilha_usd": 0.00799,
+        "segundos_por_planilha": 9.58,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 10
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "claude-haiku-4-5",
+      "metricas": {
+        "acuracia_por_campo": 0.8121212121212121,
+        "ic95_acuracia_por_campo": [
+          0.7758620689655172,
+          0.8544303797468354
+        ],
+        "abstencao_recall": 0.9130434782608695,
+        "abstencao_precisao": 0.4772727272727273,
+        "acerto_geral": 0.824468085106383,
+        "custo_usd": 0.1728,
+        "custo_por_planilha_usd": 0.01728,
+        "segundos_por_planilha": 10.15,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 10
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "nova-pro",
+      "metricas": {
+        "acuracia_por_campo": 0.7757575757575758,
+        "ic95_acuracia_por_campo": [
+          0.5949367088607594,
+          0.9102564102564102
+        ],
+        "abstencao_recall": 0.9565217391304348,
+        "abstencao_precisao": 0.3793103448275862,
+        "acerto_geral": 0.7978723404255319,
+        "custo_usd": 0.1239,
+        "custo_por_planilha_usd": 0.01239,
+        "segundos_por_planilha": 16.01,
+        "respostas_fora_do_contrato": 1,
+        "planilhas_pontuadas": 10
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "claude-sonnet-4-6",
+      "metricas": {
+        "acuracia_por_campo": 0.8121212121212121,
+        "ic95_acuracia_por_campo": [
+          0.7547169811320755,
+          0.8735632183908046
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.4339622641509434,
+        "acerto_geral": 0.8351063829787234,
+        "custo_usd": 0.5154,
+        "custo_por_planilha_usd": 0.05154,
+        "segundos_por_planilha": 16.16,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 10
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "qwen3-vl-235b",
+      "metricas": {
+        "acuracia_por_campo": 0.8121212121212121,
+        "ic95_acuracia_por_campo": [
+          0.775,
+          0.851063829787234
+        ],
+        "abstencao_recall": 1.0,
+        "abstencao_precisao": 0.48936170212765956,
+        "acerto_geral": 0.8351063829787234,
+        "custo_usd": 0.0885,
+        "custo_por_planilha_usd": 0.00885,
+        "segundos_por_planilha": 38.34,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 10
+      }
+    },
+    {
+      "nome": "B3",
+      "modelo": "deepseek-v3.2",
+      "metricas": {
+        "acuracia_por_campo": 0.6909090909090909,
+        "ic95_acuracia_por_campo": [
+          0.5238095238095238,
+          0.8037974683544303
+        ],
+        "abstencao_recall": 0.9565217391304348,
+        "abstencao_precisao": 0.3283582089552239,
+        "acerto_geral": 0.723404255319149,
+        "custo_usd": 0.0753,
+        "custo_por_planilha_usd": 0.00753,
+        "segundos_por_planilha": 38.49,
+        "respostas_fora_do_contrato": 0,
+        "planilhas_pontuadas": 10
+      }
+    }
+  ],
+  "leitura": "O formato garantido acabou com as respostas fora do contrato (0 em 6 modelos, 1 no Nova Pro) e mudou o quadro: Nova 2 Lite 31,0% → 78,8%, Nova Pro 6,6% → 77,6%, Haiku 4.5 65,8% → 81,2%. Sonnet 4.6, Qwen3 235B e Haiku 4.5 empatam em 81,2%; Nova 2 Lite 78,8%, Nova Pro 77,6% e Mistral Large 3 77,0% ficam logo atrás; DeepSeek V3.2 69,1%. Com 10 planilhas, as diferenças entre os seis primeiros cabem na margem de erro. Custo por planilha: Qwen US$ 0,009 e Nova 2 Lite US$ 0,008, contra US$ 0,052 do Sonnet 4.6. Mistral pede ajuda menos vezes quando devia (87%).",
+  "decisao": "Sugestão (ADR-107, decisão pendente): medir nas 30 planilhas os candidatos a modelo pequeno (Nova 2 Lite, Qwen3 235B e Haiku 4.5) e o Sonnet 4.6 com formato garantido, para escolher o par do plano B com número.",
+  "custo_usd": 1.1153,
+  "fonte": "data/avaliacao/resultados/triagem_formato_garantido_bedrock.json",
+  "commit": "e672257"
+}

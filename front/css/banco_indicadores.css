@@ -1,0 +1,391 @@
+/*
+  banco_indicadores.css — aparência só da aba "Indicadores" do Portal Interno (banco_indicadores.html).
+
+  Para que serve: a aba tem duas guias:
+    - o "Painel de acompanhamento", um relatório só com o filtro do alto (empresa e estado), dividido em partes
+      numeradas ("1 · A carteira em números", "2 · Onde as empresas travam", "3 · O potencial da carteira",
+      "4 · Empresa por empresa");
+    - o "Simulador de Rentabilidade", com a empresa da simulação e o ganho aberto por grupo.
+  A guia "Converse com o Consultor" saiu com o Consultor (ADR-144). O resto (cartões, tabelas, funil) vem de
+  css/estilos.css e css/banco.css. Carregado depois do css/banco.css.
+*/
+
+/* ===== 1. As duas guias no alto ===== */
+
+/* Cada guia um pouco maior que as abas da ficha da empresa, com o ícone ao lado do nome. */
+.guias-indicadores .aba-ficha {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  font-size: 16px;
+}
+
+/* ===== 2. As partes do painel de acompanhamento ===== */
+
+/* O painel inteiro: as partes empilhadas, com mais espaço entre elas do que dentro delas. */
+.painel-indicadores {
+  gap: 48px;
+}
+
+/* Cada parte do painel: título e blocos empilhados. */
+.parte-do-painel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* O título da parte, com uma linha fina em cima que separa uma parte da outra. */
+.cabecalho-parte-painel {
+  padding-top: 20px;
+  border-top: 1px solid var(--linha-divisoria);
+}
+
+/* O título grande da parte (o sobretítulo numerado fica acima dele). */
+.titulo-parte-painel {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+/* Um grupo dentro da parte (ex.: "Uso do portal pelas empresas" e "Planejamento das contas"). */
+.grupo-do-painel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* O título de cada grupo: menor que o da parte. */
+.titulo-grupo-painel {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* A frase curta abaixo do título do grupo ou da parte. */
+.descricao-grupo-painel {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--texto-secundario);
+  max-width: 720px;
+}
+
+/* Dentro das partes, o título de cada cartão fica um pouco menor que o título da parte. */
+.parte-do-painel .painel-titulo {
+  font-size: 20px;
+}
+
+/* ===== 3. Telas pequenas (celular) ===== */
+@media (max-width: 640px) {
+  /* Títulos das partes menores no celular. */
+  .titulo-parte-painel {
+    font-size: 22px;
+  }
+
+  /* As guias dividem a largura e o texto pode quebrar em duas linhas. */
+  .guias-indicadores .aba-ficha {
+    flex: 1;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    padding: 10px 8px;
+    font-size: 15px;
+  }
+}
+
+/* ===== 4. O filtro do alto do painel ===== */
+
+/* A empresa (larga), o estado e o botão "Limpar" lado a lado, alinhados pela base; o aviso e a nota embaixo. */
+.filtro-dos-indicadores {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 16px;
+}
+
+/* O aviso e a nota ocupam a linha inteira, embaixo dos campos. */
+.filtro-indicadores-aviso,
+.filtro-indicadores-nota {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+/* As caixas do filtro e da empresa do simulador um pouco mais baixas, como as das premissas. */
+.filtro-dos-indicadores .campo-entrada,
+.escolha-empresa-simulador .campo-entrada {
+  padding: 10px 12px;
+}
+
+/* A empresa da simulação e o botão "Todas as empresas" lado a lado, alinhados pela base. */
+.escolha-empresa-simulador {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+/* A caixa da empresa ocupa o espaço que sobra, e pode encolher no celular. */
+.escolha-empresa-simulador .campo {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+/* ===== 5. O Simulador de Rentabilidade ===== */
+
+/* O título à esquerda e o selo de onde vêm as premissas (oficiais ou simulação) à direita. */
+.simulador-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* As caixas das premissas um pouco mais baixas, como as dos filtros. */
+.simulador-premissas .campo-entrada {
+  padding: 10px 12px;
+}
+
+/* O valor oficial embaixo de cada premissa, em letra pequena. */
+.simulador-oficial {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* O nome da simulação e o botão "Salvar" lado a lado, alinhados pela base. */
+.simulador-salvar {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* A caixa do nome ocupa o espaço que sobra, e pode encolher no celular. */
+.simulador-salvar-nome {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+/* A lista das simulações salvas: uma por linha, com o botão "Reabrir" ao lado. */
+.lista-simulacoes {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.simulacao-salva {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* A rentabilidade de cada grupo alinhada à direita, como dinheiro. */
+.tabela-aberturas td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ===== 6. As seções do Simulador de Rentabilidade ===== */
+
+/* Cada seção separada por uma linha fina; o fieldset (grupo de campos) perde a moldura padrão do navegador. */
+.secao-simulador {
+  margin: 16px 0 0;
+  padding: 16px 0 0;
+  border: 0;
+  border-top: 1px solid var(--linha-divisoria);
+  min-width: 0;
+}
+
+/* O título numerado de cada seção ("1. Empresa", "2. Premissas globais"...). */
+.titulo-secao-simulador {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 0;
+  font-family: var(--fonte-titulos);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+/* Os valores travados (as premissas oficiais, o que a empresa enviou, o que o banco confirmou), lado a lado. */
+.rotulos-travados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 8px;
+}
+
+/* Um valor travado: fundo cinza e borda tracejada, para não parecer um campo que se digita. */
+.rotulo-travado {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background: var(--fundo-pagina);
+  border: 1px dashed #c7ccce;
+  border-radius: 10px;
+}
+
+/* O nome do valor travado, pequeno; o valor, em destaque. */
+.rotulo-travado span {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+.rotulo-travado strong {
+  font-size: 16px;
+}
+
+/* O campo que depende da especialista: fundo e borda na cor de atenção, para chamar o olhar. */
+.campo-entrada.campo-do-especialista {
+  background: var(--amarelo-atencao-claro);
+  border: 2px solid var(--amarelo-atencao);
+}
+
+/* Em foco, o halo também na cor de atenção. */
+.campo-entrada.campo-do-especialista:focus {
+  border-color: var(--amarelo-atencao);
+  box-shadow: 0 0 0 3px var(--amarelo-atencao-claro);
+}
+
+/* A legenda da cor, no alto do simulador: uma amostra do campo em destaque e o texto. */
+.legenda-do-especialista {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+.amostra-do-especialista {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background: var(--amarelo-atencao-claro);
+  border: 2px solid var(--amarelo-atencao);
+  border-radius: 4px;
+}
+
+/* A taxa que ainda falta: o rótulo ganha o aviso "Falta informar" (o JS põe a classe no campo vazio). */
+.campo-falta-informar .campo-rotulo::after {
+  content: " · Falta informar";
+  font-weight: 700;
+  color: var(--amarelo-atencao);
+}
+
+/* O botão "Voltar às premissas oficiais": menor e à direita. */
+.botoes-a-direita {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.botao-mini {
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+/* A etiqueta da simulação salva que está aberta: na cor da marca, logo abaixo do título. */
+.simulacao-aberta {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 6px 8px 6px 14px;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca-escura);
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+/* Escondida (nenhuma simulação aberta): o display acima não pode vencer o atributo hidden. */
+.simulacao-aberta[hidden] {
+  display: none;
+}
+
+/* O aviso de que a simulação aberta foi mudada depois de reaberta, em cor de atenção. */
+.ajustes-da-simulacao-aberta {
+  color: var(--amarelo-atencao);
+  font-weight: 700;
+}
+
+/* O × da etiqueta: discreto, redondo. */
+.botao-fechar-etiqueta {
+  display: inline-flex;
+  border: none;
+  background: none;
+  padding: 2px;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.botao-fechar-etiqueta .icone {
+  width: 16px;
+  height: 16px;
+}
+
+.botao-fechar-etiqueta:focus-visible {
+  outline: 2px solid var(--cor-marca);
+}
+
+/* A janela "Visualizar" da simulação salva: mais larga, com rolagem se não couber na tela. */
+.janela-simulacao {
+  width: min(840px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+}
+
+/* Os blocos da janela com um respiro entre eles. */
+.janela-simulacao .titulo-secao-simulador {
+  margin-top: 20px;
+}
+
+/* O total da simulação em destaque, numa faixa verde. */
+.total-da-simulacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 20px;
+  background: var(--verde-sucesso-claro);
+  border-radius: 12px;
+}
+
+.total-da-simulacao strong {
+  font-size: 24px;
+  color: var(--verde-sucesso);
+}
+
+/* Os botões "Visualizar" e "Reabrir" lado a lado, na linha da simulação salva. */
+.botoes-da-simulacao {
+  display: flex;
+  gap: 8px;
+}
+
+/* A estimativa de clientes: uma caixa só, sem ocupar a linha inteira no computador. */
+.campo-estimativa {
+  max-width: 320px;
+}
+
+/* Os grupos que não trazem rentabilidade nova ficam em cinza na tabela do resultado. */
+.tabela-aberturas .linha-sem-rentabilidade td {
+  color: var(--texto-secundario);
+}
+
+/* No celular, o filtro do alto vira uma coluna só. */
+@media (max-width: 640px) {
+  .filtro-dos-indicadores {
+    grid-template-columns: 1fr;
+  }
+}

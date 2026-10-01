@@ -1,0 +1,95 @@
+{
+  "id": "EXP-020",
+  "data": "2026-09-30",
+  "titulo": "Endomarketing pelo RAGAS: os materiais são fiéis ao catálogo, e o juiz serve de filtro, não de régua",
+  "tipo": "endomarketing",
+  "pergunta": "Os materiais que o Agente de Endomarketing gera com a IA real são fiéis ao catálogo (cada afirmação está no trecho que o bloco cita) e respondem ao pedido? E dá para confiar num juiz automático (o RAGAS com um LLM como juiz) para medir isso?",
+  "o_que_testamos": "Os 86 materiais GERADOS da etapa 2 do EXP-019 (prompt endomarketing_v4, Claude Sonnet 4.6), como estavam (a foto de antes da v5), com os trechos que a IA recebeu reconstruídos do catálogo vigente numa cópia do PostgreSQL (86 de 86 iguais pelas fontes e pela conferência do próprio agente). O RAGAS 0.4.3 num ambiente separado (.venv-avaliacao): a Faithfulness de cada bloco contra o trecho que ele cita e os fatos do pedido (quem assina e que o banco é o parceiro da folha), e a AnswerRelevancy de cada material contra a pergunta do tipo dele (os embeddings do projeto). Os prompts do RAGAS traduzidos pelo próprio RAGAS e conferidos à mão. O juiz é o Mistral Large 3 pelo Bedrock (outra família que o gerador; a rota do projeto, com o formato garantido e o teto). A afirmação sem sustentação na fonte citada é conferida de novo contra todos os trechos do material (citada errado × inventada). Três adaptações vistas em 2 ensaios: a pergunta neutra na fidelidade (com o pedido, o juiz tirava afirmações do pedido), o título à parte e a pergunta do tipo na relevância. Para ler o juiz: a concordância com outro juiz de IA (o GPT rotulou 50 blocos sorteados antes do juiz, fora da aplicação; kappa de Cohen) e a conferência de 10 blocos pelo agente que mede (uma IA). Sem calibração humana (ADR-152).",
+  "amostra": "86 materiais de 7 empresas: 367 blocos com fonte e 2.481 afirmações neles, mais 86 títulos (236 afirmações) à parte; 50 blocos rotulados por outro juiz de IA, o GPT (sorteio com a semente 20260930, antes do juiz); 10 blocos conferidos pelo agente que mede, uma IA (5 que o juiz achou com problema e 5 que achou fiéis, fora da planilha)",
+  "modo": "IA real no juiz (Mistral Large 3 pelo Bedrock); nenhum material novo foi gerado",
+  "resultados": [
+    {
+      "nome": "Fidelidade à fonte citada (o RAGAS), média por material",
+      "modelo": "mistral-large-3",
+      "metricas": {
+        "Valor": 0.871,
+        "IC 95%": [
+          0.849,
+          0.892
+        ],
+        "Detalhe": "afirmações somadas 0,877 (2.176 de 2.481); 13 de 86 materiais inteiros; blocos: 184 fiel, 179 em parte, 4 não fiel"
+      }
+    },
+    {
+      "nome": "Fidelidade ao catálogo inteiro (a 2ª conferência)",
+      "modelo": "mistral-large-3",
+      "metricas": {
+        "Valor": 0.94,
+        "IC 95%": [
+          0.922,
+          0.955
+        ],
+        "Detalhe": "305 afirmações sem sustentação na fonte citada: 159 em outro trecho e 145 em nenhum (23 são frases sobre o próprio texto); 55 materiais com ao menos 1 inventada; os títulos à parte: 71 de 86 com afirmação sem sustentação"
+      }
+    },
+    {
+      "nome": "Relevância (AnswerRelevancy)",
+      "modelo": "mistral-large-3 + embeddings do projeto",
+      "metricas": {
+        "Valor": 0.616,
+        "IC 95%": [
+          0.569,
+          0.657
+        ],
+        "Detalhe": "0,670 sem a EMP024 (os 7 evasivos são dela); por tipo: kit 0,679, comunicado 0,665, lembrete 0,571, FAQ 0,541; um benefício 0,538 × todos 0,683"
+      }
+    },
+    {
+      "nome": "Blocos inteiros no trecho citado, pelo outro juiz de IA (50 rotulados pelo GPT)",
+      "modelo": "GPT (fora da aplicação)",
+      "metricas": {
+        "Valor": 0.82,
+        "IC 95%": [
+          0.692,
+          0.902
+        ],
+        "Detalhe": "41 fiel, 8 em parte, 1 não fiel (IC de Wilson); nenhum dos 9 inventa número, prazo, taxa ou condição"
+      }
+    },
+    {
+      "nome": "Concordância entre dois juízes de IA (GPT × Mistral), n = 50",
+      "modelo": "GPT × mistral-large-3",
+      "metricas": {
+        "Valor": 0.255,
+        "IC 95%": [
+          0.068,
+          0.463
+        ],
+        "Detalhe": "kappa de Cohen; concordância 0,62; ponderado 0,269; fiel × com problema 0,28; o Mistral diz fiel → o GPT concorda em 24 de 25; o Mistral aponta problema → 8 de 25; problemas do GPT que o Mistral pegou: 8 de 9; pelo catálogo (análise secundária) −0,064"
+      }
+    },
+    {
+      "nome": "Conferência do agente que mede (10 blocos; uma IA)",
+      "modelo": "o agente (IA) × mistral-large-3",
+      "metricas": {
+        "Valor": 0.8,
+        "IC 95%": "—",
+        "Detalhe": "8 de 10 rótulos iguais; as 2 diferenças: o juiz mais rigoroso; 8 das 10 'citadas errado' estavam no trecho citado"
+      }
+    },
+    {
+      "nome": "Custo do juiz (US$, com a tradução e os 2 ensaios)",
+      "modelo": "mistral-large-3",
+      "metricas": {
+        "Valor": 1.24,
+        "IC 95%": "—",
+        "Detalhe": "a medição dos 86: 1,1483 (1.347 chamadas; 0,0134 por material; 0 erro de formato)"
+      }
+    }
+  ],
+  "leitura": "(1) Os materiais parecem fiéis no que importa. Pelo outro juiz de IA (o GPT, 50 blocos), 82% dos blocos estão inteiros no trecho citado (41 de 50), e nenhum dos 9 com problema inventa número, prazo, taxa ou condição de benefício (a conferência do próprio agente já barra número e link). O que sobra é citação incompleta: o nome Santander ou a conta salário num bloco que cita outro trecho (5), frases de abertura genéricas (3) e, o mais sério, um bloco que diz que o salário cai na conta corrente Santander, e não na conta salário (C00462-1). (2) O juiz automático é um bom filtro, mas não é régua: a concordância entre os dois juízes de IA (GPT × Mistral) é de kappa 0,25 (razoável). Quando o Mistral diz fiel, o GPT concorda em 24 de 25, e o Mistral pegou 8 dos 9 problemas que o GPT viu; quando o Mistral aponta problema, o GPT concorda em só 8 de 25. A conferência do agente (uma IA, 10 blocos) mostrou o porquê: a 1ª conferência nega afirmações que estão no trecho citado (8 das 10 citadas errado estavam lá). Por isso a fidelidade do RAGAS (0,87) subestima, e o citada errado (159) é, em boa parte, ruído do juiz. A 2ª conferência vai para o outro lado: com o rótulo pelo catálogo inteiro, o kappa cai a −0,06, porque ela perdoa os problemas reais (pega 2 de 9). (3) O RAGAS precisou de 3 adaptações para marketing em português, todas vistas em ensaio antes da medição: a pergunta neutra, o título à parte (70 das 117 inventadas dos títulos são frases sobre o próprio texto) e a pergunta do tipo na relevância. (4) A relevância (0,62; 0,67 sem a EMP024) é baixa em valor absoluto porque compara perguntas por embeddings; ela serve para comparar grupos: o FAQ e o lembrete ficam abaixo do kit e do comunicado, e um benefício só fica abaixo de todos juntos. Os 7 materiais evasivos são todos da EMP024 (o kit padrão e um catálogo de um benefício só, vago: o nome promete 'Cartão de Crédito sem anuidade', e o trecho só diz que o cliente 'pode receber desconto ou isenção'). É um problema do catálogo, e não do agente. Limites: sem calibração humana (todos os números comparam juízes de IA entre si); a fidelidade não mede omissão; os 86 materiais são da v4 (a v5, do ADR-150, não foi medida).",
+  "decisao": "O número do RAGAS fica como estimativa conservadora e filtro da fidelidade do Endomarketing, sem calibração humana: o que o juiz aprova tende a valer; o que ele aponta vai para revisão (ADR-152). Nenhuma mudança no agente nesta medição. Sugestões ao engenheiro-ia, a decidir: (a) o nome do banco entra nos fatos do pedido, ou o prompt pede para citar o trecho de onde vem o nome; (b) quem fala da conta salário cita o trecho dela. Para o banco: o catálogo da EMP024 (o nome do benefício promete mais que o texto). Evolução: uma amostra rotulada por uma pessoa, antes de usar o número como meta.",
+  "custo_usd": 1.24,
+  "fonte": "data/avaliacao/resultados/endomarketing_ragas.json, endomarketing_ragas_blocos.csv, endomarketing_ragas_materiais.csv, endomarketing_ragas_conferencia_do_agente.json, endomarketing_ragas_amostras.json; data/avaliacao/rotulos_fidelidade_endomarketing_50.xlsx; data/avaliacao/ragas_prompts_portugues.json",
+  "commit": "a5d0af4"
+}

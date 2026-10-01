@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<!--
+  cadastrar.html — aba "Cadastrar funcionários" do Portal da Empresa (Integra Folha).
+
+  Para que serve: é o rascunho visual (layout) do envio dos dados dos funcionários.
+  A grande ideia: a empresa manda o que tiver (planilha, Word, PDF, foto, print de conversa) e
+  SENTE que há uma IA trabalhando. Depois do envio, a IA conta, em mensagens curtas, o que está
+  fazendo, e o lado direito da tela mostra os resultados aparecendo ao vivo.
+
+  Como abrir: dois cliques neste arquivo (ou pela aba na home). Não precisa de servidor.
+  Aparência: css/estilos.css (seção "Tela de cadastro com IA"). Roteiro da IA: js/cadastrar.js.
+
+  Atenção: é uma SIMULAÇÃO para desenho da tela. O arquivo escolhido não é lido de verdade.
+  Há dois cenários: "tabela" (planilha, texto, Word, PDF ou foto de uma lista), que segue o envio
+  de inclusão da Aurora Alimentos da base sintética (data/golden/aurora_inclusao.json), e
+  "conversa" (print de conversa com o gestor). No sistema real, quem lê o arquivo é o servidor.
+
+  Ordem da página (de cima para baixo):
+    1. Cabeçalho com as abas do portal
+    2. Título da página
+    3. Etapa "Envio": área para arrastar arquivos, formatos aceitos e exemplos
+    4. Etapa "IA trabalhando": conversa da IA + resultados ao vivo
+    5. Etapa "Resultado": um bloco para cada cenário (tabela e conversa)
+    5c. Conferência da lista: a última validação humana antes do envio (js/conferir.js), com o bloco
+        recolhível "Ajude a IA a acertar" (a empresa orienta a releitura do próprio arquivo, js/orientar.js)
+    5d. Resultado de um envio de verdade (com a aplicação), em duas abas: "Funcionários" (a grade das informações
+        obrigatórias de cada pessoa) e "Como o agente leu" (as colunas e a conferência), js/cadastrar_abas.js
+    6. Modelos (<template>) usados pelo JavaScript para criar mensagens e linhas
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Cadastrar funcionários | Integra Folha</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Mesmo arquivo de aparência de todo o portal. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- O "i" em cima das grades, que explica cada situação (js/legenda_dos_status.js). -->
+  <link rel="stylesheet" href="css/legenda_dos_status.css">
+  <!-- As duas abas do resultado da leitura, "Funcionários" e "Como o agente leu" (js/cadastrar_abas.js). -->
+  <link rel="stylesheet" href="css/cadastrar_abas.css">
+  <!-- O joinha nas respostas dos agentes (js/opiniao_dos_agentes.js, ADR-151). -->
+  <link rel="stylesheet" href="css/opiniao_dos_agentes.css">
+</head>
+<body>
+  <!-- Dentro da janela "Cadastrar funcionários" (js/novo_envio.js), a tela esconde o cabeçalho, o título e a
+       conferência: depois de aceitar as colunas, tudo segue em "Acompanhar cadastros". -->
+  <script src="js/em_janela.js"></script>
+
+  <!-- Biblioteca de ícones desta tela (mesmos desenhos da home, mais os de envio e de formatos). -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Seta para baixo: abrir e fechar um bloco recolhível. -->
+    <symbol id="icone-abrir" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <!-- Casa: aba Início. -->
+    <symbol id="icone-inicio" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <!-- Pessoa com "+": cadastrar funcionário. -->
+    <symbol id="icone-cadastrar" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/></symbol>
+    <!-- Prancheta com visto: acompanhar cadastros. -->
+    <symbol id="icone-acompanhar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Presente: benefícios. -->
+    <symbol id="icone-beneficios" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8c-2-4-6-4-6-1s6 1 6 1c0 0 6 2 6-1s-4-3-6 1"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Sino: avisos. -->
+    <!-- Porta com seta: sair do portal. -->
+    <symbol id="icone-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <!-- Estrela com brilho: inteligência artificial. -->
+    <symbol id="icone-ia" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/><path d="M19 3v4M17 5h4"/></symbol>
+    <!-- Nuvem com seta para cima: enviar arquivos. -->
+    <symbol id="icone-enviar" viewBox="0 0 24 24"><path d="M7 18a5 5 0 0 1-.6-10A6 6 0 0 1 18 9a4 4 0 0 1 0 9"/><path d="M12 12v8"/><path d="M9 15l3-3 3 3"/></symbol>
+    <!-- Planilha (Excel, CSV). -->
+    <symbol id="icone-planilha" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h8M12 13v4"/></symbol>
+    <!-- Documento de texto corrido (Word). -->
+    <symbol id="icone-documento" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
+    <!-- PDF: folha com as letras "PDF" simplificadas em traços. -->
+    <symbol id="icone-pdf" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 17v-4h1.5a1.5 1.5 0 0 1 0 3H8"/><path d="M13 13v4h1a2 2 0 0 0 0-4z"/></symbol>
+    <!-- Imagem: moldura com montanha e sol (foto ou print). -->
+    <symbol id="icone-imagem" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+    <!-- Balões de conversa: print de conversa. -->
+    <symbol id="icone-conversa" viewBox="0 0 24 24"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M17 9h3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1v2l-3-2h-4"/></symbol>
+    <!-- Linhas de texto: arquivo de texto simples. -->
+    <symbol id="icone-texto" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h10M4 18h7"/></symbol>
+    <!-- Pilha de folhas: vários arquivos de uma vez. -->
+    <symbol id="icone-varios" viewBox="0 0 24 24"><rect x="7" y="7" width="13" height="14" rx="2"/><path d="M4 17V5a2 2 0 0 1 2-2h10"/></symbol>
+    <!-- Seta para a direita: "informação do arquivo → campo do banco". -->
+    <symbol id="icone-seta" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+  </svg>
+
+  <!-- ============ 1. CABEÇALHO COM AS ABAS ============ -->
+  <header class="barra-topo">
+    <div class="conteudo-centralizado">
+      <!-- Linha de cima: marca e usuário logado. -->
+      <div class="barra-topo-linha">
+        <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+        <a href="home.html" class="logotipo" aria-label="Início do Portal Empresa">
+          <span class="logotipo-marca">Integra Folha</span>
+        </a>
+        <!-- O banco parceiro do Integra Folha: aparece em todas as telas depois do login (nunca no login). -->
+        <span class="selo-banco-parceiro">Banco parceiro: <strong>Santander</strong></span>
+        <!-- Ações de quem está logado. -->
+        <div class="acoes-usuario">
+          <!-- Pessoa logada (perfil EMPRESA). -->
+          <div class="usuario-logado">
+            <span class="iniciais-usuario">MC</span>
+            <div class="usuario-logado-texto">
+              <div class="nome-usuario">Marina Costa</div>
+              <div class="empresa-usuario">RH · Aurora Alimentos Ltda.</div>
+            </div>
+          </div>
+          <!-- Sair: volta para a tela de login. -->
+          <a href="/api/sair" class="botao-sair" aria-label="Sair do portal">
+            <svg class="icone"><use href="#icone-sair"/></svg>
+            <span class="botao-sair-texto">Sair</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Abas do portal. Aqui a aba ativa é "Cadastrar funcionários". -->
+      <nav class="abas-portal" aria-label="Seções do portal">
+        <a href="home.html" class="aba">
+          <svg class="icone"><use href="#icone-inicio"/></svg>Início
+        </a>
+        <a href="acompanhar.html" class="aba">
+          <svg class="icone"><use href="#icone-acompanhar"/></svg>Acompanhar cadastros
+        </a>
+        <a href="beneficios.html" class="aba">
+          <svg class="icone"><use href="#icone-beneficios"/></svg>Benefícios do seu time
+        </a>
+        <a href="endomarketing.html" class="aba">
+          <svg class="icone"><use href="#icone-endomarketing"/></svg>Materiais de endomarketing
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 2. TÍTULO DA PÁGINA ============ -->
+    <section class="cabecalho-pagina">
+      <div class="conteudo-centralizado">
+        <span class="selo-ia">
+          <svg class="icone"><use href="#icone-ia"/></svg>
+          Cadastro com agentes inteligentes
+        </span>
+        <h1 class="titulo-pagina">
+          Mande do jeito que estiver.
+          <span class="titulo-pagina-leve">Planilha ou documento Word, com tabela ou em texto corrido: os nossos agentes leem e montam o cadastro para você.</span>
+        </h1>
+      </div>
+    </section>
+
+    <div class="conteudo-centralizado area-cadastro">
+
+      <!-- ============ 3. ETAPA "ENVIO" ============ -->
+      <section id="etapa-envio" aria-label="Envio dos arquivos">
+        <!-- Depois de um descarte, a tela volta aqui com este aviso (js/cadastrar_real.js, mostrar_aviso_de_descarte). -->
+        <p class="aviso-descartado" data-aviso-descartado hidden role="status">
+          A leitura foi descartada e ficou registrada em "Acompanhar cadastros". Nada foi enviado ao banco.
+          Envie outro arquivo quando quiser.
+        </p>
+        <!-- As informações que o arquivo precisa ter (ADR-143): uma por campo
+             obrigatório do parâmetro vigente do banco, lidas do servidor e nunca escritas aqui
+             (js/cadastrar_obrigatorios.js). Escondido até a lista chegar; sem servidor (o protótipo), continua
+             escondido. -->
+        <div class="campos-obrigatorios-do-envio" data-campos-obrigatorios hidden>
+          <p class="campos-obrigatorios-titulo">O arquivo precisa ter estas informações de cada funcionário:</p>
+          <ul class="campos-obrigatorios-lista" data-lista-campos-obrigatorios></ul>
+          <p class="campos-obrigatorios-titulo" data-erro-campos-obrigatorios hidden>Não foi possível carregar agora a
+            lista das informações obrigatórias.</p>
+          <p class="campos-obrigatorios-nota">As outras informações que vierem no arquivo entram quando nosso agente
+            reconhece.</p>
+        </div>
+        <!-- Área de arrastar e soltar: aceita um ou vários arquivos, de vários formatos. -->
+        <div class="zona-envio" id="zona-envio">
+          <!-- Esfera animada: o "rosto" da IA na tela. -->
+          <div class="esfera-ia" aria-hidden="true">
+            <svg class="icone"><use href="#icone-ia"/></svg>
+          </div>
+          <h2 class="zona-envio-titulo">Arraste os arquivos dos funcionários para cá</h2>
+          <p class="zona-envio-texto">
+            Não precisa de modelo nem de colunas certas. Os agentes entendem tabelas, fichas e até texto corrido, e
+            perguntam quando não têm certeza.
+          </p>
+
+          <!-- Formatos aceitos, com ícone: só o que o servidor lê de verdade (services/ingestao.py, ADR-72). -->
+          <ul class="formatos-aceitos" aria-label="Formatos aceitos">
+            <li class="formato"><svg class="icone"><use href="#icone-planilha"/></svg>Excel, LibreOffice e CSV</li>
+            <li class="formato"><svg class="icone"><use href="#icone-documento"/></svg>Word, LibreOffice e texto (.txt, .rtf), com tabela ou texto corrido</li>
+          </ul>
+          <p class="zona-envio-formatos">Em breve: PDF, foto e print de conversa.</p>
+
+          <!-- O <label> abre a janela de escolher arquivos (o campo em si fica escondido). "multiple" permite vários. -->
+          <label class="botao botao-principal" for="campo-arquivo">
+            <svg class="icone"><use href="#icone-enviar"/></svg>
+            Escolher arquivos
+          </label>
+          <input type="file" id="campo-arquivo" multiple hidden
+                 accept=".xlsx,.xls,.ods,.csv,.txt,.rtf,.docx,.odt">
+          <p class="zona-envio-formatos">Até 10 arquivos por envio, de até 5 MB cada</p>
+
+          <!-- Exemplos para a demonstração: cada um mostra a IA lidando com um formato diferente. -->
+          <div class="exemplos-envio">
+            <span class="exemplos-envio-rotulo">Ou veja os agentes em ação com um exemplo (demonstração):</span>
+            <button class="botao botao-contorno botao-pequeno" type="button" data-exemplo="planilha">
+              <svg class="icone"><use href="#icone-planilha"/></svg>Planilha
+            </button>
+            <button class="botao botao-contorno botao-pequeno" type="button" data-exemplo="pdf">
+              <svg class="icone"><use href="#icone-pdf"/></svg>PDF
+            </button>
+            <button class="botao botao-contorno botao-pequeno" type="button" data-exemplo="conversa">
+              <svg class="icone"><use href="#icone-conversa"/></svg>Print de conversa
+            </button>
+          </div>
+        </div>
+
+        <!-- Como funciona, em três passos. -->
+        <div class="passos-envio">
+          <div class="cartao passo-envio">
+            <span class="passo-envio-numero">1</span>
+            <div>
+              <div class="passo-envio-titulo">Você envia</div>
+              <p class="passo-envio-texto">O que o RH já tem: a planilha de sempre, um PDF, uma foto da lista ou o print da conversa com o gestor.</p>
+            </div>
+          </div>
+          <div class="cartao passo-envio">
+            <span class="passo-envio-numero">2</span>
+            <div>
+              <div class="passo-envio-titulo">Os agentes leem e conferem</div>
+              <p class="passo-envio-texto">Encontra os dados de cada funcionário, confere CPFs e datas e aponta o que precisa de ajuste.</p>
+            </div>
+          </div>
+          <div class="cartao passo-envio">
+            <span class="passo-envio-numero">3</span>
+            <div>
+              <div class="passo-envio-titulo">Você revisa e envia</div>
+              <p class="passo-envio-texto">Aceita as sugestões, completa o que faltar e manda para o banco.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4. ETAPA "IA TRABALHANDO" (começa escondida) ============ -->
+      <section id="etapa-leitura" class="mesa-de-trabalho" aria-label="Leitura dos arquivos pelos agentes" hidden>
+        <!-- Esquerda: o painel da IA, com borda animada enquanto ela trabalha. -->
+        <div class="painel-ia" id="painel-ia">
+          <div class="painel-ia-cabecalho">
+            <div class="esfera-ia esfera-ia-pequena" aria-hidden="true">
+              <svg class="icone"><use href="#icone-ia"/></svg>
+            </div>
+            <div>
+              <div class="painel-ia-nome">Assistente de cadastro</div>
+              <div class="painel-ia-status">
+                <span class="ponto-status"></span>
+                <span id="texto-status-ia">Trabalhando no seu envio…</span>
+                <!-- O tempo desde o envio (js/cadastrar_real.js): a leitura de um texto corrido leva alguns minutos. -->
+                <span class="cronometro-ia" id="cronometro-ia" aria-live="off" hidden>0:00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- As quatro etapas da leitura; a atual brilha na cor da marca, as feitas ficam verdes. -->
+          <ol class="etapas-ia">
+            <li class="etapa-ia" data-numero-etapa="1">Leitura</li>
+            <li class="etapa-ia" data-numero-etapa="2">Campos</li>
+            <li class="etapa-ia" data-numero-etapa="3">Conferência</li>
+            <li class="etapa-ia" data-numero-etapa="4">Resumo</li>
+          </ol>
+
+          <!-- Conversa: as mensagens da IA aparecem aqui. aria-live faz o leitor de tela anunciar cada nova. -->
+          <div class="conversa-ia" id="conversa-ia" aria-live="polite"></div>
+        </div>
+
+        <!-- Direita: o que a IA está encontrando, ao vivo. Os títulos mudam conforme o cenário. -->
+        <div class="mesa-coluna-lateral">
+          <!-- O que foi enviado: o ícone muda conforme o formato. -->
+          <div class="cartao cartao-arquivo">
+            <span class="arquivo-icone"><svg class="icone"><use id="icone-do-arquivo" href="#icone-planilha"/></svg></span>
+            <div>
+              <div class="arquivo-nome" id="arquivo-nome">—</div>
+              <div class="arquivo-detalhes" id="arquivo-detalhes">Lendo…</div>
+            </div>
+            <span class="selo selo-marca" id="selo-tipo-envio" hidden>Inclusão</span>
+          </div>
+
+          <!-- Contadores que sobem enquanto a IA confere os dados. -->
+          <div class="cartao">
+            <div class="cartao-titulo-pequeno" id="titulo-cartao-contadores">Linhas do arquivo</div>
+            <div class="contadores">
+              <div class="contador">
+                <div class="contador-valor" id="contador-lidas">0</div>
+                <div class="contador-legenda" id="legenda-lidas">lidas</div>
+              </div>
+              <div class="contador contador-pronto">
+                <div class="contador-valor" id="contador-prontas">0</div>
+                <div class="contador-legenda" id="legenda-prontas">prontas</div>
+              </div>
+              <div class="contador contador-revisar">
+                <div class="contador-valor" id="contador-revisar">0</div>
+                <div class="contador-legenda">para revisar</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campos reconhecidos: cada linha liga o que está no arquivo ao campo do banco. -->
+          <div class="cartao">
+            <div class="cartao-titulo-pequeno">
+              <span id="titulo-cartao-campos">Colunas reconhecidas</span>
+              <span class="selo selo-sucesso selo-pequeno" id="total-campos">0</span>
+            </div>
+            <ul class="lista-colunas" id="lista-campos"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 5a. RESULTADO DO CENÁRIO "TABELA" (começa escondido) ============ -->
+      <section id="resultado-tabela" class="cartao resultado-leitura" aria-label="Resultado da leitura" hidden>
+        <!-- Esquerda: o resumo e o botão de envio. -->
+        <div>
+          <span class="sobretitulo">Leitura concluída</span>
+          <div class="resultado-numero" data-resultado-prontos>26</div>
+          <p class="resultado-legenda">funcionários prontos para enviar ao banco</p>
+          <div class="resultado-botoes">
+            <!-- Abre a conferência da lista (5c, logo abaixo); o envio para o banco acontece no fim dela. -->
+            <button class="botao botao-principal" type="button" data-botao-conferir>Conferir a lista (26)</button>
+            <p class="resultado-nota" data-resultado-nota>Os 2 com ajuste pendente ficam guardados até você corrigir.</p>
+            <!-- Enviou o arquivo errado? Descarta a leitura (com confirmação) e volta para a escolha do arquivo. -->
+            <button class="botao-descartar" type="button" data-descartar-leitura>Descartar esta leitura</button>
+          </div>
+        </div>
+
+        <!-- Direita: os ajustes, cada um com a explicação e a sugestão da IA. -->
+        <div>
+          <div class="cartao-titulo-pequeno">Precisam de um ajuste rápido</div>
+          <div class="lista-ajustes">
+            <!-- Ajuste 1: CPF inválido. A IA NÃO inventa CPF: pede que a pessoa confira no documento. -->
+            <article class="ajuste" data-ajuste>
+              <div class="ajuste-cabecalho">
+                <span class="ajuste-titulo">Linha 7 · Rafael Moreira Lima</span>
+                <span class="selo selo-atencao selo-pequeno" data-situacao-ajuste>CPF inválido</span>
+              </div>
+              <p class="ajuste-problema">O CPF ***.482.917-** não passa na conferência dos dígitos.</p>
+              <div class="sugestao-ia">
+                <svg class="icone"><use href="#icone-ia"/></svg>
+                <span>Não vou inventar um CPF. Confira no documento do funcionário e digite o número correto.</span>
+              </div>
+              <div class="ajuste-botoes" data-botoes-ajuste>
+                <input class="campo-entrada campo-pequeno" type="text" placeholder="CPF correto" aria-label="CPF correto da linha 7">
+                <button class="botao botao-principal botao-pequeno" type="button" data-resolver-ajuste>Salvar</button>
+              </div>
+            </article>
+
+            <!-- Ajuste 2: data no futuro. Aqui a IA consegue sugerir a correção. -->
+            <article class="ajuste" data-ajuste>
+              <div class="ajuste-cabecalho">
+                <span class="ajuste-titulo">Linha 15 · Juliana Castro Pires</span>
+                <span class="selo selo-atencao selo-pequeno" data-situacao-ajuste>Data no futuro</span>
+              </div>
+              <p class="ajuste-problema">A data de admissão 12/11/2026 ainda não chegou.</p>
+              <div class="sugestao-ia">
+                <svg class="icone"><use href="#icone-ia"/></svg>
+                <span>Parece troca de mês na digitação. Você quis dizer <strong>12/09/2026</strong>?</span>
+              </div>
+              <div class="ajuste-botoes" data-botoes-ajuste>
+                <button class="botao botao-principal botao-pequeno" type="button" data-resolver-ajuste>Aceitar sugestão</button>
+                <button class="botao botao-contorno botao-pequeno" type="button">Corrigir de outro jeito</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 5b. RESULTADO DO CENÁRIO "CONVERSA" (começa escondido) ============ -->
+      <section id="resultado-conversa" class="cartao resultado-leitura" aria-label="Resultado da leitura" hidden>
+        <!-- Esquerda: o resumo e o botão de envio. -->
+        <div>
+          <span class="sobretitulo">Leitura concluída</span>
+          <div class="resultado-numero" data-resultado-prontos>2</div>
+          <p class="resultado-legenda">funcionários prontos para enviar ao banco</p>
+          <div class="resultado-botoes">
+            <!-- Abre a conferência da lista (5c, logo abaixo); o envio para o banco acontece no fim dela. -->
+            <button class="botao botao-principal" type="button" data-botao-conferir>Conferir a lista (2)</button>
+            <p class="resultado-nota" data-resultado-nota>O 1 com ajuste pendente fica guardado até você corrigir.</p>
+            <!-- Enviou o arquivo errado? Descarta a leitura (com confirmação) e volta para a escolha do arquivo. -->
+            <button class="botao-descartar" type="button" data-descartar-leitura>Descartar esta leitura</button>
+          </div>
+        </div>
+
+        <!-- Direita: o cadastro que a IA montou a partir da conversa e o dado que faltou. -->
+        <div>
+          <div class="cartao-titulo-pequeno">O cadastro que o Agente Leitor montou a partir da conversa</div>
+          <!-- Tabela pequena: mostra a conversa virando dados organizados. -->
+          <div class="tabela-rolavel">
+            <table class="tabela-montada">
+              <thead>
+                <tr>
+                  <th>Funcionário</th>
+                  <th>Cargo</th>
+                  <th>Admissão</th>
+                  <th>Salário</th>
+                  <th>CPF</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Carla Mendes Souza</td>
+                  <td>Auxiliar de produção</td>
+                  <td>28/09/2026</td>
+                  <td>R$ 2.400,00</td>
+                  <td><span class="selo selo-sucesso selo-pequeno">ok</span></td>
+                </tr>
+                <tr>
+                  <td>Diego Ramos Teixeira</td>
+                  <td>Auxiliar de produção</td>
+                  <td>28/09/2026</td>
+                  <td>R$ 2.400,00</td>
+                  <td><span class="selo selo-sucesso selo-pequeno">ok</span></td>
+                </tr>
+                <tr>
+                  <td>Paula Nogueira Lins</td>
+                  <td>Analista de qualidade</td>
+                  <td>28/09/2026</td>
+                  <td>R$ 4.100,00</td>
+                  <td><span class="selo selo-atencao selo-pequeno">falta</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="lista-ajustes">
+            <!-- Ajuste: CPF que não estava na conversa. A IA NÃO inventa: pede para o RH completar. -->
+            <article class="ajuste" data-ajuste>
+              <div class="ajuste-cabecalho">
+                <span class="ajuste-titulo">Paula Nogueira Lins</span>
+                <span class="selo selo-atencao selo-pequeno" data-situacao-ajuste>CPF não informado</span>
+              </div>
+              <p class="ajuste-problema">O CPF da Paula não aparece em nenhuma mensagem da conversa.</p>
+              <div class="sugestao-ia">
+                <svg class="icone"><use href="#icone-ia"/></svg>
+                <span>Não vou inventar um CPF. Peça ao gestor ou digite aqui, se você já tiver.</span>
+              </div>
+              <div class="ajuste-botoes" data-botoes-ajuste>
+                <input class="campo-entrada campo-pequeno" type="text" placeholder="CPF da Paula" aria-label="CPF da Paula Nogueira Lins">
+                <button class="botao botao-principal botao-pequeno" type="button" data-resolver-ajuste>Salvar</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 5d. RESULTADO DE UM ENVIO DE VERDADE (API, ADR-69; começa escondido) ============ -->
+      <!--
+        Aparece quando a página está ligada à aplicação e a pessoa envia um arquivo de verdade (js/cadastrar_real.js).
+        Mostra o que a IA leu de verdade: cada coluna, o campo que ela propôs e por quê. Nas colunas em que a IA pediu
+        ajuda, a pessoa escolhe o campo. Depois do aceite, o fluxo padroniza e valida: sem pendências, o botão cadastra;
+        com pendências, elas se resolvem em "Acompanhar cadastros". Os exemplos de cima continuam sendo demonstração.
+      -->
+      <section id="resultado-real" class="cartao resultado-real" aria-labelledby="titulo-resultado-real" hidden>
+        <div class="cabecalho-real">
+          <div>
+            <span class="sobretitulo" data-real-tipo>Leitura concluída</span>
+            <h2 class="painel-titulo" id="titulo-resultado-real" data-real-titulo></h2>
+            <p class="resultado-legenda" data-real-subtitulo></p>
+          </div>
+          <span class="selo selo-marca" data-real-etapa></span>
+        </div>
+
+        <!-- Recado do fluxo (ex.: "Escolha o campo destas colunas: Vencimentos") ou erro de uma ação. Fica fora das abas:
+             é a resposta dos botões do fim do cartão, que valem para as duas. -->
+        <p class="erro-pendencia" data-real-erro hidden></p>
+
+        <!--
+          As duas abas do resultado (js/cadastrar_abas.js). role="tablist", "tab" e "tabpanel": o leitor de tela anuncia
+          como abas, e as setas do teclado passam de uma para a outra.
+            1. "Funcionários": a grade com as informações obrigatórias de cada pessoa do arquivo, como o agente leu; o
+               clique numa pessoa abre tudo o que ele encontrou dela (a mesma grade do "Conferir a lista e enviar para o
+               banco", em Acompanhar cadastros);
+            2. "Como o agente leu": as colunas, os detalhes da leitura, o formato das colunas e a conferência da lista.
+          O cabeçalho, o recado e os botões ficam fora das abas.
+        -->
+        <div class="abas-do-resultado" role="tablist" aria-label="O que ver da leitura" data-abas-do-resultado>
+          <button class="aba-do-resultado aba-do-resultado-ativa" type="button" role="tab" id="aba-real-funcionarios"
+                  aria-controls="painel-real-funcionarios" aria-selected="true"
+                  data-aba-do-resultado="funcionarios">Funcionários</button>
+          <button class="aba-do-resultado" type="button" role="tab" id="aba-real-colunas" aria-controls="painel-real-colunas"
+                  aria-selected="false" tabindex="-1" data-aba-do-resultado="colunas">Como o agente leu</button>
+        </div>
+
+        <!-- 1ª aba: as pessoas do arquivo, só com as informações obrigatórias do parâmetro. Os valores vêm da prévia do
+             servidor (/api/empresa/cadastro/<envio>/previa): a mesma padronização do aceite, sem gravar nada. -->
+        <div class="painel-do-resultado" role="tabpanel" id="painel-real-funcionarios"
+             aria-labelledby="aba-real-funcionarios" data-painel-do-resultado="funcionarios">
+          <p class="nota-tabela" data-real-nota-da-previa>As informações obrigatórias de cada funcionário do arquivo, como o
+            agente leu. Clique numa pessoa para ver tudo o que ele encontrou dela.</p>
+          <!-- O que ainda muda a lista: as colunas que esperam a escolha da empresa, ou os campos que ela trocou. -->
+          <p class="sugestao-ia duvida-ia" data-real-aviso-da-previa hidden></p>
+          <div class="legenda-da-grade">
+            <p><span class="marca-obrigatorio" aria-hidden="true">*</span> Campo obrigatório no parâmetro do banco.</p>
+            <p><span class="valor-nao-encontrado">Informação não encontrada</span>: o valor não veio no arquivo ou não foi
+              identificado.</p>
+          </div>
+          <!-- Quantas pessoas, ou o aviso de que a lista não carregou (nunca uma lista de exemplo). -->
+          <p class="contador-resultados" data-real-contagem-da-previa aria-live="polite"></p>
+          <div class="tabela-rolavel tabela-com-titulo-fixo tabela-da-previa">
+            <table class="tabela-montada">
+              <thead data-real-cabeca-da-previa></thead>
+              <tbody data-real-corpo-da-previa></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2ª aba: a leitura das colunas e o que vem depois dela, como a tela sempre mostrou. -->
+        <div class="painel-do-resultado" role="tabpanel" id="painel-real-colunas" aria-labelledby="aba-real-colunas"
+             data-painel-do-resultado="colunas" hidden>
+
+        <!-- Aviso de reuso: colunas iguais às de um envio já aprovado (a IA nem foi chamada). -->
+        <p class="sugestao-ia" data-real-reuso hidden>
+          <svg class="icone"><use href="#icone-ia"/></svg>
+          <span>As colunas são as mesmas de um envio que o banco já aprovou: reaproveitei o mapeamento, sem chamar o Agente Interpretador.</span>
+        </p>
+
+        <!-- A leitura numa frase (ex.: "Texto corrido: a IA montou a lista com 12 funcionários"). Os detalhes ficam
+             recolhidos depois das colunas; as perguntas sobre funcionários são respondidas na conferência (ADR-73). -->
+        <p class="sugestao-ia resumo-da-leitura" data-real-resumo-leitura hidden></p>
+
+        <!-- O mapeamento das colunas: a pessoa confere e decide as ambíguas. -->
+        <div data-real-bloco-colunas>
+          <h3 class="subtitulo-real" data-real-titulo-colunas>Como o Agente Interpretador leu as colunas do seu arquivo</h3>
+          <!-- Com a lista dos obrigatórios do parâmetro (ADR-143), a tabela de cima fica só com as colunas deles, e as
+               outras vão para "Outras informações do arquivo", logo abaixo (js/cadastrar_real.js). -->
+          <p class="nota-tabela" data-real-nota-obrigatorias hidden>Confira as colunas das informações obrigatórias. As
+            outras entram sem pergunta: estão em "Outras informações do arquivo", logo abaixo da tabela.</p>
+          <!-- O "i" no canto direito, em cima da tabela: explica a situação de cada coluna (js/legenda_dos_status.js). -->
+          <div class="linha-do-i-dos-status" data-legenda-dos-status="colunas" data-portal="empresa"></div>
+          <div class="tabela-rolavel">
+            <table class="tabela-montada tabela-colunas-real">
+              <thead>
+                <tr>
+                  <th scope="col" data-real-titulo-coluna-arquivo>Coluna no seu arquivo</th>
+                  <th scope="col">Campo do cadastro</th>
+                  <th scope="col">Situação</th>
+                  <th scope="col">Por quê</th>
+                </tr>
+              </thead>
+              <tbody data-real-corpo-colunas></tbody>
+            </table>
+          </div>
+          <!-- As outras colunas do arquivo (ADR-143): não são das informações obrigatórias e entram sem pergunta. Ficam
+               fechadas aqui, para a pessoa trocar se a IA errou (js/cadastrar_real.js,
+               separar_as_colunas_opcionais). -->
+          <details class="bloco-real colunas-opcionais-real" data-real-bloco-colunas-opcionais hidden>
+            <summary class="subtitulo-real" data-real-titulo-colunas-opcionais>Outras informações do arquivo</summary>
+            <p class="nota-tabela">Não são obrigatórias: as que o agente reconheceu entram sem pergunta, e as outras ficam
+              de fora. Se o agente errou, troque o campo aqui.</p>
+            <!-- O "i" no canto direito, em cima da tabela: a mesma legenda das colunas (js/legenda_dos_status.js). -->
+            <div class="linha-do-i-dos-status" data-legenda-dos-status="colunas" data-portal="empresa"></div>
+            <div class="tabela-rolavel">
+              <table class="tabela-montada tabela-colunas-real">
+                <thead>
+                  <tr>
+                    <th scope="col" data-real-titulo-coluna-arquivo>Coluna no seu arquivo</th>
+                    <th scope="col">Campo do cadastro</th>
+                    <th scope="col">Situação</th>
+                    <th scope="col">Por quê</th>
+                  </tr>
+                </thead>
+                <tbody data-real-corpo-colunas-opcionais></tbody>
+              </table>
+            </div>
+          </details>
+          <p class="nota-tabela" data-real-obrigatorios hidden></p>
+          <!-- As perguntas da IA sobre funcionários: um contador aqui, a resposta na conferência. -->
+          <p class="sugestao-ia duvida-ia" data-real-aviso-perguntas hidden></p>
+        </div>
+
+        <!-- Os detalhes da leitura, recolhidos: os outros avisos e os trechos que a IA não conseguiu ler. -->
+        <details class="bloco-real detalhes-da-leitura" data-real-bloco-detalhes hidden>
+          <summary class="subtitulo-real" data-real-titulo-detalhes>Ver detalhes da leitura</summary>
+          <div class="lista-da-leitura" data-real-lista-detalhes></div>
+          <p class="nota-tabela" data-real-nota-trechos hidden>
+            Se algum trecho não lido for de um funcionário, mande os dados dele num novo arquivo. Os funcionários que o
+            Agente Leitor conseguiu ler seguem normalmente aqui.
+          </p>
+        </details>
+
+        <!-- Formato de colunas inteiras (datas dia/mês ou mês/dia; dígitos da matrícula): js/cadastrar_conferencia_real.js. -->
+        <div class="bloco-real" data-real-bloco-formatos hidden>
+          <h3 class="subtitulo-real">Decida o formato destas colunas</h3>
+          <div data-real-lista-formatos></div>
+        </div>
+
+        <!-- Conferência da lista: do jeito que vai para o banco, com "Corrigir" em cada linha. -->
+        <details class="bloco-real conferencia-real" data-real-bloco-conferencia hidden>
+          <summary class="subtitulo-real">Conferir a lista antes de enviar</summary>
+          <p class="nota-tabela">É a lista do jeito que vai para o banco. Embaixo de cada pessoa com pendência, o Agente de validação pergunta o que falta: responda na conversa e ele ajusta o dado para você. Toda mudança fica registrada com o seu nome e pode ser desfeita.</p>
+          <!-- "Resolvido agora": o que a IA acabou de resolver e saiu da lista, com o Desfazer (js/assistente_de_correcao.js). -->
+          <div class="avisos-resolvidos-agora" data-real-resolvidos-agora role="status"></div>
+          <!-- Contadores e filtro: com milhares de funcionários, a empresa vê o tamanho do trabalho e trabalha só nas pendências. -->
+          <div class="contadores-conferencia" data-real-contadores-conferencia></div>
+          <!-- O que falta no arquivo inteiro (ADR-126): o cartão fica em "Acompanhar cadastros" (js/cadastrar_conferencia_real.js). -->
+          <p class="aviso-no-arquivo-conferencia" data-real-aviso-no-arquivo hidden></p>
+          <!-- Quem fica de fora deste envio, e por quê (envio parcial, ADR-126; js/quem_fica_de_fora.js). -->
+          <div data-real-ficam-de-fora hidden></div>
+          <label class="filtro-conferencia">
+            <input type="checkbox" data-real-so-pendencias checked>
+            Mostrar só quem tem pendência
+          </label>
+          <!-- O "i" no canto direito, em cima da lista: explica a situação de cada pessoa (js/legenda_dos_status.js). -->
+          <div class="linha-do-i-dos-status" data-legenda-dos-status="conferencia" data-portal="empresa"></div>
+          <div class="tabela-rolavel tabela-com-titulo-fixo">
+            <table class="tabela-montada tabela-conferencia-real">
+              <thead data-real-cabeca-conferencia></thead>
+              <tbody data-real-corpo-conferencia></tbody>
+            </table>
+          </div>
+          <button class="botao botao-contorno botao-pequeno" type="button" data-real-mais-linhas hidden>Mostrar mais 20</button>
+          <p class="erro-pendencia" data-real-erro-conferencia hidden></p>
+        </details>
+
+        <!-- "Ajude a IA a acertar": a IA relê as colunas escolhidas, cada uma com a dica da empresa (as colunas voltam
+             para o aceite). Várias colunas de uma vez contam como UMA releitura (js/cadastrar_conferencia_real.js).
+             Oculto nesta versão: a marca data-oculto-nesta-versao mantém o bloco escondido (css/estilos.css), mesmo
+             quando o script o liga; o código, o molde e a rota da releitura ficam. -->
+        <details class="bloco-real ajude-ia" data-real-bloco-ajude hidden data-oculto-nesta-versao="ajude-o-agente">
+          <summary class="subtitulo-real">Algo ficou de fora ou foi lido errado? Ajude o Agente Interpretador a acertar</summary>
+          <form class="formulario-ajude-real" data-real-formulario-ajude novalidate>
+            <!-- Uma linha por coluna: o que está no seu documento e o que ele contém. -->
+            <div data-real-pedidos-de-releitura></div>
+            <div class="resultado-botoes">
+              <button class="botao botao-contorno botao-pequeno" type="button" data-real-mais-uma-coluna>+ Explicar outra coluna</button>
+              <button class="botao botao-principal botao-pequeno" type="submit" data-real-pedir-releitura>Pedir que o Agente Interpretador releia</button>
+            </div>
+          </form>
+          <p class="nota-tabela">O Agente Interpretador relê só as colunas que você explicou, cada uma com a sua dica, e as colunas voltam para você aceitar. Até 5 colunas de uma vez; no máximo 2 releituras por envio. Pedido para o agente ignorar as regras não tem efeito.</p>
+        </details>
+
+        <!-- O molde de uma linha do "Ajude a IA a acertar" (copiado para cada coluna explicada). -->
+        <template id="modelo-pedido-de-releitura">
+          <div class="pedido-de-releitura" data-pedido-de-releitura>
+            <label class="campo">
+              <span class="campo-rotulo">No seu documento</span>
+              <select class="campo-entrada" data-releitura-coluna></select>
+            </label>
+            <label class="campo">
+              <span class="campo-rotulo">O que isso contém</span>
+              <input class="campo-entrada" type="text" maxlength="300" placeholder="Ex.: é a data em que a pessoa entrou na empresa" data-releitura-dica>
+            </label>
+            <button class="botao-descartar" type="button" data-releitura-tirar>Tirar</button>
+          </div>
+        </template>
+        </div>
+        <!-- Fim da 2ª aba. -->
+
+        <!-- A validação humana final: sem marcar, o envio ao banco não é liberado. -->
+        <label class="caixa-conferi-real" data-real-conferi hidden>
+          <input type="checkbox" data-real-conferi-caixa>
+          <span>Conferi a lista e está certa.</span>
+        </label>
+
+        <!-- O que fazer agora (muda conforme a etapa do fluxo). -->
+        <div class="resultado-botoes resultado-botoes-real">
+          <button class="botao botao-principal" type="button" data-real-aceitar hidden>Aceitar as colunas e conferir os dados</button>
+          <button class="botao botao-principal" type="button" data-real-homologar hidden>Enviar ao banco</button>
+          <!-- O envio parou em "tentar de novo" (a IA pausada pelo teto de gasto, ou uma etapa que falhou; ADR-139). -->
+          <button class="botao botao-principal" type="button" data-real-tentar-de-novo hidden>Tentar de novo</button>
+          <a class="botao botao-contorno" href="acompanhar.html#pendencias" data-real-ir-pendencias hidden>Resolver as pendências em Acompanhar cadastros</a>
+          <a class="botao botao-principal" href="acompanhar.html" data-real-ir-acompanhar hidden>Ver em Acompanhar cadastros</a>
+          <button class="botao-descartar" type="button" data-real-descartar hidden>Descartar esta leitura</button>
+        </div>
+      </section>
+
+      <!-- ============ 5c. CONFERÊNCIA DA LISTA (começa escondida; abre com "Conferir a lista") ============ -->
+      <!--
+        A última validação antes do envio: a lista inteira, do jeito que vai para o banco.
+        Montada pelo js/conferir.js. O que a IA mudou fica em azul, o que a pessoa corrige fica verde e o que
+        ainda precisa de ajuste fica laranja (e não vai neste envio). O envio só libera depois do "Conferi a lista".
+      -->
+      <section id="etapa-conferencia" class="cartao conferencia" aria-labelledby="titulo-conferencia" hidden>
+        <div class="conferencia-cabecalho">
+          <div>
+            <span class="sobretitulo">Última etapa antes do envio</span>
+            <h2 class="painel-titulo" id="titulo-conferencia">Confira a lista antes de enviar</h2>
+            <p class="conferencia-texto">
+              É assim que o cadastro vai para o banco. Em azul, o que os agentes mudaram em relação ao seu arquivo (passe o
+              mouse para ver o valor original). Achou algo errado? Clique no valor e corrija ali mesmo.
+            </p>
+          </div>
+          <!-- Legenda das cores. -->
+          <ul class="legenda-conferencia">
+            <li><span class="amostra amostra-alterada"></span>Alterado pelos agentes</li>
+            <li><span class="amostra amostra-corrigida"></span>Corrigido por você</li>
+            <li><span class="amostra amostra-ajuste"></span>Precisa de ajuste</li>
+          </ul>
+        </div>
+
+
+        <!--
+          "Ajude a IA a acertar" (js/orientar.js): fica DENTRO da conferência, porque é conferindo a lista que a pessoa
+          percebe que a IA deixou algo de fora ou leu algo errado. Começa recolhido; <details> abre e fecha ao clicar no
+          resumo. O que a orientação muda aparece na hora na tabela logo abaixo. Nome técnico: refinamento com feedback humano.
+        -->
+        <details class="ajude-ia" id="ajude-a-ia">
+          <summary class="ajude-ia-resumo">
+            <svg class="icone"><use href="#icone-ia"/></svg>
+            <span class="ajude-ia-pergunta">Algo ficou de fora ou foi lido errado? <strong>Oriente a releitura</strong></span>
+            <span class="selo selo-atencao selo-pequeno" data-selo-deixadas-de-fora>1 coluna deixada de fora</span>
+            <svg class="icone envio-seta" aria-hidden="true"><use href="#icone-abrir"/></svg>
+          </summary>
+          <p class="conferencia-texto">
+            Você conhece o seu arquivo melhor do que ninguém. A releitura só muda a leitura do seu arquivo: nunca inventa
+            dado nem pula as regras do banco.
+          </p>
+            <div class="ajude-ia-grade">
+              <!-- Caminho 1: as colunas que a IA deixou de fora (só no cenário de planilha). -->
+              <div class="ajude-ia-bloco" data-colunas-ignoradas>
+                <div class="cartao-titulo-pequeno">O que o Agente Interpretador deixou de fora</div>
+                <article class="coluna-ignorada">
+                  <div class="ajuste-cabecalho">
+                    <span class="ajuste-titulo">Coluna "Obs RH"</span>
+                    <span class="selo selo-neutro selo-pequeno" data-situacao-obs-rh>Deixada de fora</span>
+                  </div>
+                  <p class="ajuste-problema">Amostra: linha 1 "e-mail pessoal otavio.lopes@gmail.com" · linha 2 "e-mail pessoal patricia.reis@gmail.com" · linha 5 (em branco)</p>
+                  <div class="sugestao-ia">
+                    <svg class="icone"><use href="#icone-ia"/></svg>
+                    <span>Deixei de fora porque o nome "Obs RH" não diz o que a coluna guarda. Se ela for útil, me diga para qual campo.</span>
+                  </div>
+                  <div class="ajuste-botoes" data-acoes-obs-rh>
+                    <select class="campo-entrada campo-pequeno" aria-label="Qual informação a coluna Obs RH traz" data-campo-da-coluna>
+                      <option value="">Esta coluna é...</option>
+                    </select>
+                    <button class="botao botao-principal botao-pequeno" type="button" data-usar-coluna>Usar esta coluna</button>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Caminho 2: orientação em texto livre, com conversa curta com a IA. -->
+              <div class="ajude-ia-bloco">
+                <div class="cartao-titulo-pequeno">Dizer algo ao Agente Interpretador sobre este arquivo</div>
+                <textarea class="campo-entrada caixa-orientacao" rows="3" data-texto-orientacao
+                  placeholder='Ex.: "A coluna Obs RH tem o e-mail pessoal" ou "Início é mesmo a data de admissão".'
+                  aria-label="Sua orientação para o Agente Interpretador sobre este arquivo"></textarea>
+                <button class="botao botao-contorno" type="button" data-reler-com-orientacao>Reler com a minha orientação</button>
+                <p class="conferencia-nota" data-limite-releituras hidden>
+                  Este envio já usou as 2 releituras. Se algo ainda estiver errado, corrija direto na lista da conferência.
+                </p>
+                <!-- As respostas da IA a este bloco aparecem aqui. -->
+                <div class="conversa-orientacao" id="conversa-orientacao" aria-live="polite"></div>
+              </div>
+            </div>
+        </details>
+
+        <!-- Filtros e busca. -->
+        <div class="barra-conferencia">
+          <div class="grupo-filtros" role="group" aria-label="Filtrar a lista">
+            <button class="filtro-rapido filtro-rapido-ativo" type="button" data-filtro-conferencia="todos">Todos <span data-contagem-conferencia="todos"></span></button>
+            <button class="filtro-rapido" type="button" data-filtro-conferencia="alterados">Só o que os agentes mudaram <span data-contagem-conferencia="alterados"></span></button>
+            <button class="filtro-rapido" type="button" data-filtro-conferencia="ajuste">Só com ajuste <span data-contagem-conferencia="ajuste"></span></button>
+          </div>
+          <input class="campo-entrada campo-pequeno" type="search" placeholder="Buscar pelo nome" aria-label="Buscar na lista pelo nome" data-busca-conferencia>
+        </div>
+
+        <!-- A tabela rola para o lado (são muitas colunas); a coluna da linha fica parada à esquerda. -->
+        <div class="tabela-rolavel tabela-conferencia-caixa">
+          <table class="tabela-montada tabela-conferencia">
+            <thead><tr data-cabecalho-conferencia></tr></thead>
+            <tbody data-corpo-conferencia></tbody>
+          </table>
+        </div>
+
+        <!-- Rodapé: o resumo, a confirmação e o envio. -->
+        <div class="conferencia-rodape">
+          <p class="conferencia-resumo" data-resumo-conferencia></p>
+          <label class="caixa-conferi">
+            <input type="checkbox" data-conferi-a-lista>
+            <span>Conferi a lista e os dados estão corretos.</span>
+          </label>
+          <!-- Se a pessoa precisar sair, nada se perde: a leitura fica guardada como rascunho. -->
+          <p class="conferencia-nota">Precisa sair agora? A leitura fica guardada e você termina depois, em Acompanhar cadastros → Envios.</p>
+          <div class="conferencia-botoes">
+            <button class="botao-descartar" type="button" data-descartar-leitura>Descartar esta leitura</button>
+            <!-- Desligado até a pessoa marcar a caixa acima. -->
+            <button class="botao botao-principal" type="button" data-enviar-conferido disabled>Enviar para o banco</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Rodapé só com o aviso de que o site é um projeto. -->
+  <footer class="rodape rodape-so-nota">
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o Santander é ilustrativa: este não é um sistema oficial do banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!--
+    Balão de ajuda do "i" de cada coluna da conferência. É um só, preenchido pelo js/conferir.js com os textos do
+    parâmetro do layout do campo clicado e posicionado logo abaixo do "i".
+  -->
+  <div class="balao-ajuda" role="dialog" aria-labelledby="balao-ajuda-titulo" data-balao-ajuda hidden>
+    <div class="balao-ajuda-cabecalho">
+      <strong id="balao-ajuda-titulo" data-ajuda-titulo></strong>
+      <span class="selo selo-neutro selo-pequeno" data-ajuda-obrigatorio></span>
+    </div>
+    <dl class="balao-ajuda-lista">
+      <dt>O que é</dt><dd data-ajuda-o-que-e></dd>
+      <dt>Como deve vir</dt><dd data-ajuda-como></dd>
+      <dt>Não confundir com</dt><dd data-ajuda-nao-confundir></dd>
+      <dt>Exemplo</dt><dd data-ajuda-exemplo></dd>
+    </dl>
+    <p class="balao-ajuda-rodape">Definido pelo banco no layout de cadastro.</p>
+  </div>
+
+  <!--
+    Confirmação de descarte da leitura. <dialog> é a janela pronta do navegador (escurece o fundo, fecha com Esc).
+    O nome do arquivo e a quantidade de funcionários são preenchidos pelo js/conferir.js.
+  -->
+  <dialog class="janela-beneficio" id="janela-descartar" aria-labelledby="janela-descartar-titulo">
+    <div class="janela-conteudo">
+      <h2 class="janela-titulo" id="janela-descartar-titulo">Descartar esta leitura?</h2>
+      <p class="janela-resumo" data-texto-descartar></p>
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-cancelar-descarte>Continuar conferindo</button>
+        <button class="botao botao-principal" type="button" data-confirmar-descarte>Descartar e escolher outro arquivo</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============ 6. MODELOS USADOS PELO JAVASCRIPT ============ -->
+  <!--
+    <template> é um "molde" que o navegador guarda sem mostrar. O JavaScript faz uma cópia
+    dele, preenche o texto e coloca na tela. Assim o HTML das mensagens fica aqui, legível.
+  -->
+
+  <!-- Molde de uma mensagem da IA. -->
+  <template id="modelo-mensagem-ia">
+    <div class="mensagem-ia">
+      <span class="mensagem-ia-avatar"><svg class="icone"><use href="#icone-ia"/></svg></span>
+      <div>
+        <div class="mensagem-ia-balao"></div>
+        <span class="mensagem-ia-hora"></span>
+      </div>
+    </div>
+  </template>
+
+  <!-- Molde dos "três pontinhos" de quando a IA está pensando. -->
+  <template id="modelo-digitando">
+    <div class="mensagem-ia">
+      <span class="mensagem-ia-avatar"><svg class="icone"><use href="#icone-ia"/></svg></span>
+      <div class="mensagem-ia-balao digitando" aria-label="Os agentes estão pensando"><span></span><span></span><span></span></div>
+    </div>
+  </template>
+
+  <!-- Molde de um campo reconhecido: o que está no arquivo → campo do banco + confiança. -->
+  <template id="modelo-campo">
+    <li class="coluna-mapeada">
+      <span class="coluna-arquivo"></span>
+      <svg class="icone coluna-seta"><use href="#icone-seta"/></svg>
+      <code class="coluna-banco"></code>
+      <span class="selo selo-pequeno coluna-confianca"></span>
+    </li>
+  </template>
+
+  <!-- Roteiro da IA e interações da tela. -->
+  <script src="js/cadastrar.js"></script>
+  <!-- Conferência da lista antes do envio (usa o envio_atual do cadastrar.js). -->
+  <script src="js/conferir.js"></script>
+  <!-- Checagem do texto livre antes de ir para a IA (usada pelo orientar.js). -->
+  <script src="js/guardrail.js"></script>
+  <!-- "Ajude a IA a acertar": releitura com a orientação da empresa (usa o cadastrar.js e o conferir.js). -->
+  <script src="js/orientar.js"></script>
+  <!-- Envio de verdade, ligado à aplicação (quando a página é servida pela API). -->
+  <!-- A janela "Descartar esta leitura?", a mesma da tela Acompanhar. -->
+  <script src="js/descartar_envio.js"></script>
+  <!-- A grade do parâmetro (os campos obrigatórios e o detalhe) e as informações obrigatórias antes do envio
+       (ADR-143). -->
+  <script src="js/grade_do_parametro.js"></script>
+  <script src="js/cadastrar_obrigatorios.js"></script>
+  <script src="js/cadastrar_real.js"></script>
+  <!-- Formato das colunas, conferência da lista e "Ajude a IA a acertar" com a aplicação (ADR-69). -->
+  <!-- A conversa com o Agente de validação em cada pendência da conferência (o Assistente de Correção): resolve conversando. -->
+  <script src="js/assistente_de_correcao.js"></script>
+  <!-- O joinha embaixo das respostas do agente e das perguntas da leitura (ADR-151). -->
+  <script src="js/opiniao_dos_agentes.js"></script>
+  <script src="js/quem_fica_de_fora.js"></script>
+  <script src="js/cadastrar_conferencia_real.js"></script>
+  <!-- As duas abas do resultado da leitura: a grade dos funcionários (a prévia) e como o agente leu as colunas. -->
+  <script src="js/cadastrar_abas.js"></script>
+  <!-- Cabeçalho com quem entrou, os contadores reais e "Minha senha" (ADR-69). -->
+  <script src="js/cabecalho_real.js"></script>
+  <!-- O "i" em cima das grades: abre o balão com o que quer dizer cada situação (textos do servidor). -->
+  <script src="js/legenda_dos_status.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

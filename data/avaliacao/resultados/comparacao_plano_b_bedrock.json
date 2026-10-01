@@ -1,0 +1,126 @@
+{
+  "rota": "bedrock",
+  "perfil_geografico": "us",
+  "regiao": "us-east-1",
+  "configuracao": "B3",
+  "planilhas": 30,
+  "teto_por_modelo_usd": 2.5,
+  "gasto_usd": 3.3774,
+  "modelos": {
+    "nova-pro": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "nova-pro",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 52,
+      "vezes_que_o_dicionario_assumiu": 26,
+      "custo_usd": 0.541,
+      "tokens_entrada": 283584,
+      "tokens_saida": 82809,
+      "acuracia_por_campo": 0.06623931623931624,
+      "abstencao_recall": 0.9880952380952381,
+      "abstencao_precisao": 0.1599229287090559,
+      "acerto_geral": 0.20652173913043478,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.010141987829614604,
+        0.1447084233261339
+      ],
+      "segundos_por_planilha": 13.57,
+      "custo_por_planilha_usd": 0.01803
+    },
+    "claude-sonnet-4-6": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "claude-sonnet-4-6",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 1,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 1.773,
+      "tokens_entrada": 182116,
+      "tokens_saida": 71029,
+      "acuracia_por_campo": 0.8205128205128205,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.5,
+      "acerto_geral": 0.8478260869565217,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7883720930232558,
+        0.8515625
+      ],
+      "segundos_por_planilha": 19.71,
+      "custo_por_planilha_usd": 0.0591
+    },
+    "claude-haiku-4-5": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "claude-haiku-4-5",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 13,
+      "vezes_que_o_dicionario_assumiu": 6,
+      "custo_usd": 0.6971,
+      "tokens_entrada": 219024,
+      "tokens_saida": 82942,
+      "acuracia_por_campo": 0.6581196581196581,
+      "abstencao_recall": 0.9523809523809523,
+      "abstencao_precisao": 0.33613445378151263,
+      "acerto_geral": 0.7028985507246377,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.5250544662309368,
+        0.7763440860215054
+      ],
+      "segundos_por_planilha": 15.15,
+      "custo_por_planilha_usd": 0.02324
+    },
+    "nova-2-lite": {
+      "provedor": "AWS Bedrock (perfil EUA)",
+      "modelo": "nova-2-lite",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 37,
+      "vezes_que_o_dicionario_assumiu": 18,
+      "custo_usd": 0.3663,
+      "tokens_entrada": 227276,
+      "tokens_saida": 93818,
+      "acuracia_por_campo": 0.30982905982905984,
+      "abstencao_recall": 0.9880952380952381,
+      "abstencao_precisao": 0.2075,
+      "acerto_geral": 0.41304347826086957,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.1711340206185567,
+        0.45742574257425744
+      ],
+      "segundos_por_planilha": 14.02,
+      "custo_por_planilha_usd": 0.01221
+    }
+  },
+  "b0": {
+    "provedor": "—",
+    "modelo": "B0 (dicionário, sem IA)",
+    "situacao": "completo",
+    "planilhas_pontuadas": 30,
+    "custo_usd": 0.0,
+    "acuracia_por_campo": 0.5341880341880342,
+    "abstencao_recall": 0.5952380952380952,
+    "abstencao_precisao": 0.5555555555555556,
+    "acerto_geral": 0.5434782608695652,
+    "n_colunas_com_campo": 468,
+    "n_colunas_para_abster": 84,
+    "ic95_acuracia_por_campo": [
+      0.5011709601873536,
+      0.564870259481038
+    ],
+    "segundos_por_planilha": 0.0088
+  },
+  "observacao": "Medido em duas rodadas no mesmo dia, com o mesmo código: Sonnet 4.6 e Nova Pro na primeira; Haiku 4.5 e Nova 2 Lite relançados numa segunda (na primeira, as trilhas deles caíram na 1ª planilha por um defeito do painel de acompanhamento, já corrigido). O gasto das planilhas perdidas (~US$ 0,07) não entra no total."
+}

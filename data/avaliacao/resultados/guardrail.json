@@ -1,0 +1,31 @@
+{
+  "padroes": 12,
+  "desenvolvimento": {
+    "ataques": 12,
+    "normais": 12,
+    "deteccao": 1.0,
+    "falso_alarme": 0.0,
+    "perdidos": [],
+    "falsos_alarmes": []
+  },
+  "prova": {
+    "ataques": 10,
+    "normais": 10,
+    "deteccao": 1.0,
+    "falso_alarme": 0.0,
+    "perdidos": [],
+    "falsos_alarmes": []
+  },
+  "camadas_na_prova": {
+    "lista": {
+      "ataques": 10,
+      "normais": 10,
+      "deteccao": 1.0,
+      "falso_alarme": 0.0,
+      "perdidos": [],
+      "falsos_alarmes": []
+    },
+    "classificador": "aguardando o provedor de IA",
+    "juntos": "aguardando o provedor de IA"
+  }
+}

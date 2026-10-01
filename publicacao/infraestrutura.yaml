@@ -1,0 +1,341 @@
+# =====================================================================================================================
+# infraestrutura.yaml: tudo o que o site do Integra Folha usa na AWS, num modelo só (CloudFormation)
+#
+# Para que serve:
+#   Em vez de criar cada peça clicando no console, este arquivo descreve a hospedagem inteira. A AWS lê o arquivo e
+#   monta tudo junto, numa "pilha" (stack). Com o mesmo arquivo dá para recriar tudo igual, ou apagar tudo com um
+#   comando. É como a planta de uma casa: quem tem a planta consegue construir de novo.
+#
+# O que ele cria (na Virgínia, us-east-1):
+#   1. a chave SSH (só a parte pública; a privada nunca sai do computador de quem administra);
+#   2. o firewall da máquina (Security Group): a porta 22 só para o IP de quem administra; 80 e 443 abertas para todos;
+#   3. o bucket do backup (S3, privado, com versões e apagando sozinho o que tem mais de 30 dias);
+#   4. o papel da máquina (IAM), que só grava no bucket do backup, sem apagar;
+#   5. a máquina (EC2 t3.small ou t3.medium, Ubuntu 24.04, disco de 30 GB criptografado);
+#   6. o IP fixo (Elastic IP), que é o endereço que o DNS do domínio aponta;
+#   7. o alarme de orçamento (AWS Budgets), que manda e-mail em 80% e 100% do valor do mês.
+#
+# As escolhas (ADR-134): máquina t3.small ligada o tempo todo; alarme de US$ 60/mês; região da Virgínia.
+#
+# Como usar (só com o custo aprovado antes, porque cria recursos que cobram):
+#   aws cloudformation deploy --stack-name integra-folha-producao --template-file infraestrutura.yaml
+#       --parameter-overrides IpDaUsuaria=<ip>/32 ChavePublicaSsh="<conteúdo do .pub>" EmailDoOrcamento=<e-mail>
+#       --capabilities CAPABILITY_NAMED_IAM --region us-east-1 --profile integra-publicacao
+#   Para apagar tudo (sem volta): aws cloudformation delete-stack --stack-name integra-folha-producao.
+#   O bucket do backup NÃO é apagado junto (DeletionPolicy: Retain), para o backup sobreviver.
+#
+# Custo previsto (preços conferidos em 29/09): t3.small US$ 15,18 + IP fixo US$ 3,65 + disco US$ 2,40 ≈ US$ 21/mês.
+# =====================================================================================================================
+
+# Versão do formato de modelo do CloudFormation (é sempre esta data).
+AWSTemplateFormatVersion: "2010-09-09"
+# Descrição que aparece no console (com hífen, sem travessão, pela regra do projeto).
+Description: "Integra Folha - hospedagem do site: maquina com Docker, IP fixo, firewall, backup e alarme de orcamento"
+
+Parameters:
+  # O tamanho da máquina: a t3.small (2 GB, ADR-134); a t3.medium (4 GB) é o degrau seguinte.
+  TipoDaMaquina:
+    Type: String
+    Default: t3.small
+    AllowedValues:
+      - t3.small
+      - t3.medium
+    Description: "Tamanho da maquina (t3.small = 2 GB, t3.medium = 4 GB)"
+  # O IP de quem administra, no formato 200.100.50.25/32: só dele a porta 22 (SSH) aceita conexão.
+  IpDaUsuaria:
+    Type: String
+    AllowedPattern: "^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}/32$"
+    Description: "IP atual de quem administra, com /32 (so ele entra por SSH)"
+  # A parte pública da chave SSH (o conteúdo do arquivo ~/.ssh/integra-folha-ec2.pub).
+  ChavePublicaSsh:
+    Type: String
+    Description: "Parte publica da chave SSH (ssh-ed25519 ...)"
+  # O e-mail que recebe o aviso do alarme de orçamento.
+  EmailDoOrcamento:
+    Type: String
+    Description: "E-mail que recebe os avisos do orcamento"
+  # O valor do alarme de orçamento por mês, em dólares (60, ADR-134).
+  ValorDoOrcamento:
+    Type: Number
+    Default: 60
+    Description: "Valor mensal do alarme de orcamento, em dolares"
+  # Por quantos dias o backup fica guardado antes de ser apagado sozinho.
+  DiasDoBackup:
+    Type: Number
+    Default: 30
+    Description: "Dias que cada backup fica guardado"
+  # A imagem do Ubuntu 24.04 mais nova, lida de um parâmetro público da AWS (assim não fica um código fixo velho).
+  ImagemDoUbuntu:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/canonical/ubuntu/server/24.04/stable/current/amd64/hvm/ebs-gp3/ami-id
+    Description: "Imagem do Ubuntu Server 24.04 (parametro publico da Canonical)"
+
+Resources:
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 1. A chave SSH: a AWS guarda só a parte pública, que funciona como a fechadura; a chave fica com quem administra.
+  # -------------------------------------------------------------------------------------------------------------------
+  ChaveSsh:
+    Type: AWS::EC2::KeyPair
+    Properties:
+      # O nome da chave na AWS.
+      KeyName: integra-folha-ssh
+      # O tipo da chave (ed25519: curta e moderna).
+      KeyType: ed25519
+      # A parte pública, recebida como parâmetro.
+      PublicKeyMaterial: !Ref ChavePublicaSsh
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 2. O firewall da máquina: o que pode entrar. Tudo o que não está aqui fica fechado (o 8000 e o 5432, por exemplo).
+  # -------------------------------------------------------------------------------------------------------------------
+  Firewall:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      # O nome do firewall na AWS.
+      GroupName: integra-folha-firewall
+      # A explicação que aparece no console. Não mude este texto: a AWS recriaria o firewall, e o nome fixo
+      # (GroupName) faria a troca falhar.
+      GroupDescription: "Integra Folha - SSH so do IP da usuaria; http e https para todos"
+      SecurityGroupIngress:
+        # O SSH (porta 22), só do IP de quem administra. Mudar esta regra, até a descrição, a tira e põe de
+        # novo (um instante sem SSH).
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref IpDaUsuaria
+          Description: "SSH so do IP da usuaria"
+        # O http (porta 80): o Caddy só usa para pegar o certificado e mandar o visitante para o https.
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+          Description: "http, redireciona para https"
+        # O https (porta 443), por onde o site é acessado.
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+          Description: "https"
+        # O https pelo protocolo novo (HTTP/3, que usa UDP), que o Caddy oferece.
+        - IpProtocol: udp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+          Description: "https por HTTP/3"
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 3. O bucket do backup: um "depósito" privado de arquivos no S3, onde a máquina guarda o backup de cada noite.
+  # -------------------------------------------------------------------------------------------------------------------
+  BucketDoBackup:
+    Type: AWS::S3::Bucket
+    # Se a pilha for apagada, o bucket fica: o backup precisa sobreviver ao servidor.
+    DeletionPolicy: Retain
+    # O mesmo vale se a pilha trocar o bucket por outro.
+    UpdateReplacePolicy: Retain
+    Properties:
+      # O nome precisa ser único no mundo todo: o número da conta garante isso.
+      BucketName: !Sub "integra-folha-backup-${AWS::AccountId}"
+      # Nada neste bucket pode ficar público, nem por engano.
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      # Os arquivos ficam criptografados no disco da AWS.
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      # Guarda as versões antigas: se um arquivo for sobrescrito, a versão anterior continua lá.
+      VersioningConfiguration:
+        Status: Enabled
+      # Apaga sozinho o backup mais velho que DiasDoBackup, para o custo não crescer para sempre.
+      LifecycleConfiguration:
+        Rules:
+          - Id: apagar-backup-antigo
+            Status: Enabled
+            # O backup atual expira depois de DiasDoBackup dias.
+            ExpirationInDays: !Ref DiasDoBackup
+            # A versão antiga (sobrescrita) expira no mesmo prazo.
+            NoncurrentVersionExpiration:
+              NoncurrentDays: !Ref DiasDoBackup
+
+  # A regra do bucket: só aceita conexão criptografada (https), nunca texto aberto.
+  RegraDoBucketDoBackup:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      # O bucket ao qual a regra se aplica.
+      Bucket: !Ref BucketDoBackup
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          # Recusa qualquer pedido que não venha por conexão segura.
+          - Sid: SoConexaoSegura
+            Effect: Deny
+            Principal: "*"
+            Action: s3:*
+            Resource:
+              - !GetAtt BucketDoBackup.Arn
+              - !Sub "${BucketDoBackup.Arn}/*"
+            Condition:
+              Bool:
+                aws:SecureTransport: "false"
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 4. O papel da máquina: a "credencial" que a máquina usa para falar com a AWS, sem nenhuma chave guardada nela.
+  #    Pode só gravar o backup (sem apagar). O limite integra-limite-dos-papeis é obrigatório (freio de segurança).
+  # -------------------------------------------------------------------------------------------------------------------
+  PapelDaMaquina:
+    Type: AWS::IAM::Role
+    Properties:
+      # O nome começa com "integra-": é o único tipo de papel que o usuário integra-publicador pode criar.
+      RoleName: integra-folha-maquina
+      # A explicação que aparece no console.
+      Description: "Integra Folha - papel da maquina: grava o backup no bucket, sem apagar"
+      # O teto das permissões (o integra-publicador só cria papel com este limite).
+      PermissionsBoundary: !Sub "arn:aws:iam::${AWS::AccountId}:policy/integra-limite-dos-papeis"
+      # Quem pode usar o papel: só uma máquina EC2.
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        # O que o papel pode fazer: gravar arquivos só na pasta "backup/" do bucket.
+        - PolicyName: gravar-backup
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: GravarBackupSemApagar
+                Effect: Allow
+                Action: s3:PutObject
+                Resource: !Sub "${BucketDoBackup.Arn}/backup/*"
+
+  # O "envelope" que leva o papel até a máquina (a AWS exige esse intermediário).
+  PerfilDaMaquina:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      # O mesmo nome do papel, para achar fácil.
+      InstanceProfileName: integra-folha-maquina
+      # O papel que vai dentro do envelope.
+      Roles:
+        - !Ref PapelDaMaquina
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 5. A máquina: um computador na AWS com Ubuntu, onde o Docker vai rodar o Caddy, a aplicação e o banco.
+  # -------------------------------------------------------------------------------------------------------------------
+  Maquina:
+    Type: AWS::EC2::Instance
+    Properties:
+      # O tamanho escolhido.
+      InstanceType: !Ref TipoDaMaquina
+      # A imagem do Ubuntu 24.04.
+      ImageId: !Ref ImagemDoUbuntu
+      # A chave SSH para entrar.
+      KeyName: !Ref ChaveSsh
+      # O firewall.
+      SecurityGroupIds:
+        - !GetAtt Firewall.GroupId
+      # O papel (credencial da máquina, para o backup).
+      IamInstanceProfile: !Ref PerfilDaMaquina
+      # "standard": a máquina NÃO usa CPU extra paga. Sem isto, a t3 pode passar do limite e cobrar a mais.
+      CreditSpecification:
+        CPUCredits: standard
+      # Exige o jeito seguro de a máquina consultar os próprios dados (IMDSv2), que protege a credencial do papel.
+      MetadataOptions:
+        HttpTokens: required
+        HttpEndpoint: enabled
+      # O disco: 30 GB do tipo gp3, criptografado, apagado junto com a máquina (o backup fica no S3).
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 30
+            VolumeType: gp3
+            Encrypted: true
+            DeleteOnTermination: true
+      # O nome que aparece no console.
+      Tags:
+        - Key: Name
+          Value: integra-folha-producao
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 6. O IP fixo: o endereço da máquina que não muda, nem se ela for reiniciada. É o que vai no DNS do domínio.
+  # -------------------------------------------------------------------------------------------------------------------
+  IpFixo:
+    Type: AWS::EC2::EIP
+    Properties:
+      # O IP é para uso numa rede VPC (o padrão de hoje).
+      Domain: vpc
+      # Já nasce ligado à máquina (IP solto é cobrado sem servir para nada).
+      InstanceId: !Ref Maquina
+      # O nome que aparece no console.
+      Tags:
+        - Key: Name
+          Value: integra-folha-ip
+
+  # -------------------------------------------------------------------------------------------------------------------
+  # 7. O alarme de orçamento: avisa por e-mail quando o gasto do mês chega a 80% e a 100% do ValorDoOrcamento,
+  #    e quando a previsão do mês passa de 100%. Ele só avisa, não desliga nada.
+  # -------------------------------------------------------------------------------------------------------------------
+  AlarmeDeOrcamento:
+    Type: AWS::Budgets::Budget
+    Properties:
+      Budget:
+        # O nome do orçamento na AWS.
+        BudgetName: integra-folha-orcamento-mensal
+        # Mede o custo (em dólares).
+        BudgetType: COST
+        # Recomeça todo mês.
+        TimeUnit: MONTHLY
+        # O valor do parâmetro ValorDoOrcamento.
+        BudgetLimit:
+          Amount: !Ref ValorDoOrcamento
+          Unit: USD
+      NotificationsWithSubscribers:
+        # Aviso quando o gasto real chega a 80%.
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 80
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailDoOrcamento
+        # Aviso quando o gasto real passa de 100%.
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailDoOrcamento
+        # Aviso quando a previsão do mês passa de 100% (chega antes do gasto acontecer).
+        - Notification:
+            NotificationType: FORECASTED
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: EMAIL
+              Address: !Ref EmailDoOrcamento
+
+Outputs:
+  # O IP fixo: vai na tabela do DNS do registro.br.
+  IpDoSite:
+    Description: "IP fixo da maquina (vai no DNS do dominio)"
+    Value: !Ref IpFixo
+  # O código da máquina, para ligar, desligar e conferir.
+  CodigoDaMaquina:
+    Description: "ID da maquina EC2"
+    Value: !Ref Maquina
+  # O nome do bucket do backup.
+  BucketDoBackup:
+    Description: "Bucket privado do backup"
+    Value: !Ref BucketDoBackup
+  # O comando para a primeira entrada por SSH (o usuário "ubuntu" vem na imagem; depois vira o "deploy").
+  PrimeiraEntradaSsh:
+    Description: "Comando da primeira entrada por SSH"
+    Value: !Sub "ssh -i ~/.ssh/integra-folha-ec2 ubuntu@${IpFixo}"

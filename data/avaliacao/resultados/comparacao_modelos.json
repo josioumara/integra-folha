@@ -1,0 +1,146 @@
+{
+  "modelos": {
+    "gpt-6-luna": {
+      "provedor": "OpenAI",
+      "modelo": "gpt-6-luna",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.0552,
+      "tokens_entrada": 126902,
+      "tokens_saida": 85078,
+      "acuracia_por_campo": 0.7628205128205128,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.4307692307692308,
+      "acerto_geral": 0.7989130434782609,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7266666666666667,
+        0.8039647577092511
+      ],
+      "segundos_por_planilha": 29.65,
+      "custo_por_planilha_usd": 0.00184
+    },
+    "claude-haiku-4-5": {
+      "provedor": "Anthropic",
+      "modelo": "claude-haiku-4-5",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.466,
+      "tokens_entrada": 163355,
+      "tokens_saida": 60527,
+      "acuracia_por_campo": 0.8162393162393162,
+      "abstencao_recall": 0.9285714285714286,
+      "abstencao_precisao": 0.4875,
+      "acerto_geral": 0.8333333333333334,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7802690582959642,
+        0.8496868475991649
+      ],
+      "segundos_por_planilha": 14.03,
+      "custo_por_planilha_usd": 0.01553
+    },
+    "gpt-6-sol": {
+      "provedor": "OpenAI",
+      "modelo": "gpt-6-sol",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 0.8147,
+      "tokens_entrada": 126902,
+      "tokens_saida": 56092,
+      "acuracia_por_campo": 0.7756410256410257,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.4444444444444444,
+      "acerto_geral": 0.8097826086956522,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.7367303609341825,
+        0.8101851851851852
+      ],
+      "segundos_por_planilha": 26.77,
+      "custo_por_planilha_usd": 0.02716
+    },
+    "claude-sonnet-5": {
+      "provedor": "Anthropic",
+      "modelo": "claude-sonnet-5",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 1.6741,
+      "tokens_entrada": 212578,
+      "tokens_saida": 124890,
+      "acuracia_por_campo": 0.844017094017094,
+      "abstencao_recall": 0.9880952380952381,
+      "abstencao_precisao": 0.532051282051282,
+      "acerto_geral": 0.8659420289855072,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.8110403397027601,
+        0.8747300215982722
+      ],
+      "segundos_por_planilha": 33.54,
+      "custo_por_planilha_usd": 0.0558
+    },
+    "claude-opus-5-5": {
+      "provedor": "Anthropic",
+      "modelo": "claude-opus-5-5",
+      "situacao": "completo",
+      "planilhas_pontuadas": 30,
+      "falhas_do_provedor": [],
+      "respostas_fora_do_contrato": 0,
+      "vezes_que_o_dicionario_assumiu": 0,
+      "custo_usd": 3.1951,
+      "tokens_entrada": 212638,
+      "tokens_saida": 117227,
+      "acuracia_por_campo": 0.8226495726495726,
+      "abstencao_recall": 1.0,
+      "abstencao_precisao": 0.5029940119760479,
+      "acerto_geral": 0.8496376811594203,
+      "n_colunas_com_campo": 468,
+      "n_colunas_para_abster": 84,
+      "ic95_acuracia_por_campo": [
+        0.783157894736842,
+        0.8597285067873304
+      ],
+      "segundos_por_planilha": 30.47,
+      "custo_por_planilha_usd": 0.1065
+    }
+  },
+  "gasto_acumulado_usd": 6.2051,
+  "teto_usd": 25.0,
+  "configuracao": "B3",
+  "planilhas": 30,
+  "b0": {
+    "provedor": "—",
+    "modelo": "B0 (dicionário, sem IA)",
+    "situacao": "completo",
+    "planilhas_pontuadas": 30,
+    "custo_usd": 0.0,
+    "acuracia_por_campo": 0.5341880341880342,
+    "abstencao_recall": 0.5952380952380952,
+    "abstencao_precisao": 0.5555555555555556,
+    "acerto_geral": 0.5434782608695652,
+    "n_colunas_com_campo": 468,
+    "n_colunas_para_abster": 84,
+    "ic95_acuracia_por_campo": [
+      0.5011709601873536,
+      0.564870259481038
+    ],
+    "segundos_por_planilha": 0.0073
+  }
+}

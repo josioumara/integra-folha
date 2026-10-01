@@ -1,0 +1,5641 @@
+/*
+  estilos.css — aparência do Portal da Empresa (Integra Folha).
+
+  Para que serve: guarda TODAS as cores, fontes, espaçamentos e componentes visuais do portal.
+  O login e as outras abas (Cadastrar funcionários, Acompanhar cadastros, Benefícios,
+  Endomarketing) reaproveitam este mesmo arquivo, então o visual fica igual em todas as telas.
+
+  Como está organizado:
+    1. Variáveis (as "cores e medidas oficiais" do portal, num lugar só)
+    2. Base (o que vale para a página inteira)
+    3. Cabeçalho e abas
+    4. Destaque principal (a faixa na cor da marca de boas-vindas)
+    5. Números do cadastro
+    6. Seções de venda (benefícios e endomarketing)
+    7. Assistente flutuante e rodapé
+    8. Tela de login
+    9. Tela de cadastro com IA (envio do arquivo, IA trabalhando, resultado)
+    10. Tela Acompanhar cadastros (pendências, contas, envios, funcionários e ficha)
+    11. Telas Benefícios do seu time e Materiais de endomarketing
+    12. Telas pequenas (celular) e movimento reduzido
+
+  Identidade visual do Integra Folha (ADR-98): carmim vivo, muito branco, cinzas suaves, botões arredondados.
+  O logotipo aqui é só um texto provisório.
+*/
+
+/* ===== 1. Variáveis ===== */
+/* Variável de CSS é um "apelido" para um valor: muda aqui e muda no portal inteiro. */
+:root {
+  --cor-marca: #d62839;                 /* cor principal do Integra Folha: carmim vivo (contraste ~5:1) */
+  --cor-marca-escura: #9e1b32;          /* a cor da marca mais escura: passar o mouse e degradês */
+  --cor-marca-sobre-escuro: #ff6b7a;    /* a cor da marca mais clara, legível em fundo preto */
+  --cor-marca-clara: #fde8ea;           /* fundo suave para selos e ícones */
+  --azul-ceu: #deedf2;                  /* cor de apoio usada nos fundos de destaque */
+  --azul-ceu-claro: #f0f7fa;            /* fundo de seção alternada */
+  --verde-sucesso: #008437;             /* status "ativo", "concluído" */
+  --verde-sucesso-claro: #e3f4ea;       /* fundo do selo de sucesso */
+  --amarelo-atencao: #b35c00;           /* status "pendente" */
+  --amarelo-atencao-claro: #fff1e0;     /* fundo do selo de atenção */
+  --texto-principal: #222222;           /* títulos e textos */
+  --texto-secundario: #6f7779;          /* textos de apoio */
+  --linha-divisoria: #e5e8ea;           /* bordas e divisórias */
+  --fundo-pagina: #f6f7f8;              /* fundo geral, cinza bem claro */
+  --branco: #ffffff;                    /* cartões e textos sobre a cor da marca */
+  --cor-marca-degrade: #f7b2ba;         /* tom intermediário dos degradês e das bordas tracejadas */
+
+  --fonte-titulos: "Nunito Sans", "Segoe UI", Arial, sans-serif;  /* títulos arredondados, próximos da marca */
+  --fonte-textos: "Open Sans", "Segoe UI", Arial, sans-serif;     /* textos corridos */
+
+  --raio-cartao: 16px;                  /* cantos arredondados dos cartões */
+  --raio-botao: 999px;                  /* botão em formato de pílula */
+  --sombra-cartao: 0 2px 12px rgba(34, 34, 34, 0.06);   /* sombra leve para "descolar" o cartão do fundo */
+  --sombra-elevada: 0 12px 32px rgba(34, 34, 34, 0.12); /* sombra maior ao passar o mouse */
+  --largura-maxima: 1200px;             /* largura máxima do conteúdo em telas grandes */
+}
+
+/* ===== 2. Base ===== */
+/* Faz a largura dos elementos incluir borda e espaçamento interno (evita contas confusas). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Página inteira: fonte, cor do texto e fundo. */
+body {
+  margin: 0;
+  font-family: var(--fonte-textos);
+  color: var(--texto-principal);
+  background: var(--fundo-pagina);
+  line-height: 1.5;
+}
+
+/*
+  Tudo que tem o atributo "hidden" fica escondido de verdade.
+  Sem esta regra, um bloco com display: grid ou flex no CSS continuaria aparecendo mesmo com hidden.
+*/
+[hidden] {
+  display: none !important;
+}
+
+/*
+  O que está oculto nesta versão (ADR-148) fica escondido sempre, mesmo quando um script tira o "hidden" dele (ex.: o
+  bloco que o script liga conforme a etapa do envio). A marca data-oculto-nesta-versao diz o que foi escondido; o código
+  continua na página, para voltar rápido numa evolução.
+*/
+[data-oculto-nesta-versao] {
+  display: none !important;
+}
+
+/* Itens de grade podem encolher abaixo do tamanho do seu conteúdo (evita a página "vazar" no celular). */
+.destaque-grade > *,
+.cartao-endomarketing > *,
+.login-grade > * {
+  min-width: 0;
+}
+
+/* Títulos usam a fonte arredondada e ficam mais "pesados". */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-titulos);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Parágrafos sem margem automática; cada componente decide o seu espaço. */
+p {
+  margin: 0;
+}
+
+/* Links herdam a cor do texto em volta. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Caixa central que limita a largura do conteúdo e deixa respiro nas laterais. */
+.conteudo-centralizado {
+  max-width: var(--largura-maxima);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Ícones desenhados em SVG: herdam a cor do texto e têm traço arredondado. */
+.icone {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* Botão padrão: formato de pílula. */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--raio-botao);
+  border: 2px solid transparent;
+  font-family: var(--fonte-titulos);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+/* Botão principal: na cor da marca com texto branco. */
+.botao-principal {
+  background: var(--cor-marca);
+  color: var(--branco);
+}
+
+/* Ao passar o mouse, a cor da marca escurece. */
+.botao-principal:hover {
+  background: var(--cor-marca-escura);
+}
+
+/* Botão branco: usado em cima da faixa na cor da marca. */
+.botao-branco {
+  background: var(--branco);
+  color: var(--cor-marca);
+}
+
+/* Ao passar o mouse, o botão branco sobe um pouquinho. */
+.botao-branco:hover {
+  transform: translateY(-2px);
+}
+
+/* Botão só com contorno branco: ação secundária sobre a cor da marca. */
+.botao-contorno-branco {
+  background: transparent;
+  color: var(--branco);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Ao passar o mouse, o contorno ganha um fundo transparente. */
+.botao-contorno-branco:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Botão com contorno na cor da marca: ação secundária sobre fundo claro. */
+.botao-contorno {
+  background: transparent;
+  color: var(--cor-marca);
+  border-color: var(--cor-marca);
+}
+
+/* Ao passar o mouse, o contorno na cor da marca ganha fundo claro. */
+.botao-contorno:hover {
+  background: var(--cor-marca-clara);
+}
+
+/* Link de texto com seta, usado para "ver tudo". */
+.link-seta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cor-marca);
+  font-weight: 700;
+  font-family: var(--fonte-titulos);
+}
+
+/* A seta anda para a direita ao passar o mouse, convidando ao clique. */
+.link-seta:hover .icone {
+  transform: translateX(4px);
+}
+
+/* Movimento suave da seta. */
+.link-seta .icone {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s;
+}
+
+/* Selo pequeno (etiqueta) usado em status e destaques. */
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--raio-botao);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Selo verde: algo concluído. */
+.selo-sucesso {
+  background: var(--verde-sucesso-claro);
+  color: var(--verde-sucesso);
+}
+
+/* Selo laranja: algo que pede atenção. */
+.selo-atencao {
+  background: var(--amarelo-atencao-claro);
+  color: var(--amarelo-atencao);
+}
+
+/* Selo claro da marca: destaque de marca. */
+.selo-marca {
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+}
+
+/* Selo cinza: algo neutro (ex.: coluna ignorada). */
+.selo-neutro {
+  background: var(--fundo-pagina);
+  color: var(--texto-secundario);
+}
+
+/* Selo menor, para listas apertadas. */
+.selo-pequeno {
+  padding: 2px 8px;
+  font-size: 11px;
+}
+
+/* Cartão branco padrão, base de quase todos os blocos. */
+.cartao {
+  background: var(--branco);
+  border-radius: var(--raio-cartao);
+  box-shadow: var(--sombra-cartao);
+  padding: 24px;
+}
+
+/* Cabeçalho de cada seção: título à esquerda, link à direita. */
+.cabecalho-secao {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* Pequeno texto na cor da marca acima do título da seção ("sobretítulo"). */
+.sobretitulo {
+  display: block;
+  color: var(--cor-marca);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Título grande de cada seção. */
+.titulo-secao {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+/* Texto de apoio logo abaixo do título da seção. */
+.descricao-secao {
+  color: var(--texto-secundario);
+  margin-top: 8px;
+  max-width: 640px;
+}
+
+/* Espaço vertical padrão entre seções. */
+.secao {
+  padding: 72px 0;
+}
+
+/* Seção com fundo azul-céu, para alternar com as brancas. */
+.secao-azul {
+  background: var(--azul-ceu-claro);
+}
+
+/* ===== 3. Cabeçalho e abas ===== */
+/* Barra do topo: fica grudada no alto quando a pessoa rola a página. */
+.barra-topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--branco);
+  box-shadow: 0 1px 0 var(--linha-divisoria);
+}
+
+/* Linha de cima: logo à esquerda, ações do usuário à direita. */
+.barra-topo-linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* Logotipo provisório (trocar pelo arquivo oficial). */
+.logotipo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Nome da marca na cor da marca e negrito. */
+.logotipo-marca {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--cor-marca);
+  letter-spacing: -0.02em;
+}
+
+/* Nome do portal ao lado da marca, separado por uma linha fina. */
+.logotipo-portal {
+  padding-left: 12px;
+  border-left: 1px solid var(--linha-divisoria);
+  color: var(--texto-secundario);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* "Banco parceiro: Santander", colado ao logotipo, nas telas depois do login:
+   o Integra Folha é o sistema e o Santander, o banco parceiro. Pílula discreta, com o nome do banco em destaque. */
+.selo-banco-parceiro {
+  margin-left: 20px;
+  margin-right: auto;
+  padding: 4px 12px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 999px;
+  background: var(--fundo-pagina);
+  color: var(--texto-secundario);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* O nome do banco parceiro, em negrito e na cor do texto principal. */
+.selo-banco-parceiro strong {
+  color: var(--texto-principal);
+}
+
+/* Em tela estreita (celular), o selo sai do cabeçalho para não espremer a marca e o usuário. */
+@media (max-width: 640px) {
+  .selo-banco-parceiro {
+    display: none;
+  }
+}
+
+/* Área da direita: a conversa com o especialista e a identificação de quem está logado. */
+.acoes-usuario {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Botão da conversa com o especialista, no cabeçalho. */
+.botao-conversa {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--texto-principal);
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Bloco com a foto (iniciais) e o nome de quem está logado. */
+.usuario-logado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Círculo com as iniciais da pessoa. */
+.iniciais-usuario {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+/* Nome da pessoa. */
+.nome-usuario {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Empresa da pessoa, abaixo do nome. */
+.empresa-usuario {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Botão "Sair": discreto, só ícone e texto cinza. */
+.botao-sair {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--raio-botao);
+  color: var(--texto-secundario);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Ícone do "Sair" um pouco menor. */
+.botao-sair .icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* Ao passar o mouse, o "Sair" fica na cor da marca com fundo claro. */
+.botao-sair:hover {
+  color: var(--cor-marca);
+  background: var(--cor-marca-clara);
+}
+
+/* Linha das abas do portal. */
+.abas-portal {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+/* Cada aba: ícone + texto, com uma linha embaixo quando ativa. */
+.aba {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--texto-secundario);
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+/* Ícones das abas um pouco menores. */
+.aba .icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* Aba ao passar o mouse. */
+.aba:hover {
+  color: var(--texto-principal);
+}
+
+/* Aba da página atual: na cor da marca, com linha na cor da marca embaixo. */
+.aba-ativa {
+  color: var(--cor-marca);
+  border-bottom-color: var(--cor-marca);
+}
+
+/* ===== 4. Destaque principal (faixa de boas-vindas) ===== */
+/* Faixa na cor da marca em degradê com círculos decorativos ao fundo. */
+.destaque-principal {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, var(--cor-marca) 0%, var(--cor-marca-escura) 100%);
+  color: var(--branco);
+  padding: 64px 0 120px;
+}
+
+/* Círculo decorativo grande à direita (só enfeite, não tem conteúdo). */
+.destaque-principal::before {
+  content: "";
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  right: -140px;
+  top: -200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Círculo decorativo menor à esquerda, embaixo. */
+.destaque-principal::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  left: -120px;
+  bottom: -180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Duas colunas: mensagem à esquerda, jornada à direita. */
+.destaque-grade {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Selo acima da saudação. */
+.destaque-selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--raio-botao);
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Ícone do selo, menor. */
+.destaque-selo .icone {
+  width: 18px;
+  height: 18px;
+}
+
+/* Saudação grande: é a primeira coisa que a empresa lê. */
+.destaque-titulo {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Parte da saudação que fica mais leve (quebra de ritmo visual). */
+.destaque-titulo-leve {
+  display: block;
+  font-weight: 400;
+}
+
+/* Texto de apoio da saudação. */
+.destaque-texto {
+  font-size: 18px;
+  margin-top: 20px;
+  max-width: 540px;
+  opacity: 0.92;
+}
+
+/* Linha com os dois botões de ação. */
+.destaque-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* Cartão da jornada (etapas do relacionamento). */
+.cartao-jornada {
+  color: var(--texto-principal);
+  padding: 28px;
+  box-shadow: var(--sombra-elevada);
+}
+
+/* Cabeçalho do cartão da jornada: título + anel de progresso. */
+.jornada-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Título do cartão da jornada. */
+.jornada-titulo {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* Texto pequeno abaixo do título da jornada. */
+.jornada-subtitulo {
+  color: var(--texto-secundario);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Anel de progresso: desenhado com um degradê cônico (uma "pizza" colorida até a porcentagem). */
+.anel-progresso {
+  --porcentagem: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: conic-gradient(var(--cor-marca) calc(var(--porcentagem) * 1%), var(--cor-marca-clara) 0);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* Miolo branco do anel, com o número no meio. */
+.anel-miolo {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--branco);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* Número da porcentagem dentro do anel. */
+.anel-numero {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--cor-marca);
+}
+
+/* Legenda pequena dentro do anel. */
+.anel-legenda {
+  font-size: 10px;
+  color: var(--texto-secundario);
+}
+
+/* Lista das etapas da jornada. */
+.lista-etapas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cada etapa: bolinha à esquerda, texto à direita, linha ligando as bolinhas. */
+.etapa {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 20px;
+}
+
+/* Linha vertical que liga uma etapa à próxima. */
+.etapa::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  bottom: 0;
+  width: 2px;
+  background: var(--linha-divisoria);
+}
+
+/* A última etapa não tem linha para baixo. */
+.etapa:last-child::before {
+  display: none;
+}
+
+/* A última etapa não precisa de espaço embaixo. */
+.etapa:last-child {
+  padding-bottom: 0;
+}
+
+/* Bolinha de cada etapa. */
+.etapa-marcador {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 2px solid var(--linha-divisoria);
+  background: var(--branco);
+  color: var(--texto-secundario);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Ícone de "feito" dentro da bolinha. */
+.etapa-marcador .icone {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+
+/* Etapa concluída: bolinha verde e a linha para a próxima também verde. */
+.etapa-concluida .etapa-marcador {
+  background: var(--verde-sucesso);
+  border-color: var(--verde-sucesso);
+  color: var(--branco);
+}
+
+/* Linha verde saindo de uma etapa concluída. */
+.etapa-concluida::before {
+  background: var(--verde-sucesso);
+}
+
+/* Etapa atual: bolinha na cor da marca com um halo ao redor. */
+.etapa-atual .etapa-marcador {
+  background: var(--cor-marca);
+  border-color: var(--cor-marca);
+  color: var(--branco);
+  box-shadow: 0 0 0 6px var(--cor-marca-clara);
+}
+
+/* Nome da etapa. */
+.etapa-nome {
+  font-weight: 700;
+}
+
+/* Detalhe da etapa (data, situação). */
+.etapa-detalhe {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* ===== 5. Números do cadastro ===== */
+/* Os cartões de números "sobem" por cima da faixa na cor da marca, criando profundidade. */
+.numeros-empresa {
+  position: relative;
+  z-index: 2;
+  margin-top: -72px;
+}
+
+/* Quatro cartões lado a lado. */
+.grade-numeros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Cartão de número: ícone, valor grande e legenda. */
+.cartao-numero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Quadrado arredondado com o ícone do número. */
+.cartao-numero-icone {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+}
+
+/* O número em si, grande. */
+.cartao-numero-valor {
+  font-family: var(--fonte-titulos);
+  font-size: 32px;
+  font-weight: 800;
+}
+
+/* Parte menor do número (ex.: "de 450"). */
+.cartao-numero-total {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+/* Selos e links dentro do cartão ficam do tamanho do texto (sem esticar na largura toda). */
+.cartao-numero .selo,
+.cartao-numero .link-seta {
+  align-self: flex-start;
+}
+
+/* Legenda do número. */
+.cartao-numero-legenda {
+  color: var(--texto-secundario);
+  font-size: 14px;
+}
+
+/* Barra fina de progresso dentro do cartão. */
+.barra-progresso {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--cor-marca-clara);
+  overflow: hidden;
+}
+
+/* Parte preenchida da barra. */
+.barra-progresso-preenchida {
+  height: 100%;
+  background: var(--cor-marca);
+  border-radius: 3px;
+}
+
+/* ===== 6. Seções de venda (benefícios e endomarketing) ===== */
+/* --- Benefícios do time --- */
+/* Grade de benefícios: três por linha. */
+.grade-beneficios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Cartão de benefício: ícone e selo no alto, texto embaixo. */
+.cartao-beneficio {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--linha-divisoria);
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Ao passar o mouse, a borda fica na cor da marca. */
+.cartao-beneficio:hover {
+  border-color: var(--cor-marca);
+  box-shadow: var(--sombra-cartao);
+}
+
+/* Linha do alto do cartão de benefício: ícone à esquerda, selo à direita. */
+.beneficio-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Ícone do benefício. */
+.beneficio-icone {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--azul-ceu);
+  color: var(--cor-marca);
+  display: grid;
+  place-items: center;
+}
+
+/* Título do benefício. */
+.beneficio-titulo {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Texto do benefício. */
+.beneficio-texto {
+  color: var(--texto-secundario);
+  font-size: 15px;
+  flex-grow: 1;
+}
+
+/* Nota de rodapé dos benefícios (condições). */
+.nota-condicoes {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* "Ver detalhes" é um botão com cara de link: tira o visual padrão de botão do navegador. */
+.botao-ver-detalhes {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+/* --- Janela de detalhes do benefício --- */
+/* A janela em si: sem borda nem espaçamento (o espaçamento fica no bloco interno). */
+.janela-beneficio {
+  border: none;
+  border-radius: 20px;
+  padding: 0;
+  width: min(560px, calc(100% - 32px));
+  box-shadow: var(--sombra-elevada);
+  color: var(--texto-principal);
+}
+
+/* Fundo escurecido atrás da janela (::backdrop é a "cortina" que o navegador põe atrás). */
+.janela-beneficio::backdrop {
+  background: rgba(34, 34, 34, 0.55);
+}
+
+/* Bloco interno com o espaçamento e o conteúdo. */
+.janela-conteudo {
+  padding: 32px;
+}
+
+/* Cabeçalho da janela: ícone, títulos e o X de fechar. */
+.janela-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Os títulos ocupam o espaço do meio, empurrando o X para a direita. */
+.janela-cabecalho-textos {
+  flex-grow: 1;
+}
+
+/* Título do benefício na janela. */
+.janela-titulo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* Botão X de fechar, discreto. */
+.botao-fechar-janela {
+  border: none;
+  background: none;
+  padding: 4px;
+  color: var(--texto-secundario);
+  cursor: pointer;
+}
+
+/* O X fica na cor da marca ao passar o mouse. */
+.botao-fechar-janela:hover {
+  color: var(--cor-marca);
+}
+
+/* Contorno de foco (quem navega pelo teclado vê onde está): na cor da marca e arredondado, no padrão do portal. */
+.botao-fechar-janela:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  border-radius: 8px;
+}
+
+/* Resumo do benefício, logo abaixo do título. */
+.janela-resumo {
+  color: var(--texto-secundario);
+  margin-bottom: 20px;
+}
+
+/* Lista de detalhes: cada bloco com um respiro entre eles. */
+.janela-detalhes {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+}
+
+/* Nome do bloco ("Como funciona", "Quem pode usar"...). */
+.janela-detalhes dt {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 15px;
+}
+
+/* Texto do bloco; espaço embaixo para separar do próximo nome. */
+.janela-detalhes dd {
+  margin: 0 0 12px;
+  color: var(--texto-secundario);
+  font-size: 15px;
+}
+
+/* O último texto não precisa de espaço embaixo. */
+.janela-detalhes dd:last-child {
+  margin-bottom: 0;
+}
+
+/* Linha dos botões no fim da janela, alinhados à direita. */
+.janela-botoes {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* --- Endomarketing --- */
+/* Cartão escuro em duas colunas, para se destacar das seções claras. */
+.cartao-endomarketing {
+  background: var(--texto-principal);
+  color: var(--branco);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Cada coluna empilha seus blocos com espaço entre eles. */
+.endomarketing-coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Sobretítulo no tom mais claro da marca, legível no fundo escuro. */
+.cartao-endomarketing .sobretitulo {
+  color: var(--cor-marca-sobre-escuro);
+}
+
+/* Texto de apoio no fundo escuro. */
+.cartao-endomarketing .descricao-secao {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Destaque do número agregado de funcionários sem conta. */
+.endomarketing-numero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* O número em si. */
+.endomarketing-numero strong {
+  font-family: var(--fonte-titulos);
+  font-size: 36px;
+  color: var(--cor-marca-sobre-escuro);
+}
+
+/* Lista dos materiais que a IA gera. */
+.lista-materiais {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Cada material: ícone e nome. */
+.material {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Ícone do material, no tom claro da marca. */
+.material .icone {
+  color: var(--cor-marca-sobre-escuro);
+}
+
+/* ===== 7. Assistente flutuante e rodapé ===== */
+/* Botão redondo do assistente, fixo no canto da tela. */
+.assistente-flutuante {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px 14px 16px;
+  border: none;
+  border-radius: var(--raio-botao);
+  background: var(--cor-marca);
+  color: var(--branco);
+  font-family: var(--fonte-titulos);
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: var(--sombra-elevada);
+  cursor: pointer;
+}
+
+/* Ao passar o mouse, o assistente escurece. */
+.assistente-flutuante:hover {
+  background: var(--cor-marca-escura);
+}
+
+/* Rodapé escuro com links institucionais. */
+.rodape {
+  background: var(--texto-principal);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+/* Rodapé em linha: marca à esquerda, links à direita. */
+.rodape-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Links do rodapé. */
+.rodape-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Link do rodapé fica branco ao passar o mouse. */
+.rodape-links a:hover {
+  color: var(--branco);
+}
+
+/* Marca no rodapé, em branco. */
+.rodape .logotipo-marca {
+  color: var(--branco);
+  font-size: 22px;
+}
+
+/* ===== 8. Tela de login ===== */
+/* Página de login: ocupa a altura toda da tela. */
+.login-pagina {
+  min-height: 100vh;
+  background: var(--branco);
+}
+
+/* Duas metades: painel cor da marca à esquerda, formulário à direita. */
+.login-grade {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  min-height: 100vh;
+}
+
+/* Painel na cor da marca: mesmo degradê e círculos da faixa de boas-vindas da home. */
+.login-painel-marca {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--cor-marca) 0%, var(--cor-marca-escura) 100%);
+  color: var(--branco);
+  padding: 48px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+/* Círculo decorativo grande (só enfeite). */
+.login-painel-marca::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -200px;
+  bottom: -160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Conteúdo do painel fica na frente dos círculos. */
+.login-painel-marca > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Marca em branco sobre a cor da marca. */
+.login-painel-marca .logotipo-marca {
+  color: var(--branco);
+}
+
+/* Nome do portal ao lado da marca, em branco translúcido. */
+.login-painel-marca .logotipo-portal {
+  color: rgba(255, 255, 255, 0.8);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Frase principal do painel. */
+.login-titulo {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Texto de apoio abaixo da frase principal. */
+.login-texto {
+  font-size: 18px;
+  margin-top: 16px;
+  max-width: 480px;
+  opacity: 0.92;
+}
+
+/* Lista das três vantagens do portal. */
+.login-lista-vantagens {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cada vantagem: ícone num círculo e texto ao lado. */
+.login-vantagem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 600;
+}
+
+/* Círculo branco translúcido com o ícone. */
+.login-vantagem-icone {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  display: grid;
+  place-items: center;
+}
+
+/* Rodapé do painel (direitos e aviso de dados fictícios). */
+.login-rodape-painel {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+/* Os links das páginas de texto, logo abaixo do aviso de projeto (no mesmo bloco, sem o espaço grande do painel). */
+.login-rodape .login-links-do-painel {
+  margin-top: 6px;
+}
+
+/* Os links do rodapé do painel: brancos e sublinhados, legíveis sobre a cor da marca. */
+.login-links-do-painel a {
+  color: var(--branco);
+  text-decoration: underline;
+}
+
+/* Metade branca: centraliza o formulário na vertical e na horizontal. */
+.login-painel-formulario {
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+}
+
+/* O formulário em si, com largura limitada para ficar confortável de ler. */
+.formulario-login {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Título do formulário. */
+.formulario-titulo {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* Texto abaixo do título do formulário. */
+.formulario-subtitulo {
+  color: var(--texto-secundario);
+  margin-top: 6px;
+}
+
+/* Cada campo: rótulo em cima, caixa de digitação embaixo. */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Rótulo do campo. */
+.campo-rotulo {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Caixa de digitação: borda cinza, cantos arredondados. */
+.campo-entrada {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #c7ccce;
+  border-radius: 8px;
+  font-family: var(--fonte-textos);
+  font-size: 16px;
+  color: var(--texto-principal);
+  background: var(--branco);
+}
+
+/* Caixa em foco (onde o cursor está): borda na cor da marca e halo claro. */
+.campo-entrada:focus {
+  outline: none;
+  border-color: var(--cor-marca);
+  box-shadow: 0 0 0 3px var(--cor-marca-clara);
+}
+
+/* Caixa da senha: guarda o botão "mostrar" por dentro, à direita. */
+.campo-senha {
+  position: relative;
+}
+
+/* Deixa espaço à direita para o botão "mostrar" não cobrir o texto. */
+.campo-senha .campo-entrada {
+  padding-right: 88px;
+}
+
+/* Botão "Mostrar/Ocultar" dentro da caixa da senha. */
+.botao-mostrar-senha {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 8px;
+  color: var(--cor-marca);
+  font-family: var(--fonte-titulos);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Linha de opções do login: "esqueci a senha" à direita. */
+.login-linha-opcoes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+/* Caixa de seleção com o texto ao lado (ex.: no Portal Interno, em Envios). */
+.caixa-lembrar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* A caixinha de marcar fica na cor da marca quando marcada. */
+.caixa-lembrar input {
+  accent-color: var(--cor-marca);
+  width: 18px;
+  height: 18px;
+}
+
+/* Link simples na cor da marca (ex.: "Esqueci minha senha"). */
+.link-simples {
+  color: var(--cor-marca);
+  font-weight: 700;
+}
+
+/* Sublinha o link simples ao passar o mouse. */
+.link-simples:hover {
+  text-decoration: underline;
+}
+
+/* Botão que ocupa a largura toda do formulário. */
+.botao-largura-total {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Bloco "Primeiro acesso?", separado por uma linha fina. */
+.login-primeiro-acesso {
+  padding-top: 20px;
+  border-top: 1px solid var(--linha-divisoria);
+  text-align: center;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* Aviso de ambiente seguro, com ícone de escudo verde. */
+.login-seguranca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Escudo verde do aviso de segurança. */
+.login-seguranca .icone {
+  width: 18px;
+  height: 18px;
+  color: var(--verde-sucesso);
+}
+
+/* Aviso de login recusado ("Usuário ou senha incorretos."): fundo claro e texto na cor da marca. */
+.aviso-login {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca-escura);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===== 9. Tela de cadastro com IA ===== */
+/* --- Título da página --- */
+/* Faixa branca do título, separada do conteúdo por uma linha fina. */
+.cabecalho-pagina {
+  background: var(--branco);
+  padding: 40px 0 32px;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+/* Selo "Cadastro com inteligência artificial" acima do título. */
+.selo-ia {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--raio-botao);
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+/* Ícone do selo, menor. */
+.selo-ia .icone {
+  width: 18px;
+  height: 18px;
+}
+
+/* Título grande da página. */
+.titulo-pagina {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Segunda parte do título, mais leve e cinza. */
+.titulo-pagina-leve {
+  display: block;
+  font-weight: 400;
+  color: var(--texto-secundario);
+  font-size: 24px;
+  margin-top: 6px;
+}
+
+/* Área abaixo do título, com respiro em cima e embaixo. */
+.area-cadastro {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+/* --- Esfera da IA (o "rosto" da IA na tela) --- */
+/* Círculo com um degradê na cor da marca que gira sem parar, dando a sensação de "algo pensando". */
+.esfera-ia {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--cor-marca), var(--cor-marca-sobre-escuro), var(--cor-marca-degrade),
+                             var(--cor-marca));
+  animation: girar 5s linear infinite;
+  flex-shrink: 0;
+}
+
+/* Miolo branco da esfera: sobra só um anel colorido girando. */
+.esfera-ia::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--branco);
+}
+
+/* Ícone no meio: gira ao contrário, na mesma velocidade, para ficar sempre em pé. */
+.esfera-ia .icone {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  color: var(--cor-marca);
+  animation: girar 5s linear infinite reverse;
+}
+
+/* Versão pequena da esfera, usada no cabeçalho do painel. */
+.esfera-ia-pequena {
+  width: 44px;
+  height: 44px;
+}
+
+/* Anel mais fino na esfera pequena. */
+.esfera-ia-pequena::after {
+  inset: 4px;
+}
+
+/* Ícone menor na esfera pequena. */
+.esfera-ia-pequena .icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* Animação de giro: uma volta completa. */
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Etapa "Envio" --- */
+/* Área de arrastar o arquivo: borda tracejada, tudo centralizado. */
+.zona-envio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  padding: 56px 24px;
+  border: 2px dashed var(--cor-marca-degrade);
+  border-radius: 20px;
+  background: var(--branco);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+/* Com um arquivo passando por cima: borda na cor da marca, fundo claro e leve aumento. */
+.zona-envio.arrastando {
+  border-color: var(--cor-marca);
+  background: var(--cor-marca-clara);
+  transform: scale(1.01);
+}
+
+/* Título da área de envio. */
+.zona-envio-titulo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* Texto de apoio da área de envio. */
+.zona-envio-texto {
+  color: var(--texto-secundario);
+  max-width: 520px;
+}
+
+/* Linha com os dois botões de envio. */
+.zona-envio-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Formatos aceitos, em letra pequena. */
+.zona-envio-formatos {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Formatos aceitos: uma fileira de "etiquetas" com ícone, que quebra linha se faltar espaço. */
+.formatos-aceitos {
+  list-style: none;
+  margin: 4px 0 8px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 860px;
+}
+
+/* Cada formato: ícone na cor da marca e nome, num fundo cinza claro arredondado. */
+.formato {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--raio-botao);
+  background: var(--fundo-pagina);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Ícone do formato, pequeno e na cor da marca. */
+.formato .icone {
+  width: 18px;
+  height: 18px;
+  color: var(--cor-marca);
+}
+
+/* Linha dos exemplos da demonstração, separada por uma linha fina. */
+.exemplos-envio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--linha-divisoria);
+  width: 100%;
+  max-width: 720px;
+}
+
+/* Texto "Ou veja a IA em ação...". */
+.exemplos-envio-rotulo {
+  font-size: 14px;
+  color: var(--texto-secundario);
+  margin-right: 4px;
+}
+
+/* Ícones menores dentro dos botões pequenos. */
+.botao-pequeno .icone {
+  width: 18px;
+  height: 18px;
+}
+
+/* Três passos lado a lado, abaixo da área de envio. */
+.passos-envio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Cada passo: número à esquerda, texto à direita. */
+.passo-envio {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Círculo com o número do passo. */
+.passo-envio-numero {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* Título do passo. */
+.passo-envio-titulo {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+}
+
+/* Texto do passo. */
+.passo-envio-texto {
+  color: var(--texto-secundario);
+  font-size: 14px;
+}
+
+/* --- Etapa "IA trabalhando" --- */
+/* Duas colunas: painel da IA à esquerda (mais largo), resultados ao vivo à direita. */
+.mesa-de-trabalho {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Coluna da direita: cartões empilhados. */
+.mesa-coluna-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/*
+  @property ensina o navegador que --angulo-borda é um ÂNGULO. Só assim ele consegue animar a
+  variável aos poucos (de 0 a 360 graus), fazendo o brilho "correr" em volta da borda do painel.
+*/
+@property --angulo-borda {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/*
+  Painel da IA com borda animada. Truque de duas camadas de fundo:
+  a de dentro (branca) cobre o miolo; a de fora (degradê girando) só aparece na faixa da borda.
+*/
+.painel-ia {
+  min-width: 0;
+  border: 2px solid transparent;
+  border-radius: var(--raio-cartao);
+  background:
+    linear-gradient(var(--branco), var(--branco)) padding-box,
+    conic-gradient(from var(--angulo-borda), var(--cor-marca), var(--cor-marca-degrade), var(--branco),
+                   var(--cor-marca-sobre-escuro), var(--cor-marca)) border-box;
+  box-shadow: var(--sombra-elevada);
+  animation: girar-borda 3s linear infinite;
+  overflow: hidden;
+}
+
+/* Leitura concluída: a borda para de girar e fica verde. */
+.painel-ia.concluido {
+  animation: none;
+  background:
+    linear-gradient(var(--branco), var(--branco)) padding-box,
+    linear-gradient(var(--verde-sucesso), var(--verde-sucesso)) border-box;
+}
+
+/* A esfera também para quando a leitura termina. */
+.painel-ia.concluido .esfera-ia,
+.painel-ia.concluido .esfera-ia .icone {
+  animation: none;
+}
+
+/* E fica verde: anel verde e ícone verde. */
+.painel-ia.concluido .esfera-ia {
+  background: var(--verde-sucesso);
+}
+
+/* Ícone verde da esfera concluída. */
+.painel-ia.concluido .esfera-ia .icone {
+  color: var(--verde-sucesso);
+}
+
+/* Animação da borda: o ângulo do degradê dá uma volta completa. */
+@keyframes girar-borda {
+  to {
+    --angulo-borda: 360deg;
+  }
+}
+
+/* Cabeçalho do painel: esfera, nome do assistente e status. */
+.painel-ia-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+/* Nome do assistente. */
+.painel-ia-nome {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+/* Linha de status: bolinha pulsando + texto. */
+.painel-ia-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Bolinha na cor da marca que pulsa enquanto a IA trabalha. */
+.ponto-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cor-marca);
+  animation: pulsar 1.2s ease-in-out infinite;
+}
+
+/* Leitura concluída: bolinha verde e parada. */
+.painel-ia.concluido .ponto-status {
+  background: var(--verde-sucesso);
+  animation: none;
+}
+
+/* Animação de pulsar: a bolinha diminui e some um pouco, depois volta. */
+@keyframes pulsar {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+
+/* As quatro etapas, lado a lado. */
+.etapas-ia {
+  list-style: none;
+  margin: 0;
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+/* Cada etapa: uma barrinha em cima e o nome embaixo. */
+.etapa-ia {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+/* A barrinha da etapa (cinza enquanto não começou). */
+.etapa-ia::before {
+  content: "";
+  height: 4px;
+  border-radius: 2px;
+  background: var(--linha-divisoria);
+}
+
+/* Etapa atual: nome na cor da marca e barrinha com um brilho correndo. */
+.etapa-ia-ativa {
+  color: var(--cor-marca);
+}
+
+/* Brilho correndo na barrinha da etapa atual. */
+.etapa-ia-ativa::before {
+  background: linear-gradient(90deg, var(--cor-marca), var(--cor-marca-degrade), var(--cor-marca));
+  background-size: 200% 100%;
+  animation: brilhar 1.2s linear infinite;
+}
+
+/* Etapa concluída: nome escuro e barrinha verde. */
+.etapa-ia-concluida {
+  color: var(--texto-principal);
+}
+
+/* Barrinha verde da etapa concluída. */
+.etapa-ia-concluida::before {
+  background: var(--verde-sucesso);
+}
+
+/* Animação do brilho: o degradê desliza da direita para a esquerda. */
+@keyframes brilhar {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Área da conversa: altura fixa com rolagem, mensagens empilhadas. */
+.conversa-ia {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 440px;
+  overflow-y: auto;
+  padding: 24px;
+  background: #fcfcfd;
+}
+
+/* Cada mensagem: avatar à esquerda, balão à direita; entra subindo de leve. */
+.mensagem-ia {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  animation: surgir 0.3s ease-out;
+}
+
+/* Círculo na cor da marca com o ícone da IA. */
+.mensagem-ia-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cor-marca);
+  color: var(--branco);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* Ícone do avatar, pequeno. */
+.mensagem-ia-avatar .icone {
+  width: 16px;
+  height: 16px;
+}
+
+/* Balão da mensagem: canto de cima à esquerda reto, como em aplicativos de conversa. */
+.mensagem-ia-balao {
+  background: var(--azul-ceu-claro);
+  padding: 12px 16px;
+  border-radius: 4px 16px 16px 16px;
+  font-size: 15px;
+}
+
+/* Mensagem de alerta: balão amarelado. */
+.mensagem-ia-alerta .mensagem-ia-balao {
+  background: var(--amarelo-atencao-claro);
+}
+
+/* Mensagem de sucesso: balão esverdeado. */
+.mensagem-ia-sucesso .mensagem-ia-balao {
+  background: var(--verde-sucesso-claro);
+}
+
+/* Avatar verde na mensagem de sucesso. */
+.mensagem-ia-sucesso .mensagem-ia-avatar {
+  background: var(--verde-sucesso);
+}
+
+/* Cursor piscando no fim do texto enquanto a IA escreve. */
+.mensagem-ia-balao.escrevendo::after {
+  content: "▍";
+  margin-left: 2px;
+  color: var(--cor-marca);
+  animation: piscar 1s steps(1) infinite;
+}
+
+/* Hora embaixo do balão. */
+.mensagem-ia-hora {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-secundario);
+  margin-top: 4px;
+}
+
+/* Balão dos três pontinhos. */
+.digitando {
+  display: inline-flex;
+  gap: 4px;
+  padding: 16px;
+}
+
+/* Cada pontinho. */
+.digitando span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--texto-secundario);
+  animation: quicar 1s ease-in-out infinite;
+}
+
+/* O segundo pontinho começa um pouco depois. */
+.digitando span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+/* O terceiro pontinho começa mais depois ainda (efeito "onda"). */
+.digitando span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Animação dos pontinhos: sobem e acendem, depois voltam. */
+@keyframes quicar {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+/* Animação do cursor: aparece e some. */
+@keyframes piscar {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Animação de entrada: surge de baixo, de transparente para visível. */
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Título pequeno dentro dos cartões da direita, com espaço para um selo à direita. */
+.cartao-titulo-pequeno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fonte-titulos);
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+/* Cartão do arquivo: ícone, nome/detalhes e selo do tipo de envio. */
+.cartao-arquivo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Nome e detalhes ocupam o espaço do meio. */
+.cartao-arquivo > div {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* Ícone verde de planilha. */
+.arquivo-icone {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--verde-sucesso-claro);
+  color: var(--verde-sucesso);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* Nome do arquivo numa linha só; se for longo demais, termina em "…" (o nome inteiro aparece ao passar o mouse). */
+.arquivo-nome {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Detalhes do arquivo (tipo, tamanho, linhas). */
+.arquivo-detalhes {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Três contadores lado a lado. */
+.contadores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Cada contador: fundo cinza claro, número grande e legenda. */
+.contador {
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 12px;
+  background: var(--fundo-pagina);
+}
+
+/* Número do contador. */
+.contador-valor {
+  font-family: var(--fonte-titulos);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* Legenda do contador. */
+.contador-legenda {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Número de prontas em verde. */
+.contador-pronto .contador-valor {
+  color: var(--verde-sucesso);
+}
+
+/* Número de "para revisar" em laranja-escuro. */
+.contador-revisar .contador-valor {
+  color: var(--amarelo-atencao);
+}
+
+/* Lista das colunas reconhecidas, com rolagem própria. */
+.lista-colunas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Cada coluna: nome no arquivo → campo do banco + selo, alinhados em grade. */
+.coluna-mapeada {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--fundo-pagina);
+  font-size: 13px;
+  animation: surgir 0.25s ease-out;
+}
+
+/* Nome da coluna como está no arquivo da empresa. */
+.coluna-arquivo {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Setinha entre as duas colunas. */
+.coluna-seta {
+  width: 14px;
+  height: 14px;
+  color: var(--texto-secundario);
+}
+
+/* Nome técnico do campo do banco, em letra de código. */
+.coluna-banco {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  color: var(--cor-marca-escura);
+  overflow-wrap: anywhere;
+}
+
+/* Coluna ignorada: mais apagada e com o destino riscado. */
+.coluna-ignorada {
+  opacity: 0.65;
+}
+
+/* Destino riscado da coluna ignorada. */
+.coluna-ignorada .coluna-banco {
+  text-decoration: line-through;
+  color: var(--texto-secundario);
+}
+
+/* --- Etapa "Resultado" --- */
+/* Cartão do resultado: resumo à esquerda, ajustes à direita; entra subindo de leve. */
+.resultado-leitura {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+  padding: 32px;
+  animation: surgir 0.4s ease-out;
+  scroll-margin-top: 140px;
+}
+
+/* Número grande de prontos, em verde. */
+.resultado-numero {
+  font-family: var(--fonte-titulos);
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--verde-sucesso);
+  line-height: 1;
+}
+
+/* Legenda do número de prontos. */
+.resultado-legenda {
+  color: var(--texto-secundario);
+  margin-top: 6px;
+}
+
+/* Botão de envio, nota e link empilhados. */
+.resultado-botoes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Nota embaixo do botão de envio. */
+.resultado-nota {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Caixa da tabela montada: se a tela for estreita, a tabela rola para o lado em vez de vazar. */
+.tabela-rolavel {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+}
+
+/* Tabela com o cadastro que a IA montou a partir da conversa. */
+.tabela-montada {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+/* Cabeçalho da tabela: fundo cinza claro, texto pequeno. */
+.tabela-montada th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--fundo-pagina);
+  color: var(--texto-secundario);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Células da tabela, com linha fina entre as pessoas. */
+.tabela-montada td {
+  padding: 10px 12px;
+  border-top: 1px solid var(--linha-divisoria);
+  white-space: nowrap;
+}
+
+/*
+  Grades de pessoas com a linha do título congelada, como o "Congelar painéis" do Excel: quem rola a lista continua
+  vendo a que campo cada valor pertence.
+  A grade ganha uma altura máxima (a tela menos o cabeçalho do site) e rola por dentro, nas duas direções; o cabeçalho
+  inteiro da tabela (a linha dos grupos e a dos campos) fica grudado no alto dela.
+*/
+.tabela-com-titulo-fixo {
+  max-height: max(320px, calc(100vh - 260px));
+  overflow: auto;
+}
+
+/* O cabeçalho inteiro gruda no alto da grade, por cima das linhas que passam por baixo dele. */
+.tabela-com-titulo-fixo thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Uma linha fina embaixo do título congelado, para separar dos valores que passam por baixo. */
+.tabela-com-titulo-fixo thead tr:last-child th {
+  box-shadow: inset 0 -1px 0 var(--linha-divisoria);
+}
+
+/* Lista dos ajustes, um embaixo do outro. */
+.lista-ajustes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cada ajuste: faixa laranja à esquerda indicando que precisa de atenção. */
+.ajuste {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-left: 4px solid var(--amarelo-atencao);
+  border-radius: 12px;
+  transition: border-color 0.3s;
+}
+
+/* Ajuste corrigido: faixa verde. */
+.ajuste-resolvido {
+  border-left-color: var(--verde-sucesso);
+}
+
+/* Resolvido pela conversa: a conversa fica à vista, com o "Pronto: ..." e o
+   Desfazer, mas sem a caixa, as respostas rápidas e os botões do grupo. */
+.ajuste-resolvido .respostas-rapidas,
+.ajuste-resolvido .formulario-conversa-ia,
+.ajuste-resolvido .acoes-do-grupo,
+.ajuste-resolvido .botao-todas-de-uma-vez {
+  display: none;
+}
+
+/* O selo "✓ Resolvida" no alto do cartão que acabou de ser resolvido. */
+.selo-resolvida {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--verde-sucesso);
+}
+
+/* O cartão resolvido desliza para fora quando a pessoa vai para outro cartão (~300 ms). */
+.ajuste-saindo {
+  animation: sair-para-o-lado 0.3s ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes sair-para-o-lado {
+  to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+/* Com "reduzir movimento" ligado no computador, o cartão sai sem animação. */
+@media (prefers-reduced-motion: reduce) {
+  .ajuste-saindo {
+    animation: none;
+  }
+}
+
+/* Filtro "Resolvidas": o que mudou, e quem resolveu e quando, em letra menor. */
+.resumo-da-resolvida {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.quem-resolveu {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* O "Ver a conversa (N)" da resolvida: pequeno, à esquerda. */
+.ajuste-da-lista-resolvidas .botao-nome {
+  align-self: flex-start;
+  font-size: 12px;
+}
+
+/* Linha de cima do ajuste: título à esquerda, selo à direita. */
+.ajuste-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Título do ajuste (linha e nome). */
+.ajuste-titulo {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+}
+
+/* Descrição do problema. */
+.ajuste-problema {
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* Sugestão da IA: fundo azul-céu com o ícone da IA. */
+.sugestao-ia {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--azul-ceu-claro);
+  font-size: 14px;
+}
+
+/* Ícone da IA na sugestão, na cor da marca. */
+.sugestao-ia .icone {
+  width: 18px;
+  height: 18px;
+  color: var(--cor-marca);
+  margin-top: 1px;
+}
+
+/* Linha dos botões (e do campo) do ajuste. */
+.ajuste-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Botão menor, para dentro dos ajustes. */
+.botao-pequeno {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+/* Campo de digitação menor, do tamanho do botão pequeno. */
+.campo-pequeno {
+  width: auto;
+  flex-grow: 1;
+  max-width: 220px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* Mensagem de correção recusada, dentro do cartão da pendência (ex.: "valor não reconhecido"), em laranja. */
+.erro-pendencia {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amarelo-atencao);
+}
+
+/* --- "Ajude a IA a acertar" (releitura com orientação da empresa) --- */
+/* O bloco recolhível dentro da conferência: quadro azul-céu com borda fina. */
+.ajude-ia {
+  padding: 14px 18px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+}
+
+/* A linha de resumo (sempre visível): ícone, pergunta, selo e seta. Clicável. */
+.ajude-ia-resumo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Tira o triângulo padrão do navegador (usamos a nossa seta). */
+.ajude-ia-resumo::-webkit-details-marker {
+  display: none;
+}
+
+/* Ícone da IA, na cor da marca. */
+.ajude-ia-resumo > .icone:first-child {
+  color: var(--cor-marca);
+}
+
+/* A pergunta ocupa o meio, empurrando o selo e a seta para a direita. */
+.ajude-ia-pergunta {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+/* Contorno de foco na linha de resumo, para quem navega pelo teclado. */
+.ajude-ia-resumo:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* Aberto: a seta gira para cima e o conteúdo ganha espaço. */
+.ajude-ia[open] .envio-seta {
+  transform: rotate(180deg);
+}
+
+/* Aberto: espaço entre o resumo, o texto e os dois caminhos. */
+.ajude-ia[open] .ajude-ia-resumo {
+  margin-bottom: 12px;
+}
+
+/* A grade dos dois caminhos, com respiro em cima. */
+.ajude-ia .ajude-ia-grade {
+  margin-top: 16px;
+}
+
+/* A coluna ignorada fica em cartão branco sobre o fundo azul. */
+.ajude-ia .coluna-ignorada {
+  background: var(--branco);
+}
+
+/* Duas colunas: o que ficou de fora e a orientação em texto. */
+.ajude-ia-grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Cada lado, com os itens um embaixo do outro. */
+.ajude-ia-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* A coluna ignorada: cartão com faixa cinza (não é erro, é algo a decidir). */
+.coluna-ignorada {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-left: 4px solid var(--texto-secundario);
+  border-radius: 12px;
+}
+
+/* A caixa de texto da orientação, que cresce só para baixo. */
+.caixa-orientacao {
+  resize: vertical;
+  font-size: 14px;
+}
+
+/* A conversa curta do bloco. */
+.conversa-orientacao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* O que a pessoa escreveu, num balão claro da marca à direita. */
+.fala-da-pessoa {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--cor-marca-clara);
+  font-size: 14px;
+}
+
+/* --- Conferência da lista (última etapa antes do envio) --- */
+/* O bloco da conferência, separado do resultado por um respiro. */
+.conferencia {
+  margin-top: 24px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-margin-top: 140px;
+}
+
+/* Título e texto à esquerda, legenda das cores à direita. */
+.conferencia-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Texto de explicação, com largura limitada para ficar fácil de ler. */
+.conferencia-texto {
+  max-width: 680px;
+  color: var(--texto-secundario);
+  margin-top: 6px;
+}
+
+/* Legenda: três amostras de cor lado a lado. */
+.legenda-conferencia {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Cada item da legenda: amostra e texto. */
+.legenda-conferencia li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Quadradinho de cor da legenda. */
+.amostra {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+/* As três cores (as mesmas das células), com borda na cor forte para aparecerem bem na legenda. */
+.amostra-alterada {
+  background: #dcebfb;
+  border: 1px solid #3a6fb0;
+}
+
+/* Verde: corrigido por você. */
+.amostra-corrigida {
+  background: var(--verde-sucesso-claro);
+  border: 1px solid var(--verde-sucesso);
+}
+
+/* Laranja: precisa de ajuste. */
+.amostra-ajuste {
+  background: var(--amarelo-atencao-claro);
+  border: 1px solid var(--amarelo-atencao);
+}
+
+/* Filtros à esquerda e busca à direita. */
+.barra-conferencia {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* A busca da conferência não precisa ser larga. */
+.barra-conferencia .campo-entrada {
+  width: 240px;
+}
+
+/* A caixa da tabela tem altura máxima: com centenas de linhas, rola por dentro. */
+.tabela-conferencia-caixa {
+  max-height: 520px;
+  overflow: auto;
+}
+
+/* O cabeçalho fica parado no alto enquanto a lista rola. */
+.tabela-conferencia th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  vertical-align: bottom;
+}
+
+/* O "i" de ajuda ao lado do nome do campo: círculo pequeno com borda. */
+.botao-ajuda-campo {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  border: 1px solid var(--texto-secundario);
+  border-radius: 50%;
+  background: var(--branco);
+  color: var(--texto-secundario);
+  font-family: Georgia, serif;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+/* Ao passar o mouse (ou focar pelo teclado), o "i" fica na cor da marca. */
+.botao-ajuda-campo:hover,
+.botao-ajuda-campo:focus-visible {
+  border-color: var(--cor-marca);
+  color: var(--cor-marca);
+  outline: none;
+}
+
+/* O balão de ajuda: preso à janela ("fixed"), acima de tudo, com sombra. */
+.balao-ajuda {
+  position: fixed;
+  z-index: 50;
+  width: 320px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--branco);
+  box-shadow: var(--sombra-elevada);
+  border: 1px solid var(--linha-divisoria);
+  font-size: 13px;
+}
+
+/* Título do campo à esquerda, "Obrigatório" ou "Opcional" à direita. */
+.balao-ajuda-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-family: var(--fonte-titulos);
+  font-size: 15px;
+}
+
+/* A lista: nome do item em negrito e o texto embaixo. */
+.balao-ajuda-lista {
+  margin: 0;
+}
+
+/* Nome do item ("O que é", "Exemplo"...). */
+.balao-ajuda-lista dt {
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+/* Texto do item, em cinza, com espaço antes do próximo. */
+.balao-ajuda-lista dd {
+  margin: 0 0 8px;
+  color: var(--texto-secundario);
+}
+
+/* "Definido pelo banco...": pequeno, separado por uma linha. */
+.balao-ajuda-rodape {
+  padding-top: 8px;
+  border-top: 1px solid var(--linha-divisoria);
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
+
+/* "no arquivo: Remuneração", pequeno, embaixo do nome do campo. */
+.cabecalho-origem {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--texto-secundario);
+}
+
+/* O selo "confira" no cabeçalho, com um respiro em cima. */
+.tabela-conferencia th .selo {
+  margin-top: 4px;
+}
+
+/* A primeira coluna (número da linha) fica parada à esquerda quando a tabela rola para o lado. */
+.tabela-conferencia .celula-numero,
+.tabela-conferencia th:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--branco);
+  color: var(--texto-secundario);
+  font-weight: 700;
+}
+
+/* O cabeçalho da primeira coluna fica acima das outras células paradas. */
+.tabela-conferencia th:first-child {
+  z-index: 3;
+  background: var(--fundo-pagina);
+}
+
+/* Célula que dá para editar: o cursor de texto avisa. */
+.tabela-conferencia td[contenteditable] {
+  cursor: text;
+}
+
+/* Célula em edição: contorno na cor da marca. */
+.tabela-conferencia td[contenteditable]:focus {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: -2px;
+  background: var(--branco);
+}
+
+/* Alterado pela IA: azul claro, com um sublinhado pontilhado que convida a passar o mouse. */
+.celula-alterada {
+  background: #dcebfb;
+  text-decoration: underline dotted #3a6fb0;
+  text-underline-offset: 3px;
+}
+
+/* Corrigido por você: verde claro. */
+.celula-corrigida {
+  background: var(--verde-sucesso-claro);
+}
+
+/* Campo com ajuste pendente: laranja. */
+.celula-com-ajuste {
+  background: var(--amarelo-atencao-claro);
+  color: var(--amarelo-atencao);
+  font-weight: 700;
+}
+
+/*
+  Linha inteira de quem ainda tem ajuste: texto em cinza, porque não vai neste envio.
+  (Cor, e não transparência: a coluna da linha fica parada por cima das outras e precisa continuar opaca.)
+*/
+.linha-pendente td {
+  color: var(--texto-secundario);
+}
+
+/* Rodapé: resumo, caixa de confirmação e botões. */
+.conferencia-rodape {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--linha-divisoria);
+}
+
+/* A frase-resumo ("26 prontos para enviar · 12 valores..."). */
+.conferencia-resumo {
+  font-weight: 600;
+}
+
+/* A caixa "Conferi a lista", clicável também pelo texto. */
+.caixa-conferi {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* A caixinha em si, maior e na cor da marca. */
+.caixa-conferi input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--cor-marca);
+}
+
+/* Link de voltar à esquerda, botão de envio à direita. */
+.conferencia-botoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* "Descartar esta leitura": discreto, em cinza, porque é a saída de emergência e não o caminho principal. */
+.botao-descartar {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--fonte-textos);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Ao passar o mouse, fica na cor da marca: avisa que é uma ação que apaga. */
+.botao-descartar:hover {
+  color: var(--cor-marca);
+}
+
+/* Contorno de foco, para quem navega pelo teclado. */
+.botao-descartar:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  border-radius: 4px;
+}
+
+/* Aviso "Precisa sair agora?", pequeno e em cinza. */
+.conferencia-nota {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Botão de envio desligado (antes do "Conferi a lista"): cinza e sem clique. */
+.botao:disabled {
+  background: var(--linha-divisoria);
+  color: var(--texto-secundario);
+  cursor: not-allowed;
+}
+
+/* --- Resultado de um envio de verdade (API, ADR-69) --- */
+/* O bloco inteiro: cabeçalho, recados, colunas e botões, um embaixo do outro. */
+.resultado-real {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Cabeçalho: tipo, número de linhas e o que fazer à esquerda; a etapa à direita. */
+.cabecalho-real {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Título "Como a IA leu as colunas...". */
+.subtitulo-real {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+/* Botões da etapa lado a lado, quebrando linha no celular. */
+.resultado-botoes-real {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/* A coluna "Por quê": texto pequeno e cinza, que quebra linha (a tabela não quebra nas outras colunas). */
+.tabela-montada td.celula-motivo {
+  white-space: normal;
+  min-width: 260px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* ===== 10. Tela Acompanhar cadastros ===== */
+/* --- Área da página e resumo --- */
+/* Área abaixo do título, com respiro em cima e embaixo; cada bloco separado do próximo. */
+.area-acompanhar {
+  padding-top: 32px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Linha abaixo do título: "Novo envio" à esquerda e, depois dele, os atalhos. */
+.acoes-pagina {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+/* Atalhos da página, lado a lado, separados do botão por uma linha fina à esquerda. */
+.navegacao-pagina {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-left: 24px;
+  border-left: 1px solid var(--linha-divisoria);
+}
+
+/* "Ir para", em cinza, antes dos atalhos. */
+.navegacao-rotulo {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  margin-right: 4px;
+}
+
+/* Os atalhos são links com a cara dos filtros rápidos. */
+.navegacao-pagina .filtro-rapido {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+/* Numerozinho dentro do atalho (ex.: quantas pendências). */
+.navegacao-contador {
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: var(--raio-botao);
+  background: var(--cor-marca);
+  color: var(--branco);
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Ao pular por um atalho, a parte da página não fica escondida atrás do cabeçalho fixo. */
+.area-acompanhar [id] {
+  scroll-margin-top: 140px;
+}
+
+/* Aviso "Recebemos!", verde, no alto da página, logo depois de um envio. */
+.aviso-recebido {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--verde-sucesso-claro);
+  color: var(--verde-sucesso);
+  font-weight: 700;
+}
+
+/* Cartão de número que pede ação: faixa laranja em cima, como as pendências. */
+.cartao-numero-atencao {
+  border-top: 4px solid var(--amarelo-atencao);
+}
+
+/* Cartão de pendências sem nenhuma pendência: faixa verde em cima. */
+.cartao-numero-em-dia {
+  border-top: 4px solid var(--verde-sucesso);
+}
+
+/* No cartão em dia, o quadradinho do ícone (com o visto) fica verde. */
+.cartao-numero-em-dia .cartao-numero-icone {
+  background: var(--verde-sucesso-claro);
+  color: var(--verde-sucesso);
+}
+
+/* --- Pendências e abertura das contas --- */
+/* Duas colunas: pendências (mais larga) e contas. "stretch" deixa os dois painéis sempre da mesma altura. */
+.grade-acompanhar {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Os dois painéis têm o mesmo respiro interno. */
+.painel-acompanhar {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/*
+  Lista de pendências com altura máxima e rolagem por dentro: com 3 ou com 100 pendências, o painel fica do
+  mesmo tamanho e a página não cresce. A altura acompanha a do painel de contas, ao lado.
+*/
+#pendencias .lista-ajustes {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Quando há mais pendências do que cabem, a base da lista esmaece, sugerindo que tem mais embaixo. */
+.lista-com-rolagem {
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+/* Barra de rolagem fina e discreta. */
+#pendencias .lista-ajustes::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* O "pegador" da barra de rolagem, cinza e arredondado. */
+#pendencias .lista-ajustes::-webkit-scrollbar-thumb {
+  background: var(--linha-divisoria);
+  border-radius: 999px;
+}
+
+/* Dica "Role a lista para ver as outras pendências", pequena e centralizada. */
+.dica-rolagem {
+  font-size: 12px;
+  color: var(--texto-secundario);
+  text-align: center;
+}
+
+/* Linha de cima do painel: título à esquerda, filtros à direita. */
+.painel-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Título do painel. */
+.painel-titulo {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* Mensagem de "nada aqui" (sem pendências ou sem resultados na busca). */
+.painel-vazio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--verde-sucesso-claro);
+  color: var(--verde-sucesso);
+  font-weight: 600;
+}
+
+/* Versão cinza do aviso (ex.: "Nenhuma pendência deste tipo"), para não parecer um sucesso. */
+.painel-vazio-neutro {
+  background: var(--fundo-pagina);
+  color: var(--texto-secundario);
+}
+
+/* Estado "tudo em dia": centralizado, com um círculo verde e o visto no meio. */
+.estado-em-dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 32px 16px;
+  border-radius: 12px;
+  background: var(--verde-sucesso-claro);
+  /* Cresce para ocupar a altura que sobra no painel, com o conteúdo no meio. */
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* Círculo verde com o visto. */
+.estado-em-dia-icone {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--verde-sucesso);
+  color: var(--branco);
+  display: grid;
+  place-items: center;
+}
+
+/* Visto maior dentro do círculo. */
+.estado-em-dia-icone .icone {
+  width: 32px;
+  height: 32px;
+}
+
+/* "Tudo em dia!". */
+.estado-em-dia-titulo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--verde-sucesso);
+}
+
+/* Frase de apoio, com largura limitada para ficar fácil de ler. */
+.estado-em-dia-texto {
+  max-width: 420px;
+  color: var(--texto-secundario);
+  margin-bottom: 6px;
+}
+
+/* --- Filtros rápidos (botões em forma de pílula) --- */
+/* Grupo de filtros lado a lado. */
+.grupo-filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Filtro rápido: pílula com borda cinza. */
+.filtro-rapido {
+  padding: 6px 14px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: var(--raio-botao);
+  background: var(--branco);
+  color: var(--texto-principal);
+  font-family: var(--fonte-textos);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Ao passar o mouse, a borda fica na cor da marca. */
+.filtro-rapido:hover {
+  border-color: var(--cor-marca);
+}
+
+/* Filtro ligado: fundo claro da marca e texto na cor da marca. */
+.filtro-rapido-ativo {
+  background: var(--cor-marca-clara);
+  border-color: var(--cor-marca);
+  color: var(--cor-marca);
+}
+
+/* --- Abertura das contas --- */
+/* Anel e frases lado a lado. */
+.contas-total {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Anel maior que o da home. */
+.anel-grande {
+  width: 112px;
+  height: 112px;
+}
+
+/* Miolo do anel maior. */
+.anel-grande .anel-miolo {
+  width: 88px;
+  height: 88px;
+}
+
+/* Número do anel maior. */
+.anel-grande .anel-numero {
+  font-size: 26px;
+}
+
+/* Frase principal ao lado do anel. */
+.contas-frase {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+/* Frase de apoio, em cinza. */
+.contas-frase-leve {
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* Lista das unidades, uma embaixo da outra. */
+.barras-unidade {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nome da unidade à esquerda e porcentagem à direita. */
+.barra-unidade-linha {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* "133 de 180", pequeno, embaixo da barra. */
+.barra-unidade-detalhe {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Bloco de detalhe da abertura (por unidade ou por envio): título e barras juntos. */
+.contas-detalhe {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Menos de 10 aprovados: explicação centralizada, com o cadeado, no lugar dos números. */
+.contas-poucos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 28px 16px;
+  border-radius: 12px;
+  background: var(--fundo-pagina);
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* Círculo com o cadeado. */
+.contas-poucos-icone {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+  display: grid;
+  place-items: center;
+}
+
+/* Título da explicação. */
+.contas-poucos-titulo {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+/* Texto da explicação. */
+.contas-poucos-texto {
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* Aviso de sigilo: fundo azul-céu com o cadeado. */
+.nota-sigilo {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Cadeado do aviso, na cor da marca. */
+.nota-sigilo .icone {
+  flex-shrink: 0;
+  color: var(--cor-marca);
+}
+
+/* Botão que ocupa a largura do painel. */
+.botao-largo {
+  width: 100%;
+  justify-content: center;
+}
+
+/* No painel esticado, o botão desce para o fim, alinhado com a base do painel ao lado. */
+.painel-acompanhar .botao-largo {
+  margin-top: auto;
+}
+
+/* --- Arquivos enviados --- */
+/* Lista dos envios, do mais recente para o mais antigo. */
+.lista-envios {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cada envio é um cartão; fechado, fica só a linha de resumo (compacto). */
+.envio {
+  padding: 18px 24px;
+}
+
+/* Botões ao lado do título da seção (ex.: "Expandir todos" e "Novo envio"). */
+.acoes-secao {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Linha de resumo do envio (o <summary>): clicável, abre e fecha a linha do tempo. */
+.envio-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Tira o triângulo padrão do navegador (usamos a nossa seta). */
+.envio-cabecalho::-webkit-details-marker {
+  display: none;
+}
+
+/* Contorno de foco na linha de resumo, para quem navega pelo teclado. */
+.envio-cabecalho:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+/* Com o envio aberto, a linha do tempo ganha espaço embaixo do resumo. */
+.envio[open] .envio-cabecalho {
+  margin-bottom: 20px;
+}
+
+/* Seta à direita: aponta para baixo com o envio fechado e gira para cima quando ele abre. */
+.envio-seta {
+  flex-shrink: 0;
+  color: var(--texto-secundario);
+  transition: transform 0.2s;
+}
+
+/* Envio aberto: seta para cima. */
+.envio[open] .envio-seta {
+  transform: rotate(180deg);
+}
+
+/* Rodapé da lista de envios: contador à esquerda, "Mostrar mais" à direita. */
+.rodape-envios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Quadradinho do ícone do arquivo. */
+.envio-icone {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* Os textos ocupam o espaço do meio, empurrando o selo para a direita. */
+.envio-textos {
+  flex-grow: 1;
+  /* Deixa o texto encolher no flex (sem isso, um nome de arquivo comprido empurra o selo para fora do cartão) */
+  min-width: 0;
+}
+
+/* Título do envio. */
+.envio-titulo {
+  display: block;
+  font-family: var(--fonte-titulos);
+  font-size: 17px;
+  font-weight: 800;
+  /* O título é o nome do arquivo: um nome comprido, sem espaços, quebra a linha em vez de vazar */
+  overflow-wrap: anywhere;
+}
+
+/* Quantidade de funcionários e quem enviou. */
+.envio-arquivos {
+  display: block;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Aviso embaixo da linha do tempo. */
+.envio-nota {
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amarelo-atencao);
+}
+
+/* Linha do tempo: todos os passos lado a lado, numa linha só, ligados por um traço.
+   "grid-auto-flow: column" põe cada passo numa coluna nova, e "grid-auto-columns: 1fr" divide a largura em partes
+   iguais: cabem os 6 passos do envio (ou 5, no envio antigo que não passou pelo banco) sem quebrar de linha.
+   Com 4 colunas fixas, o 5º passo cairia para a linha de baixo. */
+.linha-do-tempo {
+  list-style: none;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cada passo: bolinha em cima, nome e data embaixo. */
+.passo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 12px;
+}
+
+/* O traço que liga uma bolinha à próxima (o último passo não tem). */
+.passo:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 20px;
+  right: 0;
+  height: 2px;
+  background: var(--linha-divisoria);
+}
+
+/* A bolinha do passo: cinza enquanto não chegou. */
+.passo-marca {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--linha-divisoria);
+  background: var(--branco);
+  position: relative;
+  z-index: 1;
+}
+
+/* Nome do passo. */
+.passo-nome {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Data ou detalhe do passo. */
+.passo-data {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Passo feito: bolinha verde. */
+.passo-feito .passo-marca {
+  border-color: var(--verde-sucesso);
+  background: var(--verde-sucesso);
+}
+
+/* Traço verde depois de um passo feito. */
+.passo-feito:not(:last-child)::after {
+  background: var(--verde-sucesso);
+}
+
+/* Passo feito só em parte ("Contas abertas" com 22 de 35 contas): bolinha verde clarinho com a borda verde,
+   para não dar a impressão de concluído. Verde cheio só com todas as contas. */
+.passo-parcial .passo-marca {
+  border-color: var(--verde-sucesso);
+  background: var(--verde-sucesso-claro);
+}
+
+/* Passo atual: bolinha na cor da marca com halo. */
+.passo-atual .passo-marca {
+  border-color: var(--cor-marca);
+  box-shadow: 0 0 0 4px var(--cor-marca-clara);
+}
+
+/* Passo devolvido pelo banco ("Aprovação das contas enviadas" com o envio ou algumas pessoas devolvidas; ADR-121):
+   bolinha laranja cheia com halo, na cor de atenção do portal, e o detalhe ("Devolvido: 2 pessoas") em laranja. */
+.passo-devolvido .passo-marca {
+  border-color: var(--amarelo-atencao);
+  background: var(--amarelo-atencao);
+  box-shadow: 0 0 0 4px var(--amarelo-atencao-claro);
+}
+
+/* O detalhe do passo devolvido, em laranja, para chamar a atenção. */
+.passo-devolvido .passo-detalhe {
+  color: var(--amarelo-atencao);
+  font-weight: 600;
+}
+
+/* --- Funcionários: busca, atalhos e tabela --- */
+/* Cartão da consulta. */
+.painel-consulta {
+  padding: 24px;
+}
+
+/* Busca larga e dois filtros ao lado. */
+.barra-consulta {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* A busca com a lupa por dentro, à esquerda. */
+.campo-busca {
+  position: relative;
+}
+
+/* A lupa, posicionada dentro da caixa. */
+.campo-busca .icone {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--texto-secundario);
+}
+
+/* Espaço à esquerda para o texto não ficar em cima da lupa. */
+.campo-busca .campo-entrada {
+  padding-left: 44px;
+}
+
+/* Listas de filtro com texto um pouco menor. */
+.campo-filtro {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* "Mostrando 20 de 338 funcionários". */
+.contador-resultados {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  margin-bottom: 10px;
+}
+
+/* A linha inteira muda de cor ao passar o mouse, para mostrar que dá para abrir a ficha. */
+.tabela-funcionarios tbody tr:hover {
+  background: var(--azul-ceu-claro);
+}
+
+/* A linha de uma pessoa que abre o detalhe ao ser clicada, em qualquer grade (ADR-143; js/grade_do_parametro.js): a
+   mãozinha e a cor ao passar o mouse mostram que dá para abrir. */
+.linha-clicavel {
+  cursor: pointer;
+}
+
+.linha-clicavel:hover {
+  background: var(--azul-ceu-claro);
+}
+
+/* O detalhe aberto logo abaixo da pessoa, dentro da própria tabela ("Conferir e enviar"): o texto volta a quebrar a
+   linha (as células da grade ficam numa linha só) e o fundo fica branco, para separar da grade. */
+.linha-do-detalhe td,
+.grade-do-parametro .linha-do-detalhe td {
+  white-space: normal;
+  background: var(--branco);
+}
+
+/* Grade com todos os campos do parâmetro (ADR-111): cada célula numa linha só, para as colunas não se espremerem;
+   a tabela rola para o lado dentro da moldura .tabela-rolavel. */
+.grade-do-parametro th,
+.grade-do-parametro td {
+  white-space: nowrap;
+}
+
+/* A linha dos grupos (Titular, Endereço residencial...), acima dos nomes dos campos. */
+.grade-do-parametro .linha-de-grupos th {
+  background: var(--azul-ceu);
+  color: var(--texto-principal);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-left: 1px solid var(--branco);
+}
+
+/* A marca dos campos obrigatórios no parâmetro: um asterisco na cor da marca. */
+.marca-obrigatorio {
+  color: var(--cor-marca);
+  font-weight: 700;
+  margin-left: 3px;
+}
+
+/* A célula de um campo que não veio no arquivo (ou não foi identificado): mais clara e em itálico. */
+.valor-nao-encontrado {
+  color: var(--texto-secundario);
+  font-style: italic;
+}
+
+/* "Pronto para enviar ao banco": fundo verde clarinho, para a pessoa bater o olho e
+   ver que ali deu certo; é só conferir e enviar. Diferencia a seção das outras. */
+.prontos-para-o-banco .sobretitulo {
+  color: var(--verde-sucesso);
+}
+
+/* O filtro por arquivo das pendências e o aviso do arquivo escolhido. */
+.filtro-arquivo-pendencias {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 12px 0 8px;
+}
+
+.aviso-arquivo-pendente {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--amarelo-atencao-claro);
+  color: var(--amarelo-atencao);
+}
+
+/* O envio parado na conferência das colunas (ADR-127): o título, o texto e o botão para continuar. */
+.envios-parados {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.aviso-envio-parado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--amarelo-atencao-claro);
+  color: var(--amarelo-atencao);
+}
+
+.aviso-envio-parado-titulo {
+  font-weight: 600;
+}
+
+.aviso-envio-parado-texto {
+  margin: 0;
+}
+
+/* O arquivo escolhido ficou sem pendência: o aviso fica verde (já está pronto para enviar). */
+.aviso-arquivo-pendente.aviso-arquivo-pronto {
+  background: var(--verde-sucesso-claro);
+  color: var(--verde-sucesso);
+}
+
+/* O "Limpar filtros" sozinho, abaixo da busca e dos filtros. */
+.limpar-filtros {
+  margin: 8px 0 12px;
+}
+
+/* A janela da conferência antes de enviar: larga, para a grade completa caber (e rolar para o lado). */
+.janela-conferir-envio {
+  width: min(1200px, calc(100% - 32px));
+}
+
+.grade-do-envio-pronto-titulo {
+  font-size: 0.95rem;
+  margin: 16px 0 8px;
+}
+
+/* O selo das últimas situações de um funcionário, "Conta aberta" e "Já é correntista" (ADR-113, ADR-123): verde
+   cheio, para se destacar do "Cadastrado" (verde claro). */
+.selo-conta-aberta {
+  background: var(--verde-sucesso);
+  color: var(--branco);
+}
+
+/* Os números da Visão geral da empresa (aba Empresas do banco): cartões pequenos, lado a lado. */
+.numeros-da-visao {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.numero-da-visao {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+}
+
+.numero-da-visao strong {
+  font-family: var(--fonte-titulos);
+  font-size: 1.4rem;
+  color: var(--texto-principal);
+}
+
+.numero-da-visao span {
+  font-size: 0.8rem;
+  color: var(--texto-secundario);
+}
+
+/* A legenda acima da grade: uma linha por item (os <p> de dentro, empilhados). */
+.legenda-da-grade p {
+  margin: 0 0 4px;
+}
+
+.legenda-da-grade {
+  font-size: 0.85rem;
+  color: var(--texto-secundario);
+  margin: 0 0 8px;
+}
+
+/* O nome é um botão com cara de link. */
+.botao-nome {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--fonte-textos);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto-principal);
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Ao passar o mouse, o nome fica na cor da marca e sublinhado. */
+.botao-nome:hover {
+  color: var(--cor-marca);
+  text-decoration: underline;
+}
+
+/* Contorno de foco no nome, para quem navega pelo teclado. */
+.botao-nome:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  border-radius: 4px;
+}
+
+/* Ponto laranja de pendência ao lado do selo. */
+.aviso-pendencia {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: var(--amarelo-atencao);
+  color: var(--branco);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: help;
+}
+
+/* Célula com duas informações (cargo e unidade; data e quem incluiu): a de baixo menor e em cinza. */
+.celula-duas-linhas span {
+  display: block;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Nota embaixo da tabela. */
+.nota-tabela {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* --- Janela com a ficha do funcionário --- */
+/* A ficha é mais larga que a janela dos benefícios. */
+.janela-ficha {
+  width: min(760px, calc(100% - 32px));
+}
+
+/* Círculo das iniciais, maior no cabeçalho da ficha. */
+.iniciais-grandes {
+  width: 56px;
+  height: 56px;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* Grupos de campos em duas colunas. */
+.ficha-grupos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Cada grupo num quadro azul-céu. */
+.ficha-grupo {
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+}
+
+/* Título do grupo (ex.: "Titular"). */
+.ficha-grupo-titulo {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cor-marca);
+  margin-bottom: 10px;
+}
+
+/* Campos: nome à esquerda, valor à direita. */
+.ficha-campos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  margin: 0;
+  font-size: 13px;
+}
+
+/* Nome do campo, em cinza. */
+.ficha-campos dt {
+  color: var(--texto-secundario);
+}
+
+/* Valor do campo. */
+.ficha-campos dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* "Informações sem rótulo" (ADR-143, Parte 1): o que a IA guardou sem saber de qual campo é. A seção ocupa a largura
+   inteira do detalhe, depois dos grupos, e tem o fundo branco com a borda tracejada: não é um campo do parâmetro. */
+.ficha-grupo-sem-rotulo {
+  grid-column: 1 / -1;
+  background: var(--branco);
+  border: 1px dashed var(--texto-secundario);
+}
+
+/* Na conferência do Cadastrar, a seção fica embaixo da grade dos campos da pessoa. */
+.linha-ficha-real .ficha-grupo-sem-rotulo {
+  margin: 4px 0 8px;
+}
+
+/* A frase que explica a seção, pequena e cinza. */
+.nota-sem-rotulo {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Uma informação por linha: a coluna do arquivo, o valor e os campos que ela pode ser. O texto longo quebra, para
+   nunca vazar do quadro. */
+.lista-sem-rotulo {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+/* Histórico do cadastro: lista numerada, com os números na cor da marca. */
+.ficha-historico {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* Espaço entre os passos do histórico. */
+.ficha-historico li {
+  margin-bottom: 4px;
+}
+
+/* Número de cada passo do histórico, na cor da marca. */
+.ficha-historico li::marker {
+  color: var(--cor-marca);
+}
+
+/* ===== 11. Telas Benefícios do seu time e Materiais de endomarketing ===== */
+/* --- Benefícios: topo, filtros e cartões --- */
+/* "Catálogo definido pelo banco...": pequeno, em cinza, com o ícone do documento. */
+.origem-catalogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Filtros de categoria à esquerda e a busca à direita. */
+.barra-beneficios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* A busca da vitrine, mais curta que a da lista de funcionários. */
+.campo-busca-curto {
+  width: 280px;
+}
+
+/* No fim de cada cartão: "Ver detalhes" à esquerda e "Divulgar" à direita. */
+.beneficio-acoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* "Divulgar": link discreto, que leva ao endomarketing com o benefício marcado. */
+.link-divulgar {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto-secundario);
+  text-decoration: underline;
+}
+
+/* Ao passar o mouse, o "Divulgar" fica na cor da marca. */
+.link-divulgar:hover {
+  color: var(--cor-marca);
+}
+
+/* --- Benefícios: dúvidas comuns e atendimento --- */
+/* Duas colunas: perguntas (mais larga) e canais de atendimento. */
+.grade-duvidas {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Cada pergunta abre e fecha; uma linha fina separa uma da outra. */
+.pergunta-frequente {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+/* A pergunta (linha clicável), em negrito. */
+.pergunta-frequente summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* A resposta, com respiro em cima. */
+.pergunta-frequente p {
+  margin-top: 8px;
+  color: var(--texto-secundario);
+}
+
+/* De onde veio a resposta, pequeno. */
+.fonte-resposta {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+  font-style: italic;
+}
+
+/* Um canal de atendimento: ícone e textos lado a lado. */
+.canal-atendimento {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Os textos do canal, um embaixo do outro. */
+.canal-atendimento div {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+/* O contato do canal, em cinza. */
+.canal-atendimento span {
+  color: var(--texto-secundario);
+}
+
+/* --- Endomarketing: sugestões para agora --- */
+/* Dois cartões lado a lado. */
+.grade-sugestoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Cartão de sugestão: ícone, textos e o botão embaixo. */
+.cartao-sugestao {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  border-top: 4px solid var(--cor-marca);
+}
+
+/* Título da sugestão. */
+.cartao-sugestao-titulo {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 4px 0 6px;
+}
+
+/* Texto da sugestão, em cinza. */
+.cartao-sugestao-texto {
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* --- Endomarketing: as quatro escolhas --- */
+/* Cada escolha é um grupo sem a borda padrão do navegador. */
+.passo-material {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* O título da escolha, com o número numa bolinha na cor da marca. */
+.passo-material-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* A bolinha do número. */
+.passo-material-numero {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--cor-marca);
+  color: var(--branco);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+
+/* "(opcional)", leve e cinza. */
+.passo-material-dica {
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Os quatro tipos de material, lado a lado. */
+.opcoes-material {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Cada tipo é um cartão clicável (a bolinha de marcar fica escondida). */
+.opcao-material {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* A bolinha de marcar some: o cartão inteiro mostra a escolha. */
+.opcao-material input,
+.opcao-canal input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* O nome do tipo, em negrito e na cor do texto. */
+.opcao-material strong {
+  font-size: 15px;
+  color: var(--texto-principal);
+}
+
+/* O ícone do tipo, na cor da marca. */
+.opcao-material .icone {
+  color: var(--cor-marca);
+  margin-bottom: 4px;
+}
+
+/* Tipo escolhido: borda na cor da marca e fundo claro da marca (:has = "que contém a opção marcada"). */
+.opcao-material:has(input:checked) {
+  border-color: var(--cor-marca);
+  background: var(--cor-marca-clara);
+}
+
+/* Foco pelo teclado no tipo. */
+.opcao-material:has(input:focus-visible),
+.opcao-canal:has(input:focus-visible) {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 2px;
+}
+
+/* O canal: pílula como os filtros rápidos. */
+.opcao-canal span {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: var(--raio-botao);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Canal escolhido: como o filtro ligado. */
+.opcao-canal:has(input:checked) span {
+  background: var(--cor-marca-clara);
+  border-color: var(--cor-marca);
+  color: var(--cor-marca);
+}
+
+/* --- Endomarketing: o rascunho --- */
+/* Título à esquerda e o selo "Rascunho" à direita. */
+.rascunho-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Os avisos da IA, um embaixo do outro. */
+.avisos-material {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Um aviso: faixa colorida à esquerda. */
+.aviso-material {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Aviso de alerta (algo que não entrou): laranja. */
+.aviso-material-alerta {
+  background: var(--amarelo-atencao-claro);
+  color: var(--amarelo-atencao);
+}
+
+/* Aviso informativo (o que foi feito): azul-céu. */
+.aviso-material-info {
+  background: var(--azul-ceu-claro);
+  color: var(--texto-principal);
+}
+
+/* O material como uma folha: fundo branco, borda e respiro. */
+.documento-material {
+  padding: 28px 32px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--branco);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+}
+
+/* Cada trecho: o texto e a fonte embaixo. */
+.trecho-material p {
+  font-size: 15px;
+  line-height: 1.6;
+  border-radius: 6px;
+  cursor: text;
+}
+
+/* Trecho em edição: contorno na cor da marca. */
+.trecho-material p:focus {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 4px;
+}
+
+/* A fonte do trecho: etiqueta pequena, em cinza. */
+.fonte-trecho {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: var(--raio-botao);
+  background: var(--fundo-pagina);
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
+
+/* O bloco da arte: título e formato em cima, a prévia e o download embaixo. */
+.bloco-arte {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--fundo-pagina);
+}
+
+/* Título e nome do kit à esquerda, o formato da arte à direita. */
+.bloco-arte-cabecalho,
+.bloco-arte-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* A prévia: o desenho tem o tamanho real, mas aparece no máximo com 420 px de largura. */
+.previa-arte {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--sombra-cartao);
+  background: var(--branco);
+}
+
+/* O banner do e-mail é deitado (3 por 1): a prévia fica mais larga, para o texto dele continuar legível. */
+.previa-arte[data-formato="email"] {
+  max-width: 720px;
+}
+
+/* O cartaz A4 do mural é em pé: a prévia fica mais estreita, para o cartaz inteiro caber na tela. */
+.previa-arte[data-formato="cartaz"] {
+  max-width: 360px;
+}
+
+/* O rodapé do rascunho: ajustes, nota e botões. */
+.rascunho-rodape {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--linha-divisoria);
+}
+
+/* A linha dos ajustes à IA. */
+.rascunho-ajustes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Filtro rápido desligado (ajustes esgotados): apagado. */
+.filtro-rapido:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Endomarketing: meus materiais e garantias --- */
+/* Um material salvo: ícone, textos, selo e ações numa linha. */
+.material-salvo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+}
+
+/* Os botões de ação do material. */
+.material-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+/* O quadro "Como a IA escreve". */
+.como-a-ia-escreve {
+  padding: 28px;
+  background: var(--azul-ceu-claro);
+  box-shadow: none;
+}
+
+/* As quatro garantias, em duas colunas. */
+.lista-garantias {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+  margin: 16px 0 0;
+  padding: 0;
+}
+
+/* Cada garantia: ícone na cor da marca e o texto. */
+.lista-garantias li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* O ícone da garantia. */
+.lista-garantias .icone {
+  flex-shrink: 0;
+  color: var(--cor-marca);
+}
+
+/* O começo da garantia, em negrito e na cor do texto. */
+.lista-garantias strong {
+  color: var(--texto-principal);
+}
+
+/* ===== 12. Telas pequenas e movimento reduzido ===== */
+/* Tablets: menos colunas. */
+@media (max-width: 1024px) {
+  /* Faixa de boas-vindas, endomarketing, login, painel da IA e resultado viram uma coluna só. */
+  .destaque-grade,
+  .cartao-endomarketing,
+  .login-grade,
+  .mesa-de-trabalho,
+  .resultado-leitura,
+  .grade-acompanhar,
+  .ajude-ia-grade,
+  .grade-duvidas,
+  .grade-sugestoes {
+    grid-template-columns: 1fr;
+  }
+
+  /* No login em uma coluna, o painel na cor da marca fica mais baixo. */
+  .login-painel-marca {
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  /* Frase do login menor. */
+  .login-titulo {
+    font-size: 32px;
+  }
+
+  /* Números em duas colunas. */
+  .grade-numeros {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Benefícios em duas colunas. */
+  .grade-beneficios {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celulares: tudo em uma coluna e textos menores. */
+@media (max-width: 640px) {
+  /* Menos respiro nas laterais. */
+  .conteudo-centralizado {
+    padding: 0 16px;
+  }
+
+  /* Saudação menor para caber na tela. */
+  .destaque-titulo {
+    font-size: 34px;
+  }
+
+  /* Títulos de seção menores. */
+  .titulo-secao {
+    font-size: 26px;
+  }
+
+  /* Tudo em uma coluna. */
+  .grade-numeros,
+  .grade-beneficios,
+  .lista-materiais,
+  .passos-envio,
+  .barra-consulta,
+  .ficha-grupos,
+  .lista-garantias {
+    grid-template-columns: 1fr;
+  }
+
+  /* Os quatro tipos de material em duas colunas. */
+  .opcoes-material {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* A busca da vitrine ocupa a largura toda. */
+  .campo-busca-curto {
+    width: 100%;
+  }
+
+  /* Linha do tempo do envio em duas colunas (os 6 passos não cabem lado a lado no celular):
+     volta a encher linha por linha. */
+  .linha-do-tempo {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 16px;
+  }
+
+  /* No celular, os traços entre os passos somem (eles quebram em duas linhas). */
+  .passo:not(:last-child)::after {
+    display: none;
+  }
+
+  /* Cabeçalho de seção empilhado. */
+  .cabecalho-secao {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Esconde nome e empresa do usuário; fica só o círculo com as iniciais. */
+  .usuario-logado-texto,
+  .logotipo-portal {
+    display: none;
+  }
+
+  /* "Sair" só com o ícone. */
+  .botao-sair-texto {
+    display: none;
+  }
+
+  /* No celular, a lista de vantagens do login some: o formulário aparece mais cedo. */
+  .login-lista-vantagens,
+  .login-rodape-painel {
+    display: none;
+  }
+
+  /* Assistente só com o ícone, para não cobrir o conteúdo. */
+  .assistente-texto {
+    display: none;
+  }
+
+  /* Botão do assistente vira um círculo. */
+  .assistente-flutuante {
+    padding: 16px;
+  }
+
+  /* Menos espaço entre seções. */
+  .secao {
+    padding: 48px 0;
+  }
+
+  /* Menos respiro interno nos cartões grandes. */
+  .cartao-endomarketing,
+  .janela-conteudo {
+    padding: 24px;
+  }
+
+  /* Título da página de cadastro menor. */
+  .titulo-pagina {
+    font-size: 28px;
+  }
+
+  /* Segunda parte do título menor. */
+  .titulo-pagina-leve {
+    font-size: 18px;
+  }
+
+  /* Nomes das etapas da IA menores, para caberem as quatro. */
+  .etapas-ia {
+    padding: 12px 16px;
+    font-size: 11px;
+  }
+
+  /* Conversa um pouco mais baixa no celular. */
+  .conversa-ia {
+    height: 380px;
+    padding: 16px;
+  }
+
+  /* Coluna reconhecida em duas linhas: nome e selo em cima, campo do banco embaixo. */
+  .coluna-mapeada {
+    grid-template-columns: 1fr auto;
+  }
+
+  /* A setinha some no celular. */
+  .coluna-seta {
+    display: none;
+  }
+
+  /* O campo do banco vai para a segunda linha. */
+  .coluna-banco {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* Número de prontos menor. */
+  .resultado-numero {
+    font-size: 48px;
+  }
+
+  /* Menos respiro no cartão do resultado. */
+  .resultado-leitura {
+    padding: 24px;
+  }
+}
+
+/* Movimento reduzido: quem pediu ao sistema para diminuir animações não vê giros nem piscadas. */
+@media (prefers-reduced-motion: reduce) {
+  /* Encurta todas as animações e transições para quase zero. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+  Tela Cadastrar, com a aplicação: os blocos de formato de coluna, conferência da lista e "Ajude a IA a acertar"
+  (js/cadastrar_conferencia_real.js), e a caixa "Conferi a lista" antes do envio ao banco.
+*/
+.bloco-real {
+  margin-top: 24px;
+}
+
+.bloco-real > summary {
+  cursor: pointer;
+}
+
+/* A lista da conferência tem só colunas curtas (linha, os campos obrigatórios, situação, ações; ADR-143): o texto pode
+   quebrar linha, e a tabela nunca rola para o lado. */
+.tabela-conferencia-real td {
+  white-space: normal;
+  vertical-align: top;
+}
+
+/* As ações da linha ("Ver todos os dados" e "Corrigir"), lado a lado; quebram linha se faltar espaço. */
+.acoes-linha-real {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* "Tudo certo" na situação da pessoa, em verde discreto. */
+.situacao-linha-ok {
+  color: var(--verde-sucesso);
+  font-weight: 600;
+}
+
+/* A ficha da pessoa, aberta embaixo dela: fundo claro para separar da lista. */
+.linha-ficha-real td {
+  background: var(--fundo-pagina);
+}
+
+/* A grade dos campos da ficha: quantas colunas couberem, cada uma com pelo menos 200px. */
+.grade-ficha-real {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px 20px;
+  padding: 8px 0;
+}
+
+/* Um campo da ficha: o rótulo em cima, o valor embaixo. */
+.item-ficha-real {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* O rótulo do campo, pequeno e cinza, com o "i" de ajuda ao lado. */
+.rotulo-ficha-real {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* O valor do campo: quebra no meio da palavra se for longo demais (e-mail, endereço), para nunca vazar. */
+.valor-ficha-real {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+/* "Como a IA leu as colunas": o "Por quê" é uma frase inteira, então quebra linha em vez de empurrar a tabela. */
+.tabela-colunas-real td {
+  white-space: normal;
+  vertical-align: top;
+}
+
+.formulario-ajude-real {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  margin: 12px 0;
+}
+
+.caixa-conferi-real {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.linha-correcao-real td {
+  background: var(--azul-ceu-claro);
+}
+
+/*
+  Tela Cadastrar, com a aplicação: avisos da leitura e dúvidas da IA (Word em texto corrido, ADR-72).
+*/
+/* Os avisos (e as dúvidas), um embaixo do outro. */
+.lista-da-leitura {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Dúvida da IA: a mesma caixa da sugestão, com uma faixa laranja à esquerda. */
+.duvida-ia {
+  border-left: 4px solid var(--amarelo-atencao);
+}
+
+/* Título "A IA ficou com dúvida", com um respiro acima. */
+.subtitulo-duvidas {
+  margin-top: 8px;
+}
+
+/*
+  Tela Cadastrar, com a aplicação: resumo da leitura, detalhes recolhidos e pendências por linha na conferência
+  (perguntas da IA presas à pessoa, ADR-73).
+*/
+/* A leitura numa frase, logo abaixo do título do resultado. */
+.resumo-da-leitura {
+  margin-bottom: 16px;
+}
+
+/* O aviso das perguntas da IA, embaixo da tabela das colunas. */
+[data-real-aviso-perguntas] {
+  margin-top: 12px;
+}
+
+/* Contadores da conferência, lado a lado (quebram linha no celular). */
+.contadores-conferencia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 8px;
+}
+
+/* Um contador: número em destaque e o rótulo. */
+.contador-conferencia {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--azul-ceu-claro);
+  font-size: 13px;
+}
+
+/* O contador das pendências que travam o envio, em laranja. */
+.contador-conferencia.contador-atencao {
+  background: var(--amarelo-claro, #fff4e0);
+  color: var(--amarelo-atencao);
+  font-weight: 700;
+}
+
+/* O filtro "Mostrar só quem tem pendência". */
+.filtro-conferencia {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* A linha com as pendências de uma pessoa, logo abaixo da linha dela. */
+.linha-pendencias-real td {
+  background: var(--azul-ceu-claro);
+  white-space: normal;
+}
+
+/* Uma pendência da conferência: o cartão-conversa (nome e campo, a conversa com a IA), um embaixo do outro. */
+.pendencia-real {
+  display: grid;
+  gap: 6px;
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+/* O número de pendências ao lado do número da linha. */
+.selo-linha-com-pendencia {
+  margin-left: 6px;
+  color: var(--amarelo-atencao);
+  font-weight: 700;
+}
+
+/* Texto corrido: "em 12 de 12 pessoa(s)" embaixo dos rótulos do documento, em letra menor. */
+.bloco-pequeno {
+  display: block;
+  margin-top: 2px;
+}
+
+/*
+  "Cadastrar funcionários" em todas as páginas: o botão do canto, a janela do envio e o que a
+  tela de envio esconde quando está dentro da janela.
+*/
+/* A janela: grande, por cima da página. */
+.janela-novo-envio {
+  width: min(1180px, calc(100% - 32px));
+  height: min(900px, calc(100vh - 48px));
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  box-shadow: var(--sombra-elevada);
+  overflow: hidden;
+}
+
+/* Com a janela aberta, as páginas atrás ficam escurecidas. */
+.janela-novo-envio::backdrop {
+  background: rgba(20, 20, 20, 0.45);
+}
+
+/* O cabeçalho da janela e o quadro com a tela de envio. */
+.janela-novo-envio[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.janela-novo-envio-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+.janela-novo-envio-quadro {
+  flex-grow: 1;
+  width: 100%;
+  border: none;
+}
+
+/* O ícone de conversa no cabeçalho, ao lado do sino. */
+.botao-conversa {
+  margin-right: 4px;
+}
+
+/* Dentro da janela, a tela de envio mostra só o envio. */
+.em-janela .barra-topo,
+.em-janela .rodape,
+.em-janela .cabecalho-pagina,
+.em-janela [data-real-bloco-conferencia],
+.em-janela [data-real-conferi],
+.em-janela [data-real-homologar] {
+  display: none !important;
+}
+
+/* O "×" de fechar a janela do envio, grande o bastante para achar e clicar. */
+.janela-novo-envio-cabecalho .botao-fechar-janela {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/*
+  Acompanhar cadastros: "Pronto para enviar ao banco" (a lista pendente da empresa).
+*/
+.prontos-para-o-banco {
+  margin-bottom: 24px;
+  /* Fundo verde clarinho: a pessoa bate o olho e vê que ali deu certo */
+  background: var(--verde-sucesso-claro);
+  border: 1px solid var(--verde-sucesso);
+  border-left: 4px solid var(--verde-sucesso);
+}
+
+/* Cada envio pronto: o arquivo, quando foi enviado e quantas pessoas (a lista completa abre na janela). */
+.lista-prontos {
+  display: grid;
+  gap: 4px;
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+/* A caixa "Conferi a lista". */
+.caixa-conferi {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+/* ===== Janela "Cadastrar funcionários": o cronômetro e os detalhes da janela ===== */
+
+/* O cronômetro ao lado de "Trabalhando no seu envio…": números de largura fixa, para não "pular" a cada segundo. */
+.cronometro-ia {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+/* Selo azul: a coluna em que a empresa trocou o campo (vale o que ela escolheu). */
+.selo-ajustado {
+  background: var(--azul-ceu);
+  color: var(--texto-principal);
+}
+
+/* O exemplo de valor embaixo do rótulo do documento ("ex.: 05/03/2026"). */
+.exemplo-da-coluna {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* O alerta quando os valores da coluna não servem para o campo escolhido (tipo diferente). */
+.alerta-do-tipo {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--amarelo-atencao);
+}
+
+/* "Fica guardada sem rótulo", embaixo do selo da coluna em dúvida só entre campos opcionais que fica de fora (ADR-143,
+   Parte 1): pequena e cinza, porque a coluna não pede nada da empresa. */
+.nota-sem-rotulo-da-coluna {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+  white-space: normal;
+}
+
+/* "Ajude a IA a acertar" com várias colunas: cada coluna numa linha, com a sua explicação. */
+.pedido-de-releitura {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(220px, 2fr) auto;
+  gap: 8px;
+  align-items: end;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 720px) {
+  .pedido-de-releitura {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* A divisão de uma coluna em vários campos, aberta logo abaixo da linha da coluna (ADR-76). */
+.area-divisao {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+}
+
+.area-divisao select {
+  max-width: 280px;
+}
+
+/* A coluna que a IA dividiu e cada parte dela (ADR-104). */
+.selo-dividido {
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca-escura);
+}
+
+/* A parte de uma coluna dividida: recuada, logo abaixo da coluna de onde saiu. */
+.linha-parte-da-divisao td:first-child {
+  padding-left: 28px;
+}
+
+/* A prévia: uma coluna por parte (rua, número, bairro...), uma linha por exemplo. */
+.tabela-previa-divisao th,
+.tabela-previa-divisao td {
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+/* O nome simples do campo, à direita do nome da pessoa, pequeno (ex.: "Estado civil"). */
+.ajuste-campo {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+/*
+  A ficha completa da pessoa, aberta pelo cartão da pendência (js/assistente_de_correcao.js): os campos que o
+  sistema está considerando, com a informação em revisão em destaque.
+*/
+/* "Ver a ficha completa", pequeno, à direita do título do cartão. */
+.botao-ver-ficha {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Cada nome em "Ver quem são", um botão que abre a ficha daquela pessoa. */
+.nome-do-grupo {
+  font-size: 12px;
+}
+
+/* Os campos de um grupo da ficha, um embaixo do outro. */
+.campos-da-ficha {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+}
+
+/* Uma linha da ficha: o nome do campo à esquerda e o valor à direita (e, embaixo, o aviso, se houver). */
+.campo-da-ficha {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2px 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+/* O nome do campo, em cinza. */
+.nome-do-campo-da-ficha {
+  color: var(--texto-secundario);
+}
+
+/* O valor, em destaque normal; valores longos quebram a linha. */
+.valor-do-campo-da-ficha {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* A informação em revisão: fundo e borda de atenção, para achar de relance. */
+.campo-em-revisao {
+  background: var(--amarelo-atencao-claro);
+  border-color: var(--amarelo-atencao);
+}
+
+/* O selo "Em revisão", numa linha própria acima do nome do campo (ao lado, ele apertava o nome em duas linhas). */
+.selo-em-revisao {
+  display: block;
+  width: fit-content;
+  margin-bottom: 4px;
+  padding: 1px 8px;
+  border-radius: var(--raio-botao);
+  background: var(--amarelo-atencao);
+  color: var(--branco);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* "No arquivo veio: ..." e "Também com pendência": a linha inteira, embaixo, pequena. */
+.veio-no-arquivo,
+.tambem-com-pendencia {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: var(--amarelo-atencao);
+}
+
+/* Os outros campos com pendência: só um fundo leve. */
+.campo-com-pendencia {
+  background: var(--branco);
+}
+
+/* "Carregando a ficha...": ocupa a largura toda da janela. */
+.ficha-carregando {
+  grid-column: 1 / -1;
+  color: var(--texto-secundario);
+}
+
+/* Os grupos da ficha lado a lado quando cabem (até 2 na janela); um grupo sozinho ocupa a largura toda, sem deixar a
+   metade direita vazia; no celular, uma coluna só. */
+.janela-ficha-da-pendencia .ficha-grupos {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* No celular, a ficha fica numa coluna só. */
+@media (max-width: 640px) {
+  .janela-ficha-da-pendencia .ficha-grupos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+  Descarte do envio, nas telas Cadastrar e Acompanhar (js/descartar_envio.js).
+*/
+/* A lista "o que acontece" dentro da janela de descarte: um item por linha, com respiro. */
+.lista-do-descarte {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 20px;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* O aviso depois do descarte ("a leitura foi descartada e ficou registrada"), em azul claro. */
+.aviso-descartado {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+  font-size: 14px;
+}
+
+/* As informações que o arquivo precisa ter, acima da área de envio (ADR-143; js/cadastrar_obrigatorios.js): um quadro
+   azul-céu, com a lista dos campos obrigatórios do parâmetro e a nota de que o resto não é obrigatório. */
+.campos-obrigatorios-do-envio {
+  margin-bottom: 16px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--cor-marca);
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+  font-size: 14px;
+}
+
+/* A frase de cima (e a do erro, quando a lista não carrega), em negrito. */
+.campos-obrigatorios-titulo {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+/* Um campo obrigatório por linha, com o nome em negrito e a descrição do banco. */
+.campos-obrigatorios-lista {
+  margin: 0 0 8px;
+  padding-left: 20px;
+}
+
+.campos-obrigatorios-lista li {
+  margin-bottom: 2px;
+}
+
+/* A nota de que as outras informações entram quando a IA reconhece, em letra menor. */
+.campos-obrigatorios-nota {
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* No cabeçalho do envio descartado: quem descartou e quando, numa linha própria, em letra menor. */
+.nota-do-descarte {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/*
+  O banco devolve só algumas pessoas (ADR-121; js/acompanhar.js e js/assistente_de_correcao.js): a linha de onde veio o
+  envio de devolução, o bloco "Idas e voltas com o banco" e o selo "Pedido do banco" no cartão da pendência.
+*/
+/* No cabeçalho do envio de devolução: "Devolução do envio de 28/09 (2 pessoas)", numa linha própria, em laranja. */
+.nota-da-origem {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amarelo-atencao);
+}
+
+/* O bloco embaixo da linha do tempo, separado por uma linha fina. */
+.idas-e-voltas {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--linha-divisoria);
+}
+
+/* O título do bloco, pequeno. */
+.idas-e-voltas-titulo {
+  margin: 0 0 8px;
+  font-family: var(--fonte-titulos);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* A lista das rodadas, uma embaixo da outra, sem os números da lista. */
+.idas-e-voltas-lista {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Cada rodada: a bolinha, a data e o texto na mesma linha (o texto quebra embaixo dele mesmo, se for longo). */
+.ida-e-volta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+}
+
+/* A bolinha da rodada: cinza quando o tipo é desconhecido; as cores de cada tipo vêm logo abaixo. */
+.ida-e-volta-marca {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--linha-divisoria);
+  background: var(--branco);
+}
+
+/* Enviado ao banco: a cor da marca. */
+.ida-e-volta-enviado .ida-e-volta-marca {
+  border-color: var(--cor-marca);
+  background: var(--cor-marca);
+}
+
+/* Devolvido: laranja, como a etapa devolvida da linha do tempo. */
+.ida-e-volta-devolvido .ida-e-volta-marca {
+  border-color: var(--amarelo-atencao);
+  background: var(--amarelo-atencao);
+}
+
+/* Aprovado em parte: verde clarinho com a borda verde, como a etapa feita em parte. */
+.ida-e-volta-aprovado_em_parte .ida-e-volta-marca {
+  border-color: var(--verde-sucesso);
+  background: var(--verde-sucesso-claro);
+}
+
+/* Aprovado: verde cheio. */
+.ida-e-volta-aprovado .ida-e-volta-marca {
+  border-color: var(--verde-sucesso);
+  background: var(--verde-sucesso);
+}
+
+/* A data da rodada ("28/09 às 10h10"), cinza e sem quebrar no meio. */
+.ida-e-volta-quando {
+  flex-shrink: 0;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+}
+
+/* O selo "Pedido do banco" fica colado no nome da pessoa; a margem automática empurra o nome do campo para a direita. */
+.selo-pedido-do-banco {
+  margin-right: auto;
+}
+
+/*
+  O cartão de cada pendência é uma conversa com a IA, nas telas Cadastrar e Acompanhar (ADR-118;
+  js/assistente_de_correcao.js). Balões da IA à esquerda, da pessoa à direita, respostas rápidas em pílulas e a
+  caixa com o botão de enviar.
+*/
+/* A conversa ocupa a largura inteira do cartão: os balões, as respostas rápidas e a caixa, um embaixo do outro. */
+.conversa-ia-pendencia {
+  flex-basis: 100%;
+  display: grid;
+  gap: 10px;
+}
+
+/* "Problema: ..." embaixo do título do cartão: o único problema que o cartão trata (um cartão, um problema). */
+.ajuste-problema {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* A linha cinza pequena de baixo: o arquivo e o dia do envio. */
+.ajuste-origem {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* Pendências em grupo (ADR-120): "Responder uma a uma" e "Ver quem são", pequenos, lado a lado embaixo da conversa. */
+.acoes-do-grupo {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 12px;
+}
+
+/* Os nomes das pessoas do grupo, quando abertos: texto corrido, pequeno, na linha de baixo. */
+.nomes-do-grupo {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* "Responder as N de uma vez", no cartão de uma pessoa de um grupo aberto. */
+.botao-todas-de-uma-vez {
+  flex-basis: 100%;
+  justify-self: start;
+  text-align: left;
+  font-size: 12px;
+}
+
+/* "Ver a conversa inteira (N)": pequeno, alinhado à esquerda, acima dos balões. */
+.botao-conversa-inteira {
+  justify-self: start;
+  font-size: 12px;
+}
+
+/* Os balões, um embaixo do outro. */
+.historico-conversa-ia {
+  display: grid;
+  gap: 8px;
+}
+
+/* Todo balão: cantos arredondados, texto do tamanho da conversa e largura até 85% do cartão. */
+.balao {
+  display: grid;
+  gap: 6px;
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Dentro dos balões, os parágrafos sem margem extra. */
+.balao p {
+  margin: 0;
+}
+
+/* O balão do agente: à esquerda, fundo cinza claro, com o canto de cima à esquerda "apontando" para quem fala. */
+.balao-ia {
+  justify-self: start;
+  border-top-left-radius: 4px;
+  background: var(--fundo-pagina);
+  border: 1px solid var(--linha-divisoria);
+}
+
+/* O selo "✦ Agente de validação" no alto do balão do agente, pequeno e na cor da marca. */
+.selo-ia {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--cor-marca);
+}
+
+/* O balão da pessoa: à direita, no tom claro da marca, com o canto de cima à direita "apontando". */
+.balao-voce {
+  justify-self: end;
+  border-top-right-radius: 4px;
+  background: var(--cor-marca-clara);
+}
+
+/* A marca "você" embaixo do balão da pessoa, pequena e à direita. */
+.marca-voce {
+  justify-self: end;
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
+
+/* A IA recusou (pedido sobre outro dado) ou deu erro: o balão fica âmbar. */
+.fala-recusada {
+  background: var(--amarelo-atencao-claro);
+  border-color: var(--amarelo-atencao);
+}
+
+/* No balão âmbar, o selo também fica âmbar. */
+.fala-recusada .selo-ia {
+  color: var(--amarelo-atencao);
+}
+
+/* A IA mudou o dado ("Pronto: ..."): o balão ganha a borda verde de feito. */
+.mudanca-da-ia {
+  border-color: var(--verde-sucesso);
+}
+
+/* A pergunta de confirmação do agente: os dois botões ("Sim, não cadastrar" / "Cancelar") lado a lado, no balão. */
+.confirmacao-do-balao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* O Desfazer (ou "Desfeito") dentro do balão do agente. */
+.desfazer-do-balao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* As fontes do layout que apoiaram a resposta, em letra menor. */
+.fontes-da-ia {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* A conversa que o agente encerrou depois das respostas sem valor (ADR-153): a marca pequena dentro do balão. */
+.conversa-encerrada {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+/* O balão da IA enquanto ela trabalha: os pontinhos e o contador lado a lado. */
+.balao-processando {
+  grid-template-columns: auto auto;
+  align-items: center;
+  column-gap: 10px;
+}
+
+/* No balão do "processando", o selo ocupa a linha de cima inteira. */
+.balao-processando .selo-ia {
+  grid-column: 1 / -1;
+}
+
+/* "Processando… N s": o contador, na cor da marca. */
+.processando-ia {
+  font-size: 13px;
+  color: var(--cor-marca);
+}
+
+/* Os três pontinhos que "pulam" enquanto a IA trabalha. */
+.pontinhos {
+  display: inline-flex;
+  gap: 4px;
+}
+
+/* Cada pontinho: uma bolinha na cor da marca. */
+.pontinhos span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cor-marca);
+  animation: pontinho-pulando 1.2s infinite ease-in-out;
+}
+
+/* O segundo e o terceiro pontinho pulam um pouco depois, em onda. */
+.pontinhos span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+/* O terceiro pontinho, mais um pouco depois. */
+.pontinhos span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* O pulo: sobe um pouco e fica mais forte no meio do caminho. */
+@keyframes pontinho-pulando {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+/* Quem pediu menos movimento na tela: os pontinhos ficam parados. */
+@media (prefers-reduced-motion: reduce) {
+  .pontinhos span {
+    animation: none;
+  }
+}
+
+/* As respostas rápidas, lado a lado, quebrando linha quando não cabem. */
+.respostas-rapidas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Sem respostas rápidas, o espaço some. */
+.respostas-rapidas:empty {
+  display: none;
+}
+
+/* A lista "Informar pessoa a pessoa" dentro do cartão (ADR-124): um quadro claro, com borda fina. */
+.lista-pessoa-a-pessoa {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--fundo-pagina);
+}
+
+/* O título da lista: a informação a preencher. */
+.lista-pessoa-a-pessoa-titulo {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+/* A dica embaixo do título (e o "Buscando as pessoas..."). */
+.lista-pessoa-a-pessoa-dica {
+  margin: 0;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* A marcação em lote do dado da empresa: "Marcar todos", o valor e "Usar nos marcados", numa linha que quebra. */
+.lista-pessoa-a-pessoa-lote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* O "Marcar todos", pequeno, com a caixinha ao lado do texto. */
+.lista-pessoa-a-pessoa-marcar-todos {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+/* As pessoas: uma embaixo da outra, com rolagem própria quando são muitas. */
+.lista-pessoa-a-pessoa-linhas {
+  display: flex;
+  flex-direction: column;
+  max-height: 320px;
+  overflow-y: auto;
+  border-top: 1px solid var(--linha-divisoria);
+}
+
+/* Uma pessoa: a caixinha (no dado da empresa), o nome com o detalhe e a caixa do valor. */
+.linha-pessoa-a-pessoa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+/* O nome e, embaixo, a matrícula e a linha do arquivo. */
+.linha-pessoa-a-pessoa-quem {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* A matrícula e a linha do arquivo, pequenas e cinza. */
+.linha-pessoa-a-pessoa-detalhe {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* A caixa do valor de cada pessoa: largura fixa, alinhada à direita. */
+.linha-pessoa-a-pessoa .campo-entrada {
+  width: 180px;
+  flex: none;
+}
+
+/* Os botões "Salvar" e "Cancelar". */
+.lista-pessoa-a-pessoa-botoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* No celular, a caixa do valor vai para a linha de baixo, na largura toda. */
+@media (max-width: 560px) {
+  .linha-pessoa-a-pessoa {
+    flex-wrap: wrap;
+  }
+
+  .linha-pessoa-a-pessoa .campo-entrada {
+    width: 100%;
+  }
+}
+
+/* Cada resposta rápida: uma pílula com a borda da marca, como os atalhos de resposta de um aplicativo de conversa. */
+.resposta-rapida {
+  padding: 6px 14px;
+  border: 1px solid var(--cor-marca-degrade);
+  border-radius: 999px;
+  background: var(--branco);
+  color: var(--cor-marca);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* A pílula sob o mouse, no tom claro da marca. */
+.resposta-rapida:hover:not(:disabled) {
+  background: var(--cor-marca-clara);
+}
+
+/* Esperando a IA, as pílulas ficam apagadas. */
+.resposta-rapida:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* A caixa de resposta e o botão de enviar, lado a lado. */
+.formulario-conversa-ia {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* A caixa de resposta ocupa o espaço que sobra, com os cantos bem arredondados. */
+.formulario-conversa-ia .campo-entrada {
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  border-radius: 999px;
+  padding-left: 16px;
+}
+
+/* O botão de enviar: um círculo na cor da marca com a seta ➤. */
+.botao-enviar-conversa {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: var(--cor-marca);
+  color: var(--branco);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Esperando a IA, o botão de enviar fica apagado. */
+.botao-enviar-conversa:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Os avisos "Resolvido agora", um embaixo do outro, acima da lista. */
+.avisos-resolvidos-agora {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* Sem aviso, o espaço some. */
+.avisos-resolvidos-agora:empty {
+  display: none;
+}
+
+/* Um aviso "Resolvido agora": faixa verde, de quem e o que mudou, com o Desfazer. */
+.aviso-resolvido-agora {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--linha-divisoria);
+  border-left: 4px solid var(--verde-sucesso);
+  border-radius: 12px;
+  background: var(--branco);
+  font-size: 13px;
+}
+
+/*
+  Rodapé da lista de pendências (Acompanhar): os dois botões de descartar a leitura, sempre à vista. "Grudado" na
+  base do painel (sticky) enquanto a página rola.
+*/
+.rodape-das-pendencias {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-top: 12px;
+  padding: 12px 0 4px;
+  border-top: 1px solid var(--linha-divisoria);
+  background: var(--branco);
+}
+
+/* A que arquivo os botões se referem, em letra menor. */
+.rodape-das-pendencias-arquivo {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Os dois botões, lado a lado. */
+.rodape-das-pendencias-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Na janela de descarte, a escolha do arquivo tem um respiro embaixo. */
+.escolha-do-arquivo-a-descartar {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+/*
+  O aviso de que o site é um projeto, no rodapé de todas as telas depois do login.
+*/
+/* A nota: letra pequena e discreta, abaixo da linha do rodapé. */
+.nota-do-projeto {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+/* Nas telas que não tinham rodapé, o rodapé tem só a nota: menos espaço em cima e embaixo. */
+.rodape-so-nota {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* No rodapé só com a nota, ela não precisa do espaço de cima. */
+.rodape-so-nota .nota-do-projeto {
+  margin-top: 0;
+}
+
+/*
+  Esperando os dados do servidor (js/carregando_dados.js).
+  Servida pela aplicação, a página tem a marca "aguardando-dados": os números e as listas de exemplo do protótipo
+  nunca aparecem. No lugar deles, uma barra cinza que brilha devagar (o "esqueleto") até o dado de verdade chegar.
+  O script da tela põe a marca data-dado-pronto no elemento e ele aparece.
+*/
+
+/* Um número (ou texto curto) esperando: o texto some e fica a barra cinza, do tamanho do próprio texto. O nome, a
+   empresa e as iniciais do cabeçalho também esperam (em todas as telas, sem marca no HTML: js/cabecalho_real.js
+   põe data-dado-pronto no bloco .usuario-logado quando os dados de quem entrou chegam). */
+.aguardando-dados .usuario-logado:not([data-dado-pronto]) .nome-usuario,
+.aguardando-dados .usuario-logado:not([data-dado-pronto]) .empresa-usuario,
+.aguardando-dados .usuario-logado:not([data-dado-pronto]) .iniciais-usuario,
+.aguardando-dados [data-aguarda-dado]:not([data-dado-pronto]) {
+  color: transparent !important;
+  background: linear-gradient(90deg, var(--linha-divisoria) 25%, var(--fundo-pagina) 50%, var(--linha-divisoria) 75%);
+  background-size: 200% 100%;
+  border-radius: 8px;
+  animation: esqueleto-brilho 1.4s ease-in-out infinite;
+  /* A barra não passa do tamanho do texto (senão ocupa o cartão inteiro), com um mínimo para aparecer. */
+  width: fit-content;
+  min-width: 3ch;
+  user-select: none;
+}
+
+/* O que está dentro de um número esperando (ex.: o negrito de uma frase) também não aparece. */
+.aguardando-dados [data-aguarda-dado]:not([data-dado-pronto]) * {
+  visibility: hidden;
+}
+
+/* Uma lista esperando (pendências, envios, funcionários): o conteúdo de exemplo sai... */
+.aguardando-dados [data-aguarda-bloco]:not([data-dado-pronto]) > * {
+  display: none !important;
+}
+
+/* ...e entra um bloco cinza do tamanho de umas três linhas. */
+.aguardando-dados [data-aguarda-bloco]:not([data-dado-pronto])::before {
+  content: "";
+  display: block;
+  height: 120px;
+  background: linear-gradient(90deg, var(--linha-divisoria) 25%, var(--fundo-pagina) 50%, var(--linha-divisoria) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--raio-cartao);
+  animation: esqueleto-brilho 1.4s ease-in-out infinite;
+}
+
+/* O brilho: a faixa clara do degradê anda da direita para a esquerda. */
+@keyframes esqueleto-brilho {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+/* ============ CONFERIR E ENVIAR (ADR-126) ============ */
+
+/* "Faltam N informações no arquivo inteiro": o aviso embaixo dos contadores da conferência (ADR-126). */
+.aviso-no-arquivo-conferencia {
+  margin: 8px 0 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: var(--amarelo-atencao-claro);
+  color: var(--amarelo-atencao);
+}
+
+/* "N pessoas ficam de fora deste envio": quem já foi ao banco ou já está cadastrado, e por quê. */
+.quem-fica-de-fora {
+  margin: 8px 0 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--azul-ceu-claro);
+  font-size: 0.9rem;
+}
+
+/* O título do bloco, em destaque. */
+.quem-fica-de-fora-titulo {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+/* A frase de que essas pessoas não pedem nada à empresa. */
+.quem-fica-de-fora-explicacao {
+  margin: 0 0 6px;
+  color: var(--texto-secundario);
+}
+
+/* Uma pessoa por linha: quem é (em negrito) e o motivo. */
+.quem-fica-de-fora-lista {
+  margin: 0;
+  padding-left: 18px;
+}
+
+/*
+  A data da versão que está rodando, no fim de todas as telas (ADR-133).
+  Começa escondida (atributo "hidden") e só aparece quando o js/data_da_versao.js recebe o texto do servidor. Por isso
+  estas regras nunca mexem no "display": se mexessem, o parágrafo apareceria vazio antes da data chegar.
+*/
+/* No rodapé dos portais: logo abaixo da nota do projeto, ainda mais discreta. */
+.data-da-versao {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.65;
+}
+
+/* Na tela de login: logo abaixo do rodapé do painel, com um respiro pequeno. */
+.login-data-da-versao {
+  margin-top: 4px;
+}
+
+/* --- Cadastrar: a coluna que ainda espera a escolha do campo --- */
+/* Depois de um aceite recusado por falta de escolha, a lista do campo ganha a borda na cor da marca, para a pessoa
+   achar na tabela o que falta (js/cadastrar_real.js, marcar_as_colunas_sem_escolha). A marca sai ao escolher. */
+.escolha-que-falta {
+  border-color: var(--cor-marca);
+  box-shadow: 0 0 0 2px var(--cor-marca-clara);
+}

@@ -1,0 +1,90 @@
+campo,termo
+bairro_comercial,Bairro Trabalho
+bairro_comercial,Bairro Comercial
+bairro_residencial,Bairro Residencial
+bairro_residencial,Bairro
+cargo,Ocupação
+cargo,Cargo Atual
+cep_comercial,CEP Comercial
+cep_comercial,CEP Empresa
+cep_residencial,CEP Casa
+cep_residencial,CEP Residencial
+cnpj_empregador,CNPJ Empresa
+cnpj_empregador,CNPJ Empregador
+codigo_unidade,Unidade (Código)
+codigo_unidade,Cód. Lotação
+complemento_comercial,Complemento Trabalho
+complemento_comercial,Complemento Comercial
+complemento_residencial,Compl.
+complemento_residencial,Compl Casa
+cpf,Cadastro Pessoa Física
+cpf,CPF Func
+data_admissao,Data de Admissão
+data_admissao,Data Contratação
+data_efetivacao,Data Efetivo
+data_efetivacao,Contrato Efetivado em
+data_emissao_documento,Data de Emissão
+data_emissao_documento,Dt. Emissão
+data_nascimento,Nascimento
+data_nascimento,Data de Nascimento
+data_referencia_renda,Período de Referência
+data_referencia_renda,Data Base
+email_corporativo,Email Empresa
+email_corporativo,E-mail Corporativo
+email_pessoal,E-mail Particular
+email_pessoal,Email
+escolaridade,Escolaridade
+escolaridade,Nível de Escolaridade
+estado_civil,Estado Civil
+estado_civil,Estado Civ.
+logradouro_comercial,Logradouro Comercial
+logradouro_comercial,Endereço Trabalho
+logradouro_residencial,Endereço
+logradouro_residencial,Rua
+matricula,Chapa
+matricula,Mat.
+municipio_comercial,Cidade Empresa
+municipio_comercial,Praça
+municipio_naturalidade,Cidade Natal
+municipio_naturalidade,Local de Nascimento
+municipio_residencial,Município
+municipio_residencial,Cidade
+nacionalidade,Cidadania
+nacionalidade,Nacion.
+nis_pis,Número PIS
+nis_pis,NIT
+nome_completo,Nome
+nome_completo,Nome Completo
+nome_mae,Nome Mae
+nome_mae,Nome da Mãe
+nome_unidade,Lotação
+nome_unidade,Unidade
+numero_comercial,Nº Empresa
+numero_comercial,Nº End. Com.
+numero_documento,Nº Identidade
+numero_documento,RG
+numero_residencial,Número Res.
+numero_residencial,Nº Casa
+orgao_emissor,Órgão Emissor
+orgao_emissor,Órgão Exp.
+sexo,Gênero
+sexo,Sexo Biológico
+telefone_celular,Cel.
+telefone_celular,Fone Celular
+telefone_residencial,Fone
+telefone_residencial,Tel. Residencial
+tipo_documento,Doc. Tipo
+tipo_documento,Documento de Identificação
+tipo_renda,Regime
+tipo_renda,Tipo de Renda
+uf_comercial,UF Comercial
+uf_comercial,UF Unidade
+uf_emissor,UF Doc.
+uf_emissor,UF Emissor
+uf_naturalidade,Estado de Nascimento
+uf_naturalidade,UF Natal
+uf_residencial,UF Res.
+uf_residencial,Estado
+valor_renda,Salário
+valor_renda,Renda Mensal
+cnpj_grupo,CNPJ Grupo

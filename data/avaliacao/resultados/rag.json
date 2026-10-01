@@ -1,0 +1,30 @@
+{
+  "layout": {
+    "consultas_com_resposta": 8,
+    "hit_at_k": {
+      "1": 0.625,
+      "2": 0.875,
+      "3": 0.875,
+      "4": 1.0,
+      "5": 1.0
+    },
+    "k_escolhido": 4,
+    "maior_distancia_certa": 0.587,
+    "menor_distancia_sem_resposta": 0.588,
+    "trechos_de_outra_empresa": 0
+  },
+  "catalogo": {
+    "consultas_com_resposta": 7,
+    "hit_at_k": {
+      "1": 0.8571428571428571,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0
+    },
+    "k_escolhido": 2,
+    "maior_distancia_certa": 0.677,
+    "menor_distancia_sem_resposta": 0.918,
+    "trechos_de_outra_empresa": 0
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "_sobre": "A conferência de 10 blocos pelo agente que mediu (o cientista-dados, um Claude: uma IA, da mesma família do gerador; NÃO é rótulo humano), depois do juiz: 5 em que o juiz viu afirmação sem sustentação e 5 que ele achou fiéis, sorteados fora dos 50 da planilha (eval/ragas_do_endomarketing.sortear_para_a_conferencia_do_agente, semente 20260930). Para cada bloco, o agente leu o texto, o trecho citado e cada afirmação com o veredito do juiz, e deu o rótulo com a mesma régua da planilha (só as afirmações de fato; o tom não conta). Serve para achar o PORQUÊ dos erros do juiz; a régua de verdade são os rótulos da pessoa.",
+  "casos": [
+    {
+      "bloco_id": "C01371-1",
+      "rotulo_do_juiz": "em parte",
+      "rotulo_do_agente": "em parte",
+      "concorda": true,
+      "nota": "Mesmo rótulo, por outro motivo. 3 das 4 afirmações que o juiz negou na fonte citada ESTÃO no trecho citado ou na linha [Pedido] (a folha com o banco parceiro, a conta aberta com o cadastro do Time de Pessoas, o time com acesso à conta); a 2ª conferência as aceitou. O que falta de verdade: o nome Santander (está em outro trecho) e 'todo o time' sem o 'com cadastro aprovado'. A fidelidade justa seria perto de 0,8, e não 0,33."
+    },
+    {
+      "bloco_id": "C00151-2",
+      "rotulo_do_juiz": "em parte",
+      "rotulo_do_agente": "em parte",
+      "concorda": true,
+      "nota": "'O CET mostra o custo real da operação' é uma explicação geral, correta, que nenhum trecho traz. A 2ª conferência a aceitou por inferência (leniente); o resto do bloco está no trecho citado."
+    },
+    {
+      "bloco_id": "C04058-3",
+      "rotulo_do_juiz": "em parte",
+      "rotulo_do_agente": "em parte",
+      "concorda": true,
+      "nota": "O juiz aceitou 'o cartão fica vinculado à modalidade escolhida', mas o trecho diz que a ANUIDADE é vinculada ao cartão conforme a modalidade (o sujeito trocou); 'converse com o banco parceiro para entender qual opção faz sentido' não está no trecho. O catálogo desta empresa é vago, e o material herda isso."
+    },
+    {
+      "bloco_id": "C01293-2",
+      "rotulo_do_juiz": "em parte",
+      "rotulo_do_agente": "fiel",
+      "concorda": false,
+      "nota": "É fiel. As 3 afirmações dos exercícios práticos sobre orçamento, reserva de emergência e primeiros investimentos estão no trecho citado (a trilha trata desses temas e tem exercícios práticos). O juiz as negou, e a 2ª conferência, com o mesmo trecho dentro, as aceitou."
+    },
+    {
+      "bloco_id": "C02881-3",
+      "rotulo_do_juiz": "em parte",
+      "rotulo_do_agente": "fiel",
+      "concorda": false,
+      "nota": "É fiel. As 2 afirmações negadas (quem recebe o salário na conta pode migrar; contratar pelo aplicativo) estão no trecho citado, com outras palavras. A 2ª conferência as aceitou."
+    },
+    {
+      "bloco_id": "C02932-3",
+      "rotulo_do_juiz": "fiel",
+      "rotulo_do_agente": "fiel",
+      "concorda": true,
+      "nota": "Tudo no trecho citado (o registro no conselho, o salário creditado, os 24 meses e a tarifa depois)."
+    },
+    {
+      "bloco_id": "C00325-2",
+      "rotulo_do_juiz": "fiel",
+      "rotulo_do_agente": "fiel",
+      "concorda": true,
+      "nota": "A portabilidade a qualquer momento e sem custo está no trecho citado."
+    },
+    {
+      "bloco_id": "C00783-5",
+      "rotulo_do_juiz": "fiel",
+      "rotulo_do_agente": "fiel",
+      "concorda": true,
+      "nota": "As afirmações estão no trecho. O bloco não diz que é preciso se cadastrar no programa ('depois do cadastro'): é omissão, que a fidelidade não mede; e chama o programa de pontos de 'programa de relacionamento'."
+    },
+    {
+      "bloco_id": "C00336-7",
+      "rotulo_do_juiz": "fiel",
+      "rotulo_do_agente": "fiel",
+      "concorda": true,
+      "nota": "Os 4 canais, os horários, o e-mail e o link estão nos 2 trechos citados."
+    },
+    {
+      "bloco_id": "C01216-6",
+      "rotulo_do_juiz": "fiel",
+      "rotulo_do_agente": "fiel",
+      "concorda": true,
+      "nota": "Entrar pelo aplicativo, na área do programa de relacionamento: está no trecho (o 'do Santander' vem de 'Salário no Santander', no mesmo trecho)."
+    }
+  ],
+  "leitura": "8 de 10 rótulos iguais entre o agente e o juiz (duas IAs). As 2 discordâncias são o juiz mais rigoroso que o certo: a 1ª conferência (contra o trecho citado) negou afirmações que estão no trecho citado. Das 10 afirmações 'citadas errado' destes blocos, 8 estavam no trecho citado: o 'citada errado' mede, em boa parte, o ruído da 1ª conferência, e a fidelidade à fonte citada é um piso; a fidelidade ao catálogo fica mais perto do certo."
+}

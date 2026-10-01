@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<!--
+  home.html — página inicial do Portal da Empresa (Integra Folha).
+
+  Para que serve: é o rascunho visual (layout) da primeira tela que a empresa vê depois do login
+  (login.html leva para cá).
+  Objetivo da tela: dar boas-vindas, mostrar em que ponto está o CADASTRO dos funcionários e VENDER
+  o relacionamento com o Santander (benefícios para a empresa e para cada funcionário).
+  O portal serve só para cadastrar funcionários, acompanhar esse cadastro e baixar os materiais de endomarketing
+  que o Santander preparou (ADR-115): pagamentos e relacionamento com a folha ficam fora dele.
+
+  Como abrir: dois cliques em login.html ou neste arquivo (abre no navegador). Não precisa de servidor.
+  Aparência: toda em css/estilos.css. Interações (janela de detalhes dos benefícios): js/janela_beneficio.js.
+
+  Dados: 100% fictícios. A empresa "Aurora Alimentos Ltda." é a EMP001 da base sintética do projeto.
+  Números e condições dos benefícios são ilustrativos, para desenho da tela.
+  Exemplos marcados: data-aguarda-dado (um número ou texto) e data-aguarda-bloco (uma lista). Servida pela aplicação,
+  nenhum exemplo aparece: uma barra cinza espera o dado real (js/carregando_dados.js), e js/home_real.js libera cada
+  um quando o dado chega, ou põe "—" se o servidor falhar.
+
+  Ordem da página (de cima para baixo):
+    1. Cabeçalho com as abas do portal
+    2. Boas-vindas + jornada do cadastro
+    3. Números do cadastro
+    4. Benefícios do time (com janela de detalhes)
+    5. Endomarketing
+    6. Rodapé e assistente
+-->
+<html lang="pt-BR">
+<head>
+  <!-- Codificação de caracteres: garante que acentos apareçam certo. -->
+  <meta charset="UTF-8">
+  <!-- Buscadores: não indexar nem seguir os links (o site é um projeto; o servidor manda o mesmo aviso). -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <!-- Faz a página se ajustar à largura do celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título da aba do navegador. -->
+  <title>Início | Integra Folha</title>
+  <!-- Fontes do Google (substitutas das fontes proprietárias da marca). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Arquivo com toda a aparência do portal. -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- Conversa com o especialista do banco (o "Posso ajudar?"). -->
+  <link rel="stylesheet" href="css/conversa.css">
+  <!--
+    Servida pela aplicação, esconde os exemplos do protótipo até os dados reais chegarem (barra cinza de
+    "carregando"). Fica logo depois do CSS, para valer antes de a página ser desenhada.
+  -->
+  <script src="js/carregando_dados.js"></script>
+</head>
+<body>
+
+  <!--
+    Biblioteca de ícones: cada <symbol> é um desenho guardado com um nome (id).
+    No resto da página, <use href="#nome"> "carimba" o desenho, sem repetir o código.
+  -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <!-- Casa: aba Início. -->
+    <symbol id="icone-inicio" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <!-- Pessoa com "+": cadastrar funcionário. -->
+    <symbol id="icone-cadastrar" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/></symbol>
+    <!-- Prancheta com visto: acompanhar cadastros. -->
+    <symbol id="icone-acompanhar" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+    <!-- Porta com seta: sair do portal. -->
+    <symbol id="icone-sair" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+    <!-- Ampulheta: em análise. -->
+    <symbol id="icone-analise" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12"/><path d="M7 3c0 5 10 5 10 9s-10 4-10 9"/><path d="M17 3c0 5-10 5-10 9s10 4 10 9"/></symbol>
+    <!-- Presente: benefícios. -->
+    <symbol id="icone-beneficios" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18"/><path d="M12 8v13"/><path d="M12 8c-2-4-6-4-6-1s6 1 6 1c0 0 6 2 6-1s-4-3-6 1"/></symbol>
+    <!-- Megafone: endomarketing. -->
+    <symbol id="icone-endomarketing" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h3l6 5V4L7 9H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/><path d="M20 5a9 9 0 0 1 0 14"/></symbol>
+    <!-- Sino: avisos. -->
+    <!-- Visto: etapa concluída. -->
+    <symbol id="icone-visto" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <!-- X: fechar a janela de detalhes. -->
+    <symbol id="icone-fechar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <!-- Seta para a direita: links "ver detalhes". -->
+    <symbol id="icone-seta" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+    <!-- Aperto de mãos: parceria. -->
+    <symbol id="icone-parceria" viewBox="0 0 24 24"><path d="M11 17l2 2a1.4 1.4 0 0 0 2-2"/><path d="M14 14l2.5 2.5a1.4 1.4 0 0 0 2-2L15 11"/><path d="M2 12l5-5 4 1 3-2 8 6-3 3"/><path d="M2 12l6 6 1-1"/></symbol>
+    <!-- Pessoas: equipe. -->
+    <symbol id="icone-equipe" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M15 14.5c3 0 6 1.8 6 5.5"/></symbol>
+    <!-- Cartão: conta aberta. -->
+    <symbol id="icone-cartao" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></symbol>
+    <!-- Estrela com brilho: inteligência artificial. -->
+    <symbol id="icone-ia" viewBox="0 0 24 24"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/><path d="M19 3v4M17 5h4"/></symbol>
+    <!-- Gráfico subindo: crescimento. -->
+    <symbol id="icone-grafico" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l5-5 3 3 6-7"/><path d="M15 7h4v4"/></symbol>
+    <!-- Porcentagem: taxa reduzida. -->
+    <symbol id="icone-porcentagem" viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+    <!-- Cofrinho: reserva. -->
+    <symbol id="icone-cofre" viewBox="0 0 24 24"><path d="M5 11a7 6 0 0 1 13-2h2v4l-2 1v3h-3v2h-3v-2H9v2H6v-3a6 6 0 0 1-1-5z"/><circle cx="15" cy="11" r="0.5"/></symbol>
+    <!-- Coração: saúde e seguro. -->
+    <symbol id="icone-coracao" viewBox="0 0 24 24"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/></symbol>
+    <!-- Documento: comunicado. -->
+    <symbol id="icone-documento" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
+    <!-- Balão de pergunta: FAQ. -->
+    <symbol id="icone-pergunta" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-12 7l-5 1 1-4a8 8 0 1 1 16-4z"/><path d="M10 10a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.3"/><path d="M12 16h.01"/></symbol>
+    <!-- Caixa: kit de boas-vindas. -->
+    <symbol id="icone-kit" viewBox="0 0 24 24"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></symbol>
+  </svg>
+
+  <!-- ============ 1. CABEÇALHO COM AS ABAS ============ -->
+  <header class="barra-topo">
+    <div class="conteudo-centralizado">
+      <!-- Linha de cima: marca e usuário logado. -->
+      <div class="barra-topo-linha">
+        <!-- Logotipo provisório: trocar pelo arquivo oficial da marca. -->
+        <a href="home.html" class="logotipo" aria-label="Início do Portal Empresa">
+          <span class="logotipo-marca">Integra Folha</span>
+        </a>
+        <!-- O banco parceiro do Integra Folha: aparece em todas as telas depois do login (nunca no login). -->
+        <span class="selo-banco-parceiro">Banco parceiro: <strong>Santander</strong></span>
+        <!-- Ações de quem está logado. -->
+        <div class="acoes-usuario">
+          <!-- Pessoa logada (perfil EMPRESA). -->
+          <div class="usuario-logado">
+            <span class="iniciais-usuario">MC</span>
+            <div class="usuario-logado-texto">
+              <div class="nome-usuario">Marina Costa</div>
+              <div class="empresa-usuario">RH · Aurora Alimentos Ltda.</div>
+            </div>
+          </div>
+          <!-- Sair: volta para a tela de login. -->
+          <a href="/api/sair" class="botao-sair" aria-label="Sair do portal">
+            <svg class="icone"><use href="#icone-sair"/></svg>
+            <span class="botao-sair-texto">Sair</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Abas do portal. A aba da página atual recebe a classe "aba-ativa". -->
+      <nav class="abas-portal" aria-label="Seções do portal">
+        <a href="home.html" class="aba aba-ativa" aria-current="page">
+          <svg class="icone"><use href="#icone-inicio"/></svg>Início
+        </a>
+        <a href="acompanhar.html" class="aba">
+          <svg class="icone"><use href="#icone-acompanhar"/></svg>Acompanhar cadastros
+        </a>
+        <a href="beneficios.html" class="aba">
+          <svg class="icone"><use href="#icone-beneficios"/></svg>Benefícios do seu time
+        </a>
+        <a href="endomarketing.html" class="aba">
+          <svg class="icone"><use href="#icone-endomarketing"/></svg>Materiais de endomarketing
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 2. BOAS-VINDAS + JORNADA DO CADASTRO ============ -->
+    <section class="destaque-principal">
+      <div class="conteudo-centralizado destaque-grade">
+        <!-- Coluna da esquerda: a mensagem que vende o relacionamento. -->
+        <div>
+          <span class="destaque-selo" data-inicio-selo data-aguarda-dado>
+            <svg class="icone"><use href="#icone-parceria"/></svg>
+            Parceira Santander desde agosto de 2026
+          </span>
+          <h1 class="destaque-titulo" data-inicio-titulo data-aguarda-dado>
+            Olá, Aurora Alimentos.
+            <span class="destaque-titulo-leve">Que bom ter vocês por aqui.</span>
+          </h1>
+          <p class="destaque-texto">
+            Nosso relacionamento começa aqui. Cadastre sua equipe, acompanhe cada cadastro e
+            ofereça vantagens exclusivas a cada pessoa do seu time.
+          </p>
+          <!-- As duas ações mais importantes da tela. -->
+          <div class="destaque-botoes">
+            <a href="cadastrar.html" class="botao botao-branco">
+              <svg class="icone"><use href="#icone-cadastrar"/></svg>
+              Cadastrar funcionários
+            </a>
+            <a href="beneficios.html" class="botao botao-contorno-branco">Ver benefícios do time</a>
+          </div>
+        </div>
+
+        <!-- Coluna da direita: em que etapa do cadastro a empresa está. -->
+        <aside class="cartao cartao-jornada" aria-label="Jornada do cadastro da sua equipe">
+          <div class="jornada-cabecalho">
+            <div>
+              <h2 class="jornada-titulo">Cadastro da sua equipe</h2>
+              <p class="jornada-subtitulo">Novos funcionários entram pelos arquivos de inclusão.</p>
+            </div>
+            <!--
+              Círculo com o total aprovado. Nesta versão o total de funcionários da empresa não é conhecido, então o
+              círculo é inteiro: não é uma porcentagem de progresso.
+            -->
+            <div class="anel-progresso" style="--porcentagem: 100">
+              <div class="anel-miolo">
+                <div>
+                  <div class="anel-numero" data-inicio-anel-numero data-aguarda-dado>312</div>
+                  <div class="anel-legenda" data-inicio-anel-legenda data-aguarda-dado>aprovados</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Etapas: concluída (verde), atual (na cor da marca), futura (cinza). -->
+          <ol class="lista-etapas" data-inicio-etapas data-aguarda-bloco>
+            <li class="etapa etapa-concluida">
+              <span class="etapa-marcador"><svg class="icone"><use href="#icone-visto"/></svg></span>
+              <div>
+                <div class="etapa-nome">Contrato de folha assinado</div>
+                <div class="etapa-detalhe">01/08/2026</div>
+              </div>
+            </li>
+            <li class="etapa etapa-concluida">
+              <span class="etapa-marcador"><svg class="icone"><use href="#icone-visto"/></svg></span>
+              <div>
+                <div class="etapa-nome">Carga inicial enviada e homologada</div>
+                <div class="etapa-detalhe">290 funcionários cadastrados</div>
+              </div>
+            </li>
+            <li class="etapa etapa-atual">
+              <span class="etapa-marcador">3</span>
+              <div>
+                <div class="etapa-nome">Arquivos de inclusão</div>
+                <div class="etapa-detalhe">+22 em setembro · 24 em análise · 2 para corrigir</div>
+              </div>
+            </li>
+            <li class="etapa">
+              <span class="etapa-marcador">4</span>
+              <div>
+                <div class="etapa-nome">Equipe com conta aberta</div>
+                <div class="etapa-detalhe">243 dos 312 já abriram a conta (78%)</div>
+              </div>
+            </li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ 3. NÚMEROS DO CADASTRO ============ -->
+    <section class="numeros-empresa" aria-label="Resumo do cadastro da sua equipe">
+      <!--
+        Os quatro cartões são refeitos por js/home_real.js com os dados reais (ou com "—", se o servidor falhar).
+        Até lá, cada valor, legenda e selo de exemplo fica escondido atrás da barra cinza (data-aguarda-dado).
+      -->
+      <div class="conteudo-centralizado grade-numeros" data-inicio-numeros>
+        <!-- Funcionários cadastrados, com barra de progresso. -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-equipe"/></svg></span>
+          <div class="cartao-numero-valor" data-aguarda-dado>312</div>
+          <div class="cartao-numero-legenda" data-aguarda-dado>funcionários com cadastro aprovado</div>
+          <span class="selo selo-sucesso" data-aguarda-dado>+22 em setembro</span>
+        </div>
+        <!-- Funcionários enviados que o banco ainda está analisando. -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-analise"/></svg></span>
+          <div class="cartao-numero-valor" data-aguarda-dado>24</div>
+          <div class="cartao-numero-legenda" data-aguarda-dado>funcionários em análise pelo banco</div>
+          <span class="selo selo-marca" data-aguarda-dado>Retorno em até 1 dia útil</span>
+        </div>
+        <!-- Arquivos que a empresa já enviou. -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-documento"/></svg></span>
+          <div class="cartao-numero-valor" data-aguarda-dado>3</div>
+          <div class="cartao-numero-legenda" data-aguarda-dado>arquivos enviados (1 carga inicial e 2 de inclusão)</div>
+          <a href="acompanhar.html" class="link-seta">Acompanhar cadastros <svg class="icone"><use href="#icone-seta"/></svg></a>
+        </div>
+        <!-- Arquivos que pedem correção, com ajuda da IA. -->
+        <div class="cartao cartao-numero">
+          <span class="cartao-numero-icone"><svg class="icone"><use href="#icone-ia"/></svg></span>
+          <div class="cartao-numero-valor" data-aguarda-dado>2</div>
+          <div class="cartao-numero-legenda" data-aguarda-dado>linhas para corrigir no último arquivo</div>
+          <a href="acompanhar.html#pendencias" class="link-seta">Corrigir com o assistente <svg class="icone"><use href="#icone-seta"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. BENEFÍCIOS DO TIME ============ -->
+    <section class="secao secao-azul" id="beneficios">
+      <div class="conteudo-centralizado">
+        <div class="cabecalho-secao">
+          <div>
+            <span class="sobretitulo">Benefícios do seu time</span>
+            <h2 class="titulo-secao">O que o seu time ganha com o Santander</h2>
+            <p class="descricao-secao">
+              <span data-inicio-descricao-beneficios data-aguarda-dado>Vantagens que o banco definiu para os funcionários da Aurora Alimentos.</span> Consulte os detalhes e
+              divulgue para a equipe com os materiais que o Santander preparou.
+            </p>
+          </div>
+          <!-- A vitrine completa, com filtros e as dúvidas comuns, fica na aba "Benefícios do seu time". -->
+          <a href="beneficios.html" class="link-seta">Ver todos os benefícios <svg class="icone"><use href="#icone-seta"/></svg></a>
+        </div>
+
+        <!--
+          Cada cartão guarda os detalhes do benefício numa lista escondida (beneficio-detalhes).
+          O botão "Ver detalhes" copia esses detalhes para a janela no fim da página (lógica em js/janela_beneficio.js).
+        -->
+        <div class="grade-beneficios" data-grade-beneficios data-aguarda-bloco>
+          <article class="cartao cartao-beneficio" data-beneficio="conta-sem-mensalidade">
+            <div class="beneficio-topo">
+              <span class="beneficio-icone"><svg class="icone"><use href="#icone-cartao"/></svg></span>
+              <span class="selo selo-marca">12 meses</span>
+            </div>
+            <h3 class="beneficio-titulo">Conta sem mensalidade</h3>
+            <p class="beneficio-texto">Pacote de serviços isento no primeiro ano para quem recebe o salário no Santander.</p>
+            <dl class="beneficio-detalhes" hidden>
+              <dt>Como funciona</dt>
+              <dd>Os serviços essenciais da conta ficam sem mensalidade nos 12 primeiros meses, contados da abertura.</dd>
+              <dt>Quem pode usar</dt>
+              <dd>Todo funcionário cadastrado pela empresa que recebe o salário no Santander.</dd>
+              <dt>Como contratar</dt>
+              <dd>O funcionário abre a conta pelo aplicativo com o CPF. O cadastro feito pela empresa já adianta os dados.</dd>
+            </dl>
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+          </article>
+          <article class="cartao cartao-beneficio" data-beneficio="credito-consignado">
+            <div class="beneficio-topo">
+              <span class="beneficio-icone"><svg class="icone"><use href="#icone-porcentagem"/></svg></span>
+              <span class="selo selo-sucesso">Exclusivo</span>
+            </div>
+            <h3 class="beneficio-titulo">Crédito consignado</h3>
+            <p class="beneficio-texto">Empréstimo com parcelas descontadas na folha e taxa negociada para a Aurora.</p>
+            <dl class="beneficio-detalhes" hidden>
+              <dt>Como funciona</dt>
+              <dd>As parcelas são descontadas direto do salário. Por ter esse desconto garantido, a taxa é menor.</dd>
+              <dt>Quem pode usar</dt>
+              <dd>Funcionário com conta salário ativa, sujeito à análise de crédito e ao limite de desconto em folha.</dd>
+              <dt>Como contratar</dt>
+              <dd>Pelo aplicativo, com simulação na hora e o valor na conta após a aprovação.</dd>
+            </dl>
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+          </article>
+          <article class="cartao cartao-beneficio" data-beneficio="salario-antecipado">
+            <div class="beneficio-topo">
+              <span class="beneficio-icone"><svg class="icone"><use href="#icone-cofre"/></svg></span>
+              <span class="selo selo-sucesso">Exclusivo</span>
+            </div>
+            <h3 class="beneficio-titulo">Salário antecipado</h3>
+            <p class="beneficio-texto">Parte do salário disponível antes da data, direto no aplicativo, para imprevistos.</p>
+            <dl class="beneficio-detalhes" hidden>
+              <dt>Como funciona</dt>
+              <dd>O funcionário pode pegar uma parte do salário do mês antes do dia do pagamento.</dd>
+              <dt>Quem pode usar</dt>
+              <dd>Funcionário que já recebeu pelo menos um salário na conta Santander.</dd>
+              <dt>Como contratar</dt>
+              <dd>No aplicativo, escolhendo o valor dentro do limite liberado para ele.</dd>
+            </dl>
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+          </article>
+          <article class="cartao cartao-beneficio" data-beneficio="cartao-cashback">
+            <div class="beneficio-topo">
+              <span class="beneficio-icone"><svg class="icone"><use href="#icone-beneficios"/></svg></span>
+              <span class="selo selo-sucesso">Exclusivo</span>
+            </div>
+            <h3 class="beneficio-titulo">Cartão com cashback</h3>
+            <p class="beneficio-texto">Parte das compras volta para a conta todo mês, sem anuidade no primeiro ano.</p>
+            <dl class="beneficio-detalhes" hidden>
+              <dt>Como funciona</dt>
+              <dd>Uma parte do valor de cada compra volta como crédito na conta, todo mês.</dd>
+              <dt>Quem pode usar</dt>
+              <dd>Funcionário com conta salário ativa, sujeito à análise de crédito.</dd>
+              <dt>Como contratar</dt>
+              <dd>Pedido pelo aplicativo, com o cartão entregue no endereço cadastrado.</dd>
+            </dl>
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+          </article>
+          <article class="cartao cartao-beneficio" data-beneficio="seguro-de-vida">
+            <div class="beneficio-topo">
+              <span class="beneficio-icone"><svg class="icone"><use href="#icone-coracao"/></svg></span>
+              <span class="selo selo-marca">Novo</span>
+            </div>
+            <h3 class="beneficio-titulo">Seguro de vida acessível</h3>
+            <p class="beneficio-texto">Proteção para a família a partir de um valor mensal pequeno, contratado pelo app.</p>
+            <dl class="beneficio-detalhes" hidden>
+              <dt>Como funciona</dt>
+              <dd>Seguro de vida com pagamento mensal baixo, que protege a família do funcionário.</dd>
+              <dt>Quem pode usar</dt>
+              <dd>Todo funcionário com conta salário ativa.</dd>
+              <dt>Como contratar</dt>
+              <dd>Pelo aplicativo, em poucos passos, com débito automático na conta.</dd>
+            </dl>
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+          </article>
+          <article class="cartao cartao-beneficio" data-beneficio="primeiro-investimento">
+            <div class="beneficio-topo">
+              <span class="beneficio-icone"><svg class="icone"><use href="#icone-grafico"/></svg></span>
+              <span class="selo selo-sucesso">Exclusivo</span>
+            </div>
+            <h3 class="beneficio-titulo">Primeiro investimento</h3>
+            <p class="beneficio-texto">Reserva de emergência que rende desde o primeiro real, com orientação no app.</p>
+            <dl class="beneficio-detalhes" hidden>
+              <dt>Como funciona</dt>
+              <dd>O dinheiro guardado rende todo dia e pode ser resgatado quando o funcionário precisar.</dd>
+              <dt>Quem pode usar</dt>
+              <dd>Todo funcionário com conta salário ativa, a partir de R$ 1.</dd>
+              <dt>Como contratar</dt>
+              <dd>No aplicativo, com uma trilha curta que explica o que é reserva de emergência.</dd>
+            </dl>
+            <button class="link-seta botao-ver-detalhes" type="button">Ver detalhes <svg class="icone"><use href="#icone-seta"/></svg></button>
+          </article>
+        </div>
+
+        <p class="nota-condicoes">Condições ilustrativas, sujeitas a análise e à política vigente do banco.</p>
+      </div>
+    </section>
+
+    <!-- ============ 5. ENDOMARKETING ============ -->
+    <section class="secao">
+      <div class="conteudo-centralizado">
+        <!-- Cartão escuro em duas colunas: convite à esquerda, materiais à direita (o Santander prepara, a empresa divulga). -->
+        <article class="cartao cartao-endomarketing">
+          <!-- Esquerda: o convite e o número agregado. -->
+          <div class="endomarketing-coluna">
+            <div>
+              <span class="sobretitulo">Materiais para divulgar</span>
+              <h2 class="titulo-secao">Ajude seu time a aproveitar tudo isso</h2>
+              <p class="descricao-secao">
+                O Santander prepara e valida os materiais a partir dos benefícios da sua empresa. É só baixar e divulgar nos seus canais.
+              </p>
+            </div>
+            <!-- Número agregado (só o total da empresa, nunca nomes de pessoas). -->
+            <div class="endomarketing-numero">
+              <strong data-inicio-sem-conta-numero data-aguarda-dado>69</strong>
+              <span data-inicio-sem-conta-texto data-aguarda-dado>funcionários cadastrados (22%) ainda sem conta informada pelo banco. Divulgar os materiais do Santander ajuda a equipe a abrir.</span>
+            </div>
+          </div>
+          <!-- Direita: os tipos de material que o Santander prepara e o botão para baixar. -->
+          <div class="endomarketing-coluna">
+            <div class="lista-materiais">
+              <div class="material"><svg class="icone"><use href="#icone-documento"/></svg>Comunicado para a equipe</div>
+              <div class="material"><svg class="icone"><use href="#icone-pergunta"/></svg>Perguntas frequentes</div>
+              <div class="material"><svg class="icone"><use href="#icone-kit"/></svg>Kit de boas-vindas</div>
+            </div>
+            <div>
+              <a href="endomarketing.html" class="botao botao-principal">
+                <svg class="icone"><use href="#icone-endomarketing"/></svg>
+                Baixar os materiais do Santander
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 6. RODAPÉ E ASSISTENTE ============ -->
+  <footer class="rodape">
+    <div class="conteudo-centralizado rodape-linha">
+      <span class="logotipo-marca">Integra Folha</span>
+      <nav class="rodape-links" aria-label="Links institucionais">
+        <!-- Oculto nesta versão (ADR-148): a central de ajuda ainda não existe. -->
+        <template data-oculto-nesta-versao="central-de-ajuda"><a href="#">Central de ajuda</a></template>
+        <a href="privacidade.html">Privacidade e LGPD</a>
+        <a href="termos_de_uso.html">Termos de uso</a>
+        <!-- Oculto nesta versão (ADR-148): a empresa fala com o especialista pelo "Posso ajudar?". -->
+        <template data-oculto-nesta-versao="fale-com-seu-especialista"><a href="#">Fale com seu especialista</a></template>
+      </nav>
+    </div>
+    <!-- O aviso de que o site é um projeto. -->
+    <p class="conteudo-centralizado nota-do-projeto">Integra Folha é um projeto acadêmico de engenharia de IA. A parceria com o Santander é ilustrativa: este não é um sistema oficial do banco, e todos os dados são fictícios.</p>
+    <!-- A data da versão que está rodando (js/data_da_versao.js, ADR-133): oculta nesta versão (ADR-148), o script não a escreve. -->
+    <p class="conteudo-centralizado data-da-versao" data-data-da-versao hidden data-oculto-nesta-versao="data-da-versao"></p>
+  </footer>
+
+  <!-- Assistente de IA sempre à mão, no canto da tela. -->
+  <button class="assistente-flutuante" type="button" aria-label="Abrir o assistente">
+    <svg class="icone"><use href="#icone-ia"/></svg>
+    <span class="assistente-texto">Posso ajudar?</span>
+  </button>
+
+  <!--
+    Janela de detalhes do benefício. Começa fechada; abre ao clicar em "Ver detalhes" num cartão.
+    <dialog> é um elemento pronto do navegador para janelas: escurece o fundo e fecha com a tecla Esc.
+    O ícone, o título, o resumo e os detalhes são copiados do cartão clicado (js/janela_beneficio.js).
+  -->
+  <dialog class="janela-beneficio" id="janela-beneficio" aria-labelledby="janela-beneficio-titulo">
+    <!-- Bloco interno: o espaçamento fica aqui, para que só o fundo escuro conte como "clique fora". -->
+    <div class="janela-conteudo">
+      <div class="janela-cabecalho">
+        <span class="beneficio-icone" id="janela-beneficio-icone"></span>
+        <div class="janela-cabecalho-textos">
+          <span class="sobretitulo">Benefício do seu time</span>
+          <h2 class="janela-titulo" id="janela-beneficio-titulo"></h2>
+        </div>
+        <button class="botao-fechar-janela" type="button" aria-label="Fechar" data-fechar-janela>
+          <svg class="icone"><use href="#icone-fechar"/></svg>
+        </button>
+      </div>
+      <p class="janela-resumo" id="janela-beneficio-resumo"></p>
+      <dl class="janela-detalhes" id="janela-beneficio-detalhes"></dl>
+      <p class="nota-condicoes">Condições ilustrativas, sujeitas a análise e à política vigente do banco.</p>
+      <!-- Ações: voltar ou ir aos materiais que o Santander preparou para divulgar à equipe. -->
+      <div class="janela-botoes">
+        <button class="botao botao-contorno" type="button" data-fechar-janela>Voltar</button>
+        <!-- Abre a aba "Materiais de endomarketing": a empresa baixa o que o Santander publicou (ADR-115). -->
+        <a href="endomarketing.html" class="botao botao-principal" id="janela-beneficio-usar">
+          <svg class="icone"><use href="#icone-endomarketing"/></svg>
+          Ver materiais para divulgar
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Janela de detalhes dos benefícios (a mesma da aba "Benefícios do seu time"). -->
+  <script src="js/janela_beneficio.js"></script>
+  <!-- Com servidor, troca o exemplo pelos dados reais da empresa de quem entrou (ADR-69). -->
+  <script src="js/beneficios_do_catalogo.js"></script>
+  <script src="js/home_real.js"></script>
+  <!-- "Posso ajudar?": conversa com o especialista do banco (conversas.js guarda; ajuda_empresa.js mostra). -->
+  <!-- Cabeçalho com quem entrou, os contadores reais e "Minha senha" (ADR-69). -->
+  <script src="js/cabecalho_real.js"></script>
+  <script src="js/conversas.js"></script>
+  <!-- "Cadastrar funcionários": o botão do canto abre a janela do envio. -->
+  <script src="js/novo_envio.js"></script>
+  <script src="js/ajuda_empresa.js"></script>
+  <!-- O rótulo "Atualizado em ..." do rodapé (ADR-133). -->
+  <script src="js/data_da_versao.js"></script>
+</body>
+</html>

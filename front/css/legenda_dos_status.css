@@ -1,0 +1,144 @@
+/*
+  legenda_dos_status.css — a aparência do "i" em cima das grades com a coluna "Situação" e do balão que explica cada
+  situação (js/legenda_dos_status.js).
+
+  Vem DEPOIS do css/estilos.css e usa as mesmas cores, medidas e selos (as variáveis e as classes .selo de lá). O "i"
+  segue o desenho do "i" de ajuda dos campos (.botao-ajuda-campo), um pouco maior, para o dedo acertar no celular.
+
+  Como está organizado:
+    1. A linha em cima da grade, com o "i" no canto direito
+    2. O "i"
+    3. O balão
+    4. A lista das situações
+    5. Carregando e sem dado
+*/
+
+/* ===== 1. A linha em cima da grade ===== */
+/* Uma linha fina, só com o "i", encostado à direita (o canto direito da grade). */
+.linha-do-i-dos-status {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 6px;
+}
+
+/* A caixa do tamanho do "i": é ela que sente o mouse, e não a linha inteira. */
+.caixa-do-i-dos-status {
+  display: inline-flex;
+}
+
+/* ===== 2. O "i" ===== */
+/* Um círculo com borda e a letra "i" em itálico, como o "i" de ajuda dos campos. 24 px: o mínimo para o dedo. */
+.botao-i-dos-status {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1.5px solid var(--texto-secundario);
+  border-radius: 50%;
+  background: var(--branco);
+  color: var(--texto-secundario);
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Com o mouse em cima, com o foco do teclado ou com o balão aberto, o "i" fica na cor da marca. */
+.botao-i-dos-status:hover,
+.botao-i-dos-status:focus-visible,
+.botao-i-dos-status[aria-expanded="true"] {
+  border-color: var(--cor-marca);
+  color: var(--cor-marca);
+}
+
+/* O contorno do foco do teclado, bem à vista. */
+.botao-i-dos-status:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 2px;
+}
+
+/* ===== 3. O balão ===== */
+/* Preso à janela ("fixed", posição calculada pelo js), acima da tabela e do cabeçalho parado dela, com sombra. Cabe
+   no celular (nunca mais largo que a tela menos as margens) e rola por dentro se ficar mais alto que a janela. */
+.balao-dos-status {
+  position: fixed;
+  z-index: 50;
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  padding: 14px 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--branco);
+  box-shadow: var(--sombra-elevada);
+  color: var(--texto-principal);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  white-space: normal;
+}
+
+/* O balão recebe o foco só pelo clique no texto dele (o Tab não passa por ele): sem o contorno do foco. */
+.balao-dos-status:focus {
+  outline: none;
+}
+
+/* "O que quer dizer cada situação": o título do balão. */
+.balao-dos-status-titulo {
+  margin: 0 0 10px;
+  font-family: var(--fonte-titulos);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ===== 4. A lista das situações ===== */
+/* Uma situação embaixo da outra, sem marcador de lista. */
+.lista-do-balao-dos-status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Cada situação: o selo em cima e o que ele quer dizer embaixo. */
+.item-do-balao-dos-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+/* O que a situação quer dizer, em cinza. */
+.explicacao-do-balao-dos-status {
+  color: var(--texto-secundario);
+  line-height: 1.45;
+}
+
+/* ===== 5. Carregando e sem dado ===== */
+/* Enquanto as explicações não chegam: a barra cinza que brilha devagar (a mesma animação das outras telas). */
+.balao-dos-status-carregando {
+  height: 72px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--linha-divisoria) 25%, var(--fundo-pagina) 50%, var(--linha-divisoria) 75%);
+  background-size: 200% 100%;
+  animation: esqueleto-brilho 1.4s ease-in-out infinite;
+}
+
+/* Quem pediu menos movimento no computador vê a barra parada. */
+@media (prefers-reduced-motion: reduce) {
+  .balao-dos-status-carregando {
+    animation: none;
+  }
+}
+
+/* "Não foi possível carregar agora.": o aviso no lugar das explicações. */
+.balao-dos-status-aviso {
+  margin: 0;
+  color: var(--texto-secundario);
+}

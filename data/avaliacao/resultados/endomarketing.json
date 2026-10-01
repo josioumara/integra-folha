@@ -1,0 +1,790 @@
+{
+  "modo": "MOCK",
+  "resumo": {
+    "materiais": 18,
+    "materiais_gerados": 18,
+    "blocos_escritos": 83,
+    "blocos_aprovados": 83,
+    "fidelidade": 1.0,
+    "fontes_de_outra_empresa": 0,
+    "destaques_fora_do_catalogo": "0 de 4",
+    "destaques_no_catalogo": "4 de 4",
+    "adulterados_barrados": "202 de 202",
+    "originais_mantidos": "83 de 83"
+  },
+  "adulteracoes": {
+    "originais": 83,
+    "originais_mantidos": 83,
+    "fonte_inventada": {
+      "total": 83,
+      "barrados": 83
+    },
+    "fonte_de_outra_empresa": {
+      "total": 83,
+      "barrados": 83
+    },
+    "numero_trocado": {
+      "total": 36,
+      "barrados": 36
+    }
+  },
+  "destaques": [
+    {
+      "id": "aurora_seguro",
+      "tipo": "fora_do_catalogo",
+      "avisou": false,
+      "citou_fora": false,
+      "acertou": false
+    },
+    {
+      "id": "brisa_previdencia",
+      "tipo": "fora_do_catalogo",
+      "avisou": false,
+      "citou_fora": false,
+      "acertou": false
+    },
+    {
+      "id": "vale_verde_investimentos",
+      "tipo": "fora_do_catalogo",
+      "avisou": false,
+      "citou_fora": false,
+      "acertou": false
+    },
+    {
+      "id": "horizonte_refeicao",
+      "tipo": "fora_do_catalogo",
+      "avisou": false,
+      "citou_fora": false,
+      "acertou": false
+    },
+    {
+      "id": "horizonte_seguro",
+      "tipo": "no_catalogo",
+      "avisou": false,
+      "achou": true,
+      "acertou": true
+    },
+    {
+      "id": "atlantico_previdencia",
+      "tipo": "no_catalogo",
+      "avisou": false,
+      "achou": true,
+      "acertou": true
+    },
+    {
+      "id": "prisma_cartao",
+      "tipo": "no_catalogo",
+      "avisou": false,
+      "achou": true,
+      "acertou": true
+    },
+    {
+      "id": "brisa_investimentos",
+      "tipo": "no_catalogo",
+      "avisou": false,
+      "achou": true,
+      "acertou": true
+    }
+  ],
+  "materiais": [
+    {
+      "empresa_id": "EMP001",
+      "tipo": "comunicado",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Conta salário: Os funcionários da Aurora recebem o salário numa conta salário sem tarifa de manutenção. A",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Crédito consignado: Taxa de crédito consignado negociada para a Aurora, com parcelas descontadas na folha. Sujeito a",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Crédito consignado"
+          ]
+        },
+        {
+          "texto": "Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/aurora",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Conta corrente com pacote Folha Essencial: Quem abrir conta corrente tem isenção da tarifa do pacote Folha Essencial por 12 meses. Depois",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Conta corrente com pacote Folha Essencial"
+          ]
+        },
+        {
+          "texto": "Canais de dúvidas: - Central de atendimento: 0800 000 0001 (dias úteis, das 8h às 20h)",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP001",
+      "tipo": "faq",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Como funciona: Conta salário? Os funcionários da Aurora recebem o salário numa conta salário sem tarifa de manutenção. A",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Como funciona: Crédito consignado? Taxa de crédito consignado negociada para a Aurora, com parcelas descontadas na folha. Sujeito a",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Crédito consignado"
+          ]
+        },
+        {
+          "texto": "Como funciona: Onde consultar? Página de benefícios da empresa: https://beneficios.banco.example/aurora",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Como funciona: Conta corrente com pacote Folha Essencial? Quem abrir conta corrente tem isenção da tarifa do pacote Folha Essencial por 12 meses. Depois",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Conta corrente com pacote Folha Essencial"
+          ]
+        },
+        {
+          "texto": "Como funciona: Canais de dúvidas? - Central de atendimento: 0800 000 0001 (dias úteis, das 8h às 20h)",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP001",
+      "tipo": "kit_boas_vindas",
+      "situacao": "GERADO",
+      "blocos_aprovados": 4,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Primeiros passos — Conta salário: Os funcionários da Aurora recebem o salário numa conta salário sem tarifa de manutenção. A",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Crédito consignado: Taxa de crédito consignado negociada para a Aurora, com parcelas descontadas na folha. Sujeito a",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Crédito consignado"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/aurora",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Canais de dúvidas: - Central de atendimento: 0800 000 0001 (dias úteis, das 8h às 20h)",
+          "fontes": [
+            "Pacote de benefícios Aurora v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP002",
+      "tipo": "comunicado",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Adiantamento salarial: Adiantamento de até 30% do salário líquido, uma vez por mês, com tarifa informada no aplicativo antes",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Adiantamento salarial"
+          ]
+        },
+        {
+          "texto": "Conta salário: Conta salário sem tarifa de manutenção para todos os funcionários da Horizonte.",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/horizonte",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Conta corrente com pacote Folha Plus: Quem abrir conta corrente tem isenção da tarifa do pacote Folha Plus por 6 meses e cartão de",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Conta corrente com pacote Folha Plus"
+          ]
+        },
+        {
+          "texto": "Canais de dúvidas: - Central de atendimento: 0800 000 0002",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP002",
+      "tipo": "faq",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Como funciona: Adiantamento salarial? Adiantamento de até 30% do salário líquido, uma vez por mês, com tarifa informada no aplicativo antes",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Adiantamento salarial"
+          ]
+        },
+        {
+          "texto": "Como funciona: Conta salário? Conta salário sem tarifa de manutenção para todos os funcionários da Horizonte.",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Como funciona: Onde consultar? Página de benefícios da empresa: https://beneficios.banco.example/horizonte",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Como funciona: Conta corrente com pacote Folha Plus? Quem abrir conta corrente tem isenção da tarifa do pacote Folha Plus por 6 meses e cartão de",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Conta corrente com pacote Folha Plus"
+          ]
+        },
+        {
+          "texto": "Como funciona: Canais de dúvidas? - Central de atendimento: 0800 000 0002",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP002",
+      "tipo": "kit_boas_vindas",
+      "situacao": "GERADO",
+      "blocos_aprovados": 4,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Primeiros passos — Adiantamento salarial: Adiantamento de até 30% do salário líquido, uma vez por mês, com tarifa informada no aplicativo antes",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Adiantamento salarial"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Conta salário: Conta salário sem tarifa de manutenção para todos os funcionários da Horizonte.",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/horizonte",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Canais de dúvidas: - Central de atendimento: 0800 000 0002",
+          "fontes": [
+            "Pacote de benefícios Horizonte v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP003",
+      "tipo": "comunicado",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Conta salário: Conta salário sem tarifa de manutenção, com portabilidade gratuita.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Investimentos: Aplicação automática do saldo parado em fundo de renda fixa com liquidez diária, opcional.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Investimentos"
+          ]
+        },
+        {
+          "texto": "Conta digital: Conta corrente 100% digital sem tarifa de manutenção enquanto o salário for creditado no banco.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Conta digital"
+          ]
+        },
+        {
+          "texto": "Canais de dúvidas: - Chat no aplicativo, 24 horas",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Canais de dúvidas"
+          ]
+        },
+        {
+          "texto": "Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/brisa",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Onde consultar"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP003",
+      "tipo": "faq",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Como funciona: Conta salário? Conta salário sem tarifa de manutenção, com portabilidade gratuita.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Como funciona: Investimentos? Aplicação automática do saldo parado em fundo de renda fixa com liquidez diária, opcional.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Investimentos"
+          ]
+        },
+        {
+          "texto": "Como funciona: Conta digital? Conta corrente 100% digital sem tarifa de manutenção enquanto o salário for creditado no banco.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Conta digital"
+          ]
+        },
+        {
+          "texto": "Como funciona: Canais de dúvidas? - Chat no aplicativo, 24 horas",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Canais de dúvidas"
+          ]
+        },
+        {
+          "texto": "Como funciona: Onde consultar? Página de benefícios da empresa: https://beneficios.banco.example/brisa",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Onde consultar"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP003",
+      "tipo": "kit_boas_vindas",
+      "situacao": "GERADO",
+      "blocos_aprovados": 4,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Primeiros passos — Conta salário: Conta salário sem tarifa de manutenção, com portabilidade gratuita.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Investimentos: Aplicação automática do saldo parado em fundo de renda fixa com liquidez diária, opcional.",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Investimentos"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/brisa",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Canais de dúvidas: - Chat no aplicativo, 24 horas",
+          "fontes": [
+            "Pacote de benefícios Brisa v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP004",
+      "tipo": "comunicado",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Conta salário: Conta salário sem tarifa de manutenção para todos os funcionários.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Crédito consignado: Crédito consignado com parcelas descontadas na folha, sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Crédito consignado"
+          ]
+        },
+        {
+          "texto": "Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/valeverde",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Conta corrente com pacote Folha Essencial: Isenção da tarifa do pacote Folha Essencial por 12 meses para quem abrir conta corrente.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Conta corrente com pacote Folha Essencial"
+          ]
+        },
+        {
+          "texto": "Canais de dúvidas: - Central de atendimento: 0800 000 0004",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP004",
+      "tipo": "faq",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Como funciona: Conta salário? Conta salário sem tarifa de manutenção para todos os funcionários.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Como funciona: Crédito consignado? Crédito consignado com parcelas descontadas na folha, sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Crédito consignado"
+          ]
+        },
+        {
+          "texto": "Como funciona: Onde consultar? Página de benefícios da empresa: https://beneficios.banco.example/valeverde",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Como funciona: Conta corrente com pacote Folha Essencial? Isenção da tarifa do pacote Folha Essencial por 12 meses para quem abrir conta corrente.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Conta corrente com pacote Folha Essencial"
+          ]
+        },
+        {
+          "texto": "Como funciona: Canais de dúvidas? - Central de atendimento: 0800 000 0004",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP004",
+      "tipo": "kit_boas_vindas",
+      "situacao": "GERADO",
+      "blocos_aprovados": 4,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Primeiros passos — Conta salário: Conta salário sem tarifa de manutenção para todos os funcionários.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Crédito consignado: Crédito consignado com parcelas descontadas na folha, sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Crédito consignado"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/valeverde",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Canais de dúvidas: - Central de atendimento: 0800 000 0004",
+          "fontes": [
+            "Pacote de benefícios Vale Verde v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP005",
+      "tipo": "comunicado",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Conta salário: Conta salário sem tarifa de manutenção.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Conta corrente com pacote Folha Plus: Isenção da tarifa do pacote Folha Plus por 3 meses para quem abrir conta corrente na loja.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Conta corrente com pacote Folha Plus"
+          ]
+        },
+        {
+          "texto": "Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/prisma",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Cartão de crédito: Cartão de crédito sem anuidade no primeiro ano, sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Cartão de crédito"
+          ]
+        },
+        {
+          "texto": "Canais de dúvidas: - Central de atendimento: 0800 000 0005",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP005",
+      "tipo": "faq",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Como funciona: Conta salário? Conta salário sem tarifa de manutenção.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Como funciona: Conta corrente com pacote Folha Plus? Isenção da tarifa do pacote Folha Plus por 3 meses para quem abrir conta corrente na loja.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Conta corrente com pacote Folha Plus"
+          ]
+        },
+        {
+          "texto": "Como funciona: Onde consultar? Página de benefícios da empresa: https://beneficios.banco.example/prisma",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Como funciona: Cartão de crédito? Cartão de crédito sem anuidade no primeiro ano, sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Cartão de crédito"
+          ]
+        },
+        {
+          "texto": "Como funciona: Canais de dúvidas? - Central de atendimento: 0800 000 0005",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP005",
+      "tipo": "kit_boas_vindas",
+      "situacao": "GERADO",
+      "blocos_aprovados": 4,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Primeiros passos — Conta salário: Conta salário sem tarifa de manutenção.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Conta corrente com pacote Folha Plus: Isenção da tarifa do pacote Folha Plus por 3 meses para quem abrir conta corrente na loja.",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Conta corrente com pacote Folha Plus"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/prisma",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Canais de dúvidas: - Central de atendimento: 0800 000 0005",
+          "fontes": [
+            "Pacote de benefícios Prisma v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP006",
+      "tipo": "comunicado",
+      "situacao": "GERADO",
+      "blocos_aprovados": 4,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Conta salário: Conta salário sem tarifa de manutenção, com saque gratuito nos terminais do hospital.",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Conta corrente para profissionais de saúde: Pacote com isenção de tarifa por 12 meses e limite de cheque especial sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Conta corrente para profissionais de saúde"
+          ]
+        },
+        {
+          "texto": "Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/atlantico",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Canais de dúvidas: - Central de atendimento: 0800 000 0006",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP006",
+      "tipo": "faq",
+      "situacao": "GERADO",
+      "blocos_aprovados": 5,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Como funciona: Conta salário? Conta salário sem tarifa de manutenção, com saque gratuito nos terminais do hospital.",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Como funciona: Conta corrente para profissionais de saúde? Pacote com isenção de tarifa por 12 meses e limite de cheque especial sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Conta corrente para profissionais de saúde"
+          ]
+        },
+        {
+          "texto": "Como funciona: Onde consultar? Página de benefícios da empresa: https://beneficios.banco.example/atlantico",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Como funciona: Canais de dúvidas? - Central de atendimento: 0800 000 0006",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Canais de dúvidas"
+          ]
+        },
+        {
+          "texto": "Como funciona: Previdência privada? Plano de previdência com contribuição a partir de R$ 50,00 por mês, opcional.",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Previdência privada"
+          ]
+        }
+      ]
+    },
+    {
+      "empresa_id": "EMP006",
+      "tipo": "kit_boas_vindas",
+      "situacao": "GERADO",
+      "blocos_aprovados": 4,
+      "blocos_removidos": 0,
+      "fontes_de_outra_empresa": 0,
+      "blocos": [
+        {
+          "texto": "Primeiros passos — Conta salário: Conta salário sem tarifa de manutenção, com saque gratuito nos terminais do hospital.",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Conta salário"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Conta corrente para profissionais de saúde: Pacote com isenção de tarifa por 12 meses e limite de cheque especial sujeito a análise de crédito.",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Conta corrente para profissionais de saúde"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Onde consultar: Página de benefícios da empresa: https://beneficios.banco.example/atlantico",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Onde consultar"
+          ]
+        },
+        {
+          "texto": "Primeiros passos — Canais de dúvidas: - Central de atendimento: 0800 000 0006",
+          "fontes": [
+            "Pacote de benefícios Atlântico v1 › Canais de dúvidas"
+          ]
+        }
+      ]
+    }
+  ],
+  "distancias_de_destaque": {
+    "quando_tem": [
+      0.261,
+      0.304,
+      0.347,
+      0.378,
+      0.464,
+      0.64
+    ],
+    "quando_nao_tem": [
+      0.441,
+      0.529,
+      0.64,
+      0.665,
+      0.684,
+      0.901
+    ],
+    "maior_quando_tem": 0.64,
+    "menor_quando_nao_tem": 0.441,
+    "existe_limite_que_separa": false
+  }
+}

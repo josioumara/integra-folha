@@ -1,0 +1,299 @@
+/*
+  banco_ficha.css — aparência das abas "Conversa" e "Contas abertas" da ficha da empresa (Portal Interno).
+
+  Para que serve: a conversa com a empresa e o arquivo de contas abertas ficam na ficha de cada empresa, e não em
+  telas próprias (ADR-122). Este arquivo vem DEPOIS do
+  css/estilos.css, do css/banco.css e do css/conversa.css, e usa as mesmas cores e medidas (as variáveis de lá).
+
+  Como está organizado:
+    1. A bolinha das conversas abertas, na Carteira e na aba
+    2. Aba "Conversa" (no canto direito das abas, com o "Marcar como respondida" em cima do chat)
+    3. Aba "Contas abertas"
+    4. Janela "Carregar Contas Abertas": a orientação da empresa
+    5. Aba "Visão geral": a linha acima da grade (o número, o "Baixar CSV" e o "i" dos status) e a grade sem rolar
+    6. Aba "Usuários": a senha provisória na linha da pessoa, com a pergunta "Confirmar" e "Cancelar"
+*/
+
+/* ===== 1. A bolinha das conversas abertas (o visual é o das bolinhas do menu, .contador-aba) ===== */
+/* A linha da empresa com a conversa aberta, na Carteira: abre espaço à direita, e o nome não passa por baixo dela. */
+.linha-com-conversa-aberta {
+  position: relative;
+  padding-right: 44px;
+}
+
+/* A bolinha na linha da Carteira: no canto de cima, à direita. */
+.bolinha-da-carteira {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+}
+
+/* A bolinha dentro da aba "Conversa" da ficha: um pouco maior que a do menu, para ler o número de relance. */
+.contador-aba-ficha {
+  font-size: 12px;
+}
+
+/* ===== 2. Aba "Conversa" ===== */
+/* A aba "Conversa" fica à parte das outras, no canto direito da linha das abas, com o ícone de conversa ao lado do
+   nome e a bolinha depois. */
+.aba-ficha-conversa {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* O ícone de conversa da aba, na medida do texto. */
+.aba-ficha-conversa .icone {
+  width: 18px;
+  height: 18px;
+}
+
+/* A frase que explica a aba à esquerda; à direita, a situação e o "Marcar como respondida". Em tela estreita, a
+   direita desce. */
+.cabecalho-conversa-da-ficha {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* A frase ocupa o espaço que sobra, sem empurrar a situação e o botão para baixo numa tela larga. */
+.cabecalho-conversa-da-ficha .descricao-aba {
+  flex: 1 1 320px;
+}
+
+/* O selo da situação e o "Marcar como respondida", lado a lado, em cima do chat, sempre encostados à direita (mesmo
+   quando descem para a linha de baixo, numa tela estreita). */
+.situacao-da-conversa-da-ficha {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* As mensagens numa caixa de altura fixa, com rolagem por dentro (a página não cresce a cada mensagem). */
+.conversa-mensagens-ficha {
+  height: 380px;
+  padding: 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+}
+
+/*
+  Na ficha, a área de responder não tem borda nem respiro próprios (o cartão da ficha já dá).
+  O seletor tem duas classes para vencer a regra do css/conversa.css.
+*/
+.conversa-da-ficha .conversa-escrever-ficha {
+  padding: 0;
+  border-top: none;
+}
+
+/* O botão de mandar ("Responder" ou "Enviar") alinhado à direita. */
+.botoes-conversa-da-ficha {
+  justify-content: flex-end;
+}
+
+/* ===== 3. Aba "Contas abertas" ===== */
+/* A orientação "o arquivo precisa ser desta empresa", bem visível: fundo claro da marca e uma faixa à esquerda. */
+.orientacao-contas {
+  padding: 16px 20px;
+  border-left: 4px solid var(--cor-marca);
+  border-radius: 10px;
+  background: var(--cor-marca-clara);
+}
+
+/* O texto da orientação, em letra de leitura, sem margem sobrando embaixo. */
+.orientacao-contas-texto {
+  margin: 4px 0 8px;
+  font-size: 15px;
+  color: var(--texto-principal);
+}
+
+/* A legenda do status ("1 = Conta nova · 2 = Já era correntista"), logo abaixo do texto, bem à vista. */
+.orientacao-contas-tipos {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+/* O código e o nome de cada tipo em destaque, numa etiqueta clara (o texto quebra em tela estreita). */
+.orientacao-contas-tipos strong {
+  display: inline-block;
+  margin-top: 2px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--branco);
+  color: var(--texto-principal);
+}
+
+/* O bloco de carregar: o texto à esquerda e o botão à direita; em tela estreita, o botão desce. */
+.carregar-contas-da-empresa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* O texto do bloco de carregar, com largura de leitura confortável. */
+.texto-contas-da-empresa {
+  max-width: 560px;
+  margin: 4px 0 8px;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* ===== 4. Janela "Carregar Contas Abertas": a orientação da empresa ===== */
+/* O mesmo destaque da aba, dentro da janela, logo acima da área de arrastar. */
+.orientacao-janela-contas {
+  margin: 0 0 16px;
+}
+
+/* ===== 5. Aba "Visão geral": a linha acima da grade e a grade sem rolar ===== */
+/* A linha acima da grade: quantas pessoas, à esquerda, e o "Baixar CSV", à direita.
+   Em tela estreita, o botão desce para baixo do número. */
+.barra-da-grade-da-visao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 10px;
+}
+
+/* Dentro da linha, o número não precisa da margem de baixo (a linha já tem). */
+.barra-da-grade-da-visao .contador-resultados {
+  margin: 0;
+}
+
+/* O "i" dos status fica no fim da linha, depois do "Baixar CSV" (js/legenda_dos_status.js). O número empurra o
+   botão e o "i" para a direita: sem isso, com três itens na linha, o botão iria para o meio. */
+.barra-da-grade-da-visao > .contador-resultados {
+  margin-right: auto;
+}
+
+/* Dentro da linha, o "i" não precisa da margem de baixo da linha própria dele (a linha já tem). */
+.barra-da-grade-da-visao > .linha-do-i-dos-status {
+  margin: 0;
+}
+
+/* O erro do "Baixar CSV", logo abaixo do botão, antes da grade. */
+.erro-do-csv-da-visao {
+  margin: 0 0 10px;
+}
+
+/*
+  A grade da Visão geral cabe na largura da ficha, sem rolar para o lado, a 1366 e a 1920 px. A ficha tem a mesma
+  largura nas duas telas (o conteúdo do site para em 1200 px), e a grade comum do
+  parâmetro põe cada célula numa linha só: com os 4 campos obrigatórios, a situação, a conta e a inclusão, ela passava
+  da ficha. Aqui quebram a linha, quando falta espaço, só os títulos, a frase "Informação não encontrada" e quem
+  incluiu; os valores (CPF, datas, dinheiro, conta) continuam inteiros, sem partir no traço. O respiro lateral fica um
+  pouco menor. As duas classes juntas vencem a regra da grade comum (css/estilos.css). No celular, a caixa ainda rola
+  por dentro, sem alargar a página.
+*/
+.tabela-funcionarios-da-empresa.grade-do-parametro th {
+  white-space: normal;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* As células dos valores: o mesmo respiro menor, numa linha só (como na grade comum). */
+.tabela-funcionarios-da-empresa.grade-do-parametro td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* "Informação não encontrada" pode ir para duas linhas. */
+.tabela-funcionarios-da-empresa .valor-nao-encontrado {
+  white-space: normal;
+}
+
+/* Quem incluiu (o login, que não tem espaço) quebra em qualquer ponto, em vez de alargar a coluna. */
+.tabela-funcionarios-da-empresa .celula-duas-linhas span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ===== 6. Aba "Usuários": a senha provisória na linha da pessoa ===== */
+/* A pergunta da senha nova, na célula da ação: o texto e os botões "Confirmar" e "Cancelar", que quebram a linha em
+   tela estreita (a célula comum não quebra). */
+.confirmacao-da-senha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  white-space: normal;
+}
+
+/* O texto da pergunta, em negrito, na cor do texto. */
+.confirmacao-da-senha-texto {
+  font-weight: 600;
+  color: var(--texto-principal);
+}
+
+/* A linha da pessoa que acabou de ganhar a senha e a linha da senha, logo abaixo: o mesmo fundo verde claro, para as
+   duas lerem como uma coisa só. */
+.linha-com-senha-provisoria td,
+.linha-da-senha-provisoria td {
+  background: var(--verde-sucesso-claro);
+}
+
+/* A linha da senha: sem a linha fina de cima (é a continuação da pessoa), e o texto quebra a linha. */
+.linha-da-senha-provisoria td {
+  border-top: none;
+  padding-top: 0;
+  white-space: normal;
+}
+
+/* O bloco da senha: uma faixa verde à esquerda, e as partes empilhadas. */
+.senha-na-linha {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 0 4px 12px;
+  border-left: 4px solid var(--verde-sucesso);
+}
+
+/* O título, a senha, o "Copiar" e o recado do copiar, lado a lado (quebram a linha em tela estreita). */
+.senha-na-linha-topo,
+.senha-na-linha-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+/* O título ("Senha provisória nova:"), em negrito. */
+.senha-na-linha-titulo {
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+/* A senha em letra de código e grande: cada caractere fica fácil de ler e de copiar sem erro. */
+.senha-na-linha-valor {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--branco);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: var(--texto-principal);
+  user-select: all;
+}
+
+/* A orientação do primeiro acesso e o recado do copiar, em letra de leitura. */
+.senha-na-linha-orientacao,
+.senha-na-linha-copiada {
+  margin: 0;
+  font-size: 14px;
+  color: var(--texto-principal);
+}
+
+/* O aviso de que a senha não volta, mais discreto. */
+.senha-na-linha-aviso {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}

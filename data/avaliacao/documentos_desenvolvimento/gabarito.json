@@ -1,0 +1,1343 @@
+{
+ "conjunto": "desenvolvimento",
+ "semente": 20260925,
+ "documentos": [
+  {
+   "arquivo": "N1_tabela.docx",
+   "nivel": "N1",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Sílvia Leal Brandão",
+      "cpf": "18404053928",
+      "data_nascimento": "22/09/1996",
+      "cargo": "designer gráfico",
+      "data_admissao": "24/11/2025",
+      "valor_renda": "3.631,00",
+      "telefone_celular": "31989967432",
+      "email_pessoal": "silvia.leal@exemplo.com",
+      "cep_residencial": "30124-893",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Leandro Coutinho Guimarães",
+      "cpf": "47242765250",
+      "data_nascimento": "21/06/1989",
+      "cargo": "enfermeira do trabalho",
+      "data_admissao": "15/02/2025",
+      "valor_renda": "4.776,00",
+      "telefone_celular": "85998692449",
+      "email_pessoal": "leandro.coutinho@exemplo.com",
+      "cep_residencial": "60116-837",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sérgio Valadares Quintela",
+      "cpf": "17373765718",
+      "data_nascimento": "12/02/1995",
+      "cargo": "supervisor de loja",
+      "data_admissao": "27/06/2024",
+      "valor_renda": "6.086,00",
+      "telefone_celular": "85981705765",
+      "email_pessoal": "sergio.valadares@exemplo.com",
+      "cep_residencial": "60155-050",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Leandro Quintela Leal",
+      "cpf": "16315501605",
+      "data_nascimento": "01/05/1976",
+      "cargo": "operador de empilhadeira",
+      "data_admissao": "01/11/2025",
+      "valor_renda": "4.503,00",
+      "telefone_celular": "81990339662",
+      "email_pessoal": "leandro.quintela@exemplo.com",
+      "cep_residencial": "52035-964",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Marta Brandão Xavier",
+      "cpf": "27721156157",
+      "data_nascimento": "22/06/1996",
+      "cargo": "coordenador de projetos",
+      "data_admissao": "19/04/2024",
+      "valor_renda": "4.926,00",
+      "telefone_celular": "19987485535",
+      "email_pessoal": "marta.brandao@exemplo.com",
+      "cep_residencial": "13084-436",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sérgio Bittencourt Coutinho",
+      "cpf": "32179613660",
+      "data_nascimento": "04/06/1999",
+      "cargo": "designer gráfico",
+      "data_admissao": "14/05/2025",
+      "valor_renda": "6.520,00",
+      "telefone_celular": "51991109845",
+      "email_pessoal": "sergio.bittencourt@exemplo.com",
+      "cep_residencial": "90420-731",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Fernanda Valadares Rezende",
+      "cpf": "58227578128",
+      "data_nascimento": "04/08/1984",
+      "cargo": "operador de empilhadeira",
+      "data_admissao": "18/03/2024",
+      "valor_renda": "5.191,00",
+      "telefone_celular": "19996921625",
+      "email_pessoal": "fernanda.valadares@exemplo.com",
+      "cep_residencial": "13074-885",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Geraldo Valadares Assunção",
+      "cpf": "64093142050",
+      "data_nascimento": "18/01/1970",
+      "cargo": "coordenador de projetos",
+      "data_admissao": "12/04/2024",
+      "valor_renda": "9.169,00",
+      "telefone_celular": "51983326944",
+      "email_pessoal": "geraldo.valadares@exemplo.com",
+      "cep_residencial": "90419-195",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {
+    "Nome": "nome_completo",
+    "CPF": "cpf",
+    "Nascimento": "data_nascimento",
+    "Cargo": "cargo",
+    "Admissão": "data_admissao",
+    "Salário": "valor_renda",
+    "Celular": "telefone_celular",
+    "E-mail": "email_pessoal",
+    "CEP": "cep_residencial",
+    "Cidade": "municipio_residencial",
+    "UF": "uf_residencial"
+   }
+  },
+  {
+   "arquivo": "N2_fichas.docx",
+   "nivel": "N2",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Olívia Quintela Guimarães",
+      "cpf": "02150601800",
+      "data_nascimento": "30/08/1999",
+      "nome_mae": "Luíza Quintela Xavier",
+      "cargo": "operador de empilhadeira",
+      "data_admissao": "06/07/2024",
+      "valor_renda": "8.975,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "187",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80769-110",
+      "telefone_celular": "41998286599",
+      "email_pessoal": "olivia.quintela@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Luíza Siqueira Coutinho",
+      "cpf": "55434131223",
+      "data_nascimento": "14/12/1995",
+      "nome_mae": "Sílvia Siqueira Coutinho",
+      "cargo": "designer gráfico",
+      "data_admissao": "22/04/2025",
+      "valor_renda": "2.790,00",
+      "logradouro_residencial": "Rua do Sol",
+      "numero_residencial": "1933",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69035-429",
+      "telefone_celular": "92989209806",
+      "email_pessoal": "luiza.siqueira@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Vanessa Nogueira Tavares",
+      "cpf": "06622504946",
+      "data_nascimento": "18/09/1973",
+      "nome_mae": "Helena Nogueira Assunção",
+      "cargo": "auxiliar de cozinha",
+      "data_admissao": "05/07/2024",
+      "valor_renda": "7.678,00",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "2340",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88049-243",
+      "telefone_celular": "48996401653",
+      "email_pessoal": "vanessa.nogueira@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Helena Duarte Leal",
+      "cpf": "72537748506",
+      "data_nascimento": "09/07/1992",
+      "nome_mae": "Vanessa Duarte Brandão",
+      "cargo": "recepcionista",
+      "data_admissao": "01/07/2024",
+      "valor_renda": "7.051,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "1834",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90445-518",
+      "telefone_celular": "51980496091",
+      "email_pessoal": "helena.duarte@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Jéssica Duarte Monteiro",
+      "cpf": "61228405050",
+      "data_nascimento": "28/05/1970",
+      "nome_mae": "Irene Duarte Coutinho",
+      "cargo": "recepcionista",
+      "data_admissao": "07/05/2025",
+      "valor_renda": "8.984,00",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "1010",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52056-687",
+      "telefone_celular": "81986263311",
+      "email_pessoal": "jessica.duarte@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Vanessa Guimarães Rezende",
+      "cpf": "30879704098",
+      "data_nascimento": "15/07/1980",
+      "nome_mae": "Sílvia Guimarães Assunção",
+      "cargo": "enfermeira do trabalho",
+      "data_admissao": "07/03/2024",
+      "valor_renda": "4.260,00",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "1510",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74149-416",
+      "telefone_celular": "62984884928",
+      "email_pessoal": "vanessa.guimaraes@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Vanessa Tavares Sampaio",
+      "cpf": "63245216483",
+      "data_nascimento": "31/10/1986",
+      "nome_mae": "Renata Tavares Nogueira",
+      "cargo": "desenvolvedor back-end",
+      "data_admissao": "25/01/2025",
+      "valor_renda": "2.008,00",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "2209",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13065-843",
+      "telefone_celular": "19980914362",
+      "email_pessoal": "vanessa.tavares@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Júlio Quintela Monteiro",
+      "cpf": "40005687950",
+      "data_nascimento": "31/03/1991",
+      "nome_mae": "Sílvia Quintela Sampaio",
+      "cargo": "operador de empilhadeira",
+      "data_admissao": "14/11/2024",
+      "valor_renda": "9.303,00",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "1374",
+      "bairro_residencial": "Trindade",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90465-939",
+      "telefone_celular": "51986657914",
+      "email_pessoal": "julio.quintela@exemplo.com"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {
+    "Nome": "nome_completo",
+    "CPF": "cpf",
+    "Data de nascimento": "data_nascimento",
+    "Nome da mãe": "nome_mae",
+    "Cargo": "cargo",
+    "Data de admissão": "data_admissao",
+    "Salário": "valor_renda",
+    "Endereço": "logradouro_residencial",
+    "Número": "numero_residencial",
+    "Bairro": "bairro_residencial",
+    "Cidade": "municipio_residencial",
+    "UF": "uf_residencial",
+    "CEP": "cep_residencial",
+    "Celular": "telefone_celular",
+    "E-mail": "email_pessoal"
+   }
+  },
+  {
+   "arquivo": "N3_texto_simples.docx",
+   "nivel": "N3",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Gláucia Bittencourt Leal",
+      "cpf": "27937663219",
+      "data_nascimento": "22/09/1977",
+      "data_admissao": "21/03/2024",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "2.554,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Priscila Rezende Siqueira",
+      "cpf": "18025840727",
+      "data_nascimento": "23/08/1985",
+      "data_admissao": "18/06/2024",
+      "cargo": "assistente de logística",
+      "valor_renda": "4.190,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Leandro Leal Siqueira",
+      "cpf": "49303341287",
+      "data_nascimento": "28/05/1985",
+      "data_admissao": "07/08/2025",
+      "cargo": "supervisor de loja",
+      "valor_renda": "4.722,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sílvia Assunção Quintela",
+      "cpf": "33433696241",
+      "data_nascimento": "30/03/1977",
+      "data_admissao": "09/12/2025",
+      "cargo": "recepcionista",
+      "valor_renda": "5.598,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Valter Rezende Fontes",
+      "cpf": "96412072292",
+      "data_nascimento": "02/02/1994",
+      "data_admissao": "13/05/2025",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "5.067,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Irene Brandão Monteiro",
+      "cpf": "85854328968",
+      "data_nascimento": "21/02/1984",
+      "data_admissao": "04/01/2025",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "4.972,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sílvia Nogueira Pimentel",
+      "cpf": "39229678333",
+      "data_nascimento": "05/05/1971",
+      "data_admissao": "11/11/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "2.427,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Sérgio Nogueira Valadares",
+      "cpf": "05126897330",
+      "data_nascimento": "18/11/1983",
+      "data_admissao": "24/01/2025",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "4.583,00"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N4_texto_variado_a.docx",
+   "nivel": "N4",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Tatiane Pacheco Duarte",
+      "cpf": "58942566316",
+      "data_nascimento": "26/02/1976",
+      "data_admissao": "18/09/2024",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "2.755,00",
+      "telefone_celular": "48983985015",
+      "email_pessoal": "tatiane.pacheco@exemplo.com",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "871",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88049-739"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Nelson Brandão Duarte",
+      "cpf": "36183882500",
+      "data_nascimento": "18/10/1992",
+      "data_admissao": "15/03/2024",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "7.310,00",
+      "telefone_celular": "51988866704",
+      "email_pessoal": "nelson.brandao@exemplo.com",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "662",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90498-967"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Fernanda Tavares Fontes",
+      "cpf": "90431952787",
+      "data_nascimento": "18/01/1994",
+      "data_admissao": "04/02/2025",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "2.645,00",
+      "telefone_celular": "41997144877",
+      "email_pessoal": "fernanda.tavares@exemplo.com",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "43",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Curitiba",
+      "uf_residencial": "PR",
+      "cep_residencial": "80797-540"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Irene Brandão Pacheco",
+      "cpf": "17434467215",
+      "data_nascimento": "09/06/1999",
+      "data_admissao": "16/05/2025",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "5.842,00",
+      "telefone_celular": "51990315568",
+      "email_pessoal": "irene.brandao@exemplo.com",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "2110",
+      "bairro_residencial": "Graças",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90499-306"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Irene Fontes Bittencourt",
+      "cpf": "96520753106",
+      "data_nascimento": "05/01/1978",
+      "data_admissao": "17/02/2024",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "2.702,00",
+      "telefone_celular": "92989269234",
+      "email_pessoal": "irene.fontes@exemplo.com",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "844",
+      "bairro_residencial": "Moinhos de Vento",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69063-221"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Wesley Sampaio Pacheco",
+      "cpf": "61365135527",
+      "data_nascimento": "22/05/1989",
+      "data_admissao": "17/07/2024",
+      "cargo": "analista financeiro",
+      "valor_renda": "5.147,00",
+      "telefone_celular": "81997242000",
+      "email_pessoal": "wesley.sampaio@exemplo.com",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "2444",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Recife",
+      "uf_residencial": "PE",
+      "cep_residencial": "52094-223"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Lorena Fontes Tavares",
+      "cpf": "27799412780",
+      "data_nascimento": "12/07/2000",
+      "data_admissao": "19/07/2025",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "5.395,00",
+      "telefone_celular": "85998266654",
+      "email_pessoal": "lorena.fontes@exemplo.com",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "1440",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60130-093"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Noemi Pacheco Assunção",
+      "cpf": "93369182734",
+      "data_nascimento": "19/08/1980",
+      "data_admissao": "15/02/2024",
+      "cargo": "designer gráfico",
+      "valor_renda": "9.329,00",
+      "telefone_celular": "51991729239",
+      "email_pessoal": "noemi.pacheco@exemplo.com",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "1964",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90420-752"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N4_texto_variado_b.docx",
+   "nivel": "N4",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Tiago Rezende Moura",
+      "cpf": "80479821259",
+      "data_nascimento": "25/10/2000",
+      "data_admissao": "12/06/2024",
+      "cargo": "analista financeiro",
+      "valor_renda": "6.208,00",
+      "telefone_celular": "85999568186",
+      "email_pessoal": "tiago.rezende@exemplo.com",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "2741",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60129-229"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Jéssica Valadares Fontes",
+      "cpf": "77013754226",
+      "data_nascimento": "08/11/1994",
+      "data_admissao": "14/12/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "4.481,00",
+      "telefone_celular": "92995435603",
+      "email_pessoal": "jessica.valadares@exemplo.com",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "1402",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69052-855"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Olívia Sampaio Rezende",
+      "cpf": "37399828962",
+      "data_nascimento": "23/05/1983",
+      "data_admissao": "15/03/2025",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "7.026,00",
+      "telefone_celular": "51994951591",
+      "email_pessoal": "olivia.sampaio@exemplo.com",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "2693",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90461-793"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Yasmin Guimarães Rezende",
+      "cpf": "29330025668",
+      "data_nascimento": "09/11/1991",
+      "data_admissao": "24/11/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "5.192,00",
+      "telefone_celular": "51996189308",
+      "email_pessoal": "yasmin.guimaraes@exemplo.com",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "2395",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90466-291"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Tiago Fontes Tavares",
+      "cpf": "26608032420",
+      "data_nascimento": "23/09/1977",
+      "data_admissao": "16/03/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "9.288,00",
+      "telefone_celular": "92988165769",
+      "email_pessoal": "tiago.fontes@exemplo.com",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "2927",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69086-837"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Wesley Monteiro Quintela",
+      "cpf": "68881678608",
+      "data_nascimento": "08/04/1997",
+      "data_admissao": "17/05/2024",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "8.990,00",
+      "telefone_celular": "92995156916",
+      "email_pessoal": "wesley.monteiro@exemplo.com",
+      "logradouro_residencial": "Rua Dona Laura",
+      "numero_residencial": "646",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69082-156"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Igor Monteiro Pimentel",
+      "cpf": "13400444200",
+      "data_nascimento": "30/03/1989",
+      "data_admissao": "16/09/2024",
+      "cargo": "recepcionista",
+      "valor_renda": "5.697,00",
+      "telefone_celular": "31984618572",
+      "email_pessoal": "igor.monteiro@exemplo.com",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "166",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30147-076"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    },
+    {
+     "campos": {
+      "nome_completo": "Luíza Sampaio Moura",
+      "cpf": "32955098671",
+      "data_nascimento": "12/07/1991",
+      "data_admissao": "22/05/2025",
+      "cargo": "auxiliar de cozinha",
+      "valor_renda": "4.495,00",
+      "telefone_celular": "92982813373",
+      "email_pessoal": "luiza.sampaio@exemplo.com",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "2852",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Manaus",
+      "uf_residencial": "AM",
+      "cep_residencial": "69075-872"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": []
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N5_texto_misturado_a.docx",
+   "nivel": "N5",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Caio Pacheco Bittencourt",
+      "cpf": "09005054514",
+      "data_nascimento": "12/01/1988",
+      "cargo": "supervisor de loja",
+      "valor_renda": "2.613,00",
+      "telefone_celular": "48998529502",
+      "email_pessoal": "caio.pacheco@exemplo.com",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "275",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Florianópolis",
+      "uf_residencial": "SC",
+      "cep_residencial": "88049-849",
+      "nome_mae": "Irene Pacheco Sampaio",
+      "estado_civil": "casado",
+      "numero_documento": "10.499.755-3",
+      "nis_pis": "181.68230.68-0"
+     },
+     "armadilhas": [
+      "data_admissao"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Geraldo Pacheco",
+       "data": "21/05/2016"
+      }
+     ],
+     "armadilha": "admissao_em_conflito"
+    },
+    {
+     "campos": {
+      "nome_completo": "Wesley Pacheco Assunção",
+      "cpf": "88817962600",
+      "data_nascimento": "12/07/2003",
+      "data_admissao": "17/05/2024",
+      "cargo": "enfermeira do trabalho",
+      "valor_renda": "8.441,00",
+      "telefone_celular": "31989904336",
+      "email_pessoal": "wesley.pacheco@exemplo.com",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "30",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30194-899",
+      "nome_mae": "Irene Pacheco Monteiro",
+      "estado_civil": "união estável",
+      "numero_documento": "49.801.672-0",
+      "nis_pis": "299.62247.39-5"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Marta Pacheco",
+       "telefone": "31 3927-7177"
+      }
+     ],
+     "armadilha": "salario_com_extras"
+    },
+    {
+     "campos": {
+      "nome_completo": "Helena Siqueira Rezende",
+      "data_nascimento": "06/04/2000",
+      "data_admissao": "20/08/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "2.354,00",
+      "telefone_celular": "51993053584",
+      "email_pessoal": "helena.siqueira@exemplo.com",
+      "logradouro_residencial": "Rua Sete de Setembro",
+      "numero_residencial": "726",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Porto Alegre",
+      "uf_residencial": "RS",
+      "cep_residencial": "90469-160",
+      "nome_mae": "Gláucia Siqueira Moura",
+      "estado_civil": "solteiro",
+      "numero_documento": "46.519.287-7",
+      "nis_pis": "202.10433.49-0"
+     },
+     "armadilhas": [],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Wesley Siqueira",
+       "data": "12/10/2014"
+      }
+     ],
+     "armadilha": "cpf_depois"
+    },
+    {
+     "campos": {
+      "nome_completo": "Tatiane Pacheco Leal",
+      "cpf": "12894070616",
+      "data_nascimento": "03/12/1999",
+      "data_admissao": "18/04/2025",
+      "cargo": "recepcionista",
+      "valor_renda": "6.914,00",
+      "telefone_celular": "31998004972",
+      "email_pessoal": "tatiane.pacheco@exemplo.com",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "281",
+      "bairro_residencial": "Aldeota",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30112-935",
+      "nome_mae": "Sílvia Pacheco Tavares",
+      "estado_civil": "união estável",
+      "numero_documento": "41.650.290-5"
+     },
+     "armadilhas": [
+      "nis_pis"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Nelson Pacheco",
+       "data": "25/06/2015"
+      }
+     ],
+     "armadilha": "pis_ilegivel"
+    },
+    {
+     "campos": {
+      "nome_completo": "Wesley Xavier Moura",
+      "cpf": "86213237372",
+      "data_nascimento": "07/06/2003",
+      "cargo": "assistente de logística",
+      "valor_renda": "5.524,00",
+      "telefone_celular": "19999522731",
+      "email_pessoal": "wesley.xavier@exemplo.com",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "741",
+      "bairro_residencial": "Bigorrilho",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13052-227",
+      "nome_mae": "Jéssica Xavier Siqueira",
+      "estado_civil": "viúvo",
+      "numero_documento": "48.609.177-0",
+      "nis_pis": "286.42140.17-7"
+     },
+     "armadilhas": [
+      "data_admissao"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Gláucia Xavier",
+       "data": "15/06/2019"
+      }
+     ],
+     "armadilha": "admissao_em_conflito"
+    },
+    {
+     "campos": {
+      "nome_completo": "Hugo Monteiro Brandão",
+      "cpf": "19384646300",
+      "data_nascimento": "05/03/2002",
+      "data_admissao": "23/11/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "3.520,00",
+      "telefone_celular": "31996829252",
+      "email_pessoal": "hugo.monteiro@exemplo.com",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "931",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30144-369",
+      "nome_mae": "Priscila Monteiro Fontes",
+      "estado_civil": "solteiro",
+      "numero_documento": "48.458.194-1",
+      "nis_pis": "193.42852.27-8"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Vanessa Monteiro",
+       "telefone": "31 3232-5744"
+      }
+     ],
+     "armadilha": "salario_com_extras"
+    },
+    {
+     "campos": {
+      "nome_completo": "Otávio Monteiro Valadares",
+      "data_nascimento": "22/01/2003",
+      "data_admissao": "17/08/2024",
+      "cargo": "vendedor externo",
+      "valor_renda": "4.518,00",
+      "telefone_celular": "85985874707",
+      "email_pessoal": "otavio.monteiro@exemplo.com",
+      "logradouro_residencial": "Avenida Beira Mar",
+      "numero_residencial": "582",
+      "bairro_residencial": "Chapada",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60139-689",
+      "nome_mae": "Helena Monteiro Siqueira",
+      "estado_civil": "casado",
+      "numero_documento": "45.428.776-4",
+      "nis_pis": "155.97780.33-9"
+     },
+     "armadilhas": [],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Leandro Monteiro",
+       "telefone": "85 3161-1555"
+      }
+     ],
+     "armadilha": "cpf_depois"
+    },
+    {
+     "campos": {
+      "nome_completo": "Marta Moura Pacheco",
+      "cpf": "11761721585",
+      "data_nascimento": "01/01/1978",
+      "data_admissao": "14/06/2025",
+      "cargo": "coordenador de projetos",
+      "valor_renda": "4.441,00",
+      "telefone_celular": "31989871710",
+      "email_pessoal": "marta.moura@exemplo.com",
+      "logradouro_residencial": "Rua Padre Anchieta",
+      "numero_residencial": "1524",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30138-115",
+      "nome_mae": "Sílvia Moura Coutinho",
+      "estado_civil": "solteiro",
+      "numero_documento": "12.403.362-1"
+     },
+     "armadilhas": [
+      "nis_pis"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Nelson Moura",
+       "telefone": "31 3180-3581"
+      }
+     ],
+     "armadilha": "pis_ilegivel"
+    }
+   ],
+   "cabecalho_para_campo": {}
+  },
+  {
+   "arquivo": "N5_texto_misturado_b.docx",
+   "nivel": "N5",
+   "pessoas": [
+    {
+     "campos": {
+      "nome_completo": "Helena Assunção Moura",
+      "cpf": "03799493859",
+      "data_nascimento": "16/11/1976",
+      "cargo": "recepcionista",
+      "valor_renda": "9.367,00",
+      "telefone_celular": "19982302928",
+      "email_pessoal": "helena.assuncao@exemplo.com",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "277",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13019-915",
+      "nome_mae": "Jéssica Assunção Bittencourt",
+      "estado_civil": "solteiro",
+      "numero_documento": "55.331.205-2",
+      "nis_pis": "117.38290.49-2"
+     },
+     "armadilhas": [
+      "data_admissao"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Caio Assunção",
+       "telefone": "19 3299-6903"
+      }
+     ],
+     "armadilha": "admissao_em_conflito"
+    },
+    {
+     "campos": {
+      "nome_completo": "Caio Bittencourt Leal",
+      "cpf": "97063664310",
+      "data_nascimento": "23/11/1985",
+      "data_admissao": "31/08/2025",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "2.945,00",
+      "telefone_celular": "19990929334",
+      "email_pessoal": "caio.bittencourt@exemplo.com",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "2382",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13045-536",
+      "nome_mae": "Sílvia Bittencourt Tavares",
+      "estado_civil": "união estável",
+      "numero_documento": "25.715.728-2",
+      "nis_pis": "282.15607.90-0"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Igor Bittencourt",
+       "data": "15/11/2022"
+      }
+     ],
+     "armadilha": "salario_com_extras"
+    },
+    {
+     "campos": {
+      "nome_completo": "Nelson Rezende Quintela",
+      "data_nascimento": "12/01/1975",
+      "data_admissao": "26/03/2025",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "8.743,00",
+      "telefone_celular": "62999624107",
+      "email_pessoal": "nelson.rezende@exemplo.com",
+      "logradouro_residencial": "Avenida Getúlio Vargas",
+      "numero_residencial": "2884",
+      "bairro_residencial": "Rio Vermelho",
+      "municipio_residencial": "Goiânia",
+      "uf_residencial": "GO",
+      "cep_residencial": "74138-815",
+      "nome_mae": "Vanessa Rezende Siqueira",
+      "estado_civil": "divorciado",
+      "numero_documento": "23.266.926-6",
+      "nis_pis": "231.20472.41-3"
+     },
+     "armadilhas": [],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Renata Rezende",
+       "telefone": "62 3726-5844"
+      }
+     ],
+     "armadilha": "cpf_depois"
+    },
+    {
+     "campos": {
+      "nome_completo": "Geraldo Fontes Nogueira",
+      "cpf": "45715372127",
+      "data_nascimento": "11/04/1986",
+      "data_admissao": "03/10/2025",
+      "cargo": "vendedor externo",
+      "valor_renda": "2.982,00",
+      "telefone_celular": "85990242755",
+      "email_pessoal": "geraldo.fontes@exemplo.com",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "104",
+      "bairro_residencial": "Jardim Europa",
+      "municipio_residencial": "Fortaleza",
+      "uf_residencial": "CE",
+      "cep_residencial": "60112-044",
+      "nome_mae": "Jéssica Fontes Pacheco",
+      "estado_civil": "casado",
+      "numero_documento": "25.770.798-1"
+     },
+     "armadilhas": [
+      "nis_pis"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Anderson Fontes",
+       "data": "02/08/2017"
+      }
+     ],
+     "armadilha": "pis_ilegivel"
+    },
+    {
+     "campos": {
+      "nome_completo": "Sílvia Sampaio Fontes",
+      "cpf": "50581668529",
+      "data_nascimento": "02/11/1977",
+      "cargo": "técnico de manutenção",
+      "valor_renda": "3.903,00",
+      "telefone_celular": "19988793579",
+      "email_pessoal": "silvia.sampaio@exemplo.com",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "1204",
+      "bairro_residencial": "Centro",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13081-891",
+      "nome_mae": "Noemi Sampaio Quintela",
+      "estado_civil": "solteiro",
+      "numero_documento": "33.712.128-5",
+      "nis_pis": "145.49515.73-5"
+     },
+     "armadilhas": [
+      "data_admissao"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Sílvia Sampaio",
+       "telefone": "19 3844-3361"
+      }
+     ],
+     "armadilha": "admissao_em_conflito"
+    },
+    {
+     "campos": {
+      "nome_completo": "Renata Assunção Xavier",
+      "cpf": "46884285966",
+      "data_nascimento": "14/06/1986",
+      "data_admissao": "11/04/2024",
+      "cargo": "supervisor de loja",
+      "valor_renda": "9.478,00",
+      "telefone_celular": "31992486005",
+      "email_pessoal": "renata.assuncao@exemplo.com",
+      "logradouro_residencial": "Travessa São Bento",
+      "numero_residencial": "2519",
+      "bairro_residencial": "Setor Oeste",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30146-543",
+      "nome_mae": "Tatiane Assunção Guimarães",
+      "estado_civil": "divorciado",
+      "numero_documento": "17.288.189-3",
+      "nis_pis": "204.46580.74-1"
+     },
+     "armadilhas": [],
+     "espera_duvida": false,
+     "terceiros": [
+      {
+       "nome": "Lorena Assunção",
+       "data": "12/09/2021"
+      }
+     ],
+     "armadilha": "salario_com_extras"
+    },
+    {
+     "campos": {
+      "nome_completo": "Lorena Pacheco Bittencourt",
+      "data_nascimento": "03/03/2003",
+      "data_admissao": "17/03/2025",
+      "cargo": "assistente de logística",
+      "valor_renda": "1.924,00",
+      "telefone_celular": "19989753125",
+      "email_pessoal": "lorena.pacheco@exemplo.com",
+      "logradouro_residencial": "Rua das Acácias",
+      "numero_residencial": "1157",
+      "bairro_residencial": "Vila Mariana",
+      "municipio_residencial": "Campinas",
+      "uf_residencial": "SP",
+      "cep_residencial": "13088-133",
+      "nome_mae": "Noemi Pacheco Sampaio",
+      "estado_civil": "casado",
+      "numero_documento": "15.400.791-5",
+      "nis_pis": "221.27440.30-7"
+     },
+     "armadilhas": [],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Geraldo Pacheco",
+       "data": "22/02/2022"
+      }
+     ],
+     "armadilha": "cpf_depois"
+    },
+    {
+     "campos": {
+      "nome_completo": "Mauro Monteiro Leal",
+      "cpf": "60558428231",
+      "data_nascimento": "13/07/1985",
+      "data_admissao": "11/03/2024",
+      "cargo": "operador de empilhadeira",
+      "valor_renda": "9.346,00",
+      "telefone_celular": "31989213975",
+      "email_pessoal": "mauro.monteiro@exemplo.com",
+      "logradouro_residencial": "Rua Marechal Deodoro",
+      "numero_residencial": "705",
+      "bairro_residencial": "Savassi",
+      "municipio_residencial": "Belo Horizonte",
+      "uf_residencial": "MG",
+      "cep_residencial": "30154-699",
+      "nome_mae": "Gláucia Monteiro Guimarães",
+      "estado_civil": "casado",
+      "numero_documento": "49.138.818-4"
+     },
+     "armadilhas": [
+      "nis_pis"
+     ],
+     "espera_duvida": true,
+     "terceiros": [
+      {
+       "nome": "Renata Monteiro",
+       "telefone": "31 3675-7821"
+      }
+     ],
+     "armadilha": "pis_ilegivel"
+    }
+   ],
+   "cabecalho_para_campo": {}
+  }
+ ]
+}

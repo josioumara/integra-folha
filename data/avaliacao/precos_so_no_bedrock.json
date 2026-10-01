@@ -1,0 +1,46 @@
+{
+  "_sobre": "Preços dos modelos que só existem pelo AWS Bedrock (Amazon Nova e modelos de pesos abertos) (fora da triagem de 2026-09-24, que era das APIs diretas). Preço on-demand na região us-east-1, em dólares por 1 milhão de tokens (entrada / saída). O cálculo de custo lê esta tabela junto com modelos_candidatos.json (ADR-106). O perfil EUA do Nova não tem acréscimo pela documentação da AWS, mas o projeto soma 10% em toda chamada pelo Bedrock por segurança: o custo registrado do Nova fica um pouco acima do real.",
+  "data_dos_precos": "2026-09-27",
+  "fontes": [
+    "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-east-1/index.json",
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html"
+  ],
+  "modelos": [
+    {
+      "provedor": "Amazon",
+      "modelo": "nova-pro",
+      "entrada": 0.8,
+      "saida": 3.2
+    },
+    {
+      "provedor": "Amazon",
+      "modelo": "nova-2-lite",
+      "entrada": 0.33,
+      "saida": 2.75
+    },
+    {
+      "provedor": "Mistral AI (pesos abertos)",
+      "modelo": "mistral-large-3",
+      "entrada": 0.5,
+      "saida": 1.5
+    },
+    {
+      "provedor": "DeepSeek (pesos abertos)",
+      "modelo": "deepseek-v3.2",
+      "entrada": 0.62,
+      "saida": 1.85
+    },
+    {
+      "provedor": "Qwen (pesos abertos)",
+      "modelo": "qwen3-vl-235b",
+      "entrada": 0.53,
+      "saida": 2.66
+    },
+    {
+      "provedor": "Moonshot AI (pesos abertos)",
+      "modelo": "kimi-k3",
+      "entrada": 3.3,
+      "saida": 16.5
+    }
+  ]
+}

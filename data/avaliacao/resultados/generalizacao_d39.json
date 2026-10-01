@@ -1,0 +1,599 @@
+{
+ "data": "2026-09-29",
+ "fonte": "D:\\AI_Payroll_Hub\\QA_Jornada\\Rodada_Generalizacao\\llm_r1\\resultados.jsonl",
+ "total": {
+  "antigos": {
+   "arquivos": 10,
+   "exatos": 10,
+   "taxa_de_exatos": 1.0,
+   "ic95_exatos": [
+    0.7225,
+    1.0
+   ],
+   "pessoas_certas": 33,
+   "pessoas_esperadas": 33,
+   "taxa_de_pessoas": 1.0,
+   "ic95_pessoas": [
+    0.8957,
+    1.0
+   ],
+   "linhas_a_mais": 0,
+   "custo_usd": 0.715
+  },
+  "lote": {
+   "arquivos": 26,
+   "exatos": 18,
+   "taxa_de_exatos": 0.6923,
+   "ic95_exatos": [
+    0.5001,
+    0.835
+   ],
+   "pessoas_certas": 96,
+   "pessoas_esperadas": 99,
+   "taxa_de_pessoas": 0.9697,
+   "ic95_pessoas": [
+    0.9147,
+    0.9896
+   ],
+   "linhas_a_mais": 28,
+   "custo_usd": 2.2614
+  },
+  "fisher_p_exatos": 0.0756
+ },
+ "estratos_cobertos_pelos_antigos": {
+  "antigos": {
+   "arquivos": 10,
+   "exatos": 10,
+   "taxa_de_exatos": 1.0,
+   "ic95_exatos": [
+    0.7225,
+    1.0
+   ],
+   "pessoas_certas": 33,
+   "pessoas_esperadas": 33,
+   "taxa_de_pessoas": 1.0,
+   "ic95_pessoas": [
+    0.8957,
+    1.0
+   ],
+   "linhas_a_mais": 0,
+   "custo_usd": 0.715
+  },
+  "lote": {
+   "arquivos": 19,
+   "exatos": 18,
+   "taxa_de_exatos": 0.9474,
+   "ic95_exatos": [
+    0.7536,
+    0.9906
+   ],
+   "pessoas_certas": 74,
+   "pessoas_esperadas": 76,
+   "taxa_de_pessoas": 0.9737,
+   "ic95_pessoas": [
+    0.909,
+    0.9928
+   ],
+   "linhas_a_mais": 2,
+   "custo_usd": 1.383
+  },
+  "fisher_p_exatos": 1.0
+ },
+ "por_estrato": {
+  "tabela": {
+   "antigos": {
+    "arquivos": 9,
+    "exatos": 9,
+    "taxa_de_exatos": 1.0,
+    "ic95_exatos": [
+     0.7008,
+     1.0
+    ],
+    "pessoas_certas": 31,
+    "pessoas_esperadas": 31,
+    "taxa_de_pessoas": 1.0,
+    "ic95_pessoas": [
+     0.8897,
+     1.0
+    ],
+    "linhas_a_mais": 0,
+    "custo_usd": 0.6619
+   },
+   "lote": {
+    "arquivos": 16,
+    "exatos": 15,
+    "taxa_de_exatos": 0.9375,
+    "ic95_exatos": [
+     0.7167,
+     0.9889
+    ],
+    "pessoas_certas": 65,
+    "pessoas_esperadas": 67,
+    "taxa_de_pessoas": 0.9701,
+    "ic95_pessoas": [
+     0.8975,
+     0.9918
+    ],
+    "linhas_a_mais": 2,
+    "custo_usd": 1.1429
+   },
+   "fisher_p_exatos": 1.0
+  },
+  "texto_baixo_medio": {
+   "antigos": {
+    "arquivos": 1,
+    "exatos": 1,
+    "taxa_de_exatos": 1.0,
+    "ic95_exatos": [
+     0.2065,
+     1.0
+    ],
+    "pessoas_certas": 2,
+    "pessoas_esperadas": 2,
+    "taxa_de_pessoas": 1.0,
+    "ic95_pessoas": [
+     0.3424,
+     1.0
+    ],
+    "linhas_a_mais": 0,
+    "custo_usd": 0.0531
+   },
+   "lote": {
+    "arquivos": 3,
+    "exatos": 3,
+    "taxa_de_exatos": 1.0,
+    "ic95_exatos": [
+     0.4385,
+     1.0
+    ],
+    "pessoas_certas": 9,
+    "pessoas_esperadas": 9,
+    "taxa_de_pessoas": 1.0,
+    "ic95_pessoas": [
+     0.7008,
+     1.0
+    ],
+    "linhas_a_mais": 0,
+    "custo_usd": 0.2401
+   },
+   "fisher_p_exatos": 1.0
+  },
+  "texto_alto": {
+   "antigos": {
+    "arquivos": 0,
+    "exatos": 0,
+    "taxa_de_exatos": null,
+    "ic95_exatos": [
+     0.0,
+     0.0
+    ],
+    "pessoas_certas": 0,
+    "pessoas_esperadas": 0,
+    "taxa_de_pessoas": null,
+    "ic95_pessoas": [
+     0.0,
+     0.0
+    ],
+    "linhas_a_mais": 0,
+    "custo_usd": null
+   },
+   "lote": {
+    "arquivos": 7,
+    "exatos": 0,
+    "taxa_de_exatos": 0.0,
+    "ic95_exatos": [
+     0.0,
+     0.3543
+    ],
+    "pessoas_certas": 22,
+    "pessoas_esperadas": 23,
+    "taxa_de_pessoas": 0.9565,
+    "ic95_pessoas": [
+     0.7901,
+     0.9923
+    ],
+    "linhas_a_mais": 26,
+    "custo_usd": 0.8784
+   },
+   "fisher_p_exatos": 1.0
+  }
+ },
+ "arquivos": [
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/baixo/001.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0531
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/baixo/039.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0519
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/médio/006.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0438
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/médio/036.docx",
+   "estrato": "texto_baixo_medio",
+   "linhas_na_lista": 2,
+   "pessoas_esperadas": 2,
+   "pessoas_certas": 2,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0531
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/alto/007.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.088
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/alto/024.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.1075
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/altissimo/018.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0796
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "por_nivel/altissimo/010.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0797
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "suite_300/07_conflitos_resoluveis/186.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0504
+  },
+  {
+   "conjunto": "antigos",
+   "arquivo": "suite_300/02_layout_esperado_com_faltas/036.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 2,
+   "pessoas_esperadas": 2,
+   "pessoas_certas": 2,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.1079
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/altissimo/016.txt",
+   "estrato": "texto_alto",
+   "linhas_na_lista": 11,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 7,
+   "exato": false,
+   "custo_usd": 0.2465
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/altissimo/051.docx",
+   "estrato": "texto_alto",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 2,
+   "pessoas_certas": 2,
+   "linhas_a_mais": 2,
+   "exato": false,
+   "custo_usd": 0.0849
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/altissimo/060.txt",
+   "estrato": "texto_alto",
+   "linhas_na_lista": 9,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 4,
+   "exato": false,
+   "custo_usd": 0.1326
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/altissimo/075.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 2,
+   "exato": false,
+   "custo_usd": 0.1333
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/altissimo/089.docx",
+   "estrato": "texto_alto",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 2,
+   "pessoas_certas": 2,
+   "linhas_a_mais": 2,
+   "exato": false,
+   "custo_usd": 0.0696
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/alto/003.txt",
+   "estrato": "texto_alto",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 1,
+   "exato": false,
+   "custo_usd": 0.0958
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/alto/026.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.1107
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/alto/055.txt",
+   "estrato": "texto_alto",
+   "linhas_na_lista": 11,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 7,
+   "exato": false,
+   "custo_usd": 0.1582
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/alto/069.docx",
+   "estrato": "texto_alto",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 2,
+   "pessoas_certas": 2,
+   "linhas_a_mais": 3,
+   "exato": false,
+   "custo_usd": 0.0908
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/alto/094.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0833
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/baixo/002.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0502
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/baixo/009.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0509
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/baixo/046.docx",
+   "estrato": "texto_baixo_medio",
+   "linhas_na_lista": 2,
+   "pessoas_esperadas": 2,
+   "pessoas_certas": 2,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0544
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/baixo/058.txt",
+   "estrato": "texto_baixo_medio",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0801
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/baixo/082.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0541
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/médio/004.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0414
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/médio/037.txt",
+   "estrato": "texto_baixo_medio",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.1056
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/médio/061.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0412
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/médio/065.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0411
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/por_nivel/médio/072.xlsx",
+   "estrato": "tabela",
+   "linhas_na_lista": 3,
+   "pessoas_esperadas": 3,
+   "pessoas_certas": 3,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0416
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/suite_300/01_layout_esperado_ok/010.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.1108
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/suite_300/02_layout_esperado_com_faltas/040.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.113
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/suite_300/03_campos_sinonimos/070.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.056
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/suite_300/04_formatos_variados/100.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.1131
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/suite_300/05_desestruturado_legivel/130.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 4,
+   "pessoas_esperadas": 4,
+   "pessoas_certas": 4,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.054
+  },
+  {
+   "conjunto": "lote",
+   "arquivo": "lote_guardado/suite_300/06_multifonte_fragmentado/160.csv",
+   "estrato": "tabela",
+   "linhas_na_lista": 5,
+   "pessoas_esperadas": 5,
+   "pessoas_certas": 5,
+   "linhas_a_mais": 0,
+   "exato": true,
+   "custo_usd": 0.0482
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "conjunto": "teste_cego",
+ "observacao": "Documento criado pelo dono do projeto (D:\\AI_Payroll_Hub\\Imports_Arquivos, fora do Git), com dados fictícios. Gabarito escrito à mão lendo o documento (EXP-010). Campos ambíguos ficam fora da contagem ou viram armadilha; todos os CPFs do documento têm dígito verificador inválido (a comparação usa só os dígitos).",
+ "documentos": [
+  {
+   "arquivo": "D:\\AI_Payroll_Hub\\Imports_Arquivos\\Cadastro_Funcionarios_Desestruturado.docx",
+   "nivel": "N5",
+   "cabecalho_para_campo": {},
+   "pessoas": [
+    {"campos": {"nome_completo": "Anderson Luiz Silva", "cpf": "418.572.930-06", "data_nascimento": "14/09/1991", "data_admissao": "08/01/2024", "cargo": "Analista de Suporte II", "valor_renda": "5.850,00", "numero_documento": "44.827.196-3", "nis_pis": "128.77123.44-5", "logradouro_residencial": "Rua das Acácias", "numero_residencial": "128", "bairro_residencial": "Vila Mariana", "municipio_residencial": "São Paulo", "uf_residencial": "SP", "cep_residencial": "04109-020", "telefone_celular": "(11) 98841-2607", "email_pessoal": "anderson.silva@exemplo.com", "estado_civil": "casado"},
+     "armadilhas": [], "espera_duvida": false,
+     "terceiros": [{"nome": "Luiza Silva", "data": "22/06/2018"}]},
+    {"campos": {"cpf": "073.941.286-50", "data_nascimento": "02/11/1987", "data_admissao": "12/02/2024", "cargo": "Assistente administrativa", "valor_renda": "3.420,00", "numero_documento": "18.672.904", "logradouro_residencial": "Rua Maria Quitéria", "numero_residencial": "550", "bairro_residencial": "Funcionários", "municipio_residencial": "Belo Horizonte", "uf_residencial": "MG", "cep_residencial": "30140-180", "telefone_celular": "(31) 99770-1182", "email_pessoal": "bruna.oliveira@exemplo.com"},
+     "armadilhas": [], "espera_duvida": true, "nota": "sobrenome divergente (Oliveira x Oliveira Costa): nome fora da contagem, pergunta esperada",
+     "terceiros": [{"telefone": "31 3344-9017"}]},
+    {"campos": {"nome_completo": "Carlos Henrique Mendes", "cpf": "15988724701", "data_nascimento": "30/07/1984", "data_admissao": "04/03/2024", "cargo": "vendedor externo", "valor_renda": "2.750,00", "numero_documento": "21.309.771-8", "logradouro_residencial": "Av. Dom Hélder Câmara", "numero_residencial": "6220", "bairro_residencial": "Pilares", "municipio_residencial": "Rio de Janeiro", "cep_residencial": "20771-004", "telefone_celular": "21 98002 7741", "email_pessoal": "carlos.hmendes@exemplo.com"},
+     "armadilhas": [], "espera_duvida": false, "nota": "CNH 04399812750 não pode entrar como CPF; salário fixo 2.750 (comissão e garantia fora)",
+     "terceiros": [{"numero": "04399812750"}]},
+    {"campos": {"nome_completo": "Daniela Rocha Pereira", "cpf": "682.350.714-09", "data_nascimento": "19/05/1996", "data_admissao": "15/04/2024", "valor_renda": "4.180,00", "numero_documento": "52.611.903-1", "logradouro_residencial": "Rua Padre Anchieta", "numero_residencial": "1840", "bairro_residencial": "Bigorrilho", "municipio_residencial": "Curitiba", "uf_residencial": "PR", "cep_residencial": "80730-000", "telefone_celular": "(41) 99162-8830", "email_pessoal": "daniela.rocha@exemplo.com", "nome_mae": "Márcia Rocha Pereira", "estado_civil": "solteira", "matricula": "1047"},
+     "armadilhas": ["cargo"], "espera_duvida": true, "nota": "cargo em conflito (designer júnior x designer pleno)",
+     "terceiros": []},
+    {"campos": {"nome_completo": "EDSON APARECIDO NUNES", "cpf": "904.763.128-42", "data_nascimento": "07/03/1979", "data_admissao": "06/05/2024", "cargo": "Separador de mercadorias", "valor_renda": "2.115,80", "numero_documento": "36.510.772-X", "nis_pis": "124.77891.50-3", "bairro_residencial": "Viracopos", "municipio_residencial": "Campinas", "uf_residencial": "SP", "cep_residencial": "13054-901", "telefone_celular": "19 99608-4419", "estado_civil": "casado"},
+     "armadilhas": [], "espera_duvida": false, "nota": "salário base 2.115,80 (prêmio de 180 fora)",
+     "terceiros": [{"nome": "Marta", "telefone": "19 99117-0632"}, {"nome": "Pedro Nunes"}]},
+    {"campos": {"nome_completo": "Fernanda Lima Albuquerque", "cpf": "04760192583", "data_nascimento": "28/12/1993", "data_admissao": "20/05/2024", "cargo": "Coordenadora de Projetos", "valor_renda": "8.900,00", "numero_documento": "200881475-6", "logradouro_residencial": "Rua Almirante Barroso", "numero_residencial": "77", "bairro_residencial": "Rio Vermelho", "municipio_residencial": "Salvador", "uf_residencial": "BA", "cep_residencial": "41950-350", "telefone_celular": "+55 71 99205-7734", "email_pessoal": "fernanda.albuquerque@exemplo.com"},
+     "armadilhas": [], "espera_duvida": false,
+     "terceiros": [{"nome": "Rafael Almeida"}]},
+    {"campos": {"nome_completo": "Gustavo Ribeiro Alves", "cpf": "315.809.642-77", "data_nascimento": "11/08/1999", "data_admissao": "03/06/2024", "cargo": "Desenvolvedor back-end nível 1", "valor_renda": "6.700,00", "numero_documento": "79.315.442-0", "logradouro_residencial": "Av. Djalma Batista", "numero_residencial": "1661", "bairro_residencial": "Chapada", "municipio_residencial": "Manaus", "uf_residencial": "AM", "cep_residencial": "69050-010", "telefone_celular": "(92) 98410-6038", "email_pessoal": "gustavo.r.alves@exemplo.com", "nome_mae": "Edna Ribeiro Alves", "estado_civil": "união estável"},
+     "armadilhas": [], "espera_duvida": false,
+     "terceiros": []},
+    {"campos": {"cpf": "530.172.964-31", "data_nascimento": "25/01/1989", "data_admissao": "10/06/2024", "cargo": "Enfermeira do trabalho", "valor_renda": "5.260,40", "numero_documento": "9.771.208", "nis_pis": "133.60874.22-1", "logradouro_residencial": "Rua da Hora", "numero_residencial": "487", "bairro_residencial": "Graças", "municipio_residencial": "Recife", "uf_residencial": "PE", "cep_residencial": "52020-010", "telefone_celular": "81-99872-4506", "email_pessoal": "helena.martins@exemplo.com"},
+     "armadilhas": [], "espera_duvida": true, "nota": "nome divergente (Helena Maria Martins de Souza x Helena M. Martins): nome fora da contagem, pergunta esperada",
+     "terceiros": [{"nome": "Beatriz Martins", "data": "16/04/2015"}]},
+    {"campos": {"nome_completo": "Igor Farias dos Santos", "cpf": "219.478.350-95", "data_nascimento": "06/06/1990", "data_admissao": "01/07/2024", "cargo": "Técnico de manutenção III", "valor_renda": "4.635,00", "numero_documento": "7110348297", "nis_pis": "207.91654.03-8", "logradouro_residencial": "Rua Dona Laura", "numero_residencial": "620", "bairro_residencial": "Moinhos de Vento", "municipio_residencial": "Porto Alegre", "uf_residencial": "RS", "cep_residencial": "90430-090", "telefone_celular": "(51) 99370-4821", "email_pessoal": "igor.farias@exemplo.com", "estado_civil": "casado"},
+     "armadilhas": [], "espera_duvida": false,
+     "terceiros": []},
+    {"campos": {"nome_completo": "Juliana Prado", "data_nascimento": "17/10/1995", "data_admissao": "08/07/2024", "cargo": "Executiva de contas", "valor_renda": "3.980,00", "numero_documento": "200301402134-5", "logradouro_residencial": "Av. Santos Dumont", "numero_residencial": "2828", "bairro_residencial": "Aldeota", "municipio_residencial": "Fortaleza", "uf_residencial": "CE", "cep_residencial": "60150-162", "telefone_celular": "85 99921 3760", "email_pessoal": "juliana.prado@exemplo.com"},
+     "armadilhas": [], "espera_duvida": true, "nota": "CPF a conferir (o administrativo pede para conferir): fora da contagem, pergunta esperada",
+     "terceiros": []},
+    {"campos": {"nome_completo": "Marcelo Augusto Vieira", "data_nascimento": "09/02/1982", "data_admissao": "22/07/2024", "cargo": "Supervisor de logística", "valor_renda": "6.150,00", "numero_documento": "5.218.440", "logradouro_residencial": "Alameda dos Buritis", "numero_residencial": "392", "bairro_residencial": "setor Oeste", "municipio_residencial": "Goiânia", "uf_residencial": "GO", "cep_residencial": "74115-040", "telefone_celular": "62 98244-0091", "email_pessoal": "marcelo.vieira@exemplo.com"},
+     "armadilhas": ["nis_pis"], "espera_duvida": true, "nota": "PIS ilegível; CPF de uma ficha antiga de prestador (fora da contagem)",
+     "terceiros": [{"nome": "Ana Vieira"}, {"nome": "Mateus Vieira", "data": "05/09/2012"}]},
+    {"campos": {"nome_completo": "Nádia Soares Freire", "cpf": "398.502.176-04", "data_nascimento": "21/12/2000", "data_admissao": "05/08/2024", "cargo": "recepcionista", "valor_renda": "2.680,00", "numero_documento": "3.771.290", "bairro_residencial": "Samambaia Sul", "municipio_residencial": "Brasília", "uf_residencial": "DF", "cep_residencial": "72306-706", "telefone_celular": "(61) 99118-6204", "email_pessoal": "nadia.freire@exemplo.com", "estado_civil": "solteira"},
+     "armadilhas": [], "espera_duvida": false, "nota": "horário em conflito: não é campo do layout (pergunta opcional)",
+     "terceiros": [{"telefone": "61 3357-1180"}]}
+   ]
+  }
+ ]
+}

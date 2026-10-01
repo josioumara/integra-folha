@@ -1,0 +1,4772 @@
+{
+ "data": "2026-09-25T17:59:19",
+ "commit": "1ff7150",
+ "conjunto": "prova",
+ "prompt": "leitor_de_documentos_v4",
+ "modo_da_ia": "llm",
+ "esforco": "low",
+ "modelo_grande": "claude-sonnet-5",
+ "modelo_pequeno": "gpt-6-luna",
+ "resumo_por_modo_e_nivel": {
+  "regra|N1": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 88,
+   "campos_certos": 88,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0,
+   "segundos": 0.0,
+   "chamadas": 0,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.0
+  },
+  "regra|N2": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 120,
+   "campos_certos": 120,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0,
+   "segundos": 0.0,
+   "chamadas": 0,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.0
+  },
+  "etiquetas|N3": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 48,
+   "campos_certos": 48,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.09672610000000001,
+   "segundos": 15.9,
+   "chamadas": 9,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01209
+  },
+  "dados|N3": {
+   "pessoas_esperadas": 8,
+   "pessoas_encontradas": 8,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 48,
+   "campos_certos": 48,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.0962953,
+   "segundos": 8.9,
+   "chamadas": 9,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01204
+  },
+  "etiquetas|N4": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 16,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 224,
+   "campos_certos": 224,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.2646731,
+   "segundos": 28.6,
+   "chamadas": 18,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01654
+  },
+  "dados|N4": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 16,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 224,
+   "campos_certos": 224,
+   "campos_errados": 0,
+   "campos_faltando": 0,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 0,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.25665590000000005,
+   "segundos": 29.299999999999997,
+   "chamadas": 18,
+   "acerto_por_campo": 1.0,
+   "intervalo_95": [
+    1.0,
+    1.0
+   ],
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.01604
+  },
+  "etiquetas|N5": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 16,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 276,
+   "campos_certos": 64,
+   "campos_errados": 4,
+   "campos_faltando": 208,
+   "armadilhas": 8,
+   "armadilhas_respeitadas": 4,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 4,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.0014358,
+   "segundos": 18.700000000000003,
+   "chamadas": 18,
+   "acerto_por_campo": 0.2319,
+   "intervalo_95": [
+    0.2138,
+    0.2518
+   ],
+   "armadilhas_respeitadas_pct": 0.5,
+   "perguntas_feitas_pct": 0.3333,
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 9e-05
+  },
+  "dados|N5": {
+   "pessoas_esperadas": 16,
+   "pessoas_encontradas": 0,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 276,
+   "campos_certos": 0,
+   "campos_errados": 0,
+   "campos_faltando": 276,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0,
+   "segundos": 10.100000000000001,
+   "chamadas": 0,
+   "acerto_por_campo": 0.0,
+   "intervalo_95": [
+    0.0,
+    0.0
+   ],
+   "perguntas_feitas_pct": 0.0,
+   "pessoas_encontradas_pct": 0.0,
+   "custo_por_funcionario_usd": 0.0
+  }
+ },
+ "resumo_do_texto_corrido": {
+  "etiquetas": {
+   "pessoas_esperadas": 40,
+   "pessoas_encontradas": 40,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 548,
+   "campos_certos": 336,
+   "campos_errados": 4,
+   "campos_faltando": 208,
+   "armadilhas": 8,
+   "armadilhas_respeitadas": 4,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 4,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.3628350000000001,
+   "segundos": 63.199999999999996,
+   "chamadas": 45,
+   "acerto_por_campo": 0.6131,
+   "intervalo_95": [
+    0.4889,
+    0.7457
+   ],
+   "armadilhas_respeitadas_pct": 0.5,
+   "perguntas_feitas_pct": 0.3333,
+   "pessoas_encontradas_pct": 1.0,
+   "custo_por_funcionario_usd": 0.00907
+  },
+  "dados": {
+   "pessoas_esperadas": 40,
+   "pessoas_encontradas": 24,
+   "pessoas_a_mais": 0,
+   "campos_esperados": 548,
+   "campos_certos": 272,
+   "campos_errados": 0,
+   "campos_faltando": 276,
+   "armadilhas": 0,
+   "armadilhas_respeitadas": 0,
+   "perguntas_esperadas": 12,
+   "perguntas_feitas": 0,
+   "terceiros_vazados": 0,
+   "custo_usd": 0.3529512,
+   "segundos": 48.300000000000004,
+   "chamadas": 27,
+   "acerto_por_campo": 0.4964,
+   "intervalo_95": [
+    0.3345,
+    0.6692
+   ],
+   "perguntas_feitas_pct": 0.0,
+   "pessoas_encontradas_pct": 0.6,
+   "custo_por_funcionario_usd": 0.00882
+  }
+ },
+ "documentos": [
+  {
+   "documento": "N1_tabela",
+   "nivel": "N1",
+   "modo": "regra",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 88,
+    "campos_certos": 88,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     },
+     {
+      "certos": 11,
+      "esperados": 11
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0,
+    "segundos": 0.0,
+    "chamadas": 0
+   },
+   "saida": {
+    "linhas": [
+     [
+      "Nome",
+      "CPF",
+      "Nascimento",
+      "Cargo",
+      "Admissão",
+      "Salário",
+      "Celular",
+      "E-mail",
+      "CEP",
+      "Cidade",
+      "UF"
+     ],
+     [
+      "Helena Pimentel Rezende",
+      "73326048920",
+      "08/01/1979",
+      "operador de empilhadeira",
+      "17/08/2025",
+      "R$ 8.074,00",
+      "(92) 98235-7084",
+      "helena.pimentel@exemplo.com",
+      "69034-894",
+      "Manaus",
+      "AM"
+     ],
+     [
+      "Sérgio Moura Tavares",
+      "72618262271",
+      "13/11/1977",
+      "assistente de logística",
+      "15/07/2024",
+      "R$ 8.981,00",
+      "(19) 99139-7174",
+      "sergio.moura@exemplo.com",
+      "13017-473",
+      "Campinas",
+      "SP"
+     ],
+     [
+      "Lorena Brandão Sampaio",
+      "38761205273",
+      "04/04/1989",
+      "desenvolvedor back-end",
+      "19/10/2025",
+      "R$ 5.162,00",
+      "(92) 99857-4629",
+      "lorena.brandao@exemplo.com",
+      "69049-579",
+      "Manaus",
+      "AM"
+     ],
+     [
+      "Helena Pimentel Duarte",
+      "22379017590",
+      "01/10/1981",
+      "técnico de manutenção",
+      "06/07/2025",
+      "R$ 5.918,00",
+      "(48) 98498-9063",
+      "helena.pimentel@exemplo.com",
+      "88033-397",
+      "Florianópolis",
+      "SC"
+     ],
+     [
+      "Helena Rezende Duarte",
+      "55585465066",
+      "25/09/1995",
+      "designer gráfico",
+      "26/03/2025",
+      "R$ 6.487,00",
+      "(51) 98117-7896",
+      "helena.rezende@exemplo.com",
+      "90463-008",
+      "Porto Alegre",
+      "RS"
+     ],
+     [
+      "Tiago Duarte Nogueira",
+      "46445262074",
+      "13/04/2002",
+      "operador de empilhadeira",
+      "20/07/2024",
+      "R$ 5.609,00",
+      "(19) 98173-2158",
+      "tiago.duarte@exemplo.com",
+      "13080-002",
+      "Campinas",
+      "SP"
+     ],
+     [
+      "Caio Monteiro Bittencourt",
+      "79045821800",
+      "29/11/1997",
+      "desenvolvedor back-end",
+      "28/01/2024",
+      "R$ 1.830,00",
+      "(31) 99221-1377",
+      "caio.monteiro@exemplo.com",
+      "30150-029",
+      "Belo Horizonte",
+      "MG"
+     ],
+     [
+      "Luíza Coutinho Valadares",
+      "32500917665",
+      "04/07/1991",
+      "técnico de manutenção",
+      "07/04/2024",
+      "R$ 5.256,00",
+      "(48) 99431-2887",
+      "luiza.coutinho@exemplo.com",
+      "88075-797",
+      "Florianópolis",
+      "SC"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "Li a tabela do documento Word."
+    ],
+    "como_foi_lido": "tabela",
+    "uso": {},
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N2_fichas",
+   "nivel": "N2",
+   "modo": "regra",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 120,
+    "campos_certos": 120,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     },
+     {
+      "certos": 15,
+      "esperados": 15
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0,
+    "segundos": 0.0,
+    "chamadas": 0
+   },
+   "saida": {
+    "linhas": [
+     [
+      "Nome",
+      "CPF",
+      "Data de nascimento",
+      "Nome da mãe",
+      "Cargo",
+      "Data de admissão",
+      "Salário",
+      "Endereço",
+      "Número",
+      "Bairro",
+      "Cidade",
+      "UF",
+      "CEP",
+      "Celular",
+      "E-mail"
+     ],
+     [
+      "Jéssica Bittencourt Duarte",
+      "75831434702",
+      "08/03/1979",
+      "Fernanda Bittencourt Coutinho",
+      "enfermeira do trabalho",
+      "31/05/2024",
+      "R$ 3.863,00",
+      "Alameda dos Ipês",
+      "1478",
+      "Bigorrilho",
+      "Recife",
+      "PE",
+      "52010-208",
+      "(81) 99984-5999",
+      "jessica.bittencourt@exemplo.com"
+     ],
+     [
+      "Caio Brandão Quintela",
+      "29933316044",
+      "30/06/1987",
+      "Luíza Brandão Guimarães",
+      "enfermeira do trabalho",
+      "03/03/2025",
+      "R$ 3.021,00",
+      "Rua Dona Laura",
+      "1676",
+      "Aldeota",
+      "Campinas",
+      "SP",
+      "13088-097",
+      "(19) 99721-8275",
+      "caio.brandao@exemplo.com"
+     ],
+     [
+      "Wesley Pimentel Nogueira",
+      "96566645900",
+      "21/01/1976",
+      "Sílvia Pimentel Leal",
+      "designer gráfico",
+      "18/06/2024",
+      "R$ 4.388,00",
+      "Rua do Sol",
+      "1149",
+      "Centro",
+      "Porto Alegre",
+      "RS",
+      "90443-713",
+      "(51) 98797-5947",
+      "wesley.pimentel@exemplo.com"
+     ],
+     [
+      "Júlio Quintela Duarte",
+      "81191510204",
+      "25/03/1980",
+      "Gláucia Quintela Duarte",
+      "supervisor de loja",
+      "20/11/2025",
+      "R$ 6.712,00",
+      "Rua do Sol",
+      "2991",
+      "Setor Oeste",
+      "Salvador",
+      "BA",
+      "41941-116",
+      "(71) 99510-3809",
+      "julio.quintela@exemplo.com"
+     ],
+     [
+      "Geraldo Nogueira Pacheco",
+      "46651768174",
+      "09/06/1993",
+      "Vanessa Nogueira Brandão",
+      "operador de empilhadeira",
+      "14/12/2025",
+      "R$ 8.973,00",
+      "Rua do Sol",
+      "1300",
+      "Savassi",
+      "Porto Alegre",
+      "RS",
+      "90495-903",
+      "(51) 98411-7110",
+      "geraldo.nogueira@exemplo.com"
+     ],
+     [
+      "Anderson Quintela Valadares",
+      "87572323774",
+      "27/01/1998",
+      "Marta Quintela Leal",
+      "desenvolvedor back-end",
+      "04/07/2025",
+      "R$ 5.482,00",
+      "Rua Dona Laura",
+      "2188",
+      "Centro",
+      "Goiânia",
+      "GO",
+      "74161-610",
+      "(62) 98487-8876",
+      "anderson.quintela@exemplo.com"
+     ],
+     [
+      "Mauro Fontes Duarte",
+      "49021212390",
+      "18/09/1979",
+      "Yasmin Fontes Duarte",
+      "coordenador de projetos",
+      "24/02/2025",
+      "R$ 6.547,00",
+      "Rua do Sol",
+      "1567",
+      "Bigorrilho",
+      "Salvador",
+      "BA",
+      "41916-405",
+      "(71) 99012-2503",
+      "mauro.fontes@exemplo.com"
+     ],
+     [
+      "Renata Fontes Xavier",
+      "12193155321",
+      "24/09/1971",
+      "Irene Fontes Sampaio",
+      "analista financeiro",
+      "19/09/2025",
+      "R$ 5.956,00",
+      "Rua Marechal Deodoro",
+      "2851",
+      "Moinhos de Vento",
+      "Campinas",
+      "SP",
+      "13044-794",
+      "(19) 98633-3541",
+      "renata.fontes@exemplo.com"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "Li o documento Word como fichas (\"Rótulo: valor\"), uma por funcionário."
+    ],
+    "como_foi_lido": "fichas",
+    "uso": {},
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N3_texto_simples",
+   "nivel": "N3",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 48,
+    "campos_certos": 48,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.09672610000000001,
+    "segundos": 15.9,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Gláucia Fontes Guimarães",
+      "11051372364",
+      "25/02/1987",
+      "recepcionista",
+      "13/11/2025",
+      "R$ 7.157,00"
+     ],
+     [
+      "Olívia Tavares Rezende",
+      "16421806538",
+      "19/12/2002",
+      "enfermeira do trabalho",
+      "20/12/2024",
+      "R$ 4.102,00"
+     ],
+     [
+      "Helena Xavier Pimentel",
+      "96474359323",
+      "20/10/1988",
+      "desenvolvedor back-end",
+      "25/10/2024",
+      "R$ 3.258,00"
+     ],
+     [
+      "Geraldo Siqueira Nogueira",
+      "20124014496",
+      "15/01/1970",
+      "assistente de logística",
+      "15/01/2024",
+      "R$ 8.687,00"
+     ],
+     [
+      "Caio Assunção Bittencourt",
+      "26282934397",
+      "23/08/1993",
+      "enfermeira do trabalho",
+      "29/08/2025",
+      "R$ 9.438,00"
+     ],
+     [
+      "Marta Duarte Guimarães",
+      "86118461503",
+      "31/07/1990",
+      "desenvolvedor back-end",
+      "26/10/2024",
+      "R$ 3.262,00"
+     ],
+     [
+      "Yasmin Coutinho Siqueira",
+      "77906281438",
+      "02/10/1998",
+      "assistente de logística",
+      "05/02/2025",
+      "R$ 6.139,00"
+     ],
+     [
+      "Helena Monteiro Brandão",
+      "46714206941",
+      "12/05/1986",
+      "supervisor de loja",
+      "18/12/2025",
+      "R$ 8.108,00"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 36983,
+     "tokens_saida": 2508,
+     "custo_usd": 0.09672610000000001,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N3_texto_simples",
+   "nivel": "N3",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 48,
+    "campos_certos": 48,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     },
+     {
+      "certos": 6,
+      "esperados": 6
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.0962953,
+    "segundos": 8.9,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Gláucia Fontes Guimarães",
+      "11051372364",
+      "25/02/1987",
+      "recepcionista",
+      "13/11/2025",
+      "R$ 7.157,00"
+     ],
+     [
+      "Olívia Tavares Rezende",
+      "16421806538",
+      "19/12/2002",
+      "enfermeira do trabalho",
+      "20/12/2024",
+      "R$ 4.102,00"
+     ],
+     [
+      "Helena Xavier Pimentel",
+      "96474359323",
+      "20/10/1988",
+      "desenvolvedor back-end",
+      "25/10/2024",
+      "R$ 3.258,00"
+     ],
+     [
+      "Geraldo Siqueira Nogueira",
+      "20124014496",
+      "15/01/1970",
+      "assistente de logística",
+      "15/01/2024",
+      "8.687,00"
+     ],
+     [
+      "Caio Assunção Bittencourt",
+      "26282934397",
+      "23/08/1993",
+      "enfermeira do trabalho",
+      "29/08/2025",
+      "R$ 9.438,00"
+     ],
+     [
+      "Marta Duarte Guimarães",
+      "86118461503",
+      "31/07/1990",
+      "desenvolvedor back-end",
+      "26/10/2024",
+      "R$ 3.262,00"
+     ],
+     [
+      "Yasmin Coutinho Siqueira",
+      "77906281438",
+      "02/10/1998",
+      "assistente de logística",
+      "05/02/2025",
+      "R$ 6.139,00"
+     ],
+     [
+      "Helena Monteiro Brandão",
+      "46714206941",
+      "12/05/1986",
+      "supervisor de loja",
+      "18/12/2025",
+      "R$ 8.108,00"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 37140,
+     "tokens_saida": 2451,
+     "custo_usd": 0.0962953,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_a",
+   "nivel": "N4",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 112,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.1323186,
+    "segundos": 14.3,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Olívia Duarte Pimentel",
+      "65769196033",
+      "30-11-1980",
+      "52010717",
+      "Avenida Beira Mar",
+      "730",
+      "Savassi",
+      "Recife",
+      "PE",
+      "81985344430",
+      "olivia.duarte@exemplo.com",
+      "desenvolvedor back-end",
+      "07/11/25",
+      "R$ 3.897,00"
+     ],
+     [
+      "Leandro Moura Siqueira",
+      "24310040829",
+      "02-10-1988",
+      "80797-872",
+      "Travessa São Bento",
+      "1639",
+      "Aldeota",
+      "Curitiba",
+      "PR",
+      "(41) 99397-7710",
+      "leandro.moura@exemplo.com",
+      "designer gráfico",
+      "13-07-2024",
+      "R$ 4.163"
+     ],
+     [
+      "Priscila Valadares Brandão",
+      "02533673609",
+      "19/07/01",
+      "90437-479",
+      "Rua Padre Anchieta",
+      "1484",
+      "Trindade",
+      "Porto Alegre",
+      "RS",
+      "51 98905-9378",
+      "priscila.valadares@exemplo.com",
+      "enfermeira do trabalho",
+      "04/10/2025",
+      "R$ 3.644"
+     ],
+     [
+      "Tiago Tavares Brandão",
+      "324 943 447 78",
+      "02-12-1994",
+      "60143270",
+      "Avenida Getúlio Vargas",
+      "2074",
+      "Vila Mariana",
+      "Fortaleza",
+      "CE",
+      "85 99305-4534",
+      "tiago.tavares@exemplo.com",
+      "operador de empilhadeira",
+      "20-08-2024",
+      "9.200,00"
+     ],
+     [
+      "Marta Sampaio Tavares",
+      "664 597 586 46",
+      "29.07.1980",
+      "30126-596",
+      "Avenida Getúlio Vargas",
+      "1099",
+      "Savassi",
+      "Belo Horizonte",
+      "MG",
+      "+55 31 98970-1956",
+      "marta.sampaio@exemplo.com",
+      "auxiliar de cozinha",
+      "13 de outubro de 2024",
+      "R$ 7.112,00"
+     ],
+     [
+      "Everton Pacheco Tavares",
+      "27037102598",
+      "12 de dezembro de 2003",
+      "74179-253",
+      "Rua Dona Laura",
+      "1849",
+      "Bigorrilho",
+      "Goiânia",
+      "GO",
+      "62 99688-3023",
+      "everton.pacheco@exemplo.com",
+      "supervisor de loja",
+      "27-05-2025",
+      "R$ 2.509"
+     ],
+     [
+      "Geraldo Tavares Assunção",
+      "22528793510",
+      "26/09/1976",
+      "74192849",
+      "Rua Sete de Setembro",
+      "2646",
+      "Vila Mariana",
+      "Goiânia",
+      "GO",
+      "62991289904",
+      "geraldo.tavares@exemplo.com",
+      "operador de empilhadeira",
+      "25-04-2025",
+      "R$ 4.650,00"
+     ],
+     [
+      "Tiago Pimentel Assunção",
+      "50530696118",
+      "06-02-1973",
+      "69057-613",
+      "Rua Sete de Setembro",
+      "2786",
+      "Chapada",
+      "Manaus",
+      "AM",
+      "+55 92 99290-3088",
+      "tiago.pimentel@exemplo.com",
+      "vendedor externo",
+      "22 de janeiro de 2025",
+      "8.482,00"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 38362,
+     "tokens_saida": 5952,
+     "custo_usd": 0.1323186,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_a",
+   "nivel": "N4",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 112,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.1282163,
+    "segundos": 14.6,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Olívia Duarte Pimentel",
+      "65769196033",
+      "30-11-1980",
+      "52010717",
+      "Avenida Beira Mar",
+      "730",
+      "Savassi",
+      "Recife",
+      "PE",
+      "81985344430",
+      "olivia.duarte@exemplo.com",
+      "desenvolvedor back-end",
+      "07/11/25",
+      "R$ 3.897,00"
+     ],
+     [
+      "Leandro Moura Siqueira",
+      "24310040829",
+      "02-10-1988",
+      "80797-872",
+      "Travessa São Bento",
+      "1639",
+      "Aldeota",
+      "Curitiba",
+      "PR",
+      "(41) 99397-7710",
+      "leandro.moura@exemplo.com",
+      "designer gráfico",
+      "13-07-2024",
+      "R$ 4.163"
+     ],
+     [
+      "Priscila Valadares Brandão",
+      "02533673609",
+      "19/07/01",
+      "90437-479",
+      "Rua Padre Anchieta",
+      "1484",
+      "Trindade",
+      "Porto Alegre",
+      "RS",
+      "51 98905-9378",
+      "priscila.valadares@exemplo.com",
+      "enfermeira do trabalho",
+      "04/10/2025",
+      "R$ 3.644"
+     ],
+     [
+      "Tiago Tavares Brandão",
+      "324 943 447 78",
+      "02-12-1994",
+      "60143270",
+      "Avenida Getúlio Vargas",
+      "2074",
+      "Vila Mariana",
+      "Fortaleza",
+      "CE",
+      "85 99305-4534",
+      "tiago.tavares@exemplo.com",
+      "operador de empilhadeira",
+      "20-08-2024",
+      "9.200,00"
+     ],
+     [
+      "Marta Sampaio Tavares",
+      "664 597 586 46",
+      "29.07.1980",
+      "30126-596",
+      "Avenida Getúlio Vargas",
+      "1099",
+      "Savassi",
+      "Belo Horizonte",
+      "MG",
+      "+55 31 98970-1956",
+      "marta.sampaio@exemplo.com",
+      "auxiliar de cozinha",
+      "13 de outubro de 2024",
+      "R$ 7.112,00"
+     ],
+     [
+      "Everton Pacheco Tavares",
+      "27037102598",
+      "12 de dezembro de 2003",
+      "74179-253",
+      "Rua Dona Laura",
+      "1849",
+      "Bigorrilho",
+      "Goiânia",
+      "GO",
+      "62 99688-3023",
+      "everton.pacheco@exemplo.com",
+      "supervisor de loja",
+      "27-05-2025",
+      "R$ 2.509"
+     ],
+     [
+      "Geraldo Tavares Assunção",
+      "22528793510",
+      "26/09/1976",
+      "74192849",
+      "Rua Sete de Setembro",
+      "2646",
+      "Vila Mariana",
+      "Goiânia",
+      "GO",
+      "62991289904",
+      "geraldo.tavares@exemplo.com",
+      "operador de empilhadeira",
+      "25-04-2025",
+      "R$ 4.650,00"
+     ],
+     [
+      "Tiago Pimentel Assunção",
+      "50530696118",
+      "06-02-1973",
+      "69057-613",
+      "Rua Sete de Setembro",
+      "2786",
+      "Chapada",
+      "Manaus",
+      "AM",
+      "+55 92 99290-3088",
+      "tiago.pimentel@exemplo.com",
+      "vendedor externo",
+      "22 de janeiro de 2025",
+      "8.482,00"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 38301,
+     "tokens_saida": 5523,
+     "custo_usd": 0.1282163,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_b",
+   "nivel": "N4",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 112,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.1323545,
+    "segundos": 14.3,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Wesley Pacheco Xavier",
+      "171 028 323 89",
+      "12/01/83",
+      "52068465",
+      "Rua das Acácias",
+      "2602",
+      "Vila Mariana",
+      "Recife",
+      "PE",
+      "81 98788-3196",
+      "wesley.pacheco@exemplo.com",
+      "auxiliar de cozinha",
+      "02-03-2024",
+      "R$ 4.116"
+     ],
+     [
+      "Rafael Quintela Pimentel",
+      "28349434864",
+      "1995-11-17",
+      "30192-723",
+      "Rua das Acácias",
+      "2830",
+      "Jardim Europa",
+      "Belo Horizonte",
+      "MG",
+      "+55 31 98752-2151",
+      "rafael.quintela@exemplo.com",
+      "designer gráfico",
+      "17/03/25",
+      "R$ 2.306"
+     ],
+     [
+      "Tatiane Duarte Moura",
+      "18992433999",
+      "20-12-1984",
+      "80718-524",
+      "Avenida Beira Mar",
+      "1887",
+      "Savassi",
+      "Curitiba",
+      "PR",
+      "(41) 99873-4008",
+      "tatiane.duarte@exemplo.com",
+      "desenvolvedor back-end",
+      "12/02/25",
+      "R$ 2.645,00"
+     ],
+     [
+      "Nelson Siqueira Pimentel",
+      "196 572 397 70",
+      "1998-08-06",
+      "52068-957",
+      "Rua Sete de Setembro",
+      "844",
+      "Jardim Europa",
+      "Recife",
+      "PE",
+      "(81) 99594-9145",
+      "nelson.siqueira@exemplo.com",
+      "assistente de logística",
+      "2025-11-11",
+      "R$ 6.216,00"
+     ],
+     [
+      "Mauro Guimarães Pimentel",
+      "78346037015",
+      "20.11.1997",
+      "88029-115",
+      "Rua Padre Anchieta",
+      "1679",
+      "Trindade",
+      "Florianópolis",
+      "SC",
+      "48 98464-2309",
+      "mauro.guimaraes@exemplo.com",
+      "designer gráfico",
+      "20-05-2025",
+      "R$ 8.498"
+     ],
+     [
+      "Tatiane Duarte Assunção",
+      "887 005 413 62",
+      "25/08/1970",
+      "80719796",
+      "Rua Sete de Setembro",
+      "577",
+      "Moinhos de Vento",
+      "Curitiba",
+      "PR",
+      "41996944106",
+      "tatiane.duarte@exemplo.com",
+      "auxiliar de cozinha",
+      "2024-11-04",
+      "R$ 5.748,00"
+     ],
+     [
+      "Sérgio Valadares Bittencourt",
+      "29096756452",
+      "22/10/1978",
+      "60198151",
+      "Avenida Getúlio Vargas",
+      "1125",
+      "Rio Vermelho",
+      "Fortaleza",
+      "CE",
+      "85985473163",
+      "sergio.valadares@exemplo.com",
+      "recepcionista",
+      "2025-09-07",
+      "R$ 5.156,00"
+     ],
+     [
+      "Anderson Brandão Pimentel",
+      "55814771755",
+      "07/08/1990",
+      "52099-119",
+      "Travessa São Bento",
+      "2991",
+      "Vila Mariana",
+      "Recife",
+      "PE",
+      "+55 81 99234-5501",
+      "anderson.brandao@exemplo.com",
+      "supervisor de loja",
+      "09.08.2025",
+      "R$ 2.539"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 38260,
+     "tokens_saida": 5972,
+     "custo_usd": 0.1323545,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N4_texto_variado_b",
+   "nivel": "N4",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 112,
+    "campos_certos": 112,
+    "campos_errados": 0,
+    "campos_faltando": 0,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 0,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     },
+     {
+      "certos": 14,
+      "esperados": 14
+     }
+    ],
+    "erros": [],
+    "custo_usd": 0.12843960000000001,
+    "segundos": 14.7,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "cep_residencial",
+      "logradouro_residencial",
+      "numero_residencial",
+      "bairro_residencial",
+      "municipio_residencial",
+      "uf_residencial",
+      "telefone_celular",
+      "email_pessoal",
+      "cargo",
+      "data_admissao",
+      "tipo_renda",
+      "valor_renda"
+     ],
+     [
+      "Wesley Pacheco Xavier",
+      "171 028 323 89",
+      "12/01/83",
+      "52068465",
+      "Rua das Acácias",
+      "2602",
+      "Vila Mariana",
+      "Recife",
+      "PE",
+      "81 98788-3196",
+      "wesley.pacheco@exemplo.com",
+      "auxiliar de cozinha",
+      "02-03-2024",
+      "",
+      "R$ 4.116"
+     ],
+     [
+      "Rafael Quintela Pimentel",
+      "28349434864",
+      "1995-11-17",
+      "30192-723",
+      "Rua das Acácias",
+      "2830",
+      "Jardim Europa",
+      "Belo Horizonte",
+      "MG",
+      "+55 31 98752-2151",
+      "rafael.quintela@exemplo.com",
+      "designer gráfico",
+      "17/03/25",
+      "",
+      "R$ 2.306"
+     ],
+     [
+      "Tatiane Duarte Moura",
+      "18992433999",
+      "20-12-1984",
+      "80718-524",
+      "Avenida Beira Mar",
+      "1887",
+      "Savassi",
+      "Curitiba",
+      "PR",
+      "(41) 99873-4008",
+      "tatiane.duarte@exemplo.com",
+      "desenvolvedor back-end",
+      "12/02/25",
+      "",
+      "R$ 2.645,00"
+     ],
+     [
+      "Nelson Siqueira Pimentel",
+      "196 572 397 70",
+      "1998-08-06",
+      "52068-957",
+      "Rua Sete de Setembro",
+      "844",
+      "Jardim Europa",
+      "Recife",
+      "PE",
+      "(81) 99594-9145",
+      "nelson.siqueira@exemplo.com",
+      "assistente de logística",
+      "2025-11-11",
+      "",
+      "R$ 6.216,00"
+     ],
+     [
+      "Mauro Guimarães Pimentel",
+      "78346037015",
+      "20.11.1997",
+      "88029-115",
+      "Rua Padre Anchieta",
+      "1679",
+      "Trindade",
+      "Florianópolis",
+      "SC",
+      "48 98464-2309",
+      "mauro.guimaraes@exemplo.com",
+      "designer gráfico",
+      "20-05-2025",
+      "",
+      "R$ 8.498"
+     ],
+     [
+      "Tatiane Duarte Assunção",
+      "887 005 413 62",
+      "25/08/1970",
+      "80719796",
+      "Rua Sete de Setembro",
+      "577",
+      "Moinhos de Vento",
+      "Curitiba",
+      "PR",
+      "41996944106",
+      "tatiane.duarte@exemplo.com",
+      "auxiliar de cozinha",
+      "2024-11-04",
+      "",
+      "R$ 5.748,00"
+     ],
+     [
+      "Sérgio Valadares Bittencourt",
+      "29096756452",
+      "22/10/1978",
+      "60198151",
+      "Avenida Getúlio Vargas",
+      "1125",
+      "Rio Vermelho",
+      "Fortaleza",
+      "CE",
+      "85985473163",
+      "sergio.valadares@exemplo.com",
+      "recepcionista",
+      "2025-09-07",
+      "",
+      "R$ 5.156,00"
+     ],
+     [
+      "Anderson Brandão Pimentel",
+      "55814771755",
+      "07/08/1990",
+      "52099-119",
+      "Travessa São Bento",
+      "2991",
+      "Vila Mariana",
+      "Recife",
+      "PE",
+      "+55 81 99234-5501",
+      "anderson.brandao@exemplo.com",
+      "supervisor de loja",
+      "09.08.2025",
+      "Salário",
+      "2.539"
+     ]
+    ],
+    "duvidas": [],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco.",
+     "Pessoa 2, campo tipo_renda: a IA escreveu algo que não está no documento; o campo ficou em branco para você completar."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": true,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "llm",
+     "modelos": [
+      "gpt-6-luna",
+      "claude-sonnet-5"
+     ],
+     "tokens_entrada": 38178,
+     "tokens_saida": 5561,
+     "custo_usd": 0.12843960000000001,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 0
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_a",
+   "nivel": "N5",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 32,
+    "campos_errados": 2,
+    "campos_faltando": 104,
+    "armadilhas": 4,
+    "armadilhas_respeitadas": 2,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 2,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 4,
+      "esperados": 17
+     },
+     {
+      "certos": 4,
+      "esperados": 18
+     },
+     {
+      "certos": 4,
+      "esperados": 17
+     },
+     {
+      "certos": 5,
+      "esperados": 17
+     },
+     {
+      "certos": 3,
+      "esperados": 17
+     },
+     {
+      "certos": 4,
+      "esperados": 18
+     },
+     {
+      "certos": 4,
+      "esperados": 17
+     },
+     {
+      "certos": 4,
+      "esperados": 17
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 1,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_completo",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "nome_completo",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0.000995,
+    "segundos": 13.3,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "Priscila Quintela Moura",
+      "571 809 855 70",
+      "03/04/1979",
+      "23/01/2025",
+      "5.514,00"
+     ],
+     [
+      "Priscila Duarte Bittencourt",
+      "02487507802",
+      "1992-05-12",
+      "",
+      "R$ 2.254"
+     ],
+     [
+      "Geraldo Quintela Nogueira",
+      "",
+      "08-03-2002",
+      "29/09/24",
+      "R$ 7.627,00"
+     ],
+     [
+      "Mauro Guimarães Duarte",
+      "97965081334",
+      "12/03/89",
+      "22/07/24",
+      "R$ 6.697,00"
+     ],
+     [
+      "TAVARES REZENDE",
+      "743 736 758 05",
+      "26 de outubro de 1992",
+      "16/09/2025",
+      "R$ 3.736,00"
+     ],
+     [
+      "Renata Tavares Valadares",
+      "468 958 639 07",
+      "1978-10-07",
+      "",
+      "R$ 9.495"
+     ],
+     [
+      "Luíza Guimarães Monteiro",
+      "",
+      "21/08/2001",
+      "29/03/2025",
+      "4.304,00"
+     ],
+     [
+      "JÉSSICA",
+      "31227447590",
+      "01.10.1986",
+      "03.05.2024",
+      "9.108,00"
+     ]
+    ],
+    "duvidas": [
+     "Geraldo Quintela Nogueira · cpf: Não encontrei o CPF desta pessoa. Pode mandar? (simulação MOCK)",
+     "Luíza Guimarães Monteiro · cpf: Não encontrei o CPF desta pessoa. Pode mandar? (simulação MOCK)"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "mock",
+     "modelos": [
+      "gpt-6-luna",
+      "mock"
+     ],
+     "tokens_entrada": 2235,
+     "tokens_saida": 1543,
+     "custo_usd": 0.000995,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 2
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_a",
+   "nivel": "N5",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 0,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 0,
+    "campos_errados": 0,
+    "campos_faltando": 138,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 18
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 18
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 1,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0,
+    "segundos": 3.2,
+    "chamadas": 0
+   },
+   "saida": {
+    "linhas": [
+     []
+    ],
+    "duvidas": [],
+    "avisos": [],
+    "como_foi_lido": "recusado",
+    "uso": {},
+    "recusado": "Não encontrei funcionários neste documento."
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_b",
+   "nivel": "N5",
+   "modo": "etiquetas",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 8,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 32,
+    "campos_errados": 2,
+    "campos_faltando": 104,
+    "armadilhas": 4,
+    "armadilhas_respeitadas": 2,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 2,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 3,
+      "esperados": 17
+     },
+     {
+      "certos": 3,
+      "esperados": 18
+     },
+     {
+      "certos": 4,
+      "esperados": 17
+     },
+     {
+      "certos": 5,
+      "esperados": 17
+     },
+     {
+      "certos": 4,
+      "esperados": 17
+     },
+     {
+      "certos": 4,
+      "esperados": 18
+     },
+     {
+      "certos": 4,
+      "esperados": 17
+     },
+     {
+      "certos": 5,
+      "esperados": 17
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 1,
+      "campo": "nome_completo",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nome_completo",
+      "tipo": "errado"
+     },
+     {
+      "pessoa": 2,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0.00044080000000000004,
+    "segundos": 5.4,
+    "chamadas": 9
+   },
+   "saida": {
+    "linhas": [
+     [
+      "nome_completo",
+      "cpf",
+      "data_nascimento",
+      "data_admissao",
+      "valor_renda"
+     ],
+     [
+      "INTEGRAÇÃO",
+      "475 106 596 39",
+      "22/08/84",
+      "07/08/2025",
+      "R$ 4.170,00"
+     ],
+     [
+      "INTEGRAÇÃO",
+      "328 317 224 20",
+      "02/08/1999",
+      "",
+      "7.487,00"
+     ],
+     [
+      "Mauro Tavares Moura",
+      "",
+      "20-03-2002",
+      "25.01.2024",
+      "R$ 9.401"
+     ],
+     [
+      "Vanessa Sampaio Leal",
+      "67705705990",
+      "13-02-1991",
+      "08.01.2024",
+      "R$ 5.290,00"
+     ],
+     [
+      "Vanessa Coutinho Moura",
+      "852 654 348 28",
+      "30.11.1995",
+      "23/11/2024",
+      "R$ 6.403"
+     ],
+     [
+      "Helena Pimentel Monteiro",
+      "67695319929",
+      "23/12/00",
+      "",
+      "R$ 3.656"
+     ],
+     [
+      "Rafael Assunção Tavares",
+      "",
+      "12/10/1974",
+      "31 de março de 2024",
+      "3.028,00"
+     ],
+     [
+      "Rafael Assunção Bittencourt",
+      "751 347 560 15",
+      "29 de novembro de 1995",
+      "6 de novembro de 2024",
+      "4.265,00"
+     ]
+    ],
+    "duvidas": [
+     "Mauro Tavares Moura · cpf: Não encontrei o CPF desta pessoa. Pode mandar? (simulação MOCK)",
+     "Rafael Assunção Tavares · cpf: Não encontrei o CPF desta pessoa. Pode mandar? (simulação MOCK)"
+    ],
+    "avisos": [
+     "O documento é um texto corrido: a IA montou a lista com 8 funcionário(s). Confira os dados antes de enviar ao banco."
+    ],
+    "como_foi_lido": "texto corrido",
+    "uso": {
+     "ver_os_dados": false,
+     "esforco": "low",
+     "chamadas": 9,
+     "modo": "mock",
+     "modelos": [
+      "gpt-6-luna",
+      "mock"
+     ],
+     "tokens_entrada": 2188,
+     "tokens_saida": 444,
+     "custo_usd": 0.00044080000000000004,
+     "blocos": 8,
+     "funcionarios": 8,
+     "duvidas": 2
+    },
+    "recusado": null
+   }
+  },
+  {
+   "documento": "N5_texto_misturado_b",
+   "nivel": "N5",
+   "modo": "dados",
+   "medida": {
+    "pessoas_esperadas": 8,
+    "pessoas_encontradas": 0,
+    "pessoas_a_mais": 0,
+    "campos_esperados": 138,
+    "campos_certos": 0,
+    "campos_errados": 0,
+    "campos_faltando": 138,
+    "armadilhas": 0,
+    "armadilhas_respeitadas": 0,
+    "perguntas_esperadas": 6,
+    "perguntas_feitas": 0,
+    "terceiros_vazados": 0,
+    "por_pessoa": [
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 18
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 18
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     },
+     {
+      "certos": 0,
+      "esperados": 17
+     }
+    ],
+    "erros": [
+     {
+      "pessoa": 1,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 1,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 2,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 3,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 4,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 5,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 6,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 7,
+      "campo": "nis_pis",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "nome_completo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cpf",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "data_nascimento",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "data_admissao",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cargo",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "valor_renda",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "telefone_celular",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "email_pessoal",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "logradouro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "bairro_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "municipio_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "uf_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "cep_residencial",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "nome_mae",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "estado_civil",
+      "tipo": "faltando"
+     },
+     {
+      "pessoa": 8,
+      "campo": "numero_documento",
+      "tipo": "faltando"
+     }
+    ],
+    "custo_usd": 0,
+    "segundos": 6.9,
+    "chamadas": 0
+   },
+   "saida": {
+    "linhas": [
+     []
+    ],
+    "duvidas": [],
+    "avisos": [],
+    "como_foi_lido": "recusado",
+    "uso": {},
+    "recusado": "Não encontrei funcionários neste documento."
+   }
+  }
+ ]
+}

@@ -1,0 +1,149 @@
+{
+  "id": "EXP-016",
+  "data": "2026-09-29",
+  "titulo": "Conferidor da Leitura v2: só a dúvida forte e a pergunta simples (D26, ADR-131)",
+  "tipo": "conferidor",
+  "pergunta": "O Conferidor pergunta à empresa só quando o documento dá outro valor para a mesma pessoa e o mesmo campo, sem perder os erros de verdade, e com uma pergunta simples?",
+  "o_que_testamos": "Prompt v1 × v2 do Conferidor (Amazon Nova 2 Lite, plano B), 3 repetições de cada, nos mesmos documentos: (1) um conjunto NOVO de armadilhas, escrito para este experimento e congelado antes de medir: 13 documentos com a leitura certa e uma distração perto (benefício, CPF de dependente, de cônjuge ou de cliente, líquido × bruto, salário de antes, outras datas) e 5 com o erro de verdade do mesmo tipo; (2) os 5 documentos de texto corrido do EXP-015, com os mesmos 18 erros plantados. A v2 exige o valor que o documento dá para a pessoa e o campo, descarta a suspeita quando ele é o mesmo valor lido, e monta a pergunta pelo código. Nada dos arquivos do QA entrou no prompt nem no conjunto.",
+  "amostra": "18 documentos de armadilhas + 5 documentos de desenvolvimento, 3 repetições por prompt (semente fixa: os mesmos erros em todas)",
+  "modo": "IA real",
+  "resultados": [
+    {
+      "nome": "Armadilhas (18 documentos novos, congelados) · prompt v1",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "versao_prompt": "conferidor_da_leitura_v1",
+        "modelo": "nova-2-lite",
+        "repeticoes": 3,
+        "documentos": 18,
+        "errados_de_verdade": 5,
+        "achados_por_repeticao": [
+          5,
+          5,
+          5
+        ],
+        "alarmes_falsos_por_repeticao": [
+          10,
+          7,
+          10
+        ],
+        "suspeitas_por_repeticao": [
+          15,
+          12,
+          15
+        ],
+        "perguntas_simples_por_repeticao": [
+          0,
+          0,
+          0
+        ],
+        "documentos_certos_em_todas": 9,
+        "custo_usd": 0.0328
+      }
+    },
+    {
+      "nome": "Armadilhas (18 documentos novos, congelados) · prompt v2",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "versao_prompt": "conferidor_da_leitura_v2",
+        "modelo": "nova-2-lite",
+        "repeticoes": 3,
+        "documentos": 18,
+        "errados_de_verdade": 5,
+        "achados_por_repeticao": [
+          5,
+          5,
+          5
+        ],
+        "alarmes_falsos_por_repeticao": [
+          0,
+          0,
+          0
+        ],
+        "suspeitas_por_repeticao": [
+          5,
+          5,
+          5
+        ],
+        "perguntas_simples_por_repeticao": [
+          5,
+          5,
+          5
+        ],
+        "documentos_certos_em_todas": 18,
+        "custo_usd": 0.0386
+      }
+    },
+    {
+      "nome": "Desenvolvimento N3-N5 (5 documentos, 18 erros plantados) · prompt v1",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "versao_prompt": "conferidor_da_leitura_v1",
+        "modelo": "nova-2-lite",
+        "repeticoes": 3,
+        "documentos": 5,
+        "errados_de_verdade": 18,
+        "achados_por_repeticao": [
+          18,
+          18,
+          18
+        ],
+        "alarmes_falsos_por_repeticao": [
+          4,
+          3,
+          4
+        ],
+        "suspeitas_por_repeticao": [
+          22,
+          21,
+          22
+        ],
+        "perguntas_simples_por_repeticao": [
+          0,
+          0,
+          0
+        ],
+        "documentos_certos_em_todas": 3,
+        "custo_usd": 0.0303
+      }
+    },
+    {
+      "nome": "Desenvolvimento N3-N5 (5 documentos, 18 erros plantados) · prompt v2",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "versao_prompt": "conferidor_da_leitura_v2",
+        "modelo": "nova-2-lite",
+        "repeticoes": 3,
+        "documentos": 5,
+        "errados_de_verdade": 18,
+        "achados_por_repeticao": [
+          18,
+          18,
+          18
+        ],
+        "alarmes_falsos_por_repeticao": [
+          0,
+          0,
+          0
+        ],
+        "suspeitas_por_repeticao": [
+          18,
+          18,
+          18
+        ],
+        "perguntas_simples_por_repeticao": [
+          18,
+          18,
+          18
+        ],
+        "documentos_certos_em_todas": 5,
+        "custo_usd": 0.0328
+      }
+    }
+  ],
+  "leitura": "Alarmes falsos: v1 teve 10, 7 e 10 nas armadilhas e 4, 3 e 4 no desenvolvimento; a v2, 0 em todas as 6 rodadas. Erros de verdade: os dois acharam todos (5/5 e 18/18 em cada rodada). Documentos certos nas 3 repetições: armadilhas 9/18 (v1) → 18/18 (v2); desenvolvimento 3/5 → 5/5. Perguntas simples (sem 'segunda IA', uma pergunta só, terminando com '?', até 200 caracteres): 0% na v1 → 100% na v2. Os alarmes da v1 eram do tipo 'o documento também cita outro valor' e 'data no futuro'. Custo igual (~US$ 0,002 por documento). Limite: conjuntos pequenos e escritos por nós; a prova de generalização fica para o lote guardado da rodada 03 do QA.",
+  "decisao": "Adotar o Conferidor v2 (ADR-131): a pergunta só nasce com o valor do documento diferente do lido, e o texto que a empresa vê é montado pelo código ('Confira este valor: no documento está X, mas ficou Y. Qual é o certo?').",
+  "custo_usd": 0.1345,
+  "fonte": "data/avaliacao/resultados/conferidor_armadilhas_v1.json, conferidor_armadilhas_v2.json, conferidor_desenvolvimento_v1.json, conferidor_desenvolvimento_v2.json",
+  "commit": "0a0c09c"
+}

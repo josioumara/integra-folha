@@ -1,0 +1,32 @@
+# =====================================================================================================================
+# Caddyfile: a configuração do Caddy, o "porteiro" do site na internet (publicação na AWS)
+#
+# Para que serve:
+#   O Caddy recebe todo visitante nas portas 80 e 443. Ele pede sozinho o certificado do https ao Let's Encrypt (e
+#   renova antes de vencer), manda quem chegou por http para o https e repassa o pedido para a aplicação, pela rede
+#   interna do Docker. É como a recepção de um prédio: confere o crachá (https) e leva o visitante até a sala certa.
+#
+# O endereço principal é integrafolha.com.br; o www leva para ele (um endereço só, melhor para o certificado e para
+# explicar). O "noindex" (não aparecer no Google) já vem da aplicação (ADR-100).
+# =====================================================================================================================
+
+# Configuração geral: o e-mail que o Let's Encrypt usa para avisar de problema no certificado.
+{
+	email {$EMAIL_DO_CERTIFICADO}
+}
+
+# O endereço principal do site.
+integrafolha.com.br {
+	# Comprime as respostas (páginas mais leves e rápidas).
+	encode zstd gzip
+	# Diz ao navegador para usar sempre https neste endereço, por um ano (HSTS).
+	header Strict-Transport-Security "max-age=31536000"
+	# Repassa o pedido para a aplicação, pela rede interna (o nome do serviço no compose e a porta dela).
+	reverse_proxy aplicacao:8000
+}
+
+# O www leva para o endereço principal, com o mesmo caminho da página.
+www.integrafolha.com.br {
+	# Redirecionamento permanente (301).
+	redir https://integrafolha.com.br{uri} permanent
+}

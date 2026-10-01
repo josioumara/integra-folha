@@ -1,0 +1,90 @@
+/*
+  banco_inicio.css — a aparência que só o Início do Portal Interno tem (css/estilos.css e css/banco.css vêm antes).
+
+  Para que serve:
+    1. o filtro da fila "O que precisa de você": a empresa e o prazo da avaliação do banco, em cima da lista;
+    2. a tabela da carteira ("Sua carteira") caber no cartão sem rolar para o lado na largura comum do notebook
+       (1366 px) e também a 1920 px. A tabela montada comum não quebra a linha dentro das células; com nomes de
+       empresa compridos, ela crescia para fora do cartão e ganhava a barra de rolagem. Aqui as células quebram a
+       linha como um texto comum, e a tabela fica sempre da largura do cartão.
+  Um arquivo só desta tela, para não mexer no css/banco.css, que as outras telas do banco também usam.
+*/
+
+/* ===== 1. O filtro da fila ===== */
+
+/* A caixa do filtro: a empresa numa linha, os botões do prazo na outra e o resumo embaixo. */
+.filtro-da-fila {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* A empresa: o rótulo ao lado da lista de escolha. */
+.filtro-da-fila-empresa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* O rótulo "Empresa", pequeno e cinza, como os outros rótulos de filtro. */
+.filtro-da-fila-rotulo {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto-secundario);
+}
+
+/*
+  A lista de escolha da empresa: mais baixa que a caixa de digitação comum (que é feita para formulários) e ocupando o
+  resto da linha, sem passar da largura do cartão (min-width: 0 deixa a lista encolher dentro da linha).
+*/
+.filtro-da-fila-empresa .campo-entrada {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+}
+
+/* O resumo "Mostrando 2 de 7 itens" some quando está vazio (sem nenhum filtro ligado). */
+.filtro-da-fila [data-resumo-da-fila]:empty {
+  display: none;
+}
+
+/* Um nome de empresa muito comprido, sem espaço, também quebra no título e no detalhe de um item da fila (em qualquer
+   ponto), em vez de alargar o cartão. */
+.fila-trabalho .item-fila-titulo,
+.fila-trabalho .item-fila-detalhe {
+  overflow-wrap: anywhere;
+}
+
+/* O aviso de "nada com este filtro" (ou da fila vazia): uma linha da fila em cinza, sem o ícone e sem o botão. */
+.item-fila-vazio {
+  display: block;
+  color: var(--texto-secundario);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ===== 2. A tabela da carteira, sem rolar para o lado ===== */
+
+/* As células quebram a linha (a tabela montada comum não quebra), com um respiro lateral um pouco menor. */
+.tabela-carteira-do-inicio td {
+  white-space: normal;
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Os títulos das colunas, com o mesmo respiro lateral das células (e sem quebrar, como na tabela comum). */
+.tabela-carteira-do-inicio th {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Um nome de empresa muito comprido, sem espaço, também quebra (em qualquer ponto) em vez de alargar a coluna. */
+.tabela-carteira-do-inicio .link-empresa {
+  overflow-wrap: anywhere;
+}
+
+/* O selo da situação não quebra no meio: "Com pendência" fica numa linha só. */
+.tabela-carteira-do-inicio .selo {
+  white-space: nowrap;
+}

@@ -1,0 +1,4 @@
+# Só para os roteiros de clique (tests/e2e/). Fora do requirements.txt principal para não pesar a imagem do Docker.
+# Instalar no .venv do projeto:  python -m pip install -r tests/e2e/requirements.txt
+# O navegador é o Google Chrome do computador (channel="chrome"): não precisa de "playwright install".
+playwright==1.63.0

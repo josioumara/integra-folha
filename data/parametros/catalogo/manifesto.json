@@ -1,0 +1,8 @@
+[
+  {"arquivo": "EMP001_beneficios_aurora.md", "empresa_id": "EMP001", "titulo": "Pacote de benefícios Aurora", "vigencia_inicio": "2026-01-01", "vigencia_fim": "2026-12-31"},
+  {"arquivo": "EMP002_beneficios_horizonte.md", "empresa_id": "EMP002", "titulo": "Pacote de benefícios Horizonte", "vigencia_inicio": "2026-03-01", "vigencia_fim": "2027-02-28"},
+  {"arquivo": "EMP003_beneficios_brisa.md", "empresa_id": "EMP003", "titulo": "Pacote de benefícios Brisa", "vigencia_inicio": "2026-01-01", "vigencia_fim": "2026-12-31"},
+  {"arquivo": "EMP004_beneficios_vale_verde.md", "empresa_id": "EMP004", "titulo": "Pacote de benefícios Vale Verde", "vigencia_inicio": "2026-01-01", "vigencia_fim": "2026-12-31"},
+  {"arquivo": "EMP005_beneficios_prisma.md", "empresa_id": "EMP005", "titulo": "Pacote de benefícios Prisma", "vigencia_inicio": "2026-06-01", "vigencia_fim": "2027-05-31"},
+  {"arquivo": "EMP006_beneficios_atlantico.md", "empresa_id": "EMP006", "titulo": "Pacote de benefícios Atlântico", "vigencia_inicio": "2026-01-01", "vigencia_fim": "2026-12-31"}
+]

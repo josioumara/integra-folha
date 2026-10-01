@@ -1,0 +1,209 @@
+{
+  "id": "EXP-015",
+  "data": "2026-09-27",
+  "titulo": "Conferidor da Leitura, prova pequena: liga ou desliga (ADR-105)",
+  "tipo": "conferidor",
+  "pergunta": "Uma segunda IA (o modelo pequeno, de outro fornecedor que o do Leitor) acha erros de entendimento plantados na leitura, com poucos alarmes falsos, a ponto de valer ligar?",
+  "o_que_testamos": "Os 5 documentos em texto corrido (N3 a N5) do conjunto de desenvolvimento; em até 3 pessoas por documento, um erro plantado com valor que existe no documento (datas trocadas, CPF ou salário de outra pessoa). Conferidor v1 com o Amazon Nova 2 Lite (plano B, ADR-107), pelo Bedrock.",
+  "amostra": "5 documentos do conjunto de desenvolvimento (18 erros plantados); semente fixa",
+  "modo": "IA real",
+  "resultados": [
+    {
+      "nome": "N3",
+      "modelo": "nova-2-lite · N3_texto_simples",
+      "metricas": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "custo_usd": 0.0015187920000000001,
+        "segundos": 2.2,
+        "exemplos_de_suspeita": [
+          {
+            "pessoa": 3,
+            "campo": "cpf",
+            "motivo": "o documento diz que o CPF de Leandro Leal Siqueira é 49303341287, não 27937663219"
+          },
+          {
+            "pessoa": 6,
+            "campo": "valor_renda",
+            "motivo": "o documento diz que o salário de Irene Brandão Monteiro é R$ 4.972,00, não R$ 2.554,00"
+          },
+          {
+            "pessoa": 8,
+            "campo": "data_nascimento",
+            "motivo": "o documento diz que Sérgio Nogueira Valadares nasceu em 18/11/1983, não em 24/01/2025"
+          },
+          {
+            "pessoa": 8,
+            "campo": "data_admissao",
+            "motivo": "o documento diz que Sérgio Nogueira Valadares foi admitido em 24/01/2025, não em 18/11/1983"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "N4",
+      "modelo": "nova-2-lite · N4_texto_variado_a",
+      "metricas": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "custo_usd": 0.0017818460000000003,
+        "segundos": 1.8,
+        "exemplos_de_suspeita": [
+          {
+            "pessoa": 2,
+            "campo": "cpf",
+            "motivo": "o documento diz que o CPF de Nelson Brandão Duarte é 36183882500"
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "motivo": "o documento diz que o salário de Irene Brandão Pacheco é 5.842,00"
+          },
+          {
+            "pessoa": 6,
+            "campo": "data_nascimento",
+            "motivo": "o documento diz que Wesley Sampaio Pacheco nasceu em 22/05/1989"
+          },
+          {
+            "pessoa": 6,
+            "campo": "data_admissao",
+            "motivo": "o documento diz que Wesley Sampaio Pacheco começou em 17-07-2024"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "N4",
+      "modelo": "nova-2-lite · N4_texto_variado_b",
+      "metricas": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 0,
+        "suspeitas": 4,
+        "custo_usd": 0.0018297620000000002,
+        "segundos": 1.9,
+        "exemplos_de_suspeita": [
+          {
+            "pessoa": 1,
+            "campo": "data_nascimento",
+            "motivo": "o documento diz que a data de nascimento é 2000-10-25, não 12/06/2024"
+          },
+          {
+            "pessoa": 1,
+            "campo": "data_admissao",
+            "motivo": "o documento diz que a admissão é 2024-06-12, não 25/10/2000"
+          },
+          {
+            "pessoa": 3,
+            "campo": "cpf",
+            "motivo": "o documento diz que o CPF é 37399828962, não 80479821259"
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "motivo": "o documento diz que o salário é R$ 5.192, não 6.208,00"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "N5",
+      "modelo": "nova-2-lite · N5_texto_misturado_a",
+      "metricas": {
+        "plantados": 2,
+        "achados": 2,
+        "alarmes_falsos": 3,
+        "suspeitas": 5,
+        "custo_usd": 0.002608881,
+        "segundos": 3.1,
+        "exemplos_de_suspeita": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "motivo": "o documento diz que o salário é 2.613,00, mas também menciona vale-refeição de R$ 38,50 por dia, que não está incluído no campo valor_renda"
+          },
+          {
+            "pessoa": 2,
+            "campo": "valor_renda",
+            "motivo": "o documento diz que a renda inclui comissão de 3% sobre vendas e garantia mínima de R$ 800,00 nos três primeiros meses, que não estão incluídos no campo valor_renda"
+          },
+          {
+            "pessoa": 4,
+            "campo": "valor_renda",
+            "motivo": "o documento diz que o salário é 6.914,00, mas a leitura_da_ia colocou 2.613,00"
+          },
+          {
+            "pessoa": 6,
+            "campo": "cpf",
+            "motivo": "o documento diz que o CPF é 19384646300, mas a leitura_da_ia colocou 09005054514, que é o CPF de Caio Pacheco Bittencourt"
+          },
+          {
+            "pessoa": 8,
+            "campo": "cpf",
+            "motivo": "o documento diz que o CPF é 117 617 215 85, mas a leitura_da_ia colocou 11761721585 sem pontos"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "N5",
+      "modelo": "nova-2-lite · N5_texto_misturado_b",
+      "metricas": {
+        "plantados": 4,
+        "achados": 4,
+        "alarmes_falsos": 1,
+        "suspeitas": 5,
+        "custo_usd": 0.0024711829999999996,
+        "segundos": 2.7,
+        "exemplos_de_suspeita": [
+          {
+            "pessoa": 1,
+            "campo": "valor_renda",
+            "motivo": "o documento diz salário de R$ 9.367, não R$ 2.945,00"
+          },
+          {
+            "pessoa": 2,
+            "campo": "valor_renda",
+            "motivo": "o documento diz base salarial de R$ 2.945,00 fixo, mais comissão e garantia mínima, não apenas R$ 2.945,00"
+          },
+          {
+            "pessoa": 4,
+            "campo": "data_nascimento",
+            "motivo": "o documento diz nascimento 11/04/1986, não 03/10/2025"
+          },
+          {
+            "pessoa": 4,
+            "campo": "data_admissao",
+            "motivo": "o documento diz admissão 03/10/2025, não 11/04/1986"
+          },
+          {
+            "pessoa": 5,
+            "campo": "cpf",
+            "motivo": "o documento diz CPF 505 816 685 29, não 03799493859 (que é o CPF de Helena Assunção Moura)"
+          }
+        ]
+      }
+    },
+    {
+      "nome": "total",
+      "modelo": "nova-2-lite",
+      "metricas": {
+        "plantados": 18,
+        "achados": 18,
+        "alarmes_falsos": 4,
+        "suspeitas": 22,
+        "custo_usd": 0.010210464,
+        "acerto": 1.0
+      }
+    }
+  ],
+  "leitura": "Achou 18 dos 18 erros plantados; 22 suspeitas, das quais 4 caíram em valores certos (alarmes falsos), todas nos 2 documentos mais misturados (N5). Custo de cerca de US$ 0,002 por documento e 2 a 3 s.",
+  "decisao": "Ligar o conferidor (CONFERIDOR_DA_LEITURA=sim): um erro desses que passa leva o salário ou o CPF de uma pessoa para outra; um alarme falso custa uma pergunta de confirmação à empresa. A medição completa, no conjunto de prova, entra nos experimentos finais depois da aprovação da ferramenta.",
+  "custo_usd": 0.0102,
+  "fonte": "data/avaliacao/resultados/conferidor_prova_pequena_nova.json",
+  "commit": "2ce5fff"
+}

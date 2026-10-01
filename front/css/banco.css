@@ -1,0 +1,1912 @@
+/*
+  banco.css — aparência própria do Portal Interno (a área do especialista do banco).
+
+  Para que serve: as páginas do Portal Interno (banco_*.html) carregam PRIMEIRO o css/estilos.css, que
+  traz tudo o que é comum aos dois portais (cores, fontes, botões, cartões, abas, tabelas, janelas), e
+  DEPOIS este arquivo, que só acrescenta o que existe apenas do lado do banco. Assim nada se repete: mudar
+  a cor da marca no estilos.css muda os dois portais.
+
+  Como está organizado:
+    1. Faixa "uso interno" e cabeçalho do banco (as 5 abas e o menu da engrenagem "Configuração")
+    2. Início: cartões de número clicáveis, fila "O que precisa de você" e a carteira
+    3. Avaliar envios: fila, envio aberto, trilha da IA, alertas, decisão e janelas
+    4. Contas abertas: conferência do arquivo, resultado e histórico
+    5. Empresas: abas da ficha e catálogo
+    6. Uso das empresas: funil, linha do tempo e pista do motivo
+    7. Indicadores: as guias Painel de acompanhamento e Simulador de Rentabilidade
+    8. Acompanhamento dos agentes (Configuração): um cartão por agente
+    9. Telas pequenas (tablet e celular)
+
+  Identidade: a mesma do Portal Empresa. A única marca visual de "área interna" é a faixa escura no topo,
+  para o especialista nunca confundir a tela dele com a que a empresa vê.
+*/
+
+/* ===== 1. Faixa "uso interno" e cabeçalho do banco ===== */
+/* Faixa fina e escura acima do cabeçalho: lembra que esta área é só do banco. */
+.faixa-interna {
+  background: var(--texto-principal);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Conteúdo da faixa em linha: aviso à esquerda, carteira à direita. */
+.faixa-interna-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 32px;
+}
+
+/* Cadeado pequeno ao lado do aviso. */
+.faixa-interna .icone {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+
+/* No Portal Interno, a faixa escura e o cabeçalho grudam juntos no alto da tela. */
+.topo-banco {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* O cabeçalho branco já gruda por conta própria no estilos.css; aqui ele gruda junto com a faixa. */
+.topo-banco .barra-topo {
+  position: static;
+}
+
+/* As abas do banco ficam um pouco mais estreitas que as do Portal Empresa, para caberem numa linha no tablet. */
+.abas-banco {
+  gap: 2px;
+}
+
+/* Menos respiro dos lados e letra um pouco menor em cada aba. */
+.abas-banco .aba {
+  padding: 14px 10px;
+  font-size: 14px;
+  gap: 6px;
+}
+
+/* Ícones das abas do banco um pouco menores. */
+.abas-banco .aba .icone {
+  width: 18px;
+  height: 18px;
+}
+
+/* Numerozinho dentro de uma aba (ex.: quantos envios esperam avaliação). */
+.contador-aba {
+  min-width: 20px;
+  padding: 0 6px;
+  border-radius: var(--raio-botao);
+  background: var(--cor-marca);
+  color: var(--branco);
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+/*
+  Engrenagem "Sistema", no alto à direita, antes do nome de quem entrou: um botão que abre um menu pequeno com as
+  telas do Sistema (Parâmetros do layout, Acompanhamento dos agentes e Teto de custo com agentes;
+  js/menu_configuracao.js).
+  Discreta como o "Sair": ícone e texto cinza.
+*/
+/* O menu inteiro (botão + lista): a lista se posiciona embaixo do botão, tomando o menu como referência. */
+.menu-configuracao {
+  position: relative;
+}
+
+/* O botão da engrenagem: tira a borda, o fundo e a fonte que o navegador dá a todo <button>. */
+.botao-configuracao {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: var(--raio-botao);
+  background: transparent;
+  color: var(--texto-secundario);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Ícone da engrenagem no mesmo tamanho do ícone do "Sair". */
+.botao-configuracao .icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* A setinha para baixo depois do texto: diz que o botão abre um menu (desenhada com duas bordas giradas, sem ícone). */
+.botao-configuracao::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 2px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Menu aberto: a setinha vira para cima. */
+.botao-configuracao[aria-expanded="true"]::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+/* Ao passar o mouse, com o menu aberto, e nas telas do Sistema (botao-configuracao-marcado), a engrenagem
+   fica na cor da marca com fundo claro: é o jeito de mostrar "você está aqui", já que nenhuma aba do menu fica
+   marcada nessas telas. */
+.botao-configuracao:hover,
+.botao-configuracao[aria-expanded="true"],
+.botao-configuracao-marcado {
+  color: var(--cor-marca);
+  background: var(--cor-marca-clara);
+}
+
+/* Foco pelo teclado: um contorno na cor da marca, para a pessoa ver onde está. */
+.botao-configuracao:focus-visible,
+.menu-configuracao-item:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 2px;
+}
+
+/* A lista do menu: um cartão pequeno que aparece embaixo do botão, alinhado à direita dele, por cima da página. */
+.menu-configuracao-itens {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  min-width: 250px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--branco);
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  box-shadow: var(--sombra-elevada);
+}
+
+/* Fechado (atributo hidden): a lista não aparece. */
+.menu-configuracao-itens[hidden] {
+  display: none;
+}
+
+/* Cada item do menu: uma linha clicável inteira. */
+.menu-configuracao-item {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--texto-principal);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Item sob o mouse ou o da tela aberta (aria-current="page"): na cor da marca, com fundo claro. */
+.menu-configuracao-item:hover,
+.menu-configuracao-item[aria-current="page"] {
+  color: var(--cor-marca);
+  background: var(--cor-marca-clara);
+}
+
+/* Selo "Acesso restrito" na aba técnica: o especialista comum não entra nela. */
+.aba-restrita {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texto-secundario);
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+/* ===== 2. Início ===== */
+/* Área da página abaixo do título: blocos empilhados com respiro entre eles. */
+.area-banco {
+  padding-top: 32px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/*
+  Duas colunas do Início: a fila do dia (esquerda) e a carteira (direita, um pouco mais larga por causa da
+  tabela). "start" deixa cada painel com a altura do próprio conteúdo, sem esticar o mais curto.
+*/
+.grade-inicio-banco {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/*
+  Itens de grade podem encolher abaixo do tamanho do conteúdo. Sem isto, a tabela da carteira (que não quebra
+  linha) empurraria a coluna e a página inteira ficaria mais larga que o celular.
+*/
+.grade-inicio-banco > * {
+  min-width: 0;
+}
+
+/* No Portal Interno, os cartões de número são links: levam direto à tela que resolve aquele número. */
+a.cartao-numero {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* Ao passar o mouse, o cartão sobe um pouco e ganha sombra, mostrando que dá para clicar. */
+a.cartao-numero:hover {
+  box-shadow: var(--sombra-elevada);
+  transform: translateY(-2px);
+}
+
+/* Contorno de foco para quem navega pelo teclado. */
+a.cartao-numero:focus-visible {
+  outline: 2px solid var(--cor-marca);
+  outline-offset: 2px;
+}
+
+/* A fila "O que precisa de você": um item embaixo do outro. */
+.fila-trabalho {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cada item da fila: ícone, textos no meio e o botão de ação à direita. */
+.item-fila {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--branco);
+}
+
+/* Item urgente (ex.: envio parado há mais de 1 dia útil): faixa laranja à esquerda. */
+.item-fila-urgente {
+  border-left: 4px solid var(--amarelo-atencao);
+}
+
+/* Quadradinho do ícone de cada item. */
+.item-fila-icone {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca);
+}
+
+/* Ícone um pouco menor dentro do quadradinho. */
+.item-fila-icone .icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* Título do item (ex.: "Avaliar a inclusão da Aurora Alimentos"). */
+.item-fila-titulo {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Linha de apoio do item (ex.: "24 funcionários · enviado há 1 dia"), menor e cinza. */
+.item-fila-detalhe {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Tabela da carteira: a linha muda de cor ao passar o mouse (dá para abrir a empresa). */
+.tabela-carteira tbody tr:hover {
+  background: var(--azul-ceu-claro);
+}
+
+/* Nome da empresa na tabela, em negrito, com link para a ficha. */
+.link-empresa {
+  font-weight: 700;
+}
+
+/* Ao passar o mouse, o nome fica na cor da marca e sublinhado. */
+.link-empresa:hover {
+  color: var(--cor-marca);
+  text-decoration: underline;
+}
+
+/* Barra pequena de porcentagem dentro de uma célula (ex.: contas abertas). */
+.barra-celula {
+  display: inline-block;
+  width: 64px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--cor-marca-clara);
+  overflow: hidden;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Parte preenchida da barra: a largura vem da variável --porcentagem, definida na própria célula. */
+.barra-celula-preenchida {
+  display: block;
+  height: 100%;
+  width: calc(var(--porcentagem) * 1%);
+  background: var(--cor-marca);
+}
+
+/* Texto "sem dado" nas células: cinza e em itálico, para não parecer zero. */
+.celula-sem-dado {
+  color: var(--texto-secundario);
+  font-style: italic;
+}
+
+/* ===== 3. Avaliar envios ===== */
+/* A fila em cima e o envio aberto embaixo, na largura toda: a grade das pessoas ganha espaço para ler os campos. */
+.grade-envios {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* As colunas podem encolher (a tabela do envio não empurra a página). */
+.grade-envios > * {
+  min-width: 0;
+}
+
+/* Painel da fila: título, filtros e lista empilhados (em cima do envio aberto). */
+.painel-fila-envios {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Lista de envios, sem marcadores: os envios lado a lado, quantos couberem na largura. Com muitos envios, a lista
+   rola por dentro e não empurra o envio aberto para longe. */
+.lista-fila-envios {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+/* As listas de empresas da Carteira e do Endomarketing mostram só as últimas cadastradas (até 8, pela busca ou não):
+   cabem sem rolagem por dentro. As duas classes juntas vencem a regra de cima. */
+.lista-fila-envios.lista-de-empresas-recentes {
+  max-height: none;
+  overflow-y: visible;
+}
+
+/* O alto da Carteira (aba Empresas): o título à esquerda e, com a Carteira "congelada" na empresa escolhida, o
+   "Trocar empresa" à direita. Em tela estreita, o botão desce para baixo do título. */
+.cabecalho-da-carteira {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Cada envio da fila é um botão largo, com empresa, detalhe e selo empilhados. */
+.botao-envio-fila {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--branco);
+  font-family: var(--fonte-textos);
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Ao passar o mouse, a borda fica na cor da marca. */
+.botao-envio-fila:hover {
+  border-color: var(--cor-marca);
+}
+
+/* O envio aberto agora: fundo claro e borda na cor da marca. */
+.botao-envio-fila-aberto {
+  background: var(--cor-marca-clara);
+  border-color: var(--cor-marca);
+}
+
+/* Nome da empresa no item da fila. */
+.botao-envio-fila-empresa {
+  font-family: var(--fonte-titulos);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--texto-principal);
+}
+
+/* Tipo e quantidade, menores e cinza. */
+.botao-envio-fila-detalhe {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* O envio aberto: blocos empilhados com respiro entre eles. */
+.painel-envio-aberto {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cabeçalho do envio: textos à esquerda, selo do prazo à direita. */
+.envio-aberto-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Os quatro números do envio, lado a lado. */
+.mini-numeros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Cada número: valor grande em cima, legenda embaixo, num quadro azul-céu. */
+.mini-numero {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+}
+
+/* O valor do número. */
+.mini-numero strong {
+  font-family: var(--fonte-titulos);
+  font-size: 26px;
+  font-weight: 800;
+}
+
+/* A legenda do número. */
+.mini-numero span {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* Quadro "Como este envio chegou até você": borda cinza e fundo claro. */
+.trilha-envio {
+  padding: 18px 20px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--fundo-pagina);
+}
+
+/* Título do quadro, com o ícone da IA. */
+.trilha-envio-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* Ícone da IA no título, na cor da marca e menor. */
+.trilha-envio-titulo .icone {
+  width: 18px;
+  height: 18px;
+  color: var(--cor-marca);
+}
+
+/* Passos da trilha, numerados. */
+.trilha-envio-lista {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Número de cada passo na cor da marca. */
+.trilha-envio-lista li::marker {
+  color: var(--cor-marca);
+  font-weight: 700;
+}
+
+/* Subtítulo dos blocos do envio ("Alertas", "Funcionários"). */
+.subtitulo-envio {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+/* A busca de pessoas, com espaço embaixo. */
+.campo-busca-envio {
+  display: block;
+  margin: 12px 0 8px;
+}
+
+/* Alerta já decidido: a faixa da esquerda fica cinza (não pede mais nada). */
+.ajuste-decidido {
+  border-left-color: var(--linha-divisoria);
+}
+
+/* Nota do que foi decidido no alerta, em itálico. */
+.nota-decisao {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--texto-secundario);
+}
+
+/*
+  Barra da decisão no fim do envio: frase à esquerda, botões à direita. Continua flutuando no pé da tela enquanto a
+  pessoa rola a tabela, mas discreta, para não ocupar muito espaço num monitor menor: uma faixa baixa, fundo branco
+  com borda fina, frase pequena em até duas linhas e botões menores.
+*/
+.barra-decisao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px 8px 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--branco);
+  /* Fica grudada no pé da tela enquanto a pessoa rola a tabela. */
+  position: sticky;
+  bottom: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Frase que explica o que acontece ao aprovar: pequena, em até duas linhas (a frase inteira aparece ao passar o
+   mouse). */
+.barra-decisao-texto {
+  flex: 1;
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--texto-secundario);
+}
+
+/* Os dois botões lado a lado, sem quebrar de linha. */
+.barra-decisao-botoes {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Os botões da barra no tamanho pequeno. */
+.barra-decisao .botao {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+/* Os ícones dos botões da barra acompanham o tamanho menor. */
+.barra-decisao .botao .icone {
+  width: 18px;
+  height: 18px;
+}
+
+/*
+  Confirmação do "Aprovar N e devolver M" (ADR-121): ocupa a barra inteira no lugar da frase e dos botões normais,
+  com a mesma arrumação (frase à esquerda, botões à direita).
+*/
+.barra-decisao-confirmacao {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* A frase da confirmação em negrito e na cor do texto: é uma pergunta antes de uma decisão que não se desfaz. */
+.barra-decisao-confirmacao .barra-decisao-texto {
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+/* ----- Apontar problema por pessoa, idas e voltas e envio de devolução (ADR-121) ----- */
+
+/* Envio de devolução: a linha "Devolução do envio de 28/09 (2 pessoas)" embaixo do nome da empresa. */
+.linha-origem {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--amarelo-atencao);
+}
+
+/* A mesma origem no item da fila, menor. */
+.botao-envio-fila-origem {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--amarelo-atencao);
+}
+
+/* Célula da situação da pessoa: o selo e, embaixo, o recado do apontamento. */
+.celula-situacao-pessoa {
+  max-width: 280px;
+}
+
+/* O recado do problema apontado, embaixo do selo: até duas linhas (inteiro ao passar o mouse). */
+.recado-do-apontamento {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--texto-secundario);
+  white-space: normal;
+}
+
+/* Os blocos "Idas e voltas com o banco" e "Respostas aos seus apontamentos": quadro claro, como a trilha. */
+.bloco-idas-e-voltas,
+.bloco-respostas {
+  padding: 18px 20px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--branco);
+}
+
+/* Lista das rodadas, sem marcadores (cada linha tem a bolinha colorida do tipo). */
+.lista-idas-e-voltas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* Cada rodada: a bolinha, a data e o texto numa linha (quebra no celular). */
+.ida-e-volta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* A bolinha da rodada: cinza-azulada (envio), laranja (devolução) ou verde (aprovação). */
+.ida-e-volta::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--texto-secundario);
+}
+
+/* Devolvido e aprovado em parte: a cor de atenção (algo voltou para a empresa). */
+.ida-e-volta-devolvido::before,
+.ida-e-volta-aprovado_em_parte::before {
+  background: var(--amarelo-atencao);
+}
+
+/* Aprovado: a cor de sucesso. */
+.ida-e-volta-aprovado::before {
+  background: var(--verde-sucesso);
+}
+
+/* A data da rodada, em negrito e com largura fixa, para os textos ficarem alinhados. */
+.ida-e-volta-quando {
+  min-width: 96px;
+  font-weight: 700;
+}
+
+/* O texto da rodada ocupa o resto da linha. */
+.ida-e-volta-texto {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Lista das respostas da empresa, sem marcadores. */
+.lista-respostas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cada resposta: quem e o motivo, o seu recado e a resposta, empilhados, com a faixa verde à esquerda. */
+.resposta-ao-apontamento {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 12px;
+  border-left: 3px solid var(--verde-sucesso);
+  font-size: 14px;
+}
+
+/* O recado que o especialista mandou, menor e cinza. */
+.resposta-ao-apontamento-recado {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* O que a empresa respondeu, em destaque. */
+.resposta-ao-apontamento-resposta {
+  font-weight: 600;
+}
+
+/* Campo do formulário com espaço acima (dentro das janelas). */
+.campo-com-espaco {
+  margin-top: 14px;
+}
+
+/* Caixa de texto maior (mensagem para a empresa): pode crescer só para baixo. */
+textarea.campo-entrada {
+  resize: vertical;
+  font-size: 15px;
+}
+
+/* Aviso de formulário incompleto, em laranja. */
+.aviso-campo {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--amarelo-atencao);
+}
+
+/*
+  A caixa com rolagem da tabela vira a "referência" de posição dos elementos de dentro. Sem isto, o texto
+  escondido abaixo (que usa posição absoluta) se posicionaria pela página inteira e a alargaria no celular.
+*/
+.tabela-rolavel {
+  position: relative;
+}
+
+/* Texto só para leitores de tela: some da vista, mas continua sendo lido (acessibilidade). */
+.texto-leitor-de-tela {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ===== 4. Contas abertas ===== */
+/* Cartão da conferência em andamento. */
+.painel-leitura-contas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Passos da conferência, um embaixo do outro, com um círculo à esquerda. */
+.passos-leitura {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--texto-secundario);
+}
+
+/* Círculo cinza antes de cada passo (vira visto verde quando o passo termina). */
+.passos-leitura li::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  border: 2px solid var(--linha-divisoria);
+  border-radius: 50%;
+  vertical-align: -2px;
+}
+
+/* Passo feito: texto escuro. */
+.passo-leitura-feito {
+  color: var(--texto-principal);
+}
+
+/* Passo feito: o círculo fica verde e cheio. */
+.passos-leitura .passo-leitura-feito::before {
+  border-color: var(--verde-sucesso);
+  background: var(--verde-sucesso);
+}
+
+/* Número "bom" (contas novas): quadro verde claro. */
+.mini-numero-sucesso {
+  background: var(--verde-sucesso-claro);
+}
+
+/* O valor do número "bom", em verde. */
+.mini-numero-sucesso strong {
+  color: var(--verde-sucesso);
+}
+
+/* Número que pede atenção (CPF inválido): quadro laranja claro. */
+.mini-numero-atencao {
+  background: var(--amarelo-atencao-claro);
+}
+
+/* O valor do número de atenção, em laranja. */
+.mini-numero-atencao strong {
+  color: var(--amarelo-atencao);
+}
+
+/* Coluna "Novas" da tabela: verde e em negrito. */
+.celula-novas {
+  color: var(--verde-sucesso);
+  font-weight: 700;
+}
+
+/* Linha do total: em negrito, com fundo cinza claro. */
+.linha-total td {
+  font-weight: 800;
+  background: var(--fundo-pagina);
+}
+
+/* "Ver as 7 linhas que não ganham baixa": abre e fecha (o <details> é pronto do navegador). */
+.detalhes-linhas-fora summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--cor-marca);
+}
+
+/* A lista das linhas que ficaram de fora. */
+.lista-linhas-fora {
+  margin: 12px 0;
+  padding-left: 20px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Nota do sigilo: escudo verde e texto pequeno. */
+.nota-sigilo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* O escudo da nota, verde e menor. */
+.nota-sigilo .icone {
+  width: 20px;
+  height: 20px;
+  color: var(--verde-sucesso);
+}
+
+/* Barra de decisão que NÃO gruda no pé da tela (a tela de contas é curta). */
+.barra-decisao-parada {
+  position: static;
+}
+
+/* Linha nova do histórico, destacada em verde claro. */
+.linha-nova td {
+  background: var(--verde-sucesso-claro);
+  font-weight: 700;
+}
+
+/* ===== 5. Empresas ===== */
+/* Título da página com um botão à direita (ex.: "Cadastrar empresa"). */
+.cabecalho-com-botao {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Linha das abas da ficha, com uma linha fina embaixo. */
+.abas-ficha {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--linha-divisoria);
+}
+
+/* Cada aba da ficha: texto cinza, linha na cor da marca embaixo quando ativa. */
+.aba-ficha {
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  font-family: var(--fonte-titulos);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Aba ao passar o mouse. */
+.aba-ficha:hover {
+  color: var(--texto-principal);
+}
+
+/* Aba escolhida: na cor da marca, com a linha na cor da marca embaixo. */
+.aba-ficha-ativa {
+  color: var(--cor-marca);
+  border-bottom-color: var(--cor-marca);
+}
+
+/* Conteúdo de cada aba: blocos empilhados. */
+.conteudo-aba-ficha {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Frase que explica a aba. */
+.descricao-aba {
+  font-size: 14px;
+  color: var(--texto-secundario);
+  max-width: 560px;
+}
+
+/* Aviso de catálogo incompleto: fundo laranja claro. */
+.aviso-incompleto {
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--amarelo-atencao-claro);
+  color: var(--amarelo-atencao);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===== 6. Uso das empresas ===== */
+/* O funil: etapas uma embaixo da outra. */
+.funil {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cada etapa: nome à esquerda, número à direita e a barra embaixo, ocupando a largura toda. */
+.etapa-funil {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  font-size: 14px;
+}
+
+/* A barra ocupa as duas colunas (a linha inteira). */
+.etapa-funil-barra {
+  grid-column: 1 / -1;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--fundo-pagina);
+  overflow: hidden;
+}
+
+/* A parte cheia da barra: largura pela variável --porcentagem, definida pelo js em cada barra. */
+.etapa-funil-barra::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: calc(var(--porcentagem) * 1%);
+  background: var(--cor-marca);
+  border-radius: 6px;
+}
+
+/* A etapa logo depois da maior perda: barra e número em laranja. */
+.etapa-funil-perda .etapa-funil-barra::after {
+  background: var(--amarelo-atencao);
+}
+
+/* O número da etapa com a maior perda, em laranja. */
+.etapa-funil-perda strong {
+  color: var(--amarelo-atencao);
+}
+
+/* A régua (B0, sem IA) na aba Técnico: barra cinza, para não parecer um dos modelos. */
+.etapa-funil-regua .etapa-funil-barra::after {
+  background: var(--texto-secundario);
+}
+
+/* Linha do tempo: um pouco mais de espaço entre os acontecimentos. */
+.linha-do-tempo-uso {
+  gap: 10px;
+}
+
+/* Pista do motivo: lâmpada e texto num quadro azul-céu. */
+.pista-motivo {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--azul-ceu-claro);
+  font-size: 14px;
+}
+
+/* A lâmpada, na cor da marca e menor. */
+.pista-motivo .icone {
+  width: 20px;
+  height: 20px;
+  color: var(--cor-marca);
+}
+
+/* O link para a ficha não estica. */
+.painel-acompanhar > .botao {
+  align-self: flex-start;
+}
+
+/* Linha da tabela que pede atenção (empresa parada): fundo laranja bem claro. */
+.linha-atencao td {
+  background: var(--amarelo-atencao-claro);
+}
+
+/* ===== 7. Indicadores (Painel de acompanhamento e Simulador de Rentabilidade) ===== */
+/* Três números do ganho lado a lado. */
+.mini-numeros-tres {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ===== 8. Acompanhamento dos agentes (Configuração; banco_agentes.html) ===== */
+/* Os cartões dos agentes lado a lado: quantos couberem, cada um com pelo menos 260 px (no celular, um por linha). */
+.grade-agentes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Um cartão por agente: o nome no alto, a frase do que ele faz, os números e os detalhes embaixo. */
+.cartao-agente {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Linha do alto do cartão: o nome do agente (o espaço à direita fica para um selo, se um dia houver). */
+.cartao-agente-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* O nome do agente. */
+.cartao-agente-nome {
+  margin: 0;
+  font-family: var(--fonte-titulos);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* A frase do que o agente faz, em cinza. */
+.cartao-agente-descricao {
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: 14px;
+}
+
+/* Quantas vezes o agente trabalhou: o número grande. */
+.cartao-agente-total {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cartao-agente-total strong {
+  font-family: var(--fonte-titulos);
+  font-size: 26px;
+  font-weight: 800;
+}
+
+/* As três contagens (deram certo, com erro, barradas pelo guardrail) numa linha que quebra se faltar espaço. */
+.cartao-agente-contagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Os detalhes (duração, última execução e custo): rótulo à esquerda, valor à direita. */
+.cartao-agente-detalhes {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--linha-divisoria);
+  font-size: 13px;
+}
+
+/* Uma linha de detalhe. */
+.cartao-agente-detalhes div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+/* O rótulo do detalhe, em cinza. */
+.cartao-agente-detalhes dt {
+  color: var(--texto-secundario);
+}
+
+/* O valor do detalhe, em negrito e sem a margem que o navegador dá ao <dd>. */
+.cartao-agente-detalhes dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* O aviso do agente sem trabalho para mostrar (o trabalho ainda não é gravado nas execuções, ou nenhuma execução com o
+   modelo real no período): sem números, num fundo cinza claro. */
+.cartao-agente-sem-registro {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--fundo-pagina);
+  color: var(--texto-secundario);
+  font-size: 13px;
+}
+
+/* O recado que ocupa a grade inteira (servidor fora do ar ou nenhum agente). */
+.grade-agentes-recado {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--texto-secundario);
+}
+
+/* A barra do período: o título e as pílulas numa linha; as datas do "De/até" embaixo. */
+.barra-periodo-agentes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* A linha do título "Período" e das pílulas, que quebra se faltar espaço (no celular, as pílulas descem). */
+.barra-periodo-agentes-linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/* O título "Período". */
+.barra-periodo-agentes-titulo {
+  margin: 0;
+  font-family: var(--fonte-titulos);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* O período que está valendo, por extenso, em cinza. */
+.barra-periodo-agentes-texto {
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: 14px;
+}
+
+/* As duas datas do "De/até" e o botão Aplicar, lado a lado (quebram no celular). */
+.periodo-de-ate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* Cada data: o rótulo em cima da caixa. */
+.periodo-de-ate-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* A caixa da data, mais baixa que as caixas dos formulários. */
+.periodo-de-ate .campo-entrada {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* O aviso de data errada (ex.: o começo depois do fim), na cor da marca, ocupando a linha inteira. */
+.periodo-de-ate-erro {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--cor-marca);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* O texto que explica a aceitação (acurácia na operação × contra gabarito), logo acima dos cartões. */
+.texto-aceitacao-agentes {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--azul-ceu-claro);
+  font-size: 14px;
+}
+
+/* O bloco da aceitação no pé de cada cartão: separado dos detalhes por uma linha. */
+.cartao-agente-aceitacao {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--linha-divisoria);
+}
+
+/* A linha "Aceitação" com o percentual (ou "não medido") à direita. */
+.cartao-agente-aceitacao-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* O percentual das aprovadas sem mudança: o número grande do bloco. */
+.cartao-agente-aceitacao-topo strong {
+  font-family: var(--fonte-titulos);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--texto-principal);
+}
+
+/* "não medido" no lugar do percentual: menor e em cinza. */
+.cartao-agente-aceitacao-topo strong.celula-sem-dado {
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* A legenda do percentual e a fonte do número, em letra pequena e cinza. */
+.cartao-agente-aceitacao-legenda,
+.cartao-agente-aceitacao-fonte {
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: 12px;
+}
+
+/* ===== 9. Telas pequenas (tablet e celular) ===== */
+/* Tablets: a fila e a carteira ficam uma embaixo da outra. */
+@media (max-width: 1024px) {
+  /* Uma coluna só. */
+  .grade-inicio-banco,
+  .grade-envios {
+    grid-template-columns: 1fr;
+  }
+
+  /*
+    Em uma coluna, a fila de envios deixa de acompanhar a rolagem. A barra de decisão, discreta, continua
+    grudada no pé da tela (só no celular ela para; ver abaixo).
+  */
+  .painel-fila-envios {
+    position: static;
+  }
+
+  /* Os quatro números do envio em duas colunas. */
+  .mini-numeros {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celulares. */
+@media (max-width: 640px) {
+  /* A barra de decisão para de flutuar e quebra a linha: frase em cima, botões embaixo. */
+  .barra-decisao {
+    position: static;
+    flex-wrap: wrap;
+  }
+  /* Uma coluna só: os números do ganho. */
+  .mini-numeros-tres {
+    grid-template-columns: 1fr;
+  }
+
+  /* A engrenagem fica só com o ícone; o nome "Configuração" continua para leitores de tela (aria-label). */
+  .botao-configuracao-texto {
+    display: none;
+  }
+
+  /* O menu da engrenagem ocupa a largura da linha do alto (a lista embaixo do botão sairia pela borda da tela): a
+     linha vira a referência da posição, e a lista vai de um lado ao outro dela. */
+  .barra-topo-linha {
+    position: relative;
+  }
+
+  .menu-configuracao {
+    position: static;
+  }
+
+  .menu-configuracao-itens {
+    left: 0;
+    right: 0;
+    min-width: 0;
+  }
+
+  /* A faixa interna mostra só o aviso; a carteira some por falta de espaço. */
+  .faixa-interna-carteira {
+    display: none;
+  }
+
+  /* Na fila, o botão desce para uma segunda linha, embaixo dos textos. */
+  .item-fila {
+    grid-template-columns: auto 1fr;
+  }
+
+  /* O botão ocupa a segunda linha, alinhado com os textos. */
+  .item-fila .botao {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+/*
+  Aba Indicadores: cada guia (Painel de acompanhamento, Simulador de Rentabilidade) empilha os blocos com o mesmo espaço da área
+  do banco. O atributo hidden esconde a guia que não está escolhida.
+*/
+.painel-indicadores {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ===== Tela "Configuração": os Parâmetros do layout que o banco quer receber (ADR-76) ===== */
+
+/* Os dois cartões da tela, um embaixo do outro. */
+.parametros-do-layout,
+.registro-parametros {
+  margin-bottom: 24px;
+}
+
+/* A busca de campo, à direita do título. */
+.busca-parametros {
+  max-width: 260px;
+}
+
+/* A legenda do que a marcação de dado pessoal protegido faz. */
+.legenda-protegido {
+  margin: 12px 0 16px;
+}
+
+/* A linha de título de cada grupo de campos ("Titular", "Endereço residencial"...). */
+.linha-grupo-parametro th {
+  background: var(--azul-ceu-claro);
+  font-size: 13px;
+  text-align: left;
+}
+
+/* O nome técnico do campo, em letra de código. */
+.celula-nome-parametro {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+}
+
+/* As caixas de marcar, no meio da célula. */
+.celula-marcar {
+  text-align: center;
+}
+
+/* "Editar textos" e "Tirar", lado a lado. */
+.celula-acoes-parametro {
+  white-space: nowrap;
+}
+
+.celula-acoes-parametro .botao-descartar + .botao-descartar {
+  margin-left: 12px;
+}
+
+/* Os textos que a IA lê, em grade, na linha que abre embaixo do campo. */
+.textos-do-parametro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 16px;
+  padding: 8px 0;
+}
+
+/* O formulário do campo novo, em linha. */
+.formulario-novo-campo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 16px;
+  align-items: end;
+}
+
+/* O que mudou em cada versão, uma frase por linha. */
+.lista-mudancas {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+/* Tela Parâmetros simples: busca e "+ Novo campo" lado a lado; a janela do campo. */
+.acoes-parametros {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.janela-campo {
+  width: min(760px, 94vw);
+  border: none;
+  border-radius: var(--raio-cartao);
+  box-shadow: var(--sombra-elevada);
+  padding: 24px;
+}
+
+.janela-campo::backdrop {
+  background: rgba(34, 34, 34, 0.45);
+}
+
+.grade-formulario-campo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px 16px;
+  margin: 12px 0;
+}
+
+.marcacoes-do-campo {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.botao-tirar-campo {
+  margin-left: auto;
+}
+
+/* CNPJs de filiais e do grupo (ADR-77): o bloco ocupa a largura da aba Dados, abaixo dos dois quadros. */
+.bloco-cnpjs {
+  margin-bottom: 16px;
+}
+
+/* O "(opcional)" do título, sem o destaque do título. */
+.bloco-cnpjs .texto-leve {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--texto-secundario);
+}
+
+/* O texto de "Quem registrou" quebra a linha, para o botão "Tirar" caber na tabela sem rolar para o lado. */
+.bloco-cnpjs .tabela-montada td {
+  white-space: normal;
+}
+
+/* O CNPJ e o botão "Tirar" ficam inteiros, numa linha só. */
+.bloco-cnpjs .tabela-montada td:first-child,
+.bloco-cnpjs .tabela-montada td:last-child {
+  white-space: nowrap;
+}
+
+/* A linha "Nenhum CNPJ além do principal." */
+.bloco-cnpjs td.texto-leve {
+  color: var(--texto-secundario);
+}
+
+/* O formulário de adicionar: CNPJ, tipo e botão lado a lado (quebra no celular). */
+.formulario-cnpj {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* ===== Aba Endomarketing (banco_endomarketing.html, ADR-115): o material, a arte e o kit de marca ===== */
+/* A regra da tela, sempre à vista: "A empresa só vê o que você publicar". Faixa azul-céu, com o ícone do olho. */
+.aviso-so-o-publicado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+  color: var(--texto-principal);
+  font-size: 14px;
+}
+
+/* O ícone do olho, na cor da marca e sem encolher. */
+.aviso-so-o-publicado .icone {
+  flex-shrink: 0;
+  color: var(--cor-marca);
+}
+
+/* A coluna da direita: o formulário, o rascunho e os materiais, empilhados com respiro. */
+.coluna-endomarketing {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* As duas guias da empresa (Base de Conhecimento e Material para Comunicação), no tamanho das guias dos Indicadores. */
+.guias-endomarketing .aba-ficha {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  font-size: 16px;
+}
+
+/* No celular, as duas guias dividem a largura e o nome pode quebrar em duas linhas. */
+@media (max-width: 640px) {
+  .guias-endomarketing .aba-ficha {
+    flex: 1;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    padding: 10px 8px;
+    font-size: 15px;
+  }
+}
+
+/* O conteúdo de cada guia (Base de Conhecimento e Material para Comunicação): cartões empilhados. */
+.secao-endomarketing {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* A faixa do topo, escolhendo: título, busca e a lista das empresas, empilhados. */
+.escolha-da-empresa {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* A faixa do topo, com a empresa escolhida: o ícone, o nome e os números, e o "Trocar empresa" à direita. */
+.empresa-escolhida {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* O nome e os números ocupam o espaço do meio (o botão fica na ponta). */
+.empresa-escolhida-textos {
+  flex: 1;
+  min-width: 0;
+}
+
+/* No celular, o botão desce para baixo do nome. */
+@media (max-width: 640px) {
+  .empresa-escolhida {
+    flex-wrap: wrap;
+  }
+}
+
+/* O aviso "Este kit fica ligado à inclusão ...", com o botão de desfazer ao lado. */
+.aviso-inclusao-do-kit {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--azul-ceu-claro);
+  font-size: 14px;
+}
+
+/* Na coluna do banco, os títulos dos materiais ocupam o espaço do meio e as ações quebram a linha se precisar. */
+.coluna-endomarketing .envio-textos {
+  flex: 1;
+  min-width: 0;
+}
+
+/* As ações do material (até 4 botões) quebram a linha, alinhadas à direita. */
+.coluna-endomarketing .material-acoes {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* A janela "Ver material" é mais larga que as outras: tem o texto e a arte. */
+.janela-material {
+  width: min(760px, calc(100% - 32px));
+}
+
+/* A arte publicada, dentro da janela: do tamanho da janela, com cantos arredondados. */
+.arte-publicada {
+  display: block;
+  max-width: 100%;
+  max-height: 480px;
+  margin-top: 16px;
+  border-radius: 8px;
+  box-shadow: var(--sombra-cartao);
+}
+
+/* O kit de marca, só na KB "Kit da marca" (js/kit_da_marca.js): as peças abaixo servem à prévia
+   "Kit em uso" da guia do material, ao editor da KB e à janela da KB. */
+
+/* Amostras de cor do kit, lado a lado. */
+.amostras-cores {
+  display: flex;
+  gap: 6px;
+}
+
+/* Cada amostra: um círculo com borda fina (para o branco aparecer). */
+.amostras-cores span {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--linha-divisoria);
+}
+
+/* A área da prévia do logo. */
+.previa-do-logo-area {
+  margin: 8px 0;
+}
+
+/* A prévia do logo: pequena, sobre fundo claro, sem deformar a imagem. */
+.previa-do-logo {
+  display: block;
+  max-width: 240px;
+  max-height: 96px;
+  padding: 8px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 8px;
+  background: var(--branco);
+  object-fit: contain;
+}
+
+/* O campo do arquivo e o botão de tirar o logo, lado a lado (quebram no celular). */
+.acoes-do-logo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* "Kit em uso", embaixo do título "Novo material" (só leitura): o logo, o nome, as cores e o link para a KB. */
+.kit-em-uso {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 12px 16px;
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 12px;
+  background: var(--azul-ceu-claro);
+}
+
+/* O logo em uso: menor que o da prévia do editor, para caber na faixa. */
+.kit-em-uso .previa-do-logo {
+  max-width: 160px;
+  max-height: 56px;
+  padding: 4px;
+}
+
+/* O nome e as cores ocupam o espaço do meio (o link fica na ponta). */
+.kit-em-uso-textos {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* "Kit em uso: próprio da ...": em destaque. */
+.kit-em-uso-nome {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+/* As amostras e o texto das cores e do logo, na mesma linha. */
+.kit-em-uso-cores {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* ===== Janela "Carregar Contas Abertas" (js/janela_contas_abertas.js) ===== */
+/* A janela é larga (a tabela das colunas e a das divergências precisam de espaço) e rola por dentro. */
+.janela-contas-abertas {
+  width: min(1040px, calc(100% - 32px));
+  max-height: 92vh;
+  overflow: auto;
+}
+
+/* O X de fechar em texto (a janela abre em telas com ícones diferentes). */
+.botao-fechar-janela-texto {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* A área de arrastar, mais baixa que a da tela de envio (a explicação vem logo abaixo). */
+.zona-envio-janela-contas {
+  padding: 28px 24px;
+}
+
+/* Os dois blocos de explicação: um embaixo do outro; lado a lado em tela larga. */
+.explicacao-contas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Tela larga: o formato (mais largo, por causa da tabela) e as conferências lado a lado. */
+@media (min-width: 900px) {
+  .explicacao-contas {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+/* Cada bloco de explicação: fundo claro e cantos arredondados; "min-width: 0" deixa a tabela rolar dentro dele. */
+.bloco-explicacao-contas {
+  background: var(--azul-ceu-claro);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 0;
+}
+
+/* O título de cada bloco ("Formato do arquivo esperado", "O que o sistema confere"). */
+.titulo-explicacao-contas {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+
+/* As listas de regras e de conferências, em letra um pouco menor. */
+.lista-regras-contas,
+.lista-conferencias-contas {
+  padding-left: 18px;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+/* Um respiro entre as conferências da lista. */
+.lista-conferencias-contas li {
+  margin-bottom: 4px;
+}
+
+/* O nome de cada grupo de conferências ("No arquivo", "Em cada linha"...). */
+.grupo-conferencias-contas h4 {
+  font-size: 15px;
+  margin: 12px 0 4px;
+}
+
+/* O cabeçalho exato e o exemplo do arquivo, em letra de máquina, sem quebrar a linha (rola de lado). */
+.codigo-layout-contas {
+  background: var(--branco);
+  border: 1px solid var(--linha-divisoria);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 0 0 12px;
+}
+
+/* A tabela das colunas, em letra menor. */
+.tabela-formato-contas {
+  font-size: 13px;
+}
+
+/* O rótulo "Exemplo de arquivo certo:". */
+.rotulo-exemplo-contas {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0 4px;
+}
+
+/* A frase "qualquer problema recusa o arquivo", em destaque. */
+.aviso-trava-contas {
+  color: var(--cor-marca-escura);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* O aviso do resultado (recusado ou certo), no alto de cada etapa. */
+.aviso-contas {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+/* Recusado: fundo claro e texto na cor da marca. */
+.aviso-contas-recusado {
+  background: var(--cor-marca-clara);
+  color: var(--cor-marca-escura);
+}
+
+/* Certo: verde de sucesso. */
+.aviso-contas-certo {
+  background: var(--verde-sucesso-claro);
+  color: var(--verde-sucesso);
+}
+
+/* A contagem por tipo de divergência: etiquetas lado a lado, que quebram linha. */
+.etiquetas-divergencias-contas {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+/* A tabela das divergências rola por dentro quando é longa (os botões ficam à vista logo abaixo). */
+.tabela-divergencias-contas {
+  max-height: 45vh;
+  overflow: auto;
+}
+
+/* O CPF não quebra no meio. */
+.tabela-divergencias-contas .celula-cpf {
+  white-space: nowrap;
+}
+
+/* O texto "Conferindo…" enquanto o servidor confere. */
+.texto-conferindo-contas {
+  color: var(--texto-secundario);
+  padding: 24px 0;
+}
+
+/* Nas tabelas da janela, o texto quebra linha (o formato e o "como corrigir" são frases): nada fica cortado. */
+.tabela-formato-contas td,
+.tabela-divergencias-contas td {
+  white-space: normal;
+}
+
+/* O nome da coluna, o exemplo e o CPF continuam numa linha só. */
+.tabela-formato-contas td code,
+.tabela-divergencias-contas td.celula-cpf {
+  white-space: nowrap;
+}
+
+/* ===== Ficha da pessoa do envio ===== */
+/* O bloco "Avaliação do banco" ocupa as duas colunas da ficha, depois dos grupos de campos. */
+.ficha-grupo-avaliacao {
+  grid-column: 1 / -1;
+  background: var(--amarelo-atencao-claro);
+}
+
+/* Cada item da avaliação (o que a empresa confirmou, o problema apontado), um embaixo do outro. */
+.ficha-avaliacao-lista {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+/* ===== Baixar a lista do envio ===== */
+/* A busca e o botão "Baixar a lista" na mesma linha; num espaço estreito, o botão desce. */
+.linha-busca-e-baixar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* A busca ocupa o que sobra da linha. */
+.linha-busca-e-baixar .campo-busca {
+  flex: 1;
+  min-width: 240px;
+}

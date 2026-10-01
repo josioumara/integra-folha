@@ -1,0 +1,32 @@
+{
+  "id": "EXP-005",
+  "data": "2026-09-24",
+  "titulo": "Consultor: agente único x supervisor (MOCK)",
+  "tipo": "consultor",
+  "pergunta": "O supervisor com subagentes vale o custo a mais de chamadas?",
+  "o_que_testamos": "As duas arquiteturas nos 12 casos golden (6 com resposta, 6 de controle).",
+  "amostra": "12 casos golden",
+  "modo": "MOCK",
+  "resultados": [
+    {
+      "nome": "supervisor + 3 subagentes",
+      "modelo": "simulador (MOCK)",
+      "metricas": {
+        "acertos": "12 de 12",
+        "chamadas_por_caso": 2.25
+      }
+    },
+    {
+      "nome": "agente único",
+      "modelo": "simulador (MOCK)",
+      "metricas": {
+        "acertos": "12 de 12",
+        "chamadas_por_caso": 1.42
+      }
+    }
+  ],
+  "leitura": "Em MOCK as duas acertam tudo (mesmo simulador); o preço estrutural do supervisor é ~67% mais chamadas.",
+  "decisao": "Supervisor mantido; exatidão real a medir com IA (ADR-60).",
+  "custo_usd": 0.0,
+  "fonte": "data/avaliacao/resultados/consultor.json"
+}

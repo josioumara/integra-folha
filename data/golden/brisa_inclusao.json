@@ -1,0 +1,58 @@
+{
+  "arquivo": "brisa_inclusao.xlsx",
+  "empresa_id": "EMP003",
+  "tipo_carga": "INCLUSAO",
+  "desafio": "nomes de colunas alternativos; CPF e matrícula gravados como número (zeros à esquerda perdidos)",
+  "formato": {
+    "tipo": "xlsx",
+    "separador": null,
+    "codificacao": null,
+    "linha_do_cabecalho": 1
+  },
+  "mapeamento": {
+    "Nº": "numero_residencial",
+    "Email Institucional": "email_corporativo",
+    "CEP Res.": "cep_residencial",
+    "Setor": "bairro_residencial",
+    "ID Funcionário": "matricula",
+    "Filial": "codigo_unidade",
+    "Aniversário": "data_nascimento",
+    "Endereço Casa": "logradouro_residencial",
+    "Mês de Referência": "data_referencia_renda",
+    "Título do Cargo": "cargo",
+    "Cidade Residência": "municipio_residencial",
+    "Remuneração": "valor_renda",
+    "Início": "data_admissao",
+    "Estado Residência": "uf_residencial",
+    "CLT/Pró-labore": "tipo_renda",
+    "Data de Efetivação": "data_efetivacao",
+    "Grau de Instrução": "escolaridade",
+    "Município Com.": "municipio_comercial",
+    "CPF do Colaborador": "cpf",
+    "Bairro Com.": "bairro_comercial",
+    "Estado Empresa": "uf_comercial",
+    "Funcionário": "nome_completo",
+    "CNPJ": "cnpj_empregador",
+    "CEP Trabalho": "cep_comercial",
+    "Endereço de E-mail": "email_pessoal",
+    "Endereço Com.": "logradouro_comercial",
+    "Num. Trabalho": "numero_comercial",
+    "Departamento": "nome_unidade",
+    "Sexo": "sexo"
+  },
+  "colunas_ambiguas": {},
+  "colunas_extras": [],
+  "funcionario_ids": [
+    "EMP003-0029",
+    "EMP003-0030",
+    "EMP003-0001"
+  ],
+  "erros": [
+    {
+      "linha": 3,
+      "campo": "cpf",
+      "tipo": "JA_HOMOLOGADO_NA_EMPRESA",
+      "valor_no_arquivo": "51168685400"
+    }
+  ]
+}

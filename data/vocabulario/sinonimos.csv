@@ -1,0 +1,272 @@
+campo,termo
+matricula,Matrícula
+matricula,Mat.
+matricula,Registro
+matricula,Nº Registro
+matricula,Cód. Funcionário
+matricula,ID Funcionário
+matricula,Chapa
+matricula,Código do Colaborador
+nome_completo,Nome
+nome_completo,Nome Completo
+nome_completo,Colaborador
+nome_completo,Funcionário
+nome_completo,Nome do Empregado
+nome_completo,Empregado
+nome_completo,Nome Func.
+cpf,CPF
+cpf,Nº CPF
+cpf,CPF do Colaborador
+cpf,Documento CPF
+cpf,Cadastro Pessoa Física
+cpf,CPF Func
+data_nascimento,Data de Nascimento
+data_nascimento,Dt. Nasc.
+data_nascimento,Nascimento
+data_nascimento,Data Nasc
+data_nascimento,DN
+data_nascimento,Aniversário
+sexo,Sexo
+sexo,Gênero
+sexo,Sexo Biológico
+sexo,Sx
+sexo,Genero Func
+sexo,Sexo (M/F)
+estado_civil,Estado Civil
+estado_civil,Est. Civil
+estado_civil,Situação Conjugal
+estado_civil,EC
+estado_civil,Estado Civ.
+estado_civil,Estado Civil Func
+nome_mae,Nome da Mãe
+nome_mae,Mãe
+nome_mae,Filiação Materna
+nome_mae,Nome Mae
+nome_mae,Genitora
+nome_mae,Filiação (Mãe)
+nacionalidade,Nacionalidade
+nacionalidade,Nacion.
+nacionalidade,País de Nacionalidade
+nacionalidade,Nacionalidade Func
+nacionalidade,Cidadania
+nacionalidade,País Origem
+municipio_naturalidade,Naturalidade
+municipio_naturalidade,Cidade Natal
+municipio_naturalidade,Município de Nascimento
+municipio_naturalidade,Natural de
+municipio_naturalidade,Cidade Nasc.
+municipio_naturalidade,Local de Nascimento
+uf_naturalidade,UF Naturalidade
+uf_naturalidade,UF Nasc.
+uf_naturalidade,Estado de Nascimento
+uf_naturalidade,UF Natal
+uf_naturalidade,Estado Natal
+uf_naturalidade,UF de Origem
+nis_pis,PIS
+nis_pis,NIS
+nis_pis,PIS/PASEP
+nis_pis,Nº PIS
+nis_pis,NIT
+nis_pis,Número PIS
+escolaridade,Escolaridade
+escolaridade,Grau de Instrução
+escolaridade,Instrução
+escolaridade,Nível de Escolaridade
+escolaridade,Formação
+escolaridade,Grau Escolar
+tipo_documento,Tipo de Documento
+tipo_documento,Tipo Doc.
+tipo_documento,Documento de Identificação
+tipo_documento,Tp Documento
+tipo_documento,Tipo Identidade
+tipo_documento,Doc. Tipo
+numero_documento,RG
+numero_documento,Nº Documento
+numero_documento,Número do RG
+numero_documento,Identidade
+numero_documento,Nº Identidade
+numero_documento,Documento Nº
+orgao_emissor,Órgão Emissor
+orgao_emissor,Org. Emissor
+orgao_emissor,Emissor
+orgao_emissor,Órgão Expedidor
+orgao_emissor,Expedidor
+orgao_emissor,Órgão Exp.
+uf_emissor,UF Emissor
+uf_emissor,UF Expedição
+uf_emissor,UF do RG
+uf_emissor,UF Doc.
+uf_emissor,Estado Emissor
+uf_emissor,UF Órgão
+data_emissao_documento,Data de Emissão
+data_emissao_documento,Dt. Emissão
+data_emissao_documento,Emissão RG
+data_emissao_documento,Data Expedição
+data_emissao_documento,Dt Exp
+data_emissao_documento,Expedido em
+cep_residencial,CEP
+cep_residencial,CEP Residencial
+cep_residencial,CEP Res.
+cep_residencial,Código Postal
+cep_residencial,CEP Casa
+cep_residencial,CEP Residência
+logradouro_residencial,Endereço
+logradouro_residencial,Logradouro
+logradouro_residencial,Rua
+logradouro_residencial,Endereço Residencial
+logradouro_residencial,Logradouro Res.
+logradouro_residencial,Endereço Casa
+numero_residencial,Número
+numero_residencial,Nº
+numero_residencial,Num. Residência
+numero_residencial,Número Res.
+numero_residencial,Nº Casa
+numero_residencial,Número Endereço
+complemento_residencial,Complemento
+complemento_residencial,Compl.
+complemento_residencial,Complemento Res.
+complemento_residencial,Apto
+complemento_residencial,Complemento Endereço
+complemento_residencial,Compl Casa
+bairro_residencial,Bairro
+bairro_residencial,Bairro Res.
+bairro_residencial,Bairro Residencial
+bairro_residencial,Distrito
+bairro_residencial,Bairro Casa
+bairro_residencial,Setor
+municipio_residencial,Cidade
+municipio_residencial,Município
+municipio_residencial,Cidade Residência
+municipio_residencial,Município Res.
+municipio_residencial,Localidade
+municipio_residencial,Cidade Casa
+uf_residencial,UF
+uf_residencial,Estado
+uf_residencial,UF Res.
+uf_residencial,UF Residência
+uf_residencial,Estado Residência
+uf_residencial,Sigla UF
+telefone_residencial,Telefone
+telefone_residencial,Tel. Residencial
+telefone_residencial,Fone
+telefone_residencial,Telefone Fixo
+telefone_residencial,Tel Casa
+telefone_residencial,Fone Res.
+telefone_celular,Celular
+telefone_celular,Cel.
+telefone_celular,Telefone Celular
+telefone_celular,Whatsapp
+telefone_celular,Fone Celular
+telefone_celular,Móvel
+email_pessoal,E-mail
+email_pessoal,Email Pessoal
+email_pessoal,E-mail Particular
+email_pessoal,Email
+email_pessoal,Endereço de E-mail
+email_pessoal,E-mail Contato
+email_corporativo,E-mail Corporativo
+email_corporativo,Email Empresa
+email_corporativo,E-mail Profissional
+email_corporativo,Email Corp.
+email_corporativo,E-mail Trabalho
+email_corporativo,Email Institucional
+cnpj_empregador,CNPJ
+cnpj_empregador,CNPJ Empresa
+cnpj_empregador,CNPJ Empregador
+cnpj_empregador,Nº CNPJ
+cnpj_empregador,CNPJ Matriz
+cnpj_empregador,Cadastro Empresa
+codigo_unidade,Cód. Unidade
+codigo_unidade,Código da Filial
+codigo_unidade,Filial
+codigo_unidade,Centro de Custo
+codigo_unidade,Cód. Lotação
+codigo_unidade,Unidade (Código)
+nome_unidade,Unidade
+nome_unidade,Lotação
+nome_unidade,Nome da Filial
+nome_unidade,Local de Trabalho
+nome_unidade,Estabelecimento
+nome_unidade,Departamento
+cargo,Cargo
+cargo,Função
+cargo,Ocupação
+cargo,Cargo Atual
+cargo,Posição
+cargo,Título do Cargo
+data_admissao,Data de Admissão
+data_admissao,Dt. Admissão
+data_admissao,Admissão
+data_admissao,Data Contratação
+data_admissao,Início
+data_admissao,Data de Entrada
+data_efetivacao,Data de Efetivação
+data_efetivacao,Efetivação
+data_efetivacao,Dt. Efetivação
+data_efetivacao,Fim da Experiência
+data_efetivacao,Data Efetivo
+data_efetivacao,Contrato Efetivado em
+tipo_renda,Tipo de Renda
+tipo_renda,Regime
+tipo_renda,Tipo de Vínculo
+tipo_renda,Vínculo
+tipo_renda,CLT/Pró-labore
+tipo_renda,Natureza da Remuneração
+valor_renda,Salário
+valor_renda,Salário Bruto
+valor_renda,Remuneração
+valor_renda,Salário Base
+valor_renda,Vlr Salário
+valor_renda,Renda Mensal
+data_referencia_renda,Data Base
+data_referencia_renda,Competência
+data_referencia_renda,Mês de Referência
+data_referencia_renda,Referência Salarial
+data_referencia_renda,Data Ref.
+data_referencia_renda,Período de Referência
+cep_comercial,CEP Comercial
+cep_comercial,CEP Trabalho
+cep_comercial,CEP Empresa
+cep_comercial,CEP Unidade
+cep_comercial,CEP Com.
+cep_comercial,CEP Local Trabalho
+logradouro_comercial,Endereço Comercial
+logradouro_comercial,Logradouro Comercial
+logradouro_comercial,Endereço Trabalho
+logradouro_comercial,Rua Empresa
+logradouro_comercial,End. Unidade
+logradouro_comercial,Endereço Com.
+numero_comercial,Número Comercial
+numero_comercial,Nº Comercial
+numero_comercial,Num. Trabalho
+numero_comercial,Nº Empresa
+numero_comercial,Número Unidade
+numero_comercial,Nº End. Com.
+complemento_comercial,Complemento Comercial
+complemento_comercial,Compl. Com.
+complemento_comercial,Complemento Trabalho
+complemento_comercial,Sala
+complemento_comercial,Andar
+complemento_comercial,Compl. Unidade
+bairro_comercial,Bairro Comercial
+bairro_comercial,Bairro Trabalho
+bairro_comercial,Bairro Empresa
+bairro_comercial,Bairro Unidade
+bairro_comercial,Bairro Com.
+bairro_comercial,Região do Trabalho
+municipio_comercial,Cidade Comercial
+municipio_comercial,Município Trabalho
+municipio_comercial,Cidade Empresa
+municipio_comercial,Cidade da Unidade
+municipio_comercial,Município Com.
+municipio_comercial,Praça
+uf_comercial,UF Comercial
+uf_comercial,UF Trabalho
+uf_comercial,Estado Empresa
+uf_comercial,UF Unidade
+uf_comercial,UF Com.
+uf_comercial,Estado de Trabalho
+cnpj_grupo,CNPJ Grupo
+cnpj_grupo,CNPJ Controladora
+cnpj_grupo,CNPJ Holding
+cnpj_grupo,CNPJ do Grupo Econômico
